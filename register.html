@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Free Account | AutoMarket</title>
+  <meta name="description" content="Register an AutoMarket account to save vehicles, book 200-point inspections, and get pre-approved for low APR auto financing.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="bg-body">
+  <div class="auth-page-wrap">
+    <!-- Left Visual Branding Sidebar -->
+    <div class="auth-sidebar">
+      <div>
+        <a href="index.html">
+          <img src="assets/images/logo-dark.svg" alt="AutoMarket Logo" style="height: 42px;">
+        </a>
+      </div>
+
+      <div class="my-auto py-5">
+        <span class="badge-custom badge-certified mb-3"><i class="bi bi-person-check-fill"></i> Join 45,000+ Verified Buyers</span>
+        <h2 class="display-6 fw-bold text-white mb-3">Buy, Sell & Inspect Vehicles With Zero Stress</h2>
+        <p class="text-light opacity-80 lead fs-6">
+          Create an account in seconds to save favorite vehicles, receive instant notifications on price drops, and download full master technician inspection dossiers.
+        </p>
+        <div class="row g-3 mt-3 text-light">
+          <div class="col-6">
+            <h5 class="fw-bold mb-0 text-warning">$1,850</h5>
+            <small class="opacity-75">Avg. Buyer Savings</small>
+          </div>
+          <div class="col-6">
+            <h5 class="fw-bold mb-0 text-white">4.9 / 5</h5>
+            <small class="opacity-75">Customer Trust Score</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-light opacity-50 small">
+        &copy; 2026 AutoMarket Inc. All rights reserved.
+      </div>
+    </div>
+
+    <!-- Right Register Form Area (No common header / footer) -->
+    <div class="auth-main-card">
+      <div class="auth-form-container">
+        <!-- Floating Theme & RTL Quick Switch -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <a href="index.html" class="text-decoration-none fw-semibold small text-muted">
+            <i class="bi bi-arrow-left me-1"></i> Back to Homepage
+          </a>
+          <div class="d-flex gap-2">
+            <button class="btn btn-sm btn-outline-custom rtl-toggle-btn px-2" title="Toggle RTL">
+              <i class="bi bi-translate me-1"></i><span class="dir-text">RTL</span>
+            </button>
+            <button class="btn btn-sm btn-outline-custom theme-toggle-btn px-2" title="Toggle Dark Mode">
+              <i class="bi bi-moon-stars-fill"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="text-center text-lg-start mb-4">
+          <h3 class="fw-bold mb-1">Create Your Account</h3>
+          <p class="text-muted small mb-0">Free registration for buyers, private sellers, and collectors.</p>
+        </div>
+
+        <form class="needs-validation" id="registerForm" novalidate>
+          <div class="row g-2 mb-3">
+            <div class="col-md-6">
+              <label class="form-label" for="regFirstName">First Name</label>
+              <input type="text" class="form-control" id="regFirstName" placeholder="Alex" required>
+              <div class="invalid-feedback">First name required.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="regLastName">Last Name</label>
+              <input type="text" class="form-control" id="regLastName" placeholder="Morgan" required>
+              <div class="invalid-feedback">Last name required.</div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="regEmail">Email Address</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+              <input type="email" class="form-control" id="regEmail" placeholder="you@example.com" required>
+            </div>
+            <div class="invalid-feedback">Valid email required.</div>
+          </div>
+
+          <!-- Account Role Selection (Buyer vs Seller) -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Choose Your Account Type: <span class="text-danger">*</span></label>
+            <div class="role-select-group">
+              <label class="role-select-card" for="roleBuyer">
+                <input type="radio" name="accountRole" id="roleBuyer" value="buyer" checked>
+                <div class="role-card-inner">
+                  <i class="bi bi-person-heart text-primary role-icon"></i>
+                  <div class="fw-bold">Car Buyer</div>
+                  <div class="small text-muted mb-2">Browse, test drive & buy certified cars</div>
+                  <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill small" style="font-size: 0.68rem;">
+                    <i class="bi bi-lock-fill me-1"></i> Goes to Buyer Dashboard only
+                  </span>
+                </div>
+              </label>
+              <label class="role-select-card" for="roleSeller">
+                <input type="radio" name="accountRole" id="roleSeller" value="seller">
+                <div class="role-card-inner">
+                  <i class="bi bi-car-front-fill text-warning role-icon"></i>
+                  <div class="fw-bold">Car Seller</div>
+                  <div class="small text-muted mb-2">List inventory & manage sales leads</div>
+                  <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill small" style="font-size: 0.68rem;">
+                    <i class="bi bi-lock-fill me-1"></i> Goes to Seller Dashboard only
+                  </span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Optional Dealership Name for Sellers -->
+          <div class="mb-3 d-none" id="dealershipFieldGroup">
+            <label class="form-label" for="regDealership">Dealership / Business Name</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-building"></i></span>
+              <input type="text" class="form-control" id="regDealership" placeholder="e.g. Apex Luxury Motors">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="regPassword">Create Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock"></i></span>
+              <input type="password" class="form-control" id="regPassword" placeholder="Minimum 8 characters" minlength="8" required>
+            </div>
+            <div class="invalid-feedback">Password must be at least 8 characters.</div>
+          </div>
+
+          <div class="form-check mb-4">
+            <input class="form-check-input" type="checkbox" id="termsCheck" required>
+            <label class="form-check-label small text-muted" for="termsCheck">
+              I agree to the <a href="#" class="text-primary">Terms of Service</a> and <a href="#" class="text-primary">Privacy Policy</a>
+            </label>
+            <div class="invalid-feedback">You must agree to continue.</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary-custom btn-lg-custom w-100 mb-3" id="submitRegBtn">
+            Create Account & Enter Buyer Dashboard <i class="bi bi-arrow-right ms-1"></i>
+          </button>
+
+          <p class="text-center small text-muted mb-0">
+            Already have an account? <a href="login.html" class="fw-bold text-primary text-decoration-none">Sign In</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const roleBuyer = document.getElementById('roleBuyer');
+      const roleSeller = document.getElementById('roleSeller');
+      const dealershipGroup = document.getElementById('dealershipFieldGroup');
+      const submitBtn = document.getElementById('submitRegBtn');
+      const form = document.getElementById('registerForm');
+
+      function syncRoleUI() {
+        if (roleSeller.checked) {
+          dealershipGroup.classList.remove('d-none');
+          submitBtn.className = 'btn btn-secondary-custom btn-lg-custom w-100 mb-3';
+          submitBtn.innerHTML = 'Create Account & Enter Seller Dashboard <i class="bi bi-arrow-right ms-1"></i>';
+        } else {
+          dealershipGroup.classList.add('d-none');
+          submitBtn.className = 'btn btn-primary-custom btn-lg-custom w-100 mb-3';
+          submitBtn.innerHTML = 'Create Account & Enter Buyer Dashboard <i class="bi bi-arrow-right ms-1"></i>';
+        }
+      }
+
+      roleBuyer.addEventListener('change', syncRoleUI);
+      roleSeller.addEventListener('change', syncRoleUI);
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (!form.checkValidity()) {
+          form.classList.add('was-validated');
+          return;
+        }
+
+        const firstName = document.getElementById('regFirstName').value.trim();
+        const lastName = document.getElementById('regLastName').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
+        const password = document.getElementById('regPassword').value;
+        const role = roleSeller.checked ? 'seller' : 'buyer';
+        const dealership = document.getElementById('regDealership').value.trim();
+
+        if (window.autoMarketAuth) {
+          const result = window.autoMarketAuth.registerUser({
+            name: `${firstName} ${lastName}`.trim(),
+            email,
+            password,
+            role,
+            dealership: role === 'seller' ? (dealership || `${firstName}'s Dealership`) : undefined
+          });
+
+          if (result.success) {
+            // STRICT REDIRECT:
+            // Seller tick -> ONLY goes to seller-dashboard.html
+            // Buyer tick -> ONLY goes to dashboard.html
+            if (role === 'seller') {
+              window.autoMarketToast('Account registered as SELLER! Redirecting strictly to Seller Dashboard...', 'success');
+              setTimeout(() => {
+                window.location.href = 'seller-dashboard.html';
+              }, 700);
+            } else {
+              window.autoMarketToast('Account registered as BUYER! Redirecting strictly to Buyer Dashboard...', 'success');
+              setTimeout(() => {
+                window.location.href = 'dashboard.html';
+              }, 700);
+            }
+          } else {
+            window.autoMarketToast(result.message, 'warning');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

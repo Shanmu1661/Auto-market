@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoMarket Concierge - Luxury Pre-Owned & Auto Brokerage</title>
+  <meta name="description" content="Exclusive pre-owned luxury, sports, and exotic vehicle brokerage with private showroom sourcing, escrow title processing, and enclosed nationwide transport.">
+  <meta name="keywords" content="luxury used cars, auto concierge, exotic car brokerage, porsche, mercedes amg, ferrari pre owned">
+
+  <!-- Fonts & Libraries -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Common Header -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg py-2">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="assets/images/logo.svg" alt="AutoMarket Logo" class="navbar-brand-logo">
+        </a>
+        
+        <div class="d-flex align-items-center gap-2 d-lg-none">
+          <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL Layout">
+            <i class="bi bi-translate"></i>
+          </button>
+          <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+          <a href="dashboard.html#saved" class="btn btn-toggle-action position-relative" title="Saved Wishlist">
+            <i class="bi bi-heart"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorites-count-badge">2</span>
+          </a>
+          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="index.html"><i class="bi bi-grid-1x2 me-2 text-primary"></i>Home 1 - Marketplace</a></li>
+                <li><a class="dropdown-item active" href="index-2.html"><i class="bi bi-building me-2 text-secondary"></i>Home 2 - Dealership & Concierge</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="inventory.html">Browse Cars</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Services
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="services.html"><i class="bi bi-tools me-2 text-primary"></i>All Auto Services</a></li>
+                <li><a class="dropdown-item" href="service-details.html"><i class="bi bi-shield-check me-2 text-success"></i>200-Point Inspection</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="blog.html">Guides & News</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-toggle-action rtl-toggle-btn d-none d-lg-inline-flex" title="Toggle RTL Layout">
+              <i class="bi bi-translate"></i>
+            </button>
+            <button class="btn btn-toggle-action theme-toggle-btn d-none d-lg-inline-flex" title="Toggle Dark/Light Mode">
+              <i class="bi bi-moon-stars-fill"></i>
+            </button>
+            <a href="dashboard.html#saved" class="btn btn-toggle-action d-none d-lg-inline-flex position-relative" title="Saved Wishlist">
+              <i class="bi bi-heart"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorites-count-badge">2</span>
+            </a>
+            <div class="nav-auth-container">
+              <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Login
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Split Concierge Hero Section -->
+    <section class="py-5" style="background: linear-gradient(90deg, rgba(9, 14, 23, 0.90) 0%, rgba(9, 14, 23, 0.78) 50%, rgba(23, 32, 51, 0.5) 100%), url('https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1920&q=85') center center / cover no-repeat; color: #fff;">
+      <div class="container py-4">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <span class="badge-custom badge-featured mb-3"><i class="bi bi-star-fill"></i> Certified Dealer Inventory</span>
+            <h1 class="display-4 fw-bold text-white mb-3">Verified Pre-Owned & Certified Dealership Cars</h1>
+            <p class="lead text-light mb-4 opacity-90">
+              Direct dealership acquisitions, verified mileage history, clean CARFAX titles, and 200-point safety certifications.
+            </p>
+            <div class="d-flex gap-3 flex-wrap mb-4">
+              <a href="inventory.html" class="btn btn-secondary-custom btn-lg-custom">
+                <i class="bi bi-collection-play me-2"></i> View Used Inventory
+              </a>
+              <button class="btn btn-outline-light btn-lg-custom" data-bs-toggle="modal" data-bs-target="#bookInspectionModal">
+                <i class="bi bi-person-badge me-2"></i> Request Sourcing
+              </button>
+            </div>
+            <div class="d-flex align-items-center gap-4 text-light small">
+              <div><i class="bi bi-shield-check text-warning me-1"></i> Escrow Secured</div>
+              <div><i class="bi bi-airplane text-warning me-1"></i> Global Air/Land Freight</div>
+              <div><i class="bi bi-patch-check text-warning me-1"></i> Clean Title Certified</div>
+            </div>
+          </div>
+
+          <!-- Instant Valuation Card -->
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-xl p-4 text-dark" style="background-color: var(--bg-surface); border-radius: var(--radius-lg); border: 1px solid var(--border-color) !important;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0"><i class="bi bi-speedometer text-secondary me-2"></i> Instant Trade-In Valuation</h4>
+                <span class="badge bg-success-subtle text-success fw-bold">Live AI Market Value</span>
+              </div>
+              <p class="text-muted small mb-4">Thinking of upgrading? Enter your VIN or vehicle details to receive an instant cash offer.</p>
+
+              <form class="needs-validation" novalidate id="valuationForm">
+                <div class="row g-2 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Vehicle Year</label>
+                    <select class="form-select" required>
+                      <option value="">Select Year</option>
+                      <option value="2024">2024</option>
+                      <option value="2023">2023</option>
+                      <option value="2022">2022</option>
+                      <option value="2021">2021</option>
+                      <option value="2020">2020</option>
+                    </select>
+                    <div class="invalid-feedback">Required</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Make & Model</label>
+                    <input type="text" class="form-control" placeholder="e.g. Toyota Camry, Honda Civic" required>
+                    <div class="invalid-feedback">Required</div>
+                  </div>
+                </div>
+
+                <div class="row g-2 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Current Mileage</label>
+                    <input type="number" class="form-control" placeholder="e.g. 38500" required>
+                    <div class="invalid-feedback">Required</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Vehicle Condition</label>
+                    <select class="form-select" required>
+                      <option value="excellent">Excellent (Like New)</option>
+                      <option value="great">Great (Very Minor Wear)</option>
+                      <option value="good">Good (Normal Daily Driver)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label small fw-bold">Your Email for Report</label>
+                  <input type="email" class="form-control" placeholder="name@example.com" required>
+                  <div class="invalid-feedback">Please provide your email.</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary-custom w-100 py-2">
+                  <i class="bi bi-graph-up-arrow me-1"></i> Calculate Instant Valuation
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Luxury Showcase Grid -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="text-center section-title-wrap">
+          <span class="section-tag">Quality Selection</span>
+          <h2>Featured Pre-Owned Collection</h2>
+          <p class="text-muted mx-auto" style="max-width: 580px;">Handpicked reliable daily sedans, family SUVs, and trucks inspected by certified technicians.</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Car 1: Toyota Camry -->
+          <div class="col-md-6 col-lg-4">
+            <div class="car-card">
+              <div class="car-card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" alt="2020 Toyota Camry LE" loading="lazy">
+                <div class="car-badge-stack">
+                  <span class="badge-custom badge-certified"><i class="bi bi-shield-check"></i> CPO Warranty</span>
+                </div>
+                <button class="car-favorite-btn" data-car-id="101" aria-label="Save car">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+              <div class="car-card-body">
+                <span class="text-muted small">Family Sedan • 32 MPG</span>
+                <h3 class="car-card-title mt-1">
+                  <a href="car-details.html">2020 Toyota Camry LE</a>
+                </h3>
+                <div class="car-card-specs">
+                  <div class="spec-item"><i class="bi bi-speedometer2"></i><span>34,200 mi</span></div>
+                  <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Gasoline</span></div>
+                  <div class="spec-item"><i class="bi bi-gear"></i><span>8-Speed Auto</span></div>
+                </div>
+                <div class="car-card-footer">
+                  <div class="car-price-wrap">
+                    <div class="price-main">$19,400</div>
+                    <div class="price-emi">Est. $295/mo</div>
+                  </div>
+                  <a href="car-details.html" class="btn btn-sm btn-primary-custom">View Spec</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Car 2: Toyota RAV4 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="car-card">
+              <div class="car-card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=600&q=80" alt="2020 Toyota RAV4 XLE AWD" loading="lazy">
+                <div class="car-badge-stack">
+                  <span class="badge-custom badge-deal"><i class="bi bi-person-check"></i> 1-Owner Clean Carfax</span>
+                </div>
+                <button class="car-favorite-btn" data-car-id="102" aria-label="Save car">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+              <div class="car-card-body">
+                <span class="text-muted small">Compact SUV • AWD Safety</span>
+                <h3 class="car-card-title mt-1">
+                  <a href="car-details.html">2020 Toyota RAV4 XLE AWD</a>
+                </h3>
+                <div class="car-card-specs">
+                  <div class="spec-item"><i class="bi bi-speedometer2"></i><span>39,800 mi</span></div>
+                  <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Gasoline</span></div>
+                  <div class="spec-item"><i class="bi bi-gear"></i><span>Automatic</span></div>
+                </div>
+                <div class="car-card-footer">
+                  <div class="car-price-wrap">
+                    <div class="price-main">$24,800</div>
+                    <div class="price-emi">Est. $385/mo</div>
+                  </div>
+                  <a href="car-details.html" class="btn btn-sm btn-primary-custom">View Spec</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Car 3: Honda Civic -->
+          <div class="col-md-6 col-lg-4">
+            <div class="car-card">
+              <div class="car-card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80" alt="2019 Honda Civic EX" loading="lazy">
+                <div class="car-badge-stack">
+                  <span class="badge-custom badge-certified"><i class="bi bi-award"></i> 200-Pt Verified</span>
+                </div>
+                <button class="car-favorite-btn" data-car-id="103" aria-label="Save car">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+              <div class="car-card-body">
+                <span class="text-muted small">Daily Commuter • 38 MPG</span>
+                <h3 class="car-card-title mt-1">
+                  <a href="car-details.html">2019 Honda Civic EX</a>
+                </h3>
+                <div class="car-card-specs">
+                  <div class="spec-item"><i class="bi bi-speedometer2"></i><span>52,400 mi</span></div>
+                  <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Gasoline</span></div>
+                  <div class="spec-item"><i class="bi bi-gear"></i><span>CVT Auto</span></div>
+                </div>
+                <div class="car-card-footer">
+                  <div class="car-price-wrap">
+                    <div class="price-main">$16,950</div>
+                    <div class="price-emi">Est. $260/mo</div>
+                  </div>
+                  <a href="car-details.html" class="btn btn-sm btn-primary-custom">View Spec</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concierge Services Grid -->
+    <section class="section-padding bg-body-tertiary">
+      <div class="container">
+        <div class="text-center section-title-wrap">
+          <span class="section-tag">Bespoke Advisory</span>
+          <h2>Full-Spectrum Vehicle Brokerage Services</h2>
+          <p class="text-muted mx-auto" style="max-width: 600px;">From acquisition to bespoke delivery, we handle every detail with absolute confidentiality and precision.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-box text-start">
+              <div class="feature-icon-circle ms-0 mb-3">
+                <i class="bi bi-search"></i>
+              </div>
+              <h4>Bespoke Off-Market Sourcing</h4>
+              <p class="text-muted small">Looking for a specific paint-to-sample Porsche or limited edition supercar? We tap into private collector networks across North America and Europe.</p>
+              <a href="service-details.html" class="fw-bold small text-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-box text-start">
+              <div class="feature-icon-circle ms-0 mb-3" style="background-color: var(--secondary-light); color: var(--secondary);">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <h4>200-Pt Pre-Purchase Audit</h4>
+              <p class="text-muted small">Complete paint depth metering, engine compression testing, ECU diagnostic log scans, and full suspension geometry verification.</p>
+              <a href="service-details.html" class="fw-bold small text-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-box text-start">
+              <div class="feature-icon-circle ms-0 mb-3" style="background-color: var(--accent-light); color: var(--accent);">
+                <i class="bi bi-truck"></i>
+              </div>
+              <h4>Enclosed Climate-Controlled Logistics</h4>
+              <p class="text-muted small">Door-to-door enclosed white-glove transport directly to your garage, fully insured up to $2,000,000 during transit.</p>
+              <a href="service-details.html" class="fw-bold small text-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Virtual Showroom Experience Teaser -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <span class="section-tag">Interactive Preview</span>
+            <h2>Experience Our Digital Showroom From Anywhere</h2>
+            <p class="text-muted mb-4">
+              Explore 4K ultra-high resolution exterior walkarounds, interior 360-degree interactive cockpits, and listen to authentic cold-start engine sound recordings.
+            </p>
+            <div class="checklist-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <div><strong>High-Def Paint Detail:</strong> Zoom in to inspect every square inch of paintwork and panel alignment.</div>
+            </div>
+            <div class="checklist-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <div><strong>Cockpit VR Compatibility:</strong> Compatible with all standard web browsers, tablets, and VR headsets.</div>
+            </div>
+            <div class="checklist-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <div><strong>Live Video Concierge:</strong> Connect 1-on-1 with a showroom specialist over FaceTime or Zoom.</div>
+            </div>
+            <div class="mt-4">
+              <a href="inventory.html" class="btn btn-primary-custom">
+                <i class="bi bi-camera-video me-2"></i> Start Virtual Tour
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="position-relative rounded-4 overflow-hidden shadow-xl">
+              <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=700&q=80" alt="Interior Showroom 360 Experience" class="img-fluid w-100">
+              <div class="position-absolute top-50 start-50 translate-middle text-center">
+                <a href="inventory.html" class="btn btn-light btn-lg rounded-circle shadow-lg p-3" aria-label="Play 360 preview">
+                  <i class="bi bi-play-fill fs-2 text-primary"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Common Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row pb-5 mb-5 border-bottom border-light border-opacity-10 align-items-center">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <h4 class="text-white mb-1"><i class="bi bi-envelope-paper-heart me-2 text-warning"></i> Subscribe to Used Car Market Alerts</h4>
+          <p class="text-light opacity-75 mb-0">Receive weekly price drops, certified stock arrivals, and automotive guides.</p>
+        </div>
+        <div class="col-lg-6">
+          <form class="d-flex gap-2 needs-validation" novalidate>
+            <input type="email" class="form-control" placeholder="Enter your email address" required aria-label="Email address">
+            <button class="btn btn-primary-custom text-nowrap" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <img src="assets/images/logo-dark.svg" alt="AutoMarket Logo" class="mb-3 navbar-brand-logo">
+          <p class="text-light opacity-75 small">
+            AutoMarket Concierge is the premier brokerage for collector, luxury, and certified pre-owned vehicles. Every automobile passes strict provenance checks and mechanical testing.
+          </p>
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="inventory.html">All Inventory</a></li>
+            <li><a href="services.html">Auto Services</a></li>
+            <li><a href="service-details.html">200-Point Inspection</a></li>
+            <li><a href="pricing.html">Seller Pricing</a></li>
+            <li><a href="about.html">About Company</a></li>
+            <li><a href="dashboard.html">User Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Vehicle Categories</h5>
+          <ul class="footer-links">
+            <li><a href="inventory.html?body=suv">SUVs & Crossovers</a></li>
+            <li><a href="inventory.html?body=sedan">Sedans & Coupes</a></li>
+            <li><a href="inventory.html?body=electric">Electric & Hybrid</a></li>
+            <li><a href="inventory.html?body=truck">Work & Pickup Trucks</a></li>
+            <li><a href="inventory.html?price=20000">Budget Cars Under $20k</a></li>
+            <li><a href="inventory.html?certified=true">Certified Pre-Owned</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Showroom & Contact</h5>
+          <ul class="footer-links">
+            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> 1245 Motor Pkwy, CA 90210</li>
+            <li><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 555-AUTO</li>
+            <li><i class="bi bi-envelope-fill text-secondary me-2"></i> concierge@automarket.com</li>
+            <li><i class="bi bi-clock-fill text-success me-2"></i> Mon - Sat: 9:00 AM - 7:00 PM</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <div>
+          &copy; 2026 AutoMarket Inc. All rights reserved. Built with HTML5, CSS3 & Bootstrap 5.
+        </div>
+        <div class="d-flex gap-3">
+          <a href="documentation/index.html" class="text-light opacity-75">Documentation</a>
+          <a href="404.html" class="text-light opacity-75">404 Error</a>
+          <a href="coming-soon.html" class="text-light opacity-75">Coming Soon</a>
+          <a href="sitemap.xml" class="text-light opacity-75">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Book Inspection / Test Drive Modal -->
+  <div class="modal fade" id="bookInspectionModal" tabindex="-1" aria-labelledby="bookInspectionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bookInspectionModalLabel"><i class="bi bi-calendar-check me-2 text-primary"></i> Book Concierge Consultation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form class="needs-validation" novalidate>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Service Type</label>
+              <select class="form-select" required>
+                <option value="">Choose service...</option>
+                <option value="private-viewing">Private Showroom Viewing</option>
+                <option value="sourcing">Custom Vehicle Sourcing Request</option>
+                <option value="trade-in">Collector Trade-In Valuation</option>
+              </select>
+              <div class="invalid-feedback">Required</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Target Vehicle or Budget</label>
+              <input type="text" class="form-control" placeholder="e.g. Porsche 911 GT3 or $100k-$150k" required>
+              <div class="invalid-feedback">Required</div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Date</label>
+                <input type="date" class="form-control" required>
+                <div class="invalid-feedback">Required</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Your Name</label>
+                <input type="text" class="form-control" placeholder="Full name" required>
+                <div class="invalid-feedback">Required</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email or Direct Phone</label>
+              <input type="text" class="form-control" placeholder="contact@example.com" required>
+              <div class="invalid-feedback">Required</div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-custom" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary-custom">Request Consultation</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>200-Point Pre-Purchase Vehicle Inspection | AutoMarket</title>
+  <meta name="description" content="Book a certified 200-point pre-purchase used car inspection. Includes engine compression testing, OBD-II scanner diagnostics, frame check, and digital report.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Common Header -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg py-2">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="assets/images/logo.svg" alt="AutoMarket Logo" class="navbar-brand-logo">
+        </a>
+        
+        <div class="d-flex align-items-center gap-2 d-lg-none">
+          <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL Layout">
+            <i class="bi bi-translate"></i>
+          </button>
+          <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+          <a href="dashboard.html#saved" class="btn btn-toggle-action position-relative" title="Saved Wishlist">
+            <i class="bi bi-heart"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorites-count-badge">2</span>
+          </a>
+          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="index.html"><i class="bi bi-grid-1x2 me-2 text-primary"></i>Home 1 - Marketplace</a></li>
+                <li><a class="dropdown-item" href="index-2.html"><i class="bi bi-building me-2 text-secondary"></i>Home 2 - Dealership & Concierge</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="inventory.html">Browse Cars</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Services
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="services.html"><i class="bi bi-tools me-2 text-primary"></i>All Auto Services</a></li>
+                <li><a class="dropdown-item active" href="service-details.html"><i class="bi bi-shield-check me-2 text-success"></i>200-Point Inspection</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="blog.html">Guides & News</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-toggle-action rtl-toggle-btn d-none d-lg-inline-flex" title="Toggle RTL Layout">
+              <i class="bi bi-translate"></i>
+            </button>
+            <button class="btn btn-toggle-action theme-toggle-btn d-none d-lg-inline-flex" title="Toggle Dark/Light Mode">
+              <i class="bi bi-moon-stars-fill"></i>
+            </button>
+            <a href="dashboard.html#saved" class="btn btn-toggle-action d-none d-lg-inline-flex position-relative" title="Saved Wishlist">
+              <i class="bi bi-heart"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorites-count-badge">2</span>
+            </a>
+            <div class="nav-auth-container">
+              <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Login
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero Banner -->
+    <section class="py-5 text-white" style="background: linear-gradient(rgba(9, 30, 58, 0.82), rgba(30, 41, 59, 0.88)), url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1920&q=80') center center / cover no-repeat;">
+      <div class="container py-4">
+        <nav aria-label="breadcrumb" class="mb-3">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html" class="text-light">Home</a></li>
+            <li class="breadcrumb-item"><a href="services.html" class="text-light">Services</a></li>
+            <li class="breadcrumb-item active text-white" aria-current="page">200-Point Inspection</li>
+          </ol>
+        </nav>
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <span class="badge-custom badge-certified mb-2"><i class="bi bi-shield-check"></i> Gold Standard Mechanical Audit</span>
+            <h1 class="display-5 fw-bold text-white mb-3">200-Point Pre-Purchase Used Car Inspection</h1>
+            <p class="lead text-light opacity-90 mb-4">
+              Never buy a used car blind. Our licensed ASE master technicians travel directly to the seller's location, dealership, or auction to perform an exhaustive mechanical, structural, and computer diagnosis.
+            </p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="#bookSection" class="btn btn-primary-custom btn-lg-custom">
+                <i class="bi bi-calendar2-check me-2"></i> Book Inspection Now
+              </a>
+              <a href="#pricingSection" class="btn btn-outline-light btn-lg-custom">
+                <i class="bi bi-tag me-2"></i> View Package Pricing
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-5 d-none d-lg-block text-center">
+            <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&q=80" alt="Master Mechanic Inspection Bay" class="rounded-4 shadow-xl img-fluid border border-secondary border-opacity-25">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inspection Checklist Breakdown -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="text-center section-title-wrap">
+          <span class="section-tag">Rigorous Testing</span>
+          <h2>What We Inspect Across 200 Critical Points</h2>
+          <p class="text-muted mx-auto" style="max-width: 620px;">
+            We don't just kick tires. Our technicians utilize state-of-the-art digital paint meters, OEM diagnostic scanners, and engine pressure gauges.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Item 1 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card p-4 border rounded-4 shadow-sm h-100" style="background-color: var(--bg-surface); border-color: var(--border-color) !important;">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="feature-icon-circle m-0" style="width: 48px; height: 48px; font-size: 1.25rem;">
+                  <i class="bi bi-gear-wide-connected"></i>
+                </div>
+                <h5 class="mb-0 fw-bold">Engine & Powertrain (45 Pts)</h5>
+              </div>
+              <ul class="list-unstyled small text-muted mb-0">
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Cylinder compression & oil analysis</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Turbocharger boost & wastegate actuation</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Radiator pressure & coolant contamination</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Transmission shifting smoothness & torque converter</li>
+                <li><i class="bi bi-check2 text-success me-1"></i> Drive belts, tensioners, and motor mounts</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card p-4 border rounded-4 shadow-sm h-100" style="background-color: var(--bg-surface); border-color: var(--border-color) !important;">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="feature-icon-circle m-0" style="width: 48px; height: 48px; font-size: 1.25rem; background-color: var(--secondary-light); color: var(--secondary);">
+                  <i class="bi bi-car-front-fill"></i>
+                </div>
+                <h5 class="mb-0 fw-bold">Body & Structural Frame (40 Pts)</h5>
+              </div>
+              <ul class="list-unstyled small text-muted mb-0">
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Digital paint depth metering for hidden bondo/repainting</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Frame rail alignment & collision crumple zones</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Flood waterlines & underbody salt corrosion</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Panel gap tolerances & door latch hinges</li>
+                <li><i class="bi bi-check2 text-success me-1"></i> Glass integrity, weatherstripping, and sunroof seals</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card p-4 border rounded-4 shadow-sm h-100" style="background-color: var(--bg-surface); border-color: var(--border-color) !important;">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="feature-icon-circle m-0" style="width: 48px; height: 48px; font-size: 1.25rem; background-color: var(--accent-light); color: var(--accent);">
+                  <i class="bi bi-cpu"></i>
+                </div>
+                <h5 class="mb-0 fw-bold">Diagnostics & Electronics (45 Pts)</h5>
+              </div>
+              <ul class="list-unstyled small text-muted mb-0">
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Full ECU/TCM computer scan for cleared trouble codes</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Alternator charging output & battery health test</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> ADAS radar sensors, blind-spot, & cameras</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> HVAC heating & AC refrigerant temperature</li>
+                <li><i class="bi bi-check2 text-success me-1"></i> Power windows, motorized seats, and infotainment</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card p-4 border rounded-4 shadow-sm h-100" style="background-color: var(--bg-surface); border-color: var(--border-color) !important;">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="feature-icon-circle m-0" style="width: 48px; height: 48px; font-size: 1.25rem;">
+                  <i class="bi bi-disc"></i>
+                </div>
+                <h5 class="mb-0 fw-bold">Brakes, Tires & Steering (40 Pts)</h5>
+              </div>
+              <ul class="list-unstyled small text-muted mb-0">
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Caliper pad thickness & rotor runout measurement</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Tire tread depth (32nds of an inch) & DOT date code</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Shock absorbers, springs, and sway bar bushings</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Tie rods, ball joints, and steering rack play</li>
+                <li><i class="bi bi-check2 text-success me-1"></i> Wheel bearing hub noise & differential seals</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card p-4 border rounded-4 shadow-sm h-100" style="background-color: var(--bg-surface); border-color: var(--border-color) !important;">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="feature-icon-circle m-0" style="width: 48px; height: 48px; font-size: 1.25rem; background-color: var(--secondary-light); color: var(--secondary);">
+                  <i class="bi bi-speedometer"></i>
+                </div>
+                <h5 class="mb-0 fw-bold">Dynamic Road Test (30 Pts)</h5>
+              </div>
+              <ul class="list-unstyled small text-muted mb-0">
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Cold-start cranking, idle stability, & vibration</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Wide-open throttle acceleration & hesitation</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> High-speed braking straightness & ABS pulse</li>
+                <li class="mb-2"><i class="bi bi-check2 text-success me-1"></i> Cruising wheel alignment pull & road noise</li>
+                <li><i class="bi bi-check2 text-success me-1"></i> 4WD / AWD transfer case engagement check</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 6: Sample Report Promo -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card p-4 border rounded-4 text-white h-100 d-flex flex-column justify-content-between" style="background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);">
+              <div>
+                <span class="badge bg-warning text-dark fw-bold mb-2">Digital Delivery</span>
+                <h5 class="text-white fw-bold mb-2">Instant Cloud Inspection Dossier</h5>
+                <p class="small text-light opacity-90 mb-3">
+                  Receive an interactive online report with 40+ high-res photos, video of engine revs, scanner logs, and a mechanic verdict score.
+                </p>
+              </div>
+              <a href="car-details.html#inspection-pane" class="btn btn-warning fw-bold w-100">
+                <i class="bi bi-file-earmark-pdf me-1"></i> View Sample Inspection Report
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section-padding bg-body-tertiary" id="pricingSection">
+      <div class="container">
+        <div class="text-center section-title-wrap">
+          <span class="section-tag">Transparent Rates</span>
+          <h2>Inspection Packages & Tiers</h2>
+          <p class="text-muted mx-auto" style="max-width: 550px;">Flat-rate mobile pricing. No hidden mileage fees within 50 miles of any metro hub.</p>
+        </div>
+
+        <div class="row g-4 align-items-center">
+          <!-- Plan 1 -->
+          <div class="col-lg-4">
+            <div class="pricing-card">
+              <h5 class="fw-bold">Standard 150-Pt</h5>
+              <p class="text-muted small">Ideal for budget commuter cars, sedans, and compact daily drivers.</p>
+              <div class="pricing-amount mb-3">$149</div>
+              <ul class="list-unstyled small mb-4">
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> 150-Point Visual & Mechanical Check</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> OBD-II Basic Trouble Code Scan</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> 5-Mile Dynamic Road Test</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> 25 High-Res Digital Photos</li>
+                <li class="text-muted opacity-50"><i class="bi bi-x-circle me-2"></i> Paint Depth Metering Excluded</li>
+              </ul>
+              <a href="#bookSection" class="btn btn-outline-custom w-100">Book Standard</a>
+            </div>
+          </div>
+
+          <!-- Plan 2 (Featured) -->
+          <div class="col-lg-4">
+            <div class="pricing-card featured">
+              <div class="badge bg-primary text-white position-absolute top-0 end-0 m-3 px-3 py-1 rounded-pill fw-bold">MOST POPULAR</div>
+              <h5 class="fw-bold text-primary">Master 200-Pt Gold</h5>
+              <p class="text-muted small">Our definitive flagship inspection recommended for 90% of buyers.</p>
+              <div class="pricing-amount text-primary mb-3">$229</div>
+              <ul class="list-unstyled small mb-4">
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Full 200-Point Inspection</strong></li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Digital Paint Meter Depth Audit</strong></li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Full OEM Scanner Diagnostic Report</strong></li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> 50+ Photos + Engine Sound Clip</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> 15-Minute Mechanic Phone Debrief</li>
+              </ul>
+              <a href="#bookSection" class="btn btn-primary-custom w-100">Book Master 200-Pt</a>
+            </div>
+          </div>
+
+          <!-- Plan 3 -->
+          <div class="col-lg-4">
+            <div class="pricing-card">
+              <h5 class="fw-bold">Exotic & Performance</h5>
+              <p class="text-muted small">Tailored for Porsche, AMG, BMW M, Ferrari, and classic collector cars.</p>
+              <div class="pricing-amount mb-3">$399</div>
+              <ul class="list-unstyled small mb-4">
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> 250-Point Exotic Marque Audit</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Cylinder Compression & Over-rev Scan</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Carbon Ceramic Brake Rotor Wear Check</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> 80+ 4K Photos & Video Walkaround</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Senior Exotic Specialist Assigned</li>
+              </ul>
+              <a href="#bookSection" class="btn btn-outline-custom w-100">Book Exotic Audit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="section-padding" id="bookSection">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card border-0 shadow-lg p-4 p-md-5 rounded-4" style="background-color: var(--bg-surface); border: 1px solid var(--border-color) !important;">
+              <div class="text-center mb-4">
+                <span class="section-tag">Instant Scheduling</span>
+                <h3 class="fw-bold">Schedule Your Mobile Pre-Purchase Inspection</h3>
+                <p class="text-muted small">We contact the seller to arrange the appointment time directly.</p>
+              </div>
+
+              <form class="needs-validation" novalidate id="serviceBookingForm">
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold small">Inspection Tier</label>
+                    <select class="form-select" required>
+                      <option value="200" selected>Master 200-Point Gold ($229)</option>
+                      <option value="150">Standard 150-Point ($149)</option>
+                      <option value="exotic">Exotic & Performance Audit ($399)</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold small">Vehicle Year, Make & Model</label>
+                    <input type="text" class="form-control" placeholder="e.g. 2022 BMW 330i" required>
+                    <div class="invalid-feedback">Please enter the car details.</div>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold small">Seller Location / Zip Code</label>
+                    <input type="text" class="form-control" placeholder="Address or Zip Code" required>
+                    <div class="invalid-feedback">Location is required.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold small">Preferred Inspection Date</label>
+                    <input type="date" class="form-control" required>
+                    <div class="invalid-feedback">Date is required.</div>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold small">Seller Name & Contact (Optional)</label>
+                    <input type="text" class="form-control" placeholder="Seller Name / Phone / Dealership">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold small">Vehicle Link or VIN (Optional)</label>
+                    <input type="text" class="form-control" placeholder="Listing URL or 17-digit VIN">
+                  </div>
+                </div>
+
+                <hr class="my-4 border-secondary opacity-25">
+
+                <div class="row g-3 mb-4">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold small">Your Full Name</label>
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                    <div class="invalid-feedback">Your name is required.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold small">Email (For Digital Report Delivery)</label>
+                    <input type="email" class="form-control" placeholder="you@example.com" required>
+                    <div class="invalid-feedback">Valid email required.</div>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary-custom btn-lg-custom w-100">
+                  <i class="bi bi-shield-check me-2"></i> Confirm & Book Inspection
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs Accordion -->
+    <section class="section-padding bg-body-tertiary">
+      <div class="container">
+        <div class="text-center section-title-wrap">
+          <span class="section-tag">Got Questions?</span>
+          <h2>Frequently Asked Questions</h2>
+          <p class="text-muted mx-auto" style="max-width: 500px;">Everything you need to know about our pre-purchase inspection service.</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="accordion" id="inspectionFaqAccordion">
+              <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    How long does the 200-point inspection take?
+                  </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#inspectionFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Our master technicians spend approximately 1.5 to 2.5 hours on-site thoroughly evaluating the vehicle. The interactive digital report with high-resolution photos and diagnostic readouts is typically emailed within 2 hours of completion.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    Do I need to be present during the inspection?
+                  </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#inspectionFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    No! In fact, over 80% of our clients are out-of-state or at work. We coordinate access directly with the private seller or dealership, perform the full evaluation, and call you immediately afterwards for a 1-on-1 debrief.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                    What happens if the seller refuses to allow the inspection?
+                  </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#inspectionFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    If a seller refuses an inspection before our mechanic departs, you receive a 100% full refund immediately. A seller refusing an inspection is usually a major red flag indicating hidden mechanical or structural damage.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                    Can I use the inspection report to negotiate the car price?
+                  </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#inspectionFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Absolutely. On average, our clients save between $1,200 and $2,800 by using our documented repair estimates, tire tread wear data, and brake pad measurements as leverage during final price negotiations.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Common Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row pb-5 mb-5 border-bottom border-light border-opacity-10 align-items-center">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <h4 class="text-white mb-1"><i class="bi bi-envelope-paper-heart me-2 text-warning"></i> Subscribe to Used Car Market Alerts</h4>
+          <p class="text-light opacity-75 mb-0">Receive weekly price drops, certified stock arrivals, and automotive guides.</p>
+        </div>
+        <div class="col-lg-6">
+          <form class="d-flex gap-2 needs-validation" novalidate>
+            <input type="email" class="form-control" placeholder="Enter your email address" required aria-label="Email address">
+            <button class="btn btn-primary-custom text-nowrap" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <img src="assets/images/logo-dark.svg" alt="AutoMarket Logo" class="mb-3 navbar-brand-logo">
+          <p class="text-light opacity-75 small">
+            AutoMarket is the trusted nationwide marketplace for certified pre-owned vehicles. Every car passes our 200-point inspection with upfront, haggle-free pricing.
+          </p>
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="inventory.html">All Inventory</a></li>
+            <li><a href="services.html">Auto Services</a></li>
+            <li><a href="service-details.html">200-Point Inspection</a></li>
+            <li><a href="pricing.html">Seller Pricing</a></li>
+            <li><a href="about.html">About Company</a></li>
+            <li><a href="dashboard.html">User Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Vehicle Categories</h5>
+          <ul class="footer-links">
+            <li><a href="inventory.html?body=suv">SUVs & Crossovers</a></li>
+            <li><a href="inventory.html?body=sedan">Sedans & Coupes</a></li>
+            <li><a href="inventory.html?body=electric">Electric & Hybrid</a></li>
+            <li><a href="inventory.html?body=truck">Work & Pickup Trucks</a></li>
+            <li><a href="inventory.html?price=20000">Budget Cars Under $20k</a></li>
+            <li><a href="inventory.html?certified=true">Certified Pre-Owned</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Showroom & Contact</h5>
+          <ul class="footer-links">
+            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> 1245 Motor Pkwy, CA 90210</li>
+            <li><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 555-AUTO</li>
+            <li><i class="bi bi-envelope-fill text-secondary me-2"></i> support@automarket.com</li>
+            <li><i class="bi bi-clock-fill text-success me-2"></i> Mon - Sat: 9:00 AM - 7:00 PM</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <div>
+          &copy; 2026 AutoMarket Inc. All rights reserved. Built with HTML5, CSS3 & Bootstrap 5.
+        </div>
+        <div class="d-flex gap-3">
+          <a href="documentation/index.html" class="text-light opacity-75">Documentation</a>
+          <a href="404.html" class="text-light opacity-75">404 Error</a>
+          <a href="coming-soon.html" class="text-light opacity-75">Coming Soon</a>
+          <a href="sitemap.xml" class="text-light opacity-75">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

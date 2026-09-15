@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - Saved Cars, Bookings & Messages | AutoMarket</title>
+  <meta name="description" content="Manage your saved vehicles, test drive bookings, 200-point inspection appointments, seller inquiries, and account settings in your AutoMarket portal.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Common Header -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg py-2">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="assets/images/logo.svg" alt="AutoMarket Logo" class="navbar-brand-logo">
+        </a>
+        
+        <div class="d-flex align-items-center gap-2 d-lg-none">
+          <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL Layout">
+            <i class="bi bi-translate"></i>
+          </button>
+          <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+          <a href="#tab-saved" data-bs-toggle="pill" class="btn btn-toggle-action position-relative" title="Saved Wishlist">
+            <i class="bi bi-heart"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorites-count-badge">2</span>
+          </a>
+          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="index.html"><i class="bi bi-grid-1x2 me-2 text-primary"></i>Home 1 - Marketplace</a></li>
+                <li><a class="dropdown-item" href="index-2.html"><i class="bi bi-building me-2 text-secondary"></i>Home 2 - Dealership & Concierge</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="inventory.html">Browse Cars</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Services
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="services.html"><i class="bi bi-tools me-2 text-primary"></i>All Auto Services</a></li>
+                <li><a class="dropdown-item" href="service-details.html"><i class="bi bi-shield-check me-2 text-success"></i>200-Point Inspection</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="blog.html">Guides & News</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-toggle-action rtl-toggle-btn d-none d-lg-inline-flex" title="Toggle RTL Layout">
+              <i class="bi bi-translate"></i>
+            </button>
+            <button class="btn btn-toggle-action theme-toggle-btn d-none d-lg-inline-flex" title="Toggle Dark/Light Mode">
+              <i class="bi bi-moon-stars-fill"></i>
+            </button>
+            <a href="#tab-saved" data-bs-toggle="pill" class="btn btn-toggle-action d-none d-lg-inline-flex position-relative" title="Saved Wishlist">
+              <i class="bi bi-heart"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorites-count-badge">2</span>
+            </a>
+            <div class="nav-auth-container">
+              <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Login
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="dashboard-wrap">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Sidebar Navigation Column -->
+        <aside class="col-lg-3">
+          <div class="dashboard-sidebar">
+            <div class="dashboard-user-card">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80" alt="Alex Morgan" class="dashboard-user-avatar">
+              <h5 class="fw-bold mb-0 dash-user-name-display">Alex Morgan</h5>
+              <small class="text-muted dash-user-email-display">alex.morgan@example.com</small>
+              <div class="mt-2">
+                <span class="badge bg-success-subtle text-success fw-bold small"><i class="bi bi-patch-check-fill me-1"></i> Verified Buyer</span>
+              </div>
+            </div>
+
+            <ul class="nav flex-column dashboard-nav" id="dashboardTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active w-100" id="dash-overview-tab" data-bs-toggle="pill" data-bs-target="#tab-overview" type="button" role="tab">
+                  <i class="bi bi-speedometer2"></i> Overview
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link w-100" id="dash-saved-tab" data-bs-toggle="pill" data-bs-target="#tab-saved" type="button" role="tab">
+                  <i class="bi bi-heart"></i> Saved Vehicles (<span id="dashSavedCount">2</span>)
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link w-100" id="dash-bookings-tab" data-bs-toggle="pill" data-bs-target="#tab-bookings" type="button" role="tab">
+                  <i class="bi bi-calendar-check"></i> Bookings & Inspections
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link w-100" id="dash-messages-tab" data-bs-toggle="pill" data-bs-target="#tab-messages" type="button" role="tab">
+                  <i class="bi bi-chat-left-dots"></i> Messages & Offers
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link w-100" id="dash-settings-tab" data-bs-toggle="pill" data-bs-target="#tab-settings" type="button" role="tab">
+                  <i class="bi bi-gear"></i> Profile & Settings
+                </button>
+              </li>
+              <li class="nav-item pt-3 mt-3 border-top border-secondary border-opacity-10">
+                <button type="button" class="nav-link text-danger w-100 border-0 bg-transparent text-start dash-logout-btn">
+                  <i class="bi bi-box-arrow-right text-danger"></i> Sign Out
+                </button>
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Main Dashboard Tab Content Area -->
+        <div class="col-lg-9">
+          <div class="tab-content" id="dashboardTabContent">
+            <!-- TAB 1: Overview -->
+            <div class="tab-pane fade show active" id="tab-overview" role="tabpanel">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                  <h3 class="fw-bold mb-1">Welcome back, <span class="dash-user-name-display">Alex</span>!</h3>
+                  <p class="text-muted small mb-0">Here is a quick summary of your vehicle searches, saved cars, and inspection appointments.</p>
+                </div>
+                <a href="inventory.html" class="btn btn-sm btn-primary-custom d-none d-sm-inline-flex">
+                  <i class="bi bi-search me-1"></i> Browse Inventory
+                </a>
+              </div>
+
+              <!-- Stat Cards Row -->
+              <div class="row g-3 mb-4">
+                <div class="col-sm-6 col-xl-4">
+                  <div class="stat-card">
+                    <div class="stat-icon bg-primary-subtle text-primary">
+                      <i class="bi bi-heart-fill"></i>
+                    </div>
+                    <div>
+                      <h4 class="fw-bold mb-0">2</h4>
+                      <small class="text-muted">Saved Cars</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-4">
+                  <div class="stat-card">
+                    <div class="stat-icon bg-warning-subtle text-warning">
+                      <i class="bi bi-calendar-event-fill"></i>
+                    </div>
+                    <div>
+                      <h4 class="fw-bold mb-0">1</h4>
+                      <small class="text-muted">Upcoming Test Drive</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-4">
+                  <div class="stat-card">
+                    <div class="stat-icon bg-success-subtle text-success">
+                      <i class="bi bi-patch-check-fill"></i>
+                    </div>
+                    <div>
+                      <h4 class="fw-bold mb-0">1</h4>
+                      <small class="text-muted">Completed Inspection</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Upcoming Activity Box -->
+              <div class="card p-4 border-0 shadow-sm rounded-4 mb-4" style="background-color: var(--bg-surface); border: 1px solid var(--border-color) !important;">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h5 class="fw-bold mb-0"><i class="bi bi-bell-fill text-warning me-2"></i> Next Scheduled Activity</h5>
+                  <span class="badge bg-primary-subtle text-primary">Tomorrow at 2:00 PM</span>
+                </div>
+                <div class="p-3 bg-light rounded-3 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=120&q=80" alt="2020 Toyota Camry" class="rounded-3" style="width: 70px; height: 50px; object-fit: cover;">
+                    <div>
+                      <h6 class="mb-0 fw-bold">Test Drive: 2020 Toyota Camry LE (CPO)</h6>
+                      <small class="text-muted"><i class="bi bi-geo-alt"></i> Location: AutoMarket Hub Bay #4 (1245 Motor Pkwy)</small>
+                    </div>
+                  </div>
+                  <div class="d-flex gap-2">
+                    <a href="car-details.html" class="btn btn-sm btn-outline-custom">View Car</a>
+                    <button class="btn btn-sm btn-primary-custom" data-bs-toggle="modal" data-bs-target="#rescheduleModal">Reschedule</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Financing Pre-Approval Box -->
+              <div class="p-4 rounded-4 text-white" style="background: linear-gradient(135deg, #1e40af 0%, #172554 100%);">
+                <div class="row align-items-center">
+                  <div class="col-md-8">
+                    <h5 class="fw-bold text-white mb-1"><i class="bi bi-lightning-charge-fill text-warning me-2"></i> Pre-Approved Financing Rate</h5>
+                    <p class="small text-light opacity-90 mb-0">You are eligible for prime rates starting at 4.9% APR up to $45,000.</p>
+                  </div>
+                  <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <a href="index.html#emiCalculatorForm" class="btn btn-warning fw-bold btn-sm">Calculate Payments</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 2: Saved Vehicles -->
+            <div class="tab-pane fade" id="tab-saved" role="tabpanel">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                  <h3 class="fw-bold mb-1">Your Saved Vehicles</h3>
+                  <p class="text-muted small mb-0">Track price drops, status changes, and schedule at-home test drives.</p>
+                </div>
+                <a href="inventory.html" class="btn btn-sm btn-outline-custom">Add More Cars</a>
+              </div>
+
+              <!-- Dynamic Saved Cars Container (populated by dashboard.js) -->
+              <div class="row g-4" id="savedCarsContainer">
+                <!-- Injected dynamically via dashboard.js -->
+              </div>
+
+              <div id="savedEmptyState" class="text-center py-5 d-none">
+                <i class="bi bi-heartbreak fs-1 text-muted mb-3 d-inline-block"></i>
+                <h5>No Saved Vehicles Yet</h5>
+                <p class="text-muted small mb-3">Click the heart icon on any vehicle listing in our inventory to save it here.</p>
+                <a href="inventory.html" class="btn btn-primary-custom">Explore Used Cars</a>
+              </div>
+            </div>
+
+            <!-- TAB 3: Bookings & Inspections -->
+            <div class="tab-pane fade" id="tab-bookings" role="tabpanel">
+              <h3 class="fw-bold mb-1">Your Appointments & Inspection Reports</h3>
+              <p class="text-muted small mb-4">Review upcoming test drives and download comprehensive 200-point inspection dossiers.</p>
+
+              <div class="card border-0 shadow-sm rounded-4 overflow-hidden" style="background-color: var(--bg-surface); border: 1px solid var(--border-color) !important;">
+                <div class="table-responsive">
+                  <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                      <tr>
+                        <th scope="col">Service / Vehicle</th>
+                        <th scope="col">Date & Time</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Inspector / Specialist</th>
+                        <th scope="col" class="text-end">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="fw-bold">Test Drive: 2022 BMW 330i</div>
+                          <small class="text-muted">Stock #AM-8842</small>
+                        </td>
+                        <td>Tomorrow • 2:00 PM</td>
+                        <td><span class="badge bg-primary-subtle text-primary">Confirmed</span></td>
+                        <td>Mike Davies (Showroom)</td>
+                        <td class="text-end">
+                          <button class="btn btn-sm btn-outline-custom" onclick="alert('Appointment details sent to your registered email.')">Details</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="fw-bold">200-Pt Pre-Purchase Audit</div>
+                          <small class="text-muted">2021 Mercedes-Benz C300</small>
+                        </td>
+                        <td>Aug 22, 2026</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="bi bi-check2"></i> Passed (Score: 94/100)</span></td>
+                        <td>Elena Rostova (Master ASE)</td>
+                        <td class="text-end">
+                          <a href="car-details.html#inspection-pane" class="btn btn-sm btn-primary-custom"><i class="bi bi-file-earmark-pdf me-1"></i> View Dossier</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 4: Messages & Inquiries -->
+            <div class="tab-pane fade" id="tab-messages" role="tabpanel">
+              <h3 class="fw-bold mb-1">Inquiries & Dealership Chat</h3>
+              <p class="text-muted small mb-4">Direct, confidential communication with assigned automotive advisors.</p>
+
+              <div class="card border-0 shadow-sm rounded-4 overflow-hidden" style="background-color: var(--bg-surface); border: 1px solid var(--border-color) !important;">
+                <!-- Chat Header -->
+                <div class="p-3 border-bottom d-flex justify-content-between align-items-center bg-light">
+                  <div class="d-flex align-items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=80&q=80" alt="Specialist" class="rounded-circle" style="width: 42px; height: 42px; object-fit: cover;">
+                    <div>
+                      <h6 class="mb-0 fw-bold">Elena Rostova</h6>
+                      <small class="text-success"><i class="bi bi-circle-fill" style="font-size: 8px;"></i> Online • Certified Specialist</small>
+                    </div>
+                  </div>
+                  <span class="badge bg-light text-dark border">Ref: 2022 BMW 330i</span>
+                </div>
+
+                <!-- Chat Body -->
+                <div class="p-4" id="chatMessagesBox" style="height: 320px; overflow-y: auto; background-color: var(--bg-body);">
+                  <div class="d-flex justify-content-start mb-3">
+                    <div class="p-3 bg-white border rounded-3 shadow-sm" style="max-width: 75%;">
+                      <p class="mb-1 text-dark">Hi Alex! I saw you scheduled a test drive for the 2022 BMW 3 Series 330i xDrive tomorrow at 2:00 PM. The vehicle is freshly detailed and parked in Bay #4.</p>
+                      <small class="text-muted" style="font-size: 0.72rem;">Yesterday at 4:15 PM • Elena Rostova</small>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-end mb-3">
+                    <div class="p-3 bg-primary text-white rounded-3 shadow-sm" style="max-width: 75%;">
+                      <p class="mb-1">Great! Does the car come with both key fobs and the all-weather floor mats mentioned in the listing?</p>
+                      <small class="text-white-50" style="font-size: 0.72rem;">Yesterday at 4:22 PM • You</small>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-start mb-3">
+                    <div class="p-3 bg-white border rounded-3 shadow-sm" style="max-width: 75%;">
+                      <p class="mb-1 text-dark">Yes, absolutely. Both key remotes and the genuine BMW OEM winter mats are inside the trunk along with the window sticker.</p>
+                      <small class="text-muted" style="font-size: 0.72rem;">Yesterday at 4:30 PM • Elena Rostova</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Chat Input Form -->
+                <div class="p-3 border-top bg-white">
+                  <form id="chatReplyForm" class="d-flex gap-2">
+                    <input type="text" class="form-control" id="chatInput" placeholder="Type your message to Elena..." required>
+                    <button class="btn btn-primary-custom text-nowrap" type="submit"><i class="bi bi-send-fill me-1"></i> Send</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 5: Settings -->
+            <div class="tab-pane fade" id="tab-settings" role="tabpanel">
+              <h3 class="fw-bold mb-1">Account & Security Settings</h3>
+              <p class="text-muted small mb-4">Update your profile info, delivery addresses, and notification preferences.</p>
+
+              <div class="card p-4 border-0 shadow-sm rounded-4" style="background-color: var(--bg-surface); border: 1px solid var(--border-color) !important;">
+                <form id="userProfileForm">
+                  <h5 class="fw-bold mb-3">Personal Information</h5>
+                  <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                      <label class="form-label fw-bold small">Full Name</label>
+                      <input type="text" class="form-control" id="profileName" value="Alex Morgan" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label fw-bold small">Email Address</label>
+                      <input type="email" class="form-control" id="profileEmail" value="alex.morgan@example.com" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label fw-bold small">Phone Number</label>
+                      <input type="tel" class="form-control" value="(555) 234-5678">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label fw-bold small">Preferred Hub / Delivery Zip</label>
+                      <input type="text" class="form-control" value="90210">
+                    </div>
+                  </div>
+
+                  <hr class="border-secondary opacity-25">
+
+                  <h5 class="fw-bold mb-3">Notification Preferences</h5>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="notifPriceDrop" checked>
+                    <label class="form-check-label small" for="notifPriceDrop">
+                      Alert me via email when my saved cars drop in price
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="notifNewStock" checked>
+                    <label class="form-check-label small" for="notifNewStock">
+                      Send instant notifications when matching certified cars arrive in stock
+                    </label>
+                  </div>
+                  <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="notifSms">
+                    <label class="form-check-label small" for="notifSms">
+                      Receive appointment SMS reminders 2 hours prior to test drives
+                    </label>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary-custom">Save Changes</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Common Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row pb-5 mb-5 border-bottom border-light border-opacity-10 align-items-center">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <h4 class="text-white mb-1"><i class="bi bi-envelope-paper-heart me-2 text-warning"></i> Subscribe to Used Car Market Alerts</h4>
+          <p class="text-light opacity-75 mb-0">Receive weekly price drops, certified stock arrivals, and automotive guides.</p>
+        </div>
+        <div class="col-lg-6">
+          <form class="d-flex gap-2 needs-validation" novalidate>
+            <input type="email" class="form-control" placeholder="Enter your email address" required aria-label="Email address">
+            <button class="btn btn-primary-custom text-nowrap" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <img src="assets/images/logo-dark.svg" alt="AutoMarket Logo" class="mb-3 navbar-brand-logo">
+          <p class="text-light opacity-75 small">
+            AutoMarket is the trusted nationwide marketplace for certified pre-owned vehicles. Every car passes our 200-point inspection with upfront, haggle-free pricing.
+          </p>
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="inventory.html">All Inventory</a></li>
+            <li><a href="services.html">Auto Services</a></li>
+            <li><a href="service-details.html">200-Point Inspection</a></li>
+            <li><a href="pricing.html">Seller Pricing</a></li>
+            <li><a href="about.html">About Company</a></li>
+            <li><a href="dashboard.html">User Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Vehicle Categories</h5>
+          <ul class="footer-links">
+            <li><a href="inventory.html?body=suv">SUVs & Crossovers</a></li>
+            <li><a href="inventory.html?body=sedan">Sedans & Coupes</a></li>
+            <li><a href="inventory.html?body=electric">Electric & Hybrid</a></li>
+            <li><a href="inventory.html?body=truck">Work & Pickup Trucks</a></li>
+            <li><a href="inventory.html?price=20000">Budget Cars Under $20k</a></li>
+            <li><a href="inventory.html?certified=true">Certified Pre-Owned</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5>Showroom & Contact</h5>
+          <ul class="footer-links">
+            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> 1245 Motor Pkwy, CA 90210</li>
+            <li><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 555-AUTO</li>
+            <li><i class="bi bi-envelope-fill text-secondary me-2"></i> support@automarket.com</li>
+            <li><i class="bi bi-clock-fill text-success me-2"></i> Mon - Sat: 9:00 AM - 7:00 PM</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <div>
+          &copy; 2026 AutoMarket Inc. All rights reserved. Built with HTML5, CSS3 & Bootstrap 5.
+        </div>
+        <div class="d-flex gap-3">
+          <a href="documentation/index.html" class="text-light opacity-75">Documentation</a>
+          <a href="404.html" class="text-light opacity-75">404 Error</a>
+          <a href="coming-soon.html" class="text-light opacity-75">Coming Soon</a>
+          <a href="sitemap.xml" class="text-light opacity-75">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

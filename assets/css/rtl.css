@@ -1,0 +1,89 @@
+/* ==========================================================================
+   AutoMarket - RTL Stylesheet (rtl.css)
+   Full Right-to-Left Layout Support for Arabic, Hebrew, and Persian
+   ========================================================================== */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Directional Icon Inversions */
+[dir="rtl"] .bi-arrow-right,
+[dir="rtl"] .bi-chevron-right,
+[dir="rtl"] .bi-arrow-left-right {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
+/* Floating Badges & Action Buttons on Car Cards */
+[dir="rtl"] .car-badge-stack {
+  left: auto;
+  right: 12px;
+}
+
+[dir="rtl"] .car-favorite-btn {
+  right: auto;
+  left: 12px;
+}
+
+/* Text & Flex Alignments */
+[dir="rtl"] .text-start {
+  text-align: right !important;
+}
+
+[dir="rtl"] .text-end {
+  text-align: left !important;
+}
+
+[dir="rtl"] .dropdown-menu {
+  text-align: right;
+}
+
+[dir="rtl"] .footer-links a:hover {
+  padding-left: 0;
+  padding-right: 6px;
+}
+
+[dir="rtl"] .social-icon-btn {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* Dashboard Navigation */
+[dir="rtl"] .dashboard-nav .nav-link {
+  text-align: right;
+}
+
+[dir="rtl"] .checklist-item {
+  text-align: right;
+}
+
+/* Form Controls in RTL */
+[dir="rtl"] .form-select {
+  background-position: left 0.75rem center;
+  padding-right: 1rem;
+  padding-left: 2.25rem;
+}
+
+[dir="rtl"] .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  border-top-left-radius: var(--radius-sm);
+  border-bottom-left-radius: var(--radius-sm);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+[dir="rtl"] .input-group > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+  border-top-right-radius: var(--radius-sm);
+  border-bottom-right-radius: var(--radius-sm);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Car Card List Layout RTL */
+@media (min-width: 768px) {
+  [dir="rtl"] .car-card-list {
+    flex-direction: row-reverse;
+  }
+}
+

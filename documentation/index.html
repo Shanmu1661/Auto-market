@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoMarket - HTML Template Documentation & Developer Guide</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+</head>
+<body class="bg-body">
+  <header class="py-3 border-bottom bg-white sticky-top">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <a href="../index.html">
+          <img src="../assets/images/logo.svg" alt="AutoMarket Logo" class="navbar-brand-logo" style="height: 36px;">
+        </a>
+        <span class="badge bg-primary-subtle text-primary fw-bold">v1.0.0 Docs</span>
+      </div>
+      <div>
+        <a href="../index.html" class="btn btn-sm btn-outline-custom me-2"><i class="bi bi-arrow-left me-1"></i> Live Preview</a>
+        <button class="btn btn-sm btn-outline-custom theme-toggle-btn"><i class="bi bi-moon-stars-fill"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container my-5">
+    <div class="row g-5">
+      <!-- Sidebar Navigation -->
+      <aside class="col-lg-3">
+        <div class="sticky-top" style="top: 80px;">
+          <h6 class="text-uppercase tracking-wider text-muted fw-bold mb-3 small">Documentation</h6>
+          <nav class="nav flex-column gap-1">
+            <a class="nav-link py-1 px-2 fw-semibold text-primary" href="#intro">Introduction</a>
+            <a class="nav-link py-1 px-2 text-muted" href="#structure">File Structure</a>
+            <a class="nav-link py-1 px-2 text-muted" href="#theming">Color System & CSS Variables</a>
+            <a class="nav-link py-1 px-2 text-muted" href="#darkmode">Dark Mode & RTL Setup</a>
+            <a class="nav-link py-1 px-2 text-muted" href="#integrations">Third-Party Integrations</a>
+            <a class="nav-link py-1 px-2 text-muted" href="#dashboard">User Dashboard</a>
+            <a class="nav-link py-1 px-2 text-muted" href="#credits">Third-Party Credits</a>
+            <a class="nav-link py-1 px-2 text-muted" href="#changelog">Changelog & Support</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="col-lg-9">
+        <!-- Section 1: Introduction -->
+        <section id="intro" class="mb-5 pb-4 border-bottom">
+          <h1 class="display-6 fw-bold mb-3">AutoMarket Template Documentation</h1>
+          <p class="lead text-muted">
+            AutoMarket is a premium, multipurpose HTML5/CSS3 template engineered specifically for the Used Car Market, Auto Dealerships, Vehicle Inspection Services, and Car Brokerages. Built strictly with standard web technologies (HTML, CSS, JavaScript, Bootstrap 5.3).
+          </p>
+          <div class="row g-3 mt-2">
+            <div class="col-sm-4">
+              <div class="p-3 border rounded-3 bg-light text-center">
+                <div class="fw-bold text-primary">15+ Pages Included</div>
+                <small class="text-muted">Home, Inventory, Details, Dashboard, etc.</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="p-3 border rounded-3 bg-light text-center">
+                <div class="fw-bold text-success">100% RTL & Dark Mode</div>
+                <small class="text-muted">Persistent dual toggles</small>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="p-3 border rounded-3 bg-light text-center">
+                <div class="fw-bold text-warning">WCAG 2.1 AA Compliant</div>
+                <small class="text-muted">Accessible and SEO-Ready</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2: Structure -->
+        <section id="structure" class="mb-5 pb-4 border-bottom">
+          <h3 class="fw-bold mb-3">File & Directory Structure</h3>
+          <p class="text-muted small">The template follows an organized, clean folder hierarchy:</p>
+          <pre class="p-3 bg-dark text-light rounded-3 small"><code>usedcar-market/
+├── assets/
+│   ├── css/
+│   │   ├── style.css           # Core styling, variables, components & responsive grid
+│   │   ├── dark-mode.css       # Obsidian dark mode overrides & contrast variables
+│   │   └── rtl.css             # Right-to-Left layout support for Arabic/Hebrew
+│   ├── js/
+│   │   ├── main.js             # Theme toggle, RTL engine, loan calculator, filters
+│   │   └── dashboard.js        # User dashboard saved cars, profile & chat logic
+│   └── images/
+│       └── logo.svg            # Responsive brand vector logo
+├── index.html                  # Home 1 - Modern Used Car Marketplace
+├── index-2.html                # Home 2 - Dealership & Auto Brokerage Concierge
+├── inventory.html              # Used Car Inventory (Grid/List switcher, skeleton loaders)
+├── car-details.html            # Car Listing Showcase (Gallery, Specs, 200-Pt Inspection)
+├── services.html               # Automotive Services Overview
+├── service-details.html        # 200-Point Pre-Purchase Inspection Deep Dive
+├── about.html                  # About Us, Mission, Timeline & Executive Team
+├── pricing.html                # Seller Listing Packages & Inspection Tiers
+├── blog.html                   # Used Car Buying Guides & News (Search & Filter)
+├── blog-details.html           # In-Depth Article with Sidebar & Comments
+├── contact.html                # Contact Page with Form & Google Maps Placeholder
+├── dashboard.html              # Buyer Dashboard (Profile, Saved Cars, Inquiries, Bookings)
+├── seller-dashboard.html       # Seller & Dealership Hub (Listings CRUD, Leads, Stats)
+├── login.html                  # Sign In Page with Dual Buyer / Seller Dashboard Portals
+├── register.html               # Registration Page with Strict Buyer / Seller Role Routing
+├── 404.html                    # 404 Not Found Page with Vehicle Search
+├── coming-soon.html            # Launch Countdown Maintenance Page
+├── sitemap.xml                 # Search Engine XML Sitemap
+├── robots.txt                  # Production Robots File
+└── README.md                   # Quickstart instructions</code></pre>
+        </section>
+
+        <!-- Section 3: Theming -->
+        <section id="theming" class="mb-5 pb-4 border-bottom">
+          <h3 class="fw-bold mb-3">Color System & CSS Variables</h3>
+          <p class="text-muted small">
+            To change the primary brand color across all pages, simply edit the CSS custom properties in <code>assets/css/style.css</code>:
+          </p>
+          <pre class="p-3 bg-dark text-light rounded-3 small"><code>:root {
+  --primary: #2563eb;          /* Main Royal Blue Accent */
+  --primary-rgb: 37, 99, 235;
+  --secondary: #f97316;        /* Automotive Orange */
+  --accent: #10b981;           /* Inspection Green */
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}</code></pre>
+        </section>
+
+        <!-- Section 4: Dark Mode & RTL -->
+        <section id="darkmode" class="mb-5 pb-4 border-bottom">
+          <h3 class="fw-bold mb-3">Dark Mode & RTL Implementation</h3>
+          <p class="text-muted small">
+            Dark mode and RTL are completely dynamic and persistent:
+          </p>
+          <ul>
+            <li><strong>Theme Engine:</strong> Toggled by adding <code>data-bs-theme="dark"</code> and <code>data-theme="dark"</code> to the <code>&lt;html&gt;</code> element. System preferences are automatically detected via <code>window.matchMedia</code> and stored in <code>localStorage.getItem('automarket_theme')</code>.</li>
+            <li><strong>RTL Engine:</strong> Toggled by setting <code>dir="rtl"</code> on <code>&lt;html&gt;</code> and stored in <code>localStorage.getItem('automarket_dir')</code>. All margins, dropdown arrows, badges, and card orientations adapt automatically.</li>
+          </ul>
+        </section>
+
+        <!-- Section 5: Integrations -->
+        <section id="integrations" class="mb-5 pb-4 border-bottom">
+          <h3 class="fw-bold mb-3">Required Integrations (Placeholder Ready)</h3>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="p-3 border rounded-3 bg-light">
+                <h6 class="fw-bold text-primary">1. Contact Form</h6>
+                <p class="small text-muted mb-0">Compatible with Formspree (set <code>action="https://formspree.io/f/{your-id}"</code>) or Netlify Forms (add <code>netlify</code> attribute).</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 border rounded-3 bg-light">
+                <h6 class="fw-bold text-primary">2. Newsletter</h6>
+                <p class="small text-muted mb-0">Ready for Mailchimp, ConvertKit, or SendGrid integration via standard form action.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 border rounded-3 bg-light">
+                <h6 class="fw-bold text-primary">3. Google Maps</h6>
+                <p class="small text-muted mb-0">Interactive Google Maps embed iframe placeholder on <code>contact.html</code>.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 border rounded-3 bg-light">
+                <h6 class="fw-bold text-primary">4. Calendar Booking</h6>
+                <p class="small text-muted mb-0">Inspection and test drive scheduling modal hook with date/time pickers and client validation.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 border rounded-3 bg-light">
+                <h6 class="fw-bold text-primary">5. Payments</h6>
+                <p class="small text-muted mb-0">Stripe and PayPal escrow reservation button placeholders on <code>pricing.html</code> and <code>car-details.html</code>.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6: User Dashboard -->
+        <section id="dashboard" class="mb-5 pb-4 border-bottom">
+          <h3 class="fw-bold mb-3">User Dashboard Architecture</h3>
+          <p class="text-muted small">
+            The template features a dedicated User Dashboard (<code>dashboard.html</code>) with zero external frameworks required:
+          </p>
+          <ul class="text-muted small">
+            <li><strong>Profile Management:</strong> Edit personal name, email, phone, and delivery hubs with instant toast alert feedback.</li>
+            <li><strong>Saved Vehicles (Wishlist):</strong> Synchronized with browser <code>localStorage</code>. Users can favorite any car and view/delete it from their dashboard.</li>
+            <li><strong>Bookings & Order History:</strong> Shows upcoming test drives and passed 200-point inspection dossiers with download links.</li>
+            <li><strong>Messages & Inquiries:</strong> Interactive simulated 2-way chat with dealership specialist.</li>
+          </ul>
+        </section>
+
+        <!-- Section 7: Credits -->
+        <section id="credits" class="mb-5 pb-4 border-bottom">
+          <h3 class="fw-bold mb-3">Third-Party Credits</h3>
+          <ul class="text-muted small">
+            <li><strong>Bootstrap 5.3.3:</strong> <a href="https://getbootstrap.com" target="_blank">getbootstrap.com</a> (MIT License)</li>
+            <li><strong>Bootstrap Icons:</strong> <a href="https://icons.getbootstrap.com" target="_blank">icons.getbootstrap.com</a> (MIT License)</li>
+            <li><strong>Google Fonts:</strong> Plus Jakarta Sans & Inter (<a href="https://fonts.google.com" target="_blank">fonts.google.com</a>)</li>
+            <li><strong>Unsplash Photography:</strong> Unique, contextually relevant automotive imagery curated for commercial templates.</li>
+          </ul>
+        </section>
+
+        <!-- Section 8: Changelog -->
+        <section id="changelog">
+          <h3 class="fw-bold mb-3">Version History & Support</h3>
+          <p class="text-muted small"><strong>Version 1.0.0 (September 2026):</strong> Initial production release featuring complete Used Car Market template, User Dashboard, Dark Mode, RTL layout, and responsive mobile optimization.</p>
+          <p class="text-muted small">For questions or customization support, contact: <code>support@automarket.com</code></p>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer class="py-4 border-top text-center text-muted small bg-white">
+    &copy; 2026 AutoMarket Inc. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
