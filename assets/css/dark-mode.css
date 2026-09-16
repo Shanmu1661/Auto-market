@@ -305,3 +305,91 @@
 [data-theme="dark"] .border-secondary {
   border-color: #273549 !important;
 }
+
+/* Auth Pages Dark Mode */
+[data-bs-theme="dark"] .auth-page-wrap,
+[data-theme="dark"] .auth-page-wrap {
+  background-color: #0b0f19;
+}
+
+[data-bs-theme="dark"] .auth-sidebar,
+[data-theme="dark"] .auth-sidebar {
+  background: linear-gradient(135deg, #070c18 0%, #0f172a 100%);
+  border-right: 1px solid #1e293b;
+}
+
+[data-bs-theme="dark"] .portal-choice-btn,
+[data-theme="dark"] .portal-choice-btn {
+  background-color: #111827;
+  border-color: #243044;
+  color: #f8fafc;
+}
+[data-bs-theme="dark"] .portal-choice-btn:hover,
+[data-theme="dark"] .portal-choice-btn:hover {
+  background-color: #1e293b;
+  border-color: #3b82f6;
+}
+[data-bs-theme="dark"] .portal-choice-btn.active,
+[data-theme="dark"] .portal-choice-btn.active {
+  border-color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.15);
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+[data-bs-theme="dark"] .portal-choice-btn.active.seller-portal-active,
+[data-theme="dark"] .portal-choice-btn.active.seller-portal-active {
+  border-color: #f59e0b;
+  background-color: rgba(245, 158, 11, 0.15);
+  box-shadow: 0 0 0 1px #f59e0b;
+}
+
+[data-bs-theme="dark"] .social-auth-btn,
+[data-theme="dark"] .social-auth-btn {
+  background-color: #111827;
+  border-color: #2d3c54;
+  color: #f1f5f9;
+}
+[data-bs-theme="dark"] .social-auth-btn:hover,
+[data-theme="dark"] .social-auth-btn:hover {
+  background-color: #1e293b;
+  border-color: #3b82f6;
+  color: #60a5fa;
+}
+
+[data-bs-theme="dark"] .role-select-card,
+[data-theme="dark"] .role-select-card {
+  background-color: #111827;
+  border-color: #243044;
+  color: #f8fafc;
+}
+[data-bs-theme="dark"] .role-select-card:hover,
+[data-theme="dark"] .role-select-card:hover {
+  border-color: #3b82f6;
+  background-color: #1a2234;
+}
+[data-bs-theme="dark"] .role-select-card:has(input[type="radio"]:checked),
+[data-theme="dark"] .role-select-card:has(input[type="radio"]:checked) {
+  border-color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.15);
+}
+
+[data-bs-theme="dark"] .divider-text::before,
+[data-bs-theme="dark"] .divider-text::after,
+[data-theme="dark"] .divider-text::before,
+[data-theme="dark"] .divider-text::after {
+  border-bottom-color: #2d3c54;
+}
+
+[data-bs-theme="dark"] #registeredAccountsHint,
+[data-theme="dark"] #registeredAccountsHint {
+  background-color: #111827 !important;
+  border-color: #243044 !important;
+  color: #cbd5e1;
+}
+
+[data-bs-theme="dark"] .fill-user-btn,
+[data-theme="dark"] .fill-user-btn {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+

@@ -4,38 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign In to Your Account | AutoMarket</title>
-  <meta name="description" content="Sign in to your AutoMarket account to access your saved vehicles, track inspection reports, and view financing applications.">
+  <meta name="description" content="Sign in to your AutoMarket account to access your Buyer or Seller Dashboard, saved vehicles, and dealership inventory.">
 
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
+  <!-- Core, Dark Mode, & RTL Stylesheets -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dark-mode.css">
   <link rel="stylesheet" href="assets/css/rtl.css">
 </head>
 <body class="bg-body">
   <div class="auth-page-wrap">
-    <!-- Left Visual Branding Sidebar -->
+    <!-- Left Visual Branding Sidebar (Desktop & Ultra-wide) -->
     <div class="auth-sidebar">
       <div>
-        <a href="index.html">
+        <a href="index.html" aria-label="AutoMarket Home">
           <img src="assets/images/logo-dark.svg" alt="AutoMarket Logo" style="height: 42px;">
         </a>
       </div>
 
       <div class="my-auto py-5">
-        <span class="badge-custom badge-certified mb-3"><i class="bi bi-shield-check"></i> Certified Marketplace</span>
-        <h2 class="display-6 fw-bold text-white mb-3">Your Journey to the Perfect Used Car Begins Here</h2>
-        <p class="text-light opacity-80 lead fs-6">
-          Access 15,000+ verified vehicles, real-time price-drop alerts, 200-point inspection dossiers, and instant auto financing approvals.
+        <span class="badge-custom badge-certified mb-3">
+          <i class="bi bi-shield-check"></i> Certified Marketplace
+        </span>
+        <h2 class="display-6 fw-bold text-white mb-3">Access Your AutoMarket Portal</h2>
+        <p class="text-light opacity-80 lead fs-6 mb-4">
+          Seamlessly manage your car buying journey or monitor listed vehicle inventory, test-drive requests, and customer leads.
         </p>
-        <div class="d-flex align-items-center gap-4 mt-4 text-light small">
-          <div><i class="bi bi-patch-check text-warning me-1"></i> Clean Titles</div>
-          <div><i class="bi bi-truck text-warning me-1"></i> Doorstep Delivery</div>
-          <div><i class="bi bi-arrow-repeat text-warning me-1"></i> 7-Day Returns</div>
+        <div class="d-flex flex-wrap gap-4 mt-2 text-light small">
+          <div class="d-flex align-items-center gap-1">
+            <i class="bi bi-person-check text-primary fs-5"></i> Buyer Hub
+          </div>
+          <div class="d-flex align-items-center gap-1">
+            <i class="bi bi-building-check text-warning fs-5"></i> Seller Desk
+          </div>
+          <div class="d-flex align-items-center gap-1">
+            <i class="bi bi-shield-lock text-success fs-5"></i> Secure Session
+          </div>
         </div>
       </div>
 
@@ -44,39 +54,70 @@
       </div>
     </div>
 
-    <!-- Right Login Form Area (No common header / footer) -->
+    <!-- Right Login Form Area (Responsive on all devices) -->
     <div class="auth-main-card">
       <div class="auth-form-container">
-        <!-- Floating Theme & RTL Quick Switch -->
+        <!-- Top Utility Bar: Back to Home + RTL Toggle + Dark Mode Toggle -->
         <div class="d-flex justify-content-between align-items-center mb-4">
-          <a href="index.html" class="text-decoration-none fw-semibold small text-muted">
+          <a href="index.html" class="text-decoration-none fw-semibold small text-muted d-inline-flex align-items-center">
             <i class="bi bi-arrow-left me-1"></i> Back to Homepage
           </a>
           <div class="d-flex gap-2">
-            <button class="btn btn-sm btn-outline-custom rtl-toggle-btn px-2" title="Toggle RTL">
+            <!-- RTL Toggle -->
+            <button type="button" class="btn btn-sm btn-outline-custom rtl-toggle-btn px-2" title="Toggle RTL Layout" aria-label="Toggle RTL Layout">
               <i class="bi bi-translate me-1"></i><span class="dir-text">RTL</span>
             </button>
-            <button class="btn btn-sm btn-outline-custom theme-toggle-btn px-2" title="Toggle Dark Mode">
+            <!-- Dark Mode Toggle -->
+            <button type="button" class="btn btn-sm btn-outline-custom theme-toggle-btn px-2" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
               <i class="bi bi-moon-stars-fill"></i>
             </button>
           </div>
         </div>
 
-        <div class="text-center text-lg-start mb-4">
+        <!-- Page Header -->
+        <div class="text-center text-lg-start mb-3">
           <h3 class="fw-bold mb-1">Sign In to Your Account</h3>
-          <p class="text-muted small mb-0" id="loginSubtitle">Enter your registered credentials to open your dashboard.</p>
+          <p class="text-muted small mb-0" id="loginSubtitle">Select your destination portal and sign in to access your dashboard.</p>
         </div>
 
         <!-- Inline Alert Box for Real-time Feedback -->
         <div id="authAlertBox" class="alert d-none py-2 px-3 mb-3 small" role="alert"></div>
 
-        <!-- Form -->
+        <!-- 1. Buyer vs Seller Destination Portal Selector -->
+        <div class="mb-3">
+          <label class="form-label fw-bold small text-muted text-uppercase" style="letter-spacing: 0.05em;">Select Destination Portal:</label>
+          <div class="row g-2" id="portalSelector">
+            <div class="col-6">
+              <button type="button" class="btn w-100 py-3 text-start portal-choice-btn active" id="chooseBuyerPortal" data-portal="buyer">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <i class="bi bi-person-heart text-primary fs-5"></i>
+                  <span class="fw-bold">Buyer Portal</span>
+                </div>
+                <div class="small text-muted" style="font-size: 0.75rem;">Buyer Dashboard</div>
+              </button>
+            </div>
+            <div class="col-6">
+              <button type="button" class="btn w-100 py-3 text-start portal-choice-btn" id="chooseSellerPortal" data-portal="seller">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <i class="bi bi-car-front-fill text-warning fs-5"></i>
+                  <span class="fw-bold">Seller Portal</span>
+                </div>
+                <div class="small text-muted" style="font-size: 0.75rem;">Seller Dashboard</div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Registered Accounts Quick Selector Hint -->
+        <div id="registeredAccountsHint" class="mb-3 p-2 bg-light rounded-3 border d-none"></div>
+
+        <!-- Standard Email / Password Form -->
         <form class="needs-validation" id="loginForm" novalidate>
           <div class="mb-3">
             <label class="form-label fw-semibold" for="loginEmail">Email Address</label>
             <div class="input-group">
               <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-              <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required autocomplete="email">
+              <input type="email" class="form-control" id="loginEmail" placeholder="e.g. buyer@automarket.com" required autocomplete="email">
             </div>
             <div class="invalid-feedback">Please enter your registered email address.</div>
           </div>
@@ -84,11 +125,11 @@
           <div class="mb-3">
             <div class="d-flex justify-content-between align-items-center">
               <label class="form-label fw-semibold mb-0" for="loginPassword">Password</label>
-              <a href="#" class="small text-primary text-decoration-none" onclick="alert('Password reset link has been dispatched to your email.'); return false;">Forgot password?</a>
+              <a href="#" class="small text-primary text-decoration-none" onclick="alert('Password reset instructions dispatched to your email.'); return false;">Forgot password?</a>
             </div>
             <div class="input-group mt-1">
               <span class="input-group-text"><i class="bi bi-lock"></i></span>
-              <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required autocomplete="current-password">
+              <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required autocomplete="current-password">
               <button class="btn btn-outline-secondary" type="button" id="togglePasswordBtn" title="Toggle password visibility">
                 <i class="bi bi-eye" id="togglePasswordIcon"></i>
               </button>
@@ -103,31 +144,61 @@
             </label>
           </div>
 
+          <!-- Sign In Action Button -->
           <button type="submit" class="btn btn-primary-custom btn-lg-custom w-100 mb-3" id="submitLoginBtn">
-            Sign In <i class="bi bi-box-arrow-in-right ms-1"></i>
+            Sign In to Buyer Dashboard <i class="bi bi-arrow-right ms-1"></i>
           </button>
 
+          <!-- Divider -->
+          <div class="divider-text mb-3">
+            <span>or continue with</span>
+          </div>
+
+          <!-- Google and Mac (Apple) Login Options -->
+          <div class="row g-2 mb-3">
+            <div class="col-sm-6">
+              <button type="button" class="social-auth-btn w-100" id="googleAuthBtn" title="Sign in with your Google Account">
+                <i class="bi bi-google text-danger me-2 fs-6"></i> Continue with Google
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <button type="button" class="social-auth-btn w-100" id="appleAuthBtn" title="Sign in with your Apple (Mac) Account">
+                <i class="bi bi-apple me-2 fs-6"></i> Continue with Apple
+              </button>
+            </div>
+          </div>
+
+          <!-- Navigation to Register Page -->
           <p class="text-center small text-muted mb-0">
-            Don't have an account yet? <a href="register.html" class="fw-bold text-primary text-decoration-none">Create an Account</a>
+            Don't have an account yet? <a href="register.html" class="fw-bold text-primary text-decoration-none" id="registerLink">Create an Account</a>
           </p>
         </form>
       </div>
     </div>
   </div>
 
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      let selectedPortal = 'buyer';
+
+      const chooseBuyerBtn = document.getElementById('chooseBuyerPortal');
+      const chooseSellerBtn = document.getElementById('chooseSellerPortal');
+      const googleAuthBtn = document.getElementById('googleAuthBtn');
+      const appleAuthBtn = document.getElementById('appleAuthBtn');
       const emailInput = document.getElementById('loginEmail');
       const passwordInput = document.getElementById('loginPassword');
       const submitBtn = document.getElementById('submitLoginBtn');
+      const registerLink = document.getElementById('registerLink');
       const form = document.getElementById('loginForm');
       const alertBox = document.getElementById('authAlertBox');
+      const loginSubtitle = document.getElementById('loginSubtitle');
       const togglePasswordBtn = document.getElementById('togglePasswordBtn');
       const togglePasswordIcon = document.getElementById('togglePasswordIcon');
 
-      // Password toggle
+      // Password visibility toggle
       if (togglePasswordBtn && passwordInput && togglePasswordIcon) {
         togglePasswordBtn.addEventListener('click', () => {
           const isPassword = passwordInput.type === 'password';
@@ -148,14 +219,172 @@
         alertBox.innerHTML = '';
       }
 
-      // Check if arriving from registration
+      function setPortal(portal) {
+        selectedPortal = portal;
+        hideAlert();
+        if (portal === 'buyer') {
+          chooseBuyerBtn.classList.add('active');
+          chooseBuyerBtn.classList.remove('seller-portal-active');
+          chooseSellerBtn.classList.remove('active', 'seller-portal-active');
+          loginSubtitle.textContent = 'Sign in to access saved cars, inspection dossiers, and Buyer Dashboard.';
+          submitBtn.className = 'btn btn-primary-custom btn-lg-custom w-100 mb-3';
+          submitBtn.innerHTML = 'Sign In to Buyer Dashboard <i class="bi bi-arrow-right ms-1"></i>';
+          registerLink.href = 'register.html?role=buyer';
+        } else {
+          chooseSellerBtn.classList.add('active', 'seller-portal-active');
+          chooseBuyerBtn.classList.remove('active');
+          loginSubtitle.textContent = 'Sign in to manage listed cars, buyer test drives, and Seller Dashboard.';
+          submitBtn.className = 'btn btn-warning text-dark fw-bold btn-lg-custom w-100 mb-3';
+          submitBtn.innerHTML = 'Sign In to Seller Dashboard <i class="bi bi-arrow-right ms-1"></i>';
+          registerLink.href = 'register.html?role=seller';
+        }
+      }
+
+      // Check URL query parameters (?portal=seller / ?role=seller / ?portal=buyer)
       const urlParams = new URLSearchParams(window.location.search);
+      const requestedRole = urlParams.get('role') || urlParams.get('portal');
+      if (requestedRole === 'seller') {
+        setPortal('seller');
+      } else {
+        setPortal('buyer');
+      }
+
       if (urlParams.get('registered') === 'true') {
         const prefillEmail = urlParams.get('email');
         if (prefillEmail) emailInput.value = prefillEmail;
-        showAlert('Registration successful! Please sign in with your password.', 'success');
+        showAlert('Registration successful! Please sign in with your credentials.', 'success');
       }
 
+      chooseBuyerBtn.addEventListener('click', () => setPortal('buyer'));
+      chooseSellerBtn.addEventListener('click', () => setPortal('seller'));
+
+      // Render Registered Accounts Hint if any exist
+      function renderRegisteredAccounts() {
+        try {
+          const users = JSON.parse(localStorage.getItem('automarket_users') || '[]');
+          const hintContainer = document.getElementById('registeredAccountsHint');
+          if (!hintContainer) return;
+
+          if (users.length > 0) {
+            const validUsers = users.filter(u => u && u.email);
+            if (validUsers.length === 0) {
+              hintContainer.classList.add('d-none');
+              return;
+            }
+            hintContainer.classList.remove('d-none');
+            hintContainer.innerHTML = `
+              <div class="d-flex align-items-center justify-content-between mb-1">
+                <span class="fw-semibold text-dark" style="font-size: 0.78rem;">
+                  <i class="bi bi-person-check-fill text-success me-1"></i> Registered on this browser:
+                </span>
+                <span class="badge bg-secondary-subtle text-secondary" style="font-size: 0.65rem;">${validUsers.length} account${validUsers.length > 1 ? 's' : ''}</span>
+              </div>
+              <div class="d-flex flex-wrap gap-1">
+                ${validUsers.slice(-3).map(u => `
+                  <button type="button" class="btn btn-sm btn-light border text-truncate fill-user-btn py-1 px-2" style="font-size: 0.75rem; max-width: 100%;" data-email="${u.email}" data-role="${u.role || 'buyer'}" data-name="${u.name || ''}">
+                    <span class="user-avatar-sm me-1" style="width: 18px; height: 18px; font-size: 0.65rem; display: inline-flex; align-items: center; justify-content: center; background: #e0e7ff; color: #4338ca; border-radius: 50%;">${(u.name || u.email).trim().charAt(0).toUpperCase()}</span>
+                    <strong>${u.email}</strong> <span class="text-muted">(${u.role === 'seller' ? 'Seller' : 'Buyer'})</span>
+                  </button>
+                `).join('')}
+              </div>
+            `;
+
+            hintContainer.querySelectorAll('.fill-user-btn').forEach(btn => {
+              btn.addEventListener('click', () => {
+                const targetEmail = btn.getAttribute('data-email');
+                const targetRole = btn.getAttribute('data-role');
+                if (targetEmail) emailInput.value = targetEmail;
+                if (targetRole) setPortal(targetRole);
+
+                // Auto-fill matching password if available for seamless login
+                const matchedUser = validUsers.find(u => u && u.email && u.email.toLowerCase() === targetEmail.toLowerCase());
+                if (matchedUser && matchedUser.password) {
+                  passwordInput.value = matchedUser.password;
+                }
+
+                form.classList.remove('was-validated');
+                hideAlert();
+                passwordInput.focus();
+              });
+            });
+          } else {
+            hintContainer.classList.add('d-none');
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      // Real-time input clearing
+      [emailInput, passwordInput].forEach(el => {
+        if (!el) return;
+        el.addEventListener('input', () => {
+          if (form.classList.contains('was-validated') && el.checkValidity()) {
+            el.classList.remove('is-invalid');
+          }
+        });
+      });
+
+      renderRegisteredAccounts();
+
+      // Social Login Handler (Google & Apple/Mac)
+      function handleSocialLogin(provider) {
+        hideAlert();
+        const providerName = provider === 'google' ? 'Google' : 'Apple';
+        const isSeller = selectedPortal === 'seller';
+        const targetDashboard = isSeller ? 'seller-dashboard.html' : 'dashboard.html';
+        const dashboardName = isSeller ? 'Seller Dashboard' : 'Buyer Dashboard';
+
+        const userEmail = provider === 'google' ? 'user.google@automarket.com' : 'user.apple@automarket.com';
+        const userName = provider === 'google' ? 'Google Member' : 'Apple Member';
+        const firstLetter = provider === 'google' ? 'G' : 'A';
+
+        const socialUser = {
+          id: `usr_${provider}_${Date.now()}`,
+          name: userName,
+          email: userEmail,
+          role: selectedPortal,
+          dealership: isSeller ? 'Premier Auto Hub' : undefined,
+          avatar: firstLetter,
+          created: new Date().toISOString()
+        };
+
+        try {
+          const users = JSON.parse(localStorage.getItem('automarket_users') || '[]');
+          const existingIndex = users.findIndex(u => u && u.email && u.email.toLowerCase() === userEmail);
+          if (existingIndex >= 0) {
+            users[existingIndex].role = selectedPortal;
+            socialUser.name = users[existingIndex].name || userName;
+          } else {
+            users.push(socialUser);
+          }
+          localStorage.setItem('automarket_users', JSON.stringify(users));
+          localStorage.setItem('automarket_current_user', JSON.stringify(socialUser));
+        } catch (e) {}
+
+        if (window.autoMarketAuth && typeof window.autoMarketAuth.setCurrentUser === 'function') {
+          window.autoMarketAuth.setCurrentUser(socialUser);
+        }
+
+        showAlert(`Signed in with ${providerName} as ${isSeller ? 'Seller' : 'Buyer'}! Opening ${dashboardName}...`, 'success');
+        if (window.autoMarketToast) {
+          window.autoMarketToast(`Signed in with ${providerName}! Opening your ${dashboardName}...`, 'success');
+        }
+
+        setTimeout(() => {
+          window.location.href = targetDashboard;
+        }, 450);
+      }
+
+      if (googleAuthBtn) {
+        googleAuthBtn.addEventListener('click', () => handleSocialLogin('google'));
+      }
+
+      if (appleAuthBtn) {
+        appleAuthBtn.addEventListener('click', () => handleSocialLogin('apple'));
+      }
+
+      // Standard Form Login
       function executeLogin(email, password) {
         hideAlert();
         submitBtn.disabled = true;
@@ -196,6 +425,22 @@
         
         if (res && res.success) {
           const user = res.user;
+          // Synchronize role with selected portal if user explicitly picked it
+          if (user.role !== selectedPortal) {
+            user.role = selectedPortal;
+            try {
+              const users = JSON.parse(localStorage.getItem('automarket_users') || '[]');
+              const idx = users.findIndex(u => u && u.email && u.email.trim().toLowerCase() === cleanEmail);
+              if (idx >= 0) users[idx].role = selectedPortal;
+              localStorage.setItem('automarket_users', JSON.stringify(users));
+              localStorage.setItem('automarket_current_user', JSON.stringify(user));
+            } catch(e) {}
+          }
+
+          if (window.autoMarketAuth && typeof window.autoMarketAuth.setCurrentUser === 'function') {
+            window.autoMarketAuth.setCurrentUser(user);
+          }
+
           const isSeller = user.role === 'seller';
           const targetDashboard = isSeller ? 'seller-dashboard.html' : 'dashboard.html';
           const dashboardName = isSeller ? 'Seller Dashboard' : 'Buyer Dashboard';
@@ -208,14 +453,79 @@
           
           setTimeout(() => {
             window.location.href = targetDashboard;
-          }, 500);
+          }, 400);
         } else {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = 'Sign In <i class="bi bi-box-arrow-in-right ms-1"></i>';
-          const errorMsg = res ? res.message : 'Invalid credentials. Please try again.';
-          showAlert(errorMsg, 'danger');
-          if (window.autoMarketToast) {
-            window.autoMarketToast(errorMsg, 'danger');
+          if (selectedPortal === 'seller') {
+            submitBtn.className = 'btn btn-warning text-dark fw-bold btn-lg-custom w-100 mb-3';
+            submitBtn.innerHTML = 'Sign In to Seller Dashboard <i class="bi bi-arrow-right ms-1"></i>';
+          } else {
+            submitBtn.className = 'btn btn-primary-custom btn-lg-custom w-100 mb-3';
+            submitBtn.innerHTML = 'Sign In to Buyer Dashboard <i class="bi bi-arrow-right ms-1"></i>';
+          }
+
+          const notFound = res && res.message && res.message.includes('Account not found');
+          if (notFound) {
+            alertBox.className = 'alert alert-warning py-2 px-3 mb-3 small d-block';
+            alertBox.innerHTML = `
+              <div class="mb-1"><i class="bi bi-exclamation-triangle-fill me-1 text-warning"></i> <strong>Account not found</strong> for <code>${cleanEmail}</code>.</div>
+              <div class="d-flex flex-wrap gap-2 mt-2 align-items-center">
+                <a href="register.html?email=${encodeURIComponent(cleanEmail)}&role=${selectedPortal}" class="btn btn-sm btn-primary">
+                  <i class="bi bi-person-plus-fill me-1"></i> Register on Sign Up Page
+                </a>
+                <button type="button" class="btn btn-sm btn-outline-dark" id="instantCreateAccountBtn">
+                  <i class="bi bi-lightning-charge-fill text-warning me-1"></i> Quick Create & Enter Now
+                </button>
+              </div>
+            `;
+            const quickBtn = document.getElementById('instantCreateAccountBtn');
+            if (quickBtn) {
+              quickBtn.addEventListener('click', () => {
+                const parts = cleanEmail.split('@')[0].split(/[._-]/);
+                const inferredName = parts.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ') || 'Valued User';
+                let regResult;
+                if (window.autoMarketAuth && typeof window.autoMarketAuth.registerUser === 'function') {
+                  regResult = window.autoMarketAuth.registerUser({
+                    name: inferredName,
+                    email: cleanEmail,
+                    password: cleanPassword || 'password123',
+                    role: selectedPortal,
+                    dealership: selectedPortal === 'seller' ? `${inferredName}'s Motors` : undefined
+                  });
+                } else {
+                  const firstLetter = inferredName.charAt(0).toUpperCase() || 'U';
+                  const newUser = {
+                    id: `usr_${Date.now()}`,
+                    name: inferredName,
+                    email: cleanEmail,
+                    password: cleanPassword || 'password123',
+                    role: selectedPortal,
+                    dealership: selectedPortal === 'seller' ? `${inferredName}'s Motors` : undefined,
+                    avatar: firstLetter,
+                    created: new Date().toISOString()
+                  };
+                  const users = JSON.parse(localStorage.getItem('automarket_users') || '[]');
+                  users.push(newUser);
+                  localStorage.setItem('automarket_users', JSON.stringify(users));
+                  localStorage.setItem('automarket_current_user', JSON.stringify(newUser));
+                  regResult = { success: true, user: newUser };
+                }
+
+                if (regResult && regResult.success) {
+                  const targetDashboard = selectedPortal === 'seller' ? 'seller-dashboard.html' : 'dashboard.html';
+                  showAlert(`Account created successfully! Opening your dashboard...`, 'success');
+                  setTimeout(() => {
+                    window.location.href = targetDashboard;
+                  }, 400);
+                }
+              });
+            }
+          } else {
+            const errorMsg = res ? res.message : 'Invalid credentials. Please try again.';
+            showAlert(errorMsg, 'danger');
+            if (window.autoMarketToast) {
+              window.autoMarketToast(errorMsg, 'danger');
+            }
           }
         }
       }

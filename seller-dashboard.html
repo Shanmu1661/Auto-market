@@ -44,7 +44,7 @@
           </button>
           <div class="nav-auth-container">
             <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
-              <i class="bi bi-box-arrow-in-right me-1"></i> Login
+              <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
             </a>
           </div>
           <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +76,7 @@
             </a>
             <div class="nav-auth-container">
               <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
-                <i class="bi bi-box-arrow-in-right me-1"></i> Login
+                <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
               </a>
             </div>
           </div>
@@ -760,34 +760,43 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       // Sync Seller User Data from auth session
-      if (window.autoMarketAuth) {
-        const user = window.autoMarketAuth.getCurrentUser();
-        if (user) {
-          // STRICT ROLE GUARD: If a buyer visits the seller dashboard, strictly route them to dashboard.html
-          if (user.role === 'buyer') {
-            if (window.autoMarketToast) {
-              window.autoMarketToast(`Buyer account detected (${user.name}). Redirecting to your Buyer Dashboard...`, 'warning');
-            }
-            setTimeout(() => {
-              window.location.href = 'dashboard.html';
-            }, 1000);
-            return;
-          }
+      let user = null;
+      if (window.autoMarketAuth && typeof window.autoMarketAuth.getCurrentUser === 'function') {
+        user = window.autoMarketAuth.getCurrentUser();
+      }
+      if (!user) {
+        try {
+          const stored = localStorage.getItem('automarket_current_user');
+          if (stored) user = JSON.parse(stored);
+        } catch (e) {}
+      }
 
-          if (user.name) {
-            const letter = user.name.trim().charAt(0).toUpperCase() || 'S';
-            document.querySelectorAll('.seller-avatar-letter').forEach(el => el.textContent = letter);
-            document.querySelectorAll('.seller-name-display').forEach(el => el.textContent = user.name);
+      if (user) {
+        // STRICT ROLE GUARD: If a buyer visits the seller dashboard, strictly route them to dashboard.html
+        if (user.role === 'buyer') {
+          if (window.autoMarketToast) {
+            window.autoMarketToast(`Buyer account detected (${user.name}). Redirecting to your Buyer Dashboard...`, 'warning');
           }
-          if (user.dealership) {
-            document.querySelectorAll('.seller-dealership-display').forEach(el => el.textContent = user.dealership);
-            const settDealerInput = document.getElementById('settDealerName');
-            if (settDealerInput) settDealerInput.value = user.dealership;
-          }
-          if (user.email) {
-            const settEmailInput = document.getElementById('settEmail');
-            if (settEmailInput) settEmailInput.value = user.email;
-          }
+          setTimeout(() => {
+            window.location.href = 'dashboard.html';
+          }, 1000);
+          return;
+        }
+
+        if (user.name) {
+          const letter = user.name.trim().charAt(0).toUpperCase() || 'S';
+          document.querySelectorAll('.seller-avatar-letter').forEach(el => el.textContent = letter);
+          document.querySelectorAll('.seller-name-display').forEach(el => el.textContent = user.name);
+        }
+        if (user.dealership) {
+          document.querySelectorAll('.seller-dealership-display').forEach(el => el.textContent = user.dealership);
+          const settDealerInput = document.getElementById('settDealerName');
+          if (settDealerInput) settDealerInput.value = user.dealership;
+        }
+        if (user.email) {
+          document.querySelectorAll('.seller-email-display').forEach(el => el.textContent = user.email);
+          const settEmailInput = document.getElementById('settEmail');
+          if (settEmailInput) settEmailInput.value = user.email;
         }
       }
 

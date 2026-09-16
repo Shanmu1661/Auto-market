@@ -586,6 +586,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // -------------------------------------------------------------
   const forms = document.querySelectorAll('.needs-validation');
   forms.forEach(form => {
+    // Exclude authentication and dedicated dashboard forms which handle their own submission and redirection
+    if (form.id === 'loginForm' || form.id === 'registerForm' || form.id === 'newCarListingForm' || form.dataset.customSubmit === 'true') {
+      return;
+    }
+
     form.addEventListener('submit', event => {
       if (!form.checkValidity()) {
         event.preventDefault();
