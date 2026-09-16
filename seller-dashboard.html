@@ -54,25 +54,9 @@
 
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Home
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="index.html"><i class="bi bi-grid-1x2 me-2 text-primary"></i>Home 1 - Marketplace</a></li>
-                <li><a class="dropdown-item" href="index-2.html"><i class="bi bi-building me-2 text-secondary"></i>Home 2 - Dealership & Concierge</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="inventory.html">Browse Cars</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Services
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="services.html"><i class="bi bi-tools me-2 text-primary"></i>All Auto Services</a></li>
-                <li><a class="dropdown-item" href="service-details.html"><i class="bi bi-shield-check me-2 text-success"></i>200-Point Inspection</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="blog.html">Guides & News</a></li>
@@ -108,16 +92,16 @@
         <aside class="col-lg-3">
           <div class="dashboard-sidebar">
             <div class="dashboard-user-card text-center p-4">
-              <div class="user-avatar-sm mx-auto mb-2" style="width: 58px; height: 58px; font-size: 1.3rem; background: linear-gradient(135deg, #f97316, #ea580c);">
-                MV
+              <div class="user-avatar-sm mx-auto mb-2 seller-avatar-letter" style="width: 60px; height: 60px; font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff;">
+                S
               </div>
-              <h5 class="fw-bold mb-0 seller-name-display">Marcus Vance</h5>
-              <small class="text-primary fw-semibold seller-dealership-display">Apex Auto Group</small>
+              <h5 class="fw-bold mb-0 seller-name-display">Seller User</h5>
+              <small class="text-primary fw-semibold seller-dealership-display">Dealership Hub</small>
               <div class="mt-2 d-flex flex-column gap-1 align-items-center">
-                <span class="badge bg-warning text-dark fw-bold px-2 py-1">
-                  <i class="bi bi-patch-check-fill me-1"></i> Verified Dealership
+                <span class="badge bg-warning text-dark fw-bold px-3 py-2 rounded-pill">
+                  <i class="bi bi-car-front-fill me-1"></i> Seller Dashboard
                 </span>
-                <small class="text-muted" style="font-size: 0.75rem;">License #DL-99248-CA</small>
+                <small class="text-muted" style="font-size: 0.75rem;">Verified Dealership Portal</small>
               </div>
             </div>
 
@@ -310,7 +294,7 @@
                       <tr id="listingRow1">
                         <td>
                           <div class="d-flex align-items-center gap-3">
-                            <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=160&q=80" alt="Toyota Camry" class="inventory-thumb">
+                            <img src="assets/images/cars/camry.jpg" alt="Toyota Camry" class="inventory-thumb">
                             <div>
                               <div class="fw-bold">2020 Toyota Camry LE</div>
                               <small class="text-muted">VIN: 4T1B11HK5 • 34,200 mi • Auto</small>
@@ -332,7 +316,7 @@
                       <tr id="listingRow2">
                         <td>
                           <div class="d-flex align-items-center gap-3">
-                            <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=160&q=80" alt="Toyota Corolla" class="inventory-thumb">
+                            <img src="assets/images/cars/corolla.jpg" alt="Toyota Corolla" class="inventory-thumb">
                             <div>
                               <div class="fw-bold">2018 Toyota Corolla LE</div>
                               <small class="text-muted">VIN: 4T1B11HK2 • 48,100 mi • CVT</small>
@@ -354,7 +338,7 @@
                       <tr id="listingRow3">
                         <td>
                           <div class="d-flex align-items-center gap-3">
-                            <img src="https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=160&q=80" alt="Toyota RAV4" class="inventory-thumb">
+                            <img src="assets/images/cars/rav4.jpg" alt="Toyota RAV4" class="inventory-thumb">
                             <div>
                               <div class="fw-bold">2020 Toyota RAV4 XLE AWD</div>
                               <small class="text-muted">VIN: 2T3F1RFV8 • 39,800 mi • AWD</small>
@@ -376,7 +360,7 @@
                       <tr id="listingRow4">
                         <td>
                           <div class="d-flex align-items-center gap-3">
-                            <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=160&q=80" alt="Volkswagen Polo" class="inventory-thumb opacity-75">
+                            <img src="assets/images/cars/polo.jpg" alt="Volkswagen Polo" class="inventory-thumb opacity-75">
                             <div>
                               <div class="fw-bold text-muted">2019 Volkswagen Polo 1.0 TSI</div>
                               <small class="text-muted">VIN: WVWZZZ6RZ • 41,800 mi • Sold</small>
@@ -724,7 +708,7 @@
         <div class="col-lg-3 col-md-6">
           <h5>Showroom & Contact</h5>
           <ul class="footer-links">
-            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> 1245 Motor Pkwy, CA 90210</li>
+            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> <a href="https://maps.google.com/?q=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" title="Open Showroom in Google Maps">1245 Motor Pkwy, CA 90210</a></li>
             <li><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 555-AUTO</li>
             <li><i class="bi bi-envelope-fill text-secondary me-2"></i> support@automarket.com</li>
             <li><i class="bi bi-clock-fill text-success me-2"></i> Mon - Sat: 9:00 AM - 7:00 PM</li>
@@ -791,6 +775,8 @@
           }
 
           if (user.name) {
+            const letter = user.name.trim().charAt(0).toUpperCase() || 'S';
+            document.querySelectorAll('.seller-avatar-letter').forEach(el => el.textContent = letter);
             document.querySelectorAll('.seller-name-display').forEach(el => el.textContent = user.name);
           }
           if (user.dealership) {

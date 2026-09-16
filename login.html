@@ -62,55 +62,36 @@
           </div>
         </div>
 
-        <div class="text-center text-lg-start mb-3">
-          <h3 class="fw-bold mb-1">Welcome Back</h3>
-          <p class="text-muted small mb-0" id="loginSubtitle">Sign in to access your saved cars, inspection appointments, and Buyer Dashboard.</p>
+        <div class="text-center text-lg-start mb-4">
+          <h3 class="fw-bold mb-1">Sign In to Your Account</h3>
+          <p class="text-muted small mb-0" id="loginSubtitle">Enter your registered credentials to open your dashboard.</p>
         </div>
 
-        <!-- 2 Clear Options: Buyer Dashboard vs Seller Dashboard -->
-        <div class="mb-4">
-          <label class="form-label fw-bold small text-muted text-uppercase" style="letter-spacing: 0.05em;">Select Dashboard Destination:</label>
-          <div class="row g-2" id="portalSelector">
-            <div class="col-6">
-              <button type="button" class="btn w-100 py-3 text-start portal-choice-btn active" id="chooseBuyerPortal" data-portal="buyer">
-                <div class="d-flex align-items-center gap-2 mb-1">
-                  <i class="bi bi-person-heart text-primary fs-5"></i>
-                  <span class="fw-bold">Buyer Portal</span>
-                </div>
-                <div class="small text-muted" style="font-size: 0.75rem;">Buyer Dashboard</div>
-              </button>
-            </div>
-            <div class="col-6">
-              <button type="button" class="btn w-100 py-3 text-start portal-choice-btn" id="chooseSellerPortal" data-portal="seller">
-                <div class="d-flex align-items-center gap-2 mb-1">
-                  <i class="bi bi-car-front-fill text-warning fs-5"></i>
-                  <span class="fw-bold">Seller Portal</span>
-                </div>
-                <div class="small text-muted" style="font-size: 0.75rem;">Seller Dashboard</div>
-              </button>
-            </div>
-          </div>
-        </div>
+        <!-- Inline Alert Box for Real-time Feedback -->
+        <div id="authAlertBox" class="alert d-none py-2 px-3 mb-3 small" role="alert"></div>
 
         <!-- Form -->
         <form class="needs-validation" id="loginForm" novalidate>
           <div class="mb-3">
-            <label class="form-label" for="loginEmail">Email Address</label>
+            <label class="form-label fw-semibold" for="loginEmail">Email Address</label>
             <div class="input-group">
               <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-              <input type="email" class="form-control" id="loginEmail" placeholder="you@example.com" required>
+              <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required autocomplete="email">
             </div>
-            <div class="invalid-feedback">Please enter a valid email.</div>
+            <div class="invalid-feedback">Please enter your registered email address.</div>
           </div>
 
           <div class="mb-3">
             <div class="d-flex justify-content-between align-items-center">
-              <label class="form-label mb-0" for="loginPassword">Password</label>
-              <a href="#" class="small text-primary text-decoration-none">Forgot password?</a>
+              <label class="form-label fw-semibold mb-0" for="loginPassword">Password</label>
+              <a href="#" class="small text-primary text-decoration-none" onclick="alert('Password reset link has been dispatched to your email.'); return false;">Forgot password?</a>
             </div>
             <div class="input-group mt-1">
               <span class="input-group-text"><i class="bi bi-lock"></i></span>
-              <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required>
+              <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required autocomplete="current-password">
+              <button class="btn btn-outline-secondary" type="button" id="togglePasswordBtn" title="Toggle password visibility">
+                <i class="bi bi-eye" id="togglePasswordIcon"></i>
+              </button>
             </div>
             <div class="invalid-feedback">Please enter your password.</div>
           </div>
@@ -123,11 +104,11 @@
           </div>
 
           <button type="submit" class="btn btn-primary-custom btn-lg-custom w-100 mb-3" id="submitLoginBtn">
-            Sign In to Buyer Dashboard <i class="bi bi-arrow-right ms-1"></i>
+            Sign In <i class="bi bi-box-arrow-in-right ms-1"></i>
           </button>
 
           <p class="text-center small text-muted mb-0">
-            Don't have an account? <a href="register.html" class="fw-bold text-primary text-decoration-none">Create free account</a>
+            Don't have an account yet? <a href="register.html" class="fw-bold text-primary text-decoration-none">Create an Account</a>
           </p>
         </form>
       </div>
@@ -138,57 +119,104 @@
   <script src="assets/js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      let selectedPortal = 'buyer';
-
-      const chooseBuyerBtn = document.getElementById('chooseBuyerPortal');
-      const chooseSellerBtn = document.getElementById('chooseSellerPortal');
-      const loginSubtitle = document.getElementById('loginSubtitle');
       const emailInput = document.getElementById('loginEmail');
       const passwordInput = document.getElementById('loginPassword');
       const submitBtn = document.getElementById('submitLoginBtn');
       const form = document.getElementById('loginForm');
+      const alertBox = document.getElementById('authAlertBox');
+      const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+      const togglePasswordIcon = document.getElementById('togglePasswordIcon');
 
-      function setPortal(portal) {
-        selectedPortal = portal;
-        if (portal === 'buyer') {
-          chooseBuyerBtn.classList.add('active');
-          chooseSellerBtn.classList.remove('active');
-          loginSubtitle.textContent = 'Sign in to access your saved cars, inspection appointments, and Buyer Dashboard.';
-          submitBtn.className = 'btn btn-primary-custom btn-lg-custom w-100 mb-3';
-          submitBtn.innerHTML = 'Sign In to Buyer Dashboard <i class="bi bi-arrow-right ms-1"></i>';
-        } else {
-          chooseSellerBtn.classList.add('active');
-          chooseBuyerBtn.classList.remove('active');
-          loginSubtitle.textContent = 'Sign in to manage listed cars, buyer test drives, leads & Seller Dashboard.';
-          submitBtn.className = 'btn btn-secondary-custom btn-lg-custom w-100 mb-3';
-          submitBtn.innerHTML = 'Sign In to Seller Dashboard <i class="bi bi-arrow-right ms-1"></i>';
-        }
+      // Password toggle
+      if (togglePasswordBtn && passwordInput && togglePasswordIcon) {
+        togglePasswordBtn.addEventListener('click', () => {
+          const isPassword = passwordInput.type === 'password';
+          passwordInput.type = isPassword ? 'text' : 'password';
+          togglePasswordIcon.className = isPassword ? 'bi bi-eye-slash' : 'bi bi-eye';
+        });
       }
 
-      chooseBuyerBtn.addEventListener('click', () => setPortal('buyer'));
-      chooseSellerBtn.addEventListener('click', () => setPortal('seller'));
+      function showAlert(message, type = 'danger') {
+        if (!alertBox) return;
+        alertBox.className = `alert alert-${type} py-2 px-3 mb-3 small d-block`;
+        alertBox.innerHTML = `<i class="bi ${type === 'success' ? 'bi-check-circle-fill' : 'bi-exclamation-triangle-fill'} me-2"></i>${message}`;
+      }
+
+      function hideAlert() {
+        if (!alertBox) return;
+        alertBox.className = 'alert d-none';
+        alertBox.innerHTML = '';
+      }
+
+      // Check if arriving from registration
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('registered') === 'true') {
+        const prefillEmail = urlParams.get('email');
+        if (prefillEmail) emailInput.value = prefillEmail;
+        showAlert('Registration successful! Please sign in with your password.', 'success');
+      }
 
       function executeLogin(email, password) {
-        if (!window.autoMarketAuth) return;
-        const res = window.autoMarketAuth.loginUser(email, password);
-        if (res.success) {
-          const user = res.user;
-          // STRICT ROLE ACCESS:
-          // A registered seller ONLY goes to seller-dashboard.html
-          // A registered buyer ONLY goes to dashboard.html
-          if (user.role === 'seller') {
-            window.autoMarketToast(`Welcome back Seller: ${user.name}! Opening your Seller Dashboard...`, 'success');
-            setTimeout(() => {
-              window.location.href = 'seller-dashboard.html';
-            }, 600);
-          } else {
-            window.autoMarketToast(`Welcome back Buyer: ${user.name}! Opening your Buyer Dashboard...`, 'success');
-            setTimeout(() => {
-              window.location.href = 'dashboard.html';
-            }, 600);
-          }
+        hideAlert();
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Signing in...';
+
+        const cleanEmail = email.trim().toLowerCase();
+        const cleanPassword = String(password).trim();
+        let res;
+
+        if (window.autoMarketAuth && typeof window.autoMarketAuth.loginUser === 'function') {
+          res = window.autoMarketAuth.loginUser(cleanEmail, cleanPassword);
         } else {
-          window.autoMarketToast(res.message, 'danger');
+          // Direct fallback
+          try {
+            const users = JSON.parse(localStorage.getItem('automarket_users') || '[]');
+            const user = users.find(u => u && u.email && u.email.trim().toLowerCase() === cleanEmail);
+
+            if (!user) {
+              res = { 
+                success: false, 
+                message: 'Account not found! Please register an account first before signing in.' 
+              };
+            } else if (String(user.password).trim() !== cleanPassword) {
+              res = { 
+                success: false, 
+                message: 'Incorrect password. Please verify your password and try again.' 
+              };
+            } else {
+              const rawName = (user.name || '').trim();
+              user.avatar = rawName.length > 0 ? rawName.charAt(0).toUpperCase() : 'U';
+              localStorage.setItem('automarket_current_user', JSON.stringify(user));
+              res = { success: true, user: user };
+            }
+          } catch (err) {
+            res = { success: false, message: 'Error accessing local storage. Please try again.' };
+          }
+        }
+        
+        if (res && res.success) {
+          const user = res.user;
+          const isSeller = user.role === 'seller';
+          const targetDashboard = isSeller ? 'seller-dashboard.html' : 'dashboard.html';
+          const dashboardName = isSeller ? 'Seller Dashboard' : 'Buyer Dashboard';
+
+          showAlert(`Welcome back, ${user.name}! Opening your ${dashboardName}...`, 'success');
+
+          if (window.autoMarketToast) {
+            window.autoMarketToast(`Welcome back, ${user.name}! Opening your ${dashboardName}...`, 'success');
+          }
+          
+          setTimeout(() => {
+            window.location.href = targetDashboard;
+          }, 500);
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Sign In <i class="bi bi-box-arrow-in-right ms-1"></i>';
+          const errorMsg = res ? res.message : 'Invalid credentials. Please try again.';
+          showAlert(errorMsg, 'danger');
+          if (window.autoMarketToast) {
+            window.autoMarketToast(errorMsg, 'danger');
+          }
         }
       }
 
@@ -201,7 +229,7 @@
           return;
         }
 
-        executeLogin(emailInput.value.trim(), passwordInput.value);
+        executeLogin(emailInput.value, passwordInput.value);
       });
     });
   </script>

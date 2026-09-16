@@ -71,25 +71,9 @@
 
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Home
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="index.html"><i class="bi bi-grid-1x2 me-2 text-primary"></i>Home 1 - Marketplace</a></li>
-                <li><a class="dropdown-item" href="index-2.html"><i class="bi bi-building me-2 text-secondary"></i>Home 2 - Dealership & Concierge</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link active" href="inventory.html">Browse Cars</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Services
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="services.html"><i class="bi bi-tools me-2 text-primary"></i>All Auto Services</a></li>
-                <li><a class="dropdown-item" href="service-details.html"><i class="bi bi-shield-check me-2 text-success"></i>200-Point Inspection</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="blog.html">Guides & News</a></li>
@@ -149,29 +133,45 @@
       <div class="row g-4 mb-5">
         <div class="col-lg-8">
           <!-- Main Hero Image -->
-          <div class="position-relative rounded-4 overflow-hidden shadow-sm mb-3" style="max-height: 480px; background: #000;">
-            <img id="mainVehicleImg" src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80" alt="2020 Toyota Camry LE" class="w-100 h-100 object-fit-cover">
+          <div class="position-relative rounded-4 overflow-hidden shadow-sm mb-4" style="max-height: 520px; background: #000;">
+            <img id="mainVehicleImg" src="assets/images/cars/camry.jpg" alt="2020 Toyota Camry LE" class="w-100 h-100 object-fit-cover">
             <button class="car-favorite-btn" data-car-id="1" aria-label="Save this car" style="top: 16px; right: 16px;">
               <i class="bi bi-heart"></i>
             </button>
             <span class="badge bg-dark bg-opacity-75 text-white position-absolute bottom-0 start-0 m-3 px-3 py-2 rounded-pill">
-              <i class="bi bi-camera me-1"></i> 24 High-Res Photos Available
+              <i class="bi bi-camera me-1"></i> High-Res Vehicle Photo
             </span>
           </div>
 
-          <!-- Thumbnails Row -->
-          <div class="row g-2">
-            <div class="col-3">
-              <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=300&q=80" alt="Exterior Front View" class="rounded-3 border border-primary img-fluid w-100" style="cursor: pointer; height: 75px; object-fit: cover;" onclick="document.getElementById('mainVehicleImg').src=this.src">
+          <!-- Quick Specs Highlight Bar (Miles Covered, Fuel Type, Transmission, Drivetrain) -->
+          <div class="row g-2 mb-4" id="quickSpecsBar">
+            <div class="col-6 col-sm-3">
+              <div class="p-3 rounded-3 text-center border h-100 shadow-sm" style="background-color: var(--bg-surface);">
+                <i class="bi bi-speedometer2 text-primary fs-3 d-block mb-1"></i>
+                <div class="text-muted small">Miles Covered</div>
+                <strong class="fs-6 d-block text-truncate" id="quickMiles">34,200 mi</strong>
+              </div>
             </div>
-            <div class="col-3">
-              <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=300&q=80" alt="Interior Cockpit View" class="rounded-3 border img-fluid w-100" style="cursor: pointer; height: 75px; object-fit: cover;" onclick="document.getElementById('mainVehicleImg').src=this.src">
+            <div class="col-6 col-sm-3">
+              <div class="p-3 rounded-3 text-center border h-100 shadow-sm" style="background-color: var(--bg-surface);">
+                <i class="bi bi-fuel-pump text-success fs-3 d-block mb-1"></i>
+                <div class="text-muted small">Fuel Type</div>
+                <strong class="fs-6 d-block text-truncate" id="quickFuel">Gasoline</strong>
+              </div>
             </div>
-            <div class="col-3">
-              <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=300&q=80" alt="Rear Angle View" class="rounded-3 border img-fluid w-100" style="cursor: pointer; height: 75px; object-fit: cover;" onclick="document.getElementById('mainVehicleImg').src=this.src">
+            <div class="col-6 col-sm-3">
+              <div class="p-3 rounded-3 text-center border h-100 shadow-sm" style="background-color: var(--bg-surface);">
+                <i class="bi bi-gear text-warning fs-3 d-block mb-1"></i>
+                <div class="text-muted small">Transmission</div>
+                <strong class="fs-6 d-block text-truncate" id="quickTrans">8-Speed Auto</strong>
+              </div>
             </div>
-            <div class="col-3">
-              <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=300&q=80" alt="Alloy Wheels & Brakes" class="rounded-3 border img-fluid w-100" style="cursor: pointer; height: 75px; object-fit: cover;" onclick="document.getElementById('mainVehicleImg').src=this.src">
+            <div class="col-6 col-sm-3">
+              <div class="p-3 rounded-3 text-center border h-100 shadow-sm" style="background-color: var(--bg-surface);">
+                <i class="bi bi-shuffle text-info fs-3 d-block mb-1"></i>
+                <div class="text-muted small">Drivetrain</div>
+                <strong class="fs-6 d-block text-truncate" id="quickDrivetrain">FWD</strong>
+              </div>
             </div>
           </div>
         </div>
@@ -182,24 +182,28 @@
             <h5 class="fw-bold mb-3">Vehicle Summary</h5>
             
             <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
-              <span class="text-muted"><i class="bi bi-speedometer2 me-1"></i> Odometer</span>
-              <strong>34,200 miles</strong>
+              <span class="text-muted"><i class="bi bi-speedometer2 me-1"></i> Miles Covered</span>
+              <strong id="summaryMiles">34,200 miles</strong>
             </div>
             <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
               <span class="text-muted"><i class="bi bi-fuel-pump me-1"></i> Fuel Type</span>
-              <strong>2.5L 4-Cylinder DOHC</strong>
+              <strong id="summaryFuelType">Gasoline</strong>
+            </div>
+            <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
+              <span class="text-muted"><i class="bi bi-cpu me-1"></i> Engine / Powertrain</span>
+              <strong id="summaryEngine">2.5L 4-Cylinder DOHC</strong>
             </div>
             <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
               <span class="text-muted"><i class="bi bi-gear me-1"></i> Transmission</span>
-              <strong>8-Speed Automatic</strong>
+              <strong id="summaryTransSidebar">8-Speed Automatic</strong>
             </div>
             <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
               <span class="text-muted"><i class="bi bi-shield-check me-1 text-success"></i> Warranty</span>
-              <strong class="text-success">12 Mos / 12,000 Mi Included</strong>
+              <strong id="summaryWarranty" class="text-success">12 Mos / 12,000 Mi Included</strong>
             </div>
             <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
               <span class="text-muted"><i class="bi bi-upc-scan me-1"></i> VIN</span>
-              <span class="font-monospace">4T1B11HK5LU198432</span>
+              <span id="summaryVin" class="font-monospace">4T1B11HK5LU198432</span>
             </div>
 
             <div class="d-grid gap-2 mt-4">
@@ -241,27 +245,31 @@
             <div class="row g-4">
               <div class="col-md-6">
                 <h6 class="fw-bold border-bottom pb-2 mb-3">Powertrain & Performance</h6>
-                <table class="table table-borderless small mb-0">
-                  <tbody>
-                    <tr><td class="text-muted">Engine:</td><td class="fw-bold">2.0L TwinPower Turbo I4</td></tr>
-                    <tr><td class="text-muted">Horsepower:</td><td class="fw-bold">255 HP @ 5,000 RPM</td></tr>
-                    <tr><td class="text-muted">Torque:</td><td class="fw-bold">295 lb-ft @ 1,550 RPM</td></tr>
-                    <tr><td class="text-muted">Drivetrain:</td><td class="fw-bold">xDrive Intelligent All-Wheel Drive</td></tr>
-                    <tr><td class="text-muted">Fuel Economy:</td><td class="fw-bold">25 MPG City / 34 MPG Hwy</td></tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table table-borderless small mb-0">
+                    <tbody>
+                      <tr><td class="text-muted">Engine:</td><td class="fw-bold">2.0L TwinPower Turbo I4</td></tr>
+                      <tr><td class="text-muted">Horsepower:</td><td class="fw-bold">255 HP @ 5,000 RPM</td></tr>
+                      <tr><td class="text-muted">Torque:</td><td class="fw-bold">295 lb-ft @ 1,550 RPM</td></tr>
+                      <tr><td class="text-muted">Drivetrain:</td><td class="fw-bold">xDrive Intelligent All-Wheel Drive</td></tr>
+                      <tr><td class="text-muted">Fuel Economy:</td><td class="fw-bold">25 MPG City / 34 MPG Hwy</td></tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
               <div class="col-md-6">
                 <h6 class="fw-bold border-bottom pb-2 mb-3">Dimensions & Color Codes</h6>
-                <table class="table table-borderless small mb-0">
-                  <tbody>
-                    <tr><td class="text-muted">Exterior Color:</td><td class="fw-bold">Phytonic Blue Metallic</td></tr>
-                    <tr><td class="text-muted">Interior Color:</td><td class="fw-bold">Canberra Beige Vernasca Leather</td></tr>
-                    <tr><td class="text-muted">Body Style:</td><td class="fw-bold">4-Door Sedan</td></tr>
-                    <tr><td class="text-muted">Seating Capacity:</td><td class="fw-bold">5 Passengers</td></tr>
-                    <tr><td class="text-muted">Cargo Volume:</td><td class="fw-bold">17.0 cu ft Trunk</td></tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table table-borderless small mb-0">
+                    <tbody>
+                      <tr><td class="text-muted">Exterior Color:</td><td class="fw-bold">Phytonic Blue Metallic</td></tr>
+                      <tr><td class="text-muted">Interior Color:</td><td class="fw-bold">Canberra Beige Vernasca Leather</td></tr>
+                      <tr><td class="text-muted">Body Style:</td><td class="fw-bold">4-Door Sedan</td></tr>
+                      <tr><td class="text-muted">Seating Capacity:</td><td class="fw-bold">5 Passengers</td></tr>
+                      <tr><td class="text-muted">Cargo Volume:</td><td class="fw-bold">17.0 cu ft Trunk</td></tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -350,10 +358,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="car-card">
               <div class="car-card-img-wrap">
-                <img src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80" alt="2019 Honda Civic EX" loading="lazy">
-                <div class="car-badge-stack">
-                  <span class="badge-custom badge-deal">Low Mileage</span>
-                </div>
+                <img src="assets/images/cars/civic.jpg" alt="2019 Honda Civic EX" loading="lazy">
                 <button class="car-favorite-btn" data-car-id="4"><i class="bi bi-heart"></i></button>
               </div>
               <div class="car-card-body">
@@ -378,10 +383,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="car-card">
               <div class="car-card-img-wrap">
-                <img src="https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=600&q=80" alt="2019 Hyundai Tucson Sport AWD" loading="lazy">
-                <div class="car-badge-stack">
-                  <span class="badge-custom badge-certified">200-Pt Passed</span>
-                </div>
+                <img src="assets/images/cars/tucson.jpg" alt="2019 Hyundai Tucson Sport AWD" loading="lazy">
                 <button class="car-favorite-btn" data-car-id="7"><i class="bi bi-heart"></i></button>
               </div>
               <div class="car-card-body">
@@ -406,10 +408,7 @@
           <div class="col-md-6 col-lg-4">
             <div class="car-card">
               <div class="car-card-img-wrap">
-                <img src="https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=600&q=80" alt="2020 Toyota RAV4 XLE AWD" loading="lazy">
-                <div class="car-badge-stack">
-                  <span class="badge-custom badge-certified">Certified</span>
-                </div>
+                <img src="assets/images/cars/rav4.jpg" alt="2020 Toyota RAV4 XLE AWD" loading="lazy">
                 <button class="car-favorite-btn" data-car-id="3"><i class="bi bi-heart"></i></button>
               </div>
               <div class="car-card-body">
@@ -457,10 +456,10 @@
             AutoMarket is the trusted nationwide marketplace for certified pre-owned vehicles. Every car passes our 200-point inspection with upfront, haggle-free pricing.
           </p>
           <div class="d-flex gap-2 mt-3">
-            <a href="#" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -491,7 +490,7 @@
         <div class="col-lg-3 col-md-6">
           <h5>Showroom & Contact</h5>
           <ul class="footer-links">
-            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> 1245 Motor Pkwy, CA 90210</li>
+            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> <a href="https://maps.google.com/?q=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" title="Open Showroom in Google Maps">1245 Motor Pkwy, CA 90210</a></li>
             <li><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 555-AUTO</li>
             <li><i class="bi bi-envelope-fill text-secondary me-2"></i> support@automarket.com</li>
             <li><i class="bi bi-clock-fill text-success me-2"></i> Mon - Sat: 9:00 AM - 7:00 PM</li>
@@ -614,6 +613,8 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/cars-data.js"></script>
+  <script src="assets/js/car-details.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

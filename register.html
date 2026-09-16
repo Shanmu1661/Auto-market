@@ -184,6 +184,14 @@
         }
       }
 
+      // Check URL query params (?role=seller / ?role=buyer)
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('role') === 'seller') {
+        roleSeller.checked = true;
+        roleBuyer.checked = false;
+      }
+      syncRoleUI();
+
       roleBuyer.addEventListener('change', syncRoleUI);
       roleSeller.addEventListener('change', syncRoleUI);
 
@@ -198,37 +206,74 @@
 
         const firstName = document.getElementById('regFirstName').value.trim();
         const lastName = document.getElementById('regLastName').value.trim();
-        const email = document.getElementById('regEmail').value.trim();
+        const email = document.getElementById('regEmail').value.trim().toLowerCase();
         const password = document.getElementById('regPassword').value;
         const role = roleSeller.checked ? 'seller' : 'buyer';
-        const dealership = document.getElementById('regDealership').value.trim();
+        const dealershipInput = document.getElementById('regDealership');
+        const dealership = dealershipInput ? dealershipInput.value.trim() : '';
 
-        if (window.autoMarketAuth) {
-          const result = window.autoMarketAuth.registerUser({
-            name: `${firstName} ${lastName}`.trim(),
-            email,
-            password,
-            role,
-            dealership: role === 'seller' ? (dealership || `${firstName}'s Dealership`) : undefined
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Creating account...';
+
+        const fullName = `${firstName} ${lastName}`.trim();
+        let result;
+
+        if (window.autoMarketAuth && typeof window.autoMarketAuth.registerUser === 'function') {
+          result = window.autoMarketAuth.registerUser({
+            name: fullName,
+            email: email,
+            password: password,
+            role: role,
+            dealership: role === 'seller' ? (dealership || `${fullName}'s Dealership`) : undefined
           });
-
-          if (result.success) {
-            // STRICT REDIRECT:
-            // Seller tick -> ONLY goes to seller-dashboard.html
-            // Buyer tick -> ONLY goes to dashboard.html
-            if (role === 'seller') {
-              window.autoMarketToast('Account registered as SELLER! Redirecting strictly to Seller Dashboard...', 'success');
-              setTimeout(() => {
-                window.location.href = 'seller-dashboard.html';
-              }, 700);
+        } else {
+          // Direct fallback
+          try {
+            const users = JSON.parse(localStorage.getItem('automarket_users') || '[]');
+            const existing = users.find(u => u && u.email && u.email.trim().toLowerCase() === email);
+            if (existing) {
+              result = { success: false, message: 'An account with this email already exists. Please sign in instead.' };
             } else {
-              window.autoMarketToast('Account registered as BUYER! Redirecting strictly to Buyer Dashboard...', 'success');
-              setTimeout(() => {
-                window.location.href = 'dashboard.html';
-              }, 700);
+              const firstLetter = fullName.length > 0 ? fullName.charAt(0).toUpperCase() : 'U';
+              const newUser = {
+                id: `usr_${Date.now()}`,
+                name: fullName,
+                email: email,
+                password: String(password),
+                role: role,
+                dealership: role === 'seller' ? (dealership || `${fullName}'s Dealership`) : undefined,
+                avatar: firstLetter,
+                created: new Date().toISOString()
+              };
+              users.push(newUser);
+              localStorage.setItem('automarket_users', JSON.stringify(users));
+              localStorage.setItem('automarket_current_user', JSON.stringify(newUser));
+              result = { success: true, user: newUser };
             }
+          } catch (err) {
+            result = { success: false, message: 'Error accessing local storage. Please try again.' };
+          }
+        }
+
+        if (result && result.success) {
+          const user = result.user;
+          const targetDashboard = role === 'seller' ? 'seller-dashboard.html' : 'dashboard.html';
+          const dashboardTitle = role === 'seller' ? 'Seller Dashboard' : 'Buyer Dashboard';
+
+          if (window.autoMarketToast) {
+            window.autoMarketToast(`Account registered successfully as ${role === 'seller' ? 'Seller' : 'Buyer'}! Opening ${dashboardTitle}...`, 'success');
+          }
+
+          setTimeout(() => {
+            window.location.href = targetDashboard;
+          }, 600);
+        } else {
+          submitBtn.disabled = false;
+          syncRoleUI();
+          if (window.autoMarketToast) {
+            window.autoMarketToast(result ? result.message : 'Registration failed. Please check your inputs.', 'danger');
           } else {
-            window.autoMarketToast(result.message, 'warning');
+            alert(result ? result.message : 'Registration failed.');
           }
         }
       });

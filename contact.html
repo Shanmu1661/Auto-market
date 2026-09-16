@@ -45,25 +45,9 @@
 
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Home
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="index.html"><i class="bi bi-grid-1x2 me-2 text-primary"></i>Home 1 - Marketplace</a></li>
-                <li><a class="dropdown-item" href="index-2.html"><i class="bi bi-building me-2 text-secondary"></i>Home 2 - Dealership & Concierge</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="inventory.html">Browse Cars</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Services
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="services.html"><i class="bi bi-tools me-2 text-primary"></i>All Auto Services</a></li>
-                <li><a class="dropdown-item" href="service-details.html"><i class="bi bi-shield-check me-2 text-success"></i>200-Point Inspection</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="blog.html">Guides & News</a></li>
@@ -93,12 +77,12 @@
   </header>
 
   <main id="main-content">
-    <!-- Header Hero Banner -->
-    <section class="py-5 text-white text-center" style="background: linear-gradient(rgba(11, 19, 41, 0.82), rgba(15, 23, 42, 0.86)), url('https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1920&q=85') center center / cover no-repeat;">
-      <div class="container py-4">
-        <span class="section-tag">Get In Touch</span>
+    <!-- Header Hero Banner with High-Visibility Background Image -->
+    <section class="page-header-banner text-center" style="background-image: url('assets/images/banners/contact-banner.jpg');">
+      <div class="container py-2">
+        <span class="section-tag-light"><i class="bi bi-chat-dots-fill me-1"></i> Get In Touch</span>
         <h1 class="display-5 fw-bold text-white mb-3">We're Here to Help You Drive Happy</h1>
-        <p class="lead text-light opacity-90 mx-auto" style="max-width: 600px;">
+        <p class="lead text-light mx-auto" style="max-width: 600px;">
           Have questions about a certified car, want to book a mobile 200-point inspection, or need financing assistance? Contact our team today.
         </p>
       </div>
@@ -135,8 +119,10 @@
                 <i class="bi bi-geo-alt"></i>
               </div>
               <h5 class="fw-bold">Flagship Showroom</h5>
-              <p class="text-muted small mb-2">1245 Motor Parkway, Los Angeles, CA</p>
-              <span class="fw-bold text-success">Open Mon - Sat (9am - 7pm)</span>
+              <p class="text-muted small mb-2">1245 Motor Parkway, Los Angeles, CA 90210</p>
+              <a href="https://maps.google.com/?q=1245+Motor+Pkwy+Beverly+Hills+CA+90210" target="_blank" rel="noopener noreferrer" class="fw-bold text-primary small text-decoration-none d-inline-block mb-1">
+                <i class="bi bi-map-fill me-1"></i> Get Directions <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -203,20 +189,26 @@
             </div>
           </div>
 
-          <!-- Interactive Map Placeholder & Showroom Hours -->
+          <!-- Interactive Map & Showroom Hours -->
           <div class="col-lg-5">
             <div class="card p-4 border-0 shadow-sm rounded-4 h-100 d-flex flex-column justify-content-between" style="background-color: var(--bg-surface); border: 1px solid var(--border-color) !important;">
               <div>
-                <h5 class="fw-bold mb-3"><i class="bi bi-geo-alt-fill text-danger me-2"></i> Visit Our Hub</h5>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h5 class="fw-bold mb-0"><i class="bi bi-geo-alt-fill text-danger me-2"></i> Visit Our Hub</h5>
+                  <a href="https://maps.google.com/?q=1245+Motor+Pkwy+Beverly+Hills+CA+90210" target="_blank" rel="noopener noreferrer" class="badge bg-primary-subtle text-primary text-decoration-none px-3 py-2 rounded-pill">
+                    <i class="bi bi-box-arrow-up-right me-1"></i> Open Map
+                  </a>
+                </div>
+
                 <p class="text-muted small mb-3">
                   Our main showroom features an indoor climate-controlled presentation hall, customer delivery lounge, and a 6-bay mechanical inspection facility.
                 </p>
 
-                <!-- Google Maps Embed Placeholder -->
-                <div class="rounded-4 overflow-hidden shadow-sm mb-4 border" style="height: 250px; background-color: #e5e7eb;">
+                <!-- Google Maps Embed Container -->
+                <div class="rounded-4 overflow-hidden shadow-sm mb-3 border position-relative" style="height: 250px; background-color: #e5e7eb;">
                   <iframe 
                     title="AutoMarket Showroom Location Map" 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105623.51341144866!2d-118.45070258162232!3d34.18247076161494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c295152818c5f1%3A0x3013deffc79c0929!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                    src="https://maps.google.com/maps?q=1245+Motor+Parkway+Los+Angeles+CA+90210&t=&z=13&ie=UTF8&iwloc=&output=embed" 
                     width="100%" 
                     height="100%" 
                     style="border:0;" 
@@ -224,6 +216,19 @@
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
                   </iframe>
+                </div>
+
+                <!-- Action Direction Buttons -->
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                  <a href="https://www.google.com/maps/dir/?api=1&destination=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" class="btn btn-primary-custom btn-sm flex-fill text-center">
+                    <i class="bi bi-google me-1"></i> Google Directions
+                  </a>
+                  <a href="https://maps.apple.com/?daddr=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" class="btn btn-outline-custom btn-sm flex-fill text-center">
+                    <i class="bi bi-apple me-1"></i> Apple Maps
+                  </a>
+                  <a href="https://waze.com/ul?q=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" class="btn btn-outline-custom btn-sm flex-fill text-center">
+                    <i class="bi bi-compass me-1"></i> Waze
+                  </a>
                 </div>
 
                 <h6 class="fw-bold mb-2">Showroom & Inspection Hours</h6>
@@ -276,10 +281,10 @@
             AutoMarket is the trusted nationwide marketplace for certified pre-owned vehicles. Every car passes our 200-point inspection with upfront, haggle-free pricing.
           </p>
           <div class="d-flex gap-2 mt-3">
-            <a href="#" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -310,7 +315,7 @@
         <div class="col-lg-3 col-md-6">
           <h5>Showroom & Contact</h5>
           <ul class="footer-links">
-            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> 1245 Motor Pkwy, CA 90210</li>
+            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> <a href="https://maps.google.com/?q=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" title="Open Showroom in Google Maps">1245 Motor Pkwy, CA 90210</a></li>
             <li><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 555-AUTO</li>
             <li><i class="bi bi-envelope-fill text-secondary me-2"></i> support@automarket.com</li>
             <li><i class="bi bi-clock-fill text-success me-2"></i> Mon - Sat: 9:00 AM - 7:00 PM</li>

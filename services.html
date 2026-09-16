@@ -45,25 +45,9 @@
 
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Home
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="index.html"><i class="bi bi-grid-1x2 me-2 text-primary"></i>Home 1 - Marketplace</a></li>
-                <li><a class="dropdown-item" href="index-2.html"><i class="bi bi-building me-2 text-secondary"></i>Home 2 - Dealership & Concierge</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="inventory.html">Browse Cars</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Services
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item active" href="services.html"><i class="bi bi-tools me-2 text-primary"></i>All Auto Services</a></li>
-                <li><a class="dropdown-item" href="service-details.html"><i class="bi bi-shield-check me-2 text-success"></i>200-Point Inspection</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="blog.html">Guides & News</a></li>
@@ -93,12 +77,12 @@
   </header>
 
   <main id="main-content">
-    <!-- Header Banner -->
-    <section class="py-5 text-white text-center" style="background: linear-gradient(rgba(11, 19, 41, 0.78), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1920&q=80') center center / cover no-repeat;">
-      <div class="container py-4">
-        <span class="section-tag">Complete Automotive Solutions</span>
+    <!-- Header Banner with High-Visibility Background Image -->
+    <section class="page-header-banner text-center" style="background-image: url('assets/images/banners/services-banner.jpg');">
+      <div class="container py-2">
+        <span class="section-tag-light"><i class="bi bi-gear-wide-connected me-1"></i> Complete Automotive Solutions</span>
         <h1 class="display-5 fw-bold text-white mb-3">Professional Services For Buyers & Sellers</h1>
-        <p class="lead text-light opacity-90 mx-auto" style="max-width: 650px;">
+        <p class="lead text-light mx-auto" style="max-width: 680px;">
           Whether you are purchasing a used vehicle, verifying mechanical health, or seeking hassle-free financing, AutoMarket delivers industry-leading standards.
         </p>
       </div>
@@ -110,11 +94,11 @@
         <div class="row g-4">
           <!-- Service 1: 200-Point Inspection -->
           <div class="col-md-6 col-lg-4">
-            <div class="feature-box text-start">
+            <div class="feature-box feature-box-with-bg text-start" style="background-image: url('assets/images/features/feature-inspection.jpg');">
               <div class="feature-icon-circle ms-0 mb-3">
                 <i class="bi bi-shield-check"></i>
               </div>
-              <h4>200-Point Pre-Purchase Inspection</h4>
+              <h4 class="fw-bold">200-Point Pre-Purchase Inspection</h4>
               <p class="text-muted small mb-3">
                 Thorough physical and diagnostic evaluation covering engine, transmission, frame geometry, suspension, OBD-II scanner tests, and paint depth.
               </p>
@@ -128,11 +112,11 @@
 
           <!-- Service 2: Auto Financing -->
           <div class="col-md-6 col-lg-4">
-            <div class="feature-box text-start">
+            <div class="feature-box feature-box-with-bg text-start" style="background-image: url('assets/images/features/feature-financing.jpg');">
               <div class="feature-icon-circle ms-0 mb-3" style="background-color: var(--secondary-light); color: var(--secondary);">
                 <i class="bi bi-cash-coin"></i>
               </div>
-              <h4>Low APR Auto Financing</h4>
+              <h4 class="fw-bold">Low APR Auto Financing</h4>
               <p class="text-muted small mb-3">
                 Pre-qualification in under 2 minutes with no impact to credit scores. Partnered with 30+ national lenders offering competitive terms for all credit tiers.
               </p>
@@ -146,11 +130,11 @@
 
           <!-- Service 3: Trade-In Valuation -->
           <div class="col-md-6 col-lg-4">
-            <div class="feature-box text-start">
+            <div class="feature-box feature-box-with-bg text-start" style="background-image: url('assets/images/features/feature-tradein.jpg');">
               <div class="feature-icon-circle ms-0 mb-3" style="background-color: var(--accent-light); color: var(--accent);">
                 <i class="bi bi-arrow-left-right"></i>
               </div>
-              <h4>Instant Trade-In & Cash Buyout</h4>
+              <h4 class="fw-bold">Instant Trade-In & Cash Buyout</h4>
               <p class="text-muted small mb-3">
                 Receive an immediate algorithmic and market-backed cash offer for your current car. Apply the equity directly to your new purchase or take the check.
               </p>
@@ -164,11 +148,11 @@
 
           <!-- Service 4: Extended Warranty -->
           <div class="col-md-6 col-lg-4">
-            <div class="feature-box text-start">
+            <div class="feature-box feature-box-with-bg text-start" style="background-image: url('assets/images/features/feature-warranty.jpg');">
               <div class="feature-icon-circle ms-0 mb-3">
                 <i class="bi bi-shield-lock"></i>
               </div>
-              <h4>Certified Extended Warranty Plans</h4>
+              <h4 class="fw-bold">Certified Extended Warranty Plans</h4>
               <p class="text-muted small mb-3">
                 Safeguard against unexpected mechanical repairs with comprehensive bumper-to-bumper and powertrain coverage accepted at ASE shops nationwide.
               </p>
@@ -182,11 +166,11 @@
 
           <!-- Service 5: Nationwide Logistics -->
           <div class="col-md-6 col-lg-4">
-            <div class="feature-box text-start">
+            <div class="feature-box feature-box-with-bg text-start" style="background-image: url('assets/images/features/feature-delivery.jpg');">
               <div class="feature-icon-circle ms-0 mb-3" style="background-color: var(--secondary-light); color: var(--secondary);">
                 <i class="bi bi-truck"></i>
               </div>
-              <h4>Enclosed & Open Home Delivery</h4>
+              <h4 class="fw-bold">Enclosed & Open Home Delivery</h4>
               <p class="text-muted small mb-3">
                 Door-to-door vehicle shipping with real-time GPS tracking. Choose economical open transit or white-glove climate-controlled enclosed haulers.
               </p>
@@ -200,11 +184,11 @@
 
           <!-- Service 6: Title & DMV Escrow -->
           <div class="col-md-6 col-lg-4">
-            <div class="feature-box text-start">
+            <div class="feature-box feature-box-with-bg text-start" style="background-image: url('assets/images/features/feature-escrow.jpg');">
               <div class="feature-icon-circle ms-0 mb-3" style="background-color: var(--accent-light); color: var(--accent);">
                 <i class="bi bi-file-earmark-check"></i>
               </div>
-              <h4>Clean Title & DMV Escrow Service</h4>
+              <h4 class="fw-bold">Clean Title & DMV Escrow Service</h4>
               <p class="text-muted small mb-3">
                 Eliminate private sale fraud with verified secure escrow payments, clean title validation, state registration processing, and electronic lien release.
               </p>
@@ -229,32 +213,39 @@
         </div>
 
         <div class="row g-4">
-          <div class="col-md-6 col-lg-3 text-center">
-            <div class="p-4 rounded-4 bg-white shadow-sm border h-100" style="background-color: var(--bg-surface) !important;">
-              <div class="badge rounded-pill bg-primary fs-5 px-3 py-2 mb-3">01</div>
+          <!-- Step 1: Browse & Select -->
+          <div class="col-md-6 col-lg-3">
+            <div class="step-card step-card-with-bg" style="background-image: url('assets/images/steps/step-browse.jpg');">
+              <div class="step-badge">01</div>
               <h5 class="fw-bold">Browse & Select</h5>
-              <p class="text-muted small mb-0">Search thousands of certified cars or request a 200-point inspection for a private vehicle.</p>
+              <p class="small mb-0">Search thousands of certified cars or request a 200-point inspection for a private vehicle.</p>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3 text-center">
-            <div class="p-4 rounded-4 bg-white shadow-sm border h-100" style="background-color: var(--bg-surface) !important;">
-              <div class="badge rounded-pill bg-primary fs-5 px-3 py-2 mb-3">02</div>
+
+          <!-- Step 2: Review Report -->
+          <div class="col-md-6 col-lg-3">
+            <div class="step-card step-card-with-bg" style="background-image: url('assets/images/steps/step-report.jpg');">
+              <div class="step-badge">02</div>
               <h5 class="fw-bold">Review Report</h5>
-              <p class="text-muted small mb-0">Examine the comprehensive 200-point inspection report, CARFAX history, and 360 walkaround photos.</p>
+              <p class="small mb-0">Examine the comprehensive 200-point inspection report, CARFAX history, and 360 walkaround photos.</p>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3 text-center">
-            <div class="p-4 rounded-4 bg-white shadow-sm border h-100" style="background-color: var(--bg-surface) !important;">
-              <div class="badge rounded-pill bg-primary fs-5 px-3 py-2 mb-3">03</div>
+
+          <!-- Step 3: Secure Online Deal -->
+          <div class="col-md-6 col-lg-3">
+            <div class="step-card step-card-with-bg" style="background-image: url('assets/images/steps/step-deal.jpg');">
+              <div class="step-badge">03</div>
               <h5 class="fw-bold">Secure Online Deal</h5>
-              <p class="text-muted small mb-0">Customize your financing terms or pay via secure escrow with 100% money-back guarantee protection.</p>
+              <p class="small mb-0">Customize your financing terms or pay via secure escrow with 100% money-back guarantee protection.</p>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3 text-center">
-            <div class="p-4 rounded-4 bg-white shadow-sm border h-100" style="background-color: var(--bg-surface) !important;">
-              <div class="badge rounded-pill bg-primary fs-5 px-3 py-2 mb-3">04</div>
+
+          <!-- Step 4: Doorstep Delivery -->
+          <div class="col-md-6 col-lg-3">
+            <div class="step-card step-card-with-bg" style="background-image: url('assets/images/steps/step-delivery.jpg');">
+              <div class="step-badge">04</div>
               <h5 class="fw-bold">Doorstep Delivery</h5>
-              <p class="text-muted small mb-0">Your clean, detailed vehicle arrives right in your driveway with 7 days or 400 miles to test it out.</p>
+              <p class="small mb-0">Your clean, detailed vehicle arrives right in your driveway with 7 days or 400 miles to test it out.</p>
             </div>
           </div>
         </div>
@@ -285,10 +276,10 @@
             AutoMarket is the trusted nationwide marketplace for certified pre-owned vehicles. Every car passes our 200-point inspection with upfront, haggle-free pricing.
           </p>
           <div class="d-flex gap-2 mt-3">
-            <a href="#" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -319,7 +310,7 @@
         <div class="col-lg-3 col-md-6">
           <h5>Showroom & Contact</h5>
           <ul class="footer-links">
-            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> 1245 Motor Pkwy, CA 90210</li>
+            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> <a href="https://maps.google.com/?q=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" title="Open Showroom in Google Maps">1245 Motor Pkwy, CA 90210</a></li>
             <li><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 555-AUTO</li>
             <li><i class="bi bi-envelope-fill text-secondary me-2"></i> support@automarket.com</li>
             <li><i class="bi bi-clock-fill text-success me-2"></i> Mon - Sat: 9:00 AM - 7:00 PM</li>

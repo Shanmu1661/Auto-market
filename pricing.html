@@ -45,25 +45,9 @@
 
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Home
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="index.html"><i class="bi bi-grid-1x2 me-2 text-primary"></i>Home 1 - Marketplace</a></li>
-                <li><a class="dropdown-item" href="index-2.html"><i class="bi bi-building me-2 text-secondary"></i>Home 2 - Dealership & Concierge</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="inventory.html">Browse Cars</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Services
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="services.html"><i class="bi bi-tools me-2 text-primary"></i>All Auto Services</a></li>
-                <li><a class="dropdown-item" href="service-details.html"><i class="bi bi-shield-check me-2 text-success"></i>200-Point Inspection</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
             <li class="nav-item"><a class="nav-link active" href="pricing.html">Pricing</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="blog.html">Guides & News</a></li>
@@ -93,20 +77,26 @@
   </header>
 
   <main id="main-content">
-    <!-- Header Banner -->
-    <section class="py-5 text-white text-center" style="background: linear-gradient(rgba(11, 19, 41, 0.82), rgba(15, 23, 42, 0.86)), url('https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1920&q=80') center center / cover no-repeat;">
-      <div class="container py-4">
-        <span class="section-tag">Simple & Transparent</span>
+    <!-- Header Banner with High-Visibility Background Image -->
+    <section class="page-header-banner text-center" style="background-image: url('assets/images/banners/pricing-banner.jpg');">
+      <div class="container py-2">
+        <span class="section-tag-light"><i class="bi bi-tag-fill me-1"></i> Simple & Transparent</span>
         <h1 class="display-5 fw-bold text-white mb-3">Sell Your Car Faster With Certified Trust</h1>
-        <p class="lead text-light opacity-90 mx-auto" style="max-width: 620px;">
+        <p class="lead text-light mx-auto" style="max-width: 620px;">
           Choose the right plan to showcase your vehicle to 450,000+ active pre-approved buyers every month. Zero hidden fees, zero haggle.
         </p>
       </div>
     </section>
 
-    <!-- Pricing Cards Section -->
-    <section class="section-padding">
+    <!-- Pricing Cards Section with Atmospheric Background Image -->
+    <section class="pricing-section-wrap" style="background-image: url('assets/images/features/pricing-section-bg.jpg');">
       <div class="container">
+        <div class="text-center section-title-wrap">
+          <span class="section-tag">Transparent Value</span>
+          <h2>Select Your Seller Package</h2>
+          <p class="text-muted mx-auto" style="max-width: 580px;">Reach over 450,000 monthly verified automotive buyers with certified inspection backing.</p>
+        </div>
+
         <div class="row g-4 justify-content-center">
           <!-- Tier 1: Private Seller Basic -->
           <div class="col-md-6 col-lg-4">
@@ -165,7 +155,7 @@
         </div>
 
         <!-- Stripe / PayPal Payment Integration Placeholder Banner -->
-        <div class="card border-0 shadow-sm p-4 mt-5 rounded-4 bg-body-tertiary">
+        <div class="card border-0 shadow-sm p-4 mt-5 rounded-4" style="background-color: var(--bg-surface); border: 1px solid var(--border-color) !important;">
           <div class="row align-items-center">
             <div class="col-md-8">
               <h5 class="fw-bold mb-1"><i class="bi bi-credit-card-2-front text-primary me-2"></i> Secure Payment Processing Integration</h5>
@@ -197,28 +187,114 @@
         <div class="row justify-content-center">
           <div class="col-lg-8">
             <div class="accordion" id="pricingFaqAccordion">
+              <!-- FAQ 1 -->
               <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
                 <h2 class="accordion-header">
-                  <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq1">
+                  <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq1" aria-expanded="true" aria-controls="pfaq1">
                     Are there any closing sales commissions or hidden fees?
                   </button>
                 </h2>
                 <div id="pfaq1" class="accordion-collapse collapse show" data-bs-parent="#pricingFaqAccordion">
                   <div class="accordion-body text-muted small">
-                    None at all! You pay the flat listing fee upfront. When your car sells, you keep 100% of the proceeds.
+                    None at all! You pay the flat listing fee upfront. When your car sells, you keep 100% of the proceeds with zero back-end percentage cuts or transaction penalties.
                   </div>
                 </div>
               </div>
 
+              <!-- FAQ 2 -->
               <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq2">
+                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq2" aria-expanded="false" aria-controls="pfaq2">
                     What if my vehicle doesn't sell within the listing period?
                   </button>
                 </h2>
                 <div id="pfaq2" class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion">
                   <div class="accordion-body text-muted small">
-                    For Certified Featured listings, if your car does not sell within 60 days, we renew your listing for an additional 30 days free of charge.
+                    For Certified Featured listings, if your car does not sell within 60 days, we automatically renew your listing for an additional 30 days completely free of charge. You can also request a free algorithmic price optimization report.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 3 -->
+              <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq3" aria-expanded="false" aria-controls="pfaq3">
+                    How does the 200-point mobile pre-purchase inspection work for sellers?
+                  </button>
+                </h2>
+                <div id="pfaq3" class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Once you select the Certified Featured or Dealer tier, our ASE-certified mobile technician will arrive at your home or workplace at your scheduled convenience. We conduct a thorough 200-point diagnostic scan, paint depth check, and road test. The verified report and badge are automatically published to your listing to boost buyer confidence.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 4 -->
+              <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq4" aria-expanded="false" aria-controls="pfaq4">
+                    Can I edit, upgrade, or pause my listing after publishing?
+                  </button>
+                </h2>
+                <div id="pfaq4" class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Yes! You have full control from your Seller Dashboard. You can adjust the asking price, upload new photos, update mileage, add description notes, upgrade to higher visibility tiers, or temporarily pause your listing at any time with no fees.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 5 -->
+              <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq5" aria-expanded="false" aria-controls="pfaq5">
+                    How does AutoMarket's secure escrow payment protection work?
+                  </button>
+                </h2>
+                <div id="pfaq5" class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    When a buyer agrees on a deal, their payment is secured in a bank-grade escrow account before handoff. Once title transfer and vehicle delivery are verified, the net funds are wired directly into your verified bank account within 24 business hours, eliminating cash fraud and counterfeit checks.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 6 -->
+              <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq6" aria-expanded="false" aria-controls="pfaq6">
+                    What documents do I need to prepare to sell my vehicle?
+                  </button>
+                </h2>
+                <div id="pfaq6" class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    To finalize a sale, you will need your vehicle's physical title (or loan payoff statement if financed), valid registration, and a government-issued photo ID. Our automated DMV concierge generates state-compliant electronic bills of sale, odometer disclosures, and transfer paperwork.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 7 -->
+              <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq7" aria-expanded="false" aria-controls="pfaq7">
+                    How do buyers contact me and are my personal details kept private?
+                  </button>
+                </h2>
+                <div id="pfaq7" class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Your personal phone number and exact street address are shielded by default. Buyers communicate through our encrypted on-platform messaging and verified offer system. You only share meeting details when you are comfortable scheduling an in-person viewing or test drive.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 8 -->
+              <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#pfaq8" aria-expanded="false" aria-controls="pfaq8">
+                    Are custom dealership and bulk volume pricing tiers available?
+                  </button>
+                </h2>
+                <div id="pfaq8" class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Yes! For independent lots, dealer groups, and commercial fleets with 5 or more units, we provide direct DMS/FTP inventory automated feeds, branded digital dealership showrooms, dedicated account managers, and volume discount tiers. Contact our Dealer Solutions team for a customized demo.
                   </div>
                 </div>
               </div>
@@ -252,10 +328,10 @@
             AutoMarket is the trusted nationwide marketplace for certified pre-owned vehicles. Every car passes our 200-point inspection with upfront, haggle-free pricing.
           </p>
           <div class="d-flex gap-2 mt-3">
-            <a href="#" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -286,7 +362,7 @@
         <div class="col-lg-3 col-md-6">
           <h5>Showroom & Contact</h5>
           <ul class="footer-links">
-            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> 1245 Motor Pkwy, CA 90210</li>
+            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> <a href="https://maps.google.com/?q=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" title="Open Showroom in Google Maps">1245 Motor Pkwy, CA 90210</a></li>
             <li><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 555-AUTO</li>
             <li><i class="bi bi-envelope-fill text-secondary me-2"></i> support@automarket.com</li>
             <li><i class="bi bi-clock-fill text-success me-2"></i> Mon - Sat: 9:00 AM - 7:00 PM</li>

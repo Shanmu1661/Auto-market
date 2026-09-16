@@ -45,25 +45,9 @@
 
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Home
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="index.html"><i class="bi bi-grid-1x2 me-2 text-primary"></i>Home 1 - Marketplace</a></li>
-                <li><a class="dropdown-item" href="index-2.html"><i class="bi bi-building me-2 text-secondary"></i>Home 2 - Dealership & Concierge</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link active" href="inventory.html">Browse Cars</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Services
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="services.html"><i class="bi bi-tools me-2 text-primary"></i>All Auto Services</a></li>
-                <li><a class="dropdown-item" href="service-details.html"><i class="bi bi-shield-check me-2 text-success"></i>200-Point Inspection</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="blog.html">Guides & News</a></li>
@@ -105,11 +89,20 @@
       <div class="row g-4">
         <!-- Filter Sidebar Column -->
         <aside class="col-lg-3">
-          <div class="card border-0 shadow-sm p-3 mb-4" style="background-color: var(--bg-surface); border-radius: var(--radius-md); border: 1px solid var(--border-color) !important;">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h5 class="mb-0 fw-bold"><i class="bi bi-funnel me-1 text-primary"></i> Filters</h5>
-              <button type="reset" class="btn btn-link btn-sm p-0 text-decoration-none text-muted" onclick="location.reload()">Clear All</button>
-            </div>
+          <!-- Mobile Filter Toggle Button -->
+          <div class="d-lg-none mb-3">
+            <button class="btn btn-outline-custom w-100 d-flex justify-content-between align-items-center py-2 px-3 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#mobileFilterCollapse" aria-expanded="false" aria-controls="mobileFilterCollapse">
+              <span><i class="bi bi-funnel-fill me-2 text-primary"></i> Filter Vehicles (Body Style, Budget, Make)</span>
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          </div>
+
+          <div class="collapse d-lg-block" id="mobileFilterCollapse">
+            <div class="card border-0 shadow-sm p-3 mb-4" style="background-color: var(--bg-surface); border-radius: var(--radius-md); border: 1px solid var(--border-color) !important;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="mb-0 fw-bold"><i class="bi bi-funnel me-1 text-primary"></i> Filters</h5>
+                <button type="button" id="btnClearAllFilters" class="btn btn-link btn-sm p-0 text-decoration-none text-muted">Clear All</button>
+              </div>
 
             <form id="inventoryFilterForm">
               <!-- Keyword Search -->
@@ -125,52 +118,61 @@
 
               <!-- Make / Brand -->
               <div class="mb-3">
-                <label class="form-label small fw-bold">Make / Manufacturer</label>
+                <label class="form-label small fw-bold" for="filterMakeSelect">Make / Manufacturer</label>
                 <select class="form-select form-select-sm mb-2" id="filterMakeSelect">
-                  <option value="">All Brands (2,450)</option>
-                  <option value="bmw">BMW (340)</option>
-                  <option value="mercedes">Mercedes-Benz (290)</option>
-                  <option value="audi">Audi (210)</option>
-                  <option value="tesla">Tesla (185)</option>
-                  <option value="ford">Ford (240)</option>
-                  <option value="porsche">Porsche (95)</option>
-                  <option value="toyota">Toyota (420)</option>
+                  <option value="">All Brands (20)</option>
+                  <option value="toyota">Toyota (5)</option>
+                  <option value="hyundai">Hyundai (3)</option>
+                  <option value="honda">Honda (2)</option>
+                  <option value="ford">Ford (2)</option>
+                  <option value="chevrolet">Chevrolet (2)</option>
+                  <option value="bmw">BMW (1)</option>
+                  <option value="tesla">Tesla (1)</option>
+                  <option value="mazda">Mazda (1)</option>
+                  <option value="nissan">Nissan (1)</option>
+                  <option value="ram">RAM (1)</option>
                 </select>
               </div>
 
               <hr class="border-secondary opacity-25">
 
-              <!-- Body Type -->
+              <!-- Body Type / Category (Single-Select) -->
               <div class="mb-3">
-                <label class="form-label small fw-bold">Body Style</label>
+                <label class="form-label small fw-bold">Body Style / Category</label>
                 <div class="form-check small mb-1">
-                  <input class="form-check-input" type="checkbox" id="bodySuv" checked>
+                  <input class="form-check-input body-filter-radio" type="radio" name="bodyCategory" id="bodyAll" value="" checked>
+                  <label class="form-check-label d-flex justify-content-between" for="bodyAll">
+                    <span>All Categories</span> <span class="badge bg-secondary-subtle text-secondary">20</span>
+                  </label>
+                </div>
+                <div class="form-check small mb-1">
+                  <input class="form-check-input body-filter-radio" type="radio" name="bodyCategory" id="bodySuv" value="suv">
                   <label class="form-check-label d-flex justify-content-between" for="bodySuv">
-                    <span>SUV & Crossover</span> <span class="text-muted">840</span>
+                    <span>SUV & Crossover</span> <span class="badge bg-primary-subtle text-primary">4</span>
                   </label>
                 </div>
                 <div class="form-check small mb-1">
-                  <input class="form-check-input" type="checkbox" id="bodySedan" checked>
+                  <input class="form-check-input body-filter-radio" type="radio" name="bodyCategory" id="bodySedan" value="sedan">
                   <label class="form-check-label d-flex justify-content-between" for="bodySedan">
-                    <span>Sedan</span> <span class="text-muted">620</span>
+                    <span>Sedan</span> <span class="badge bg-primary-subtle text-primary">4</span>
                   </label>
                 </div>
                 <div class="form-check small mb-1">
-                  <input class="form-check-input" type="checkbox" id="bodyCoupe">
+                  <input class="form-check-input body-filter-radio" type="radio" name="bodyCategory" id="bodyCoupe" value="coupe">
                   <label class="form-check-label d-flex justify-content-between" for="bodyCoupe">
-                    <span>Coupe / Sports</span> <span class="text-muted">190</span>
+                    <span>Coupe / Sports</span> <span class="badge bg-primary-subtle text-primary">4</span>
                   </label>
                 </div>
                 <div class="form-check small mb-1">
-                  <input class="form-check-input" type="checkbox" id="bodyTruck">
+                  <input class="form-check-input body-filter-radio" type="radio" name="bodyCategory" id="bodyTruck" value="truck">
                   <label class="form-check-label d-flex justify-content-between" for="bodyTruck">
-                    <span>Truck / 4x4</span> <span class="text-muted">245</span>
+                    <span>Truck / 4x4</span> <span class="badge bg-primary-subtle text-primary">4</span>
                   </label>
                 </div>
                 <div class="form-check small mb-1">
-                  <input class="form-check-input" type="checkbox" id="bodyEv">
+                  <input class="form-check-input body-filter-radio" type="radio" name="bodyCategory" id="bodyEv" value="electric">
                   <label class="form-check-label d-flex justify-content-between" for="bodyEv">
-                    <span>Electric & Hybrid</span> <span class="text-muted">310</span>
+                    <span>Electric & Hybrid</span> <span class="badge bg-primary-subtle text-primary">4</span>
                   </label>
                 </div>
               </div>
@@ -181,11 +183,11 @@
               <div class="mb-3">
                 <div class="d-flex justify-content-between align-items-center">
                   <label class="form-label small fw-bold mb-0">Max Price</label>
-                  <span class="badge bg-primary-subtle text-primary fw-bold" id="invPriceVal">$60,000</span>
+                  <span class="badge bg-primary-subtle text-primary fw-bold" id="invPriceVal">$150,000</span>
                 </div>
-                <input type="range" class="range-slider-custom mt-2" min="10000" max="150000" step="2500" value="60000" oninput="document.getElementById('invPriceVal').textContent = '$' + parseInt(this.value).toLocaleString()">
+                <input type="range" class="range-slider-custom mt-2" id="filterPriceSlider" min="15000" max="150000" step="2500" value="150000">
                 <div class="d-flex justify-content-between text-muted small mt-1">
-                  <span>$10k</span>
+                  <span>$15k</span>
                   <span>$150k+</span>
                 </div>
               </div>
@@ -194,10 +196,11 @@
 
               <!-- Mileage Range -->
               <div class="mb-3">
-                <label class="form-label small fw-bold">Mileage</label>
-                <select class="form-select form-select-sm">
+                <label class="form-label small fw-bold" for="filterMileageSelect">Mileage</label>
+                <select class="form-select form-select-sm" id="filterMileageSelect">
                   <option value="">Any Mileage</option>
                   <option value="20000">Under 20,000 miles</option>
+                  <option value="30000">Under 30,000 miles</option>
                   <option value="40000">Under 40,000 miles</option>
                   <option value="60000">Under 60,000 miles</option>
                 </select>
@@ -205,21 +208,21 @@
 
               <!-- Transmission & Fuel -->
               <div class="mb-3">
-                <label class="form-label small fw-bold">Fuel Type</label>
-                <select class="form-select form-select-sm mb-2">
+                <label class="form-label small fw-bold" for="filterFuelSelect">Fuel Type</label>
+                <select class="form-select form-select-sm mb-2" id="filterFuelSelect">
                   <option value="">All Fuel Types</option>
                   <option value="gasoline">Gasoline</option>
                   <option value="hybrid">Hybrid / Plug-in</option>
                   <option value="electric">Electric (EV)</option>
-                  <option value="diesel">Diesel</option>
                 </select>
               </div>
 
-              <button type="button" class="btn btn-primary-custom w-100 btn-sm mt-2">
-                Apply Filters
+              <button type="button" class="btn btn-primary-custom w-100 btn-sm mt-2" id="btnApplyFilters">
+                <i class="bi bi-funnel me-1"></i> Apply Filters
               </button>
             </form>
           </div>
+        </div>
 
           <!-- Need Help Banner -->
           <div class="p-3 rounded-3 text-white text-center" style="background: linear-gradient(135deg, #1e40af 0%, #0f172a 100%);">
@@ -236,12 +239,12 @@
           <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center pb-3 mb-4 border-bottom border-secondary border-opacity-25 gap-3">
             <div>
               <h2 class="h4 mb-1">Used Cars For Sale</h2>
-              <span class="text-muted small">Showing <strong>1 - 9</strong> of <strong>2,450</strong> verified vehicles</span>
+              <span class="text-muted small" id="inventoryCountText">Showing <strong id="invShowingCount">20</strong> of <strong id="invTotalCount">20</strong> verified vehicles</span>
             </div>
 
             <div class="d-flex align-items-center gap-2">
-              <select class="form-select form-select-sm" style="width: auto;" aria-label="Sort cars">
-                <option selected>Sort: Best Match</option>
+              <select class="form-select form-select-sm" id="filterSortSelect" style="width: auto;" aria-label="Sort cars">
+                <option value="best" selected>Sort: Best Match</option>
                 <option value="price-asc">Price: Low to High</option>
                 <option value="price-desc">Price: High to Low</option>
                 <option value="mileage-asc">Lowest Mileage</option>
@@ -257,6 +260,16 @@
                 </button>
               </div>
             </div>
+          </div>
+
+          <!-- Quick Category Selection Pills (Single Select) -->
+          <div class="d-flex flex-wrap gap-2 mb-4 category-filter-pills" id="categoryFilterPills" role="tablist" aria-label="Filter by category">
+            <button type="button" class="btn btn-sm btn-primary-custom category-pill active" data-category="">All Categories (20)</button>
+            <button type="button" class="btn btn-sm btn-outline-custom category-pill" data-category="suv">SUV & Crossover (4)</button>
+            <button type="button" class="btn btn-sm btn-outline-custom category-pill" data-category="sedan">Sedan (4)</button>
+            <button type="button" class="btn btn-sm btn-outline-custom category-pill" data-category="coupe">Coupe / Sports (4)</button>
+            <button type="button" class="btn btn-sm btn-outline-custom category-pill" data-category="truck">Trucks / 4x4 (4)</button>
+            <button type="button" class="btn btn-sm btn-outline-custom category-pill" data-category="electric">Electric & Hybrid (4)</button>
           </div>
 
           <!-- Skeleton Loader Placeholder (Smooth Transition Simulated) -->
@@ -289,20 +302,122 @@
 
           <!-- Real Inventory Grid (Reveals automatically via main.js) -->
           <div id="inventoryGrid" class="row g-4 d-none">
-            <!-- 1. Toyota Camry LE -->
-            <div class="col-md-6 col-lg-4 inventory-item">
+            <!-- === SUV & CROSSOVER (4 Cars) === -->
+            <!-- 1. Toyota RAV4 XLE AWD -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="101" data-body="suv" data-make="toyota" data-price="26500" data-mileage="28400" data-year="2021" data-fuel="gasoline">
               <div class="car-card">
                 <div class="car-card-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" alt="2020 Toyota Camry LE" loading="lazy">
-                  <div class="car-badge-stack">
-                    <span class="badge-custom badge-certified"><i class="bi bi-shield-check"></i> Certified</span>
-                    <span class="badge-custom badge-deal">Great Deal</span>
+                  <img src="assets/images/categories/suv-1.jpg" alt="2021 Toyota RAV4 XLE AWD" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="101" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Compact SUV • AWD</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=101">2021 Toyota RAV4 XLE AWD</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>28,400 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Gasoline</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>8-Speed Auto</span></div>
                   </div>
-                  <button class="car-favorite-btn" data-car-id="1" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$26,500</div>
+                      <div class="price-emi">Est. $395/mo</div>
+                    </div>
+                    <a href="car-details.html?id=101" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Hyundai Tucson Sport AWD -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="102" data-body="suv" data-make="hyundai" data-price="18900" data-mileage="34200" data-year="2020" data-fuel="gasoline">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/suv-2.jpg" alt="2020 Hyundai Tucson Sport AWD" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="102" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Compact Crossover • AWD</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=102">2020 Hyundai Tucson Sport AWD</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>34,200 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Gasoline</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>6-Speed Auto</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$18,900</div>
+                      <div class="price-emi">Est. $285/mo</div>
+                    </div>
+                    <a href="car-details.html?id=102" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Honda CR-V Touring Turbo -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="103" data-body="suv" data-make="honda" data-price="29400" data-mileage="21100" data-year="2022" data-fuel="gasoline">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/suv-3.jpg" alt="2022 Honda CR-V Touring Turbo" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="103" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Luxury Crossover • AWD</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=103">2022 Honda CR-V Touring Turbo</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>21,100 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Turbo Gas</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>CVT Auto</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$29,400</div>
+                      <div class="price-emi">Est. $435/mo</div>
+                    </div>
+                    <a href="car-details.html?id=103" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Mazda CX-5 Grand Touring -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="104" data-body="suv" data-make="mazda" data-price="24800" data-mileage="31500" data-year="2021" data-fuel="gasoline">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/suv-4.jpg" alt="2021 Mazda CX-5 Grand Touring" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="104" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Premium Crossover • AWD</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=104">2021 Mazda CX-5 Grand Touring</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>31,500 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>SkyActiv-G</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>6-Speed Auto</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$24,800</div>
+                      <div class="price-emi">Est. $370/mo</div>
+                    </div>
+                    <a href="car-details.html?id=104" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- === SEDANS (4 Cars) === -->
+            <!-- 5. Toyota Camry LE -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="201" data-body="sedan" data-make="toyota" data-price="19400" data-mileage="34200" data-year="2020" data-fuel="gasoline">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/sedan-1.jpg" alt="2020 Toyota Camry LE" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="201" aria-label="Save car"><i class="bi bi-heart"></i></button>
                 </div>
                 <div class="car-card-body">
                   <span class="text-muted small">Family Sedan • FWD</span>
-                  <h3 class="car-card-title mt-1"><a href="car-details.html">2020 Toyota Camry LE</a></h3>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=201">2020 Toyota Camry LE</a></h3>
                   <div class="car-card-specs">
                     <div class="spec-item"><i class="bi bi-speedometer2"></i><span>34,200 mi</span></div>
                     <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Gasoline</span></div>
@@ -313,240 +428,400 @@
                       <div class="price-main">$19,400</div>
                       <div class="price-emi">Est. $295/mo</div>
                     </div>
-                    <a href="car-details.html" class="btn btn-sm btn-primary-custom">View Details</a>
+                    <a href="car-details.html?id=201" class="btn btn-sm btn-primary-custom">View Details</a>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- 2. Toyota Corolla LE -->
-            <div class="col-md-6 col-lg-4 inventory-item">
+            <!-- 6. Toyota Corolla SE -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="202" data-body="sedan" data-make="toyota" data-price="16200" data-mileage="42100" data-year="2019" data-fuel="gasoline">
               <div class="car-card">
                 <div class="car-card-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=600&q=80" alt="2018 Toyota Corolla LE" loading="lazy">
-                  <div class="car-badge-stack">
-                    <span class="badge-custom badge-deal"><i class="bi bi-person-check"></i> 1-Owner</span>
-                    <span class="badge-custom badge-featured"><i class="bi bi-fire"></i> Best Seller</span>
-                  </div>
-                  <button class="car-favorite-btn" data-car-id="2" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                  <img src="assets/images/categories/sedan-2.jpg" alt="2019 Toyota Corolla SE" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="202" aria-label="Save car"><i class="bi bi-heart"></i></button>
                 </div>
                 <div class="car-card-body">
                   <span class="text-muted small">Reliable Sedan • 36 MPG</span>
-                  <h3 class="car-card-title mt-1"><a href="car-details.html">2018 Toyota Corolla LE</a></h3>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=202">2019 Toyota Corolla SE</a></h3>
                   <div class="car-card-specs">
-                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>48,100 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>42,100 mi</span></div>
                     <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Gasoline</span></div>
                     <div class="spec-item"><i class="bi bi-gear"></i><span>CVT Auto</span></div>
-                  </div>
-                  <div class="car-card-footer">
-                    <div class="car-price-wrap">
-                      <div class="price-main">$15,400</div>
-                      <div class="price-emi">Est. $240/mo</div>
-                    </div>
-                    <a href="car-details.html" class="btn btn-sm btn-primary-custom">View Details</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 3. Toyota RAV4 XLE -->
-            <div class="col-md-6 col-lg-4 inventory-item">
-              <div class="car-card">
-                <div class="car-card-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=600&q=80" alt="2020 Toyota RAV4 XLE AWD" loading="lazy">
-                  <div class="car-badge-stack">
-                    <span class="badge-custom badge-certified"><i class="bi bi-shield-check"></i> Certified</span>
-                  </div>
-                  <button class="car-favorite-btn" data-car-id="3" aria-label="Save car"><i class="bi bi-heart"></i></button>
-                </div>
-                <div class="car-card-body">
-                  <span class="text-muted small">Compact SUV • AWD</span>
-                  <h3 class="car-card-title mt-1"><a href="car-details.html">2020 Toyota RAV4 XLE AWD</a></h3>
-                  <div class="car-card-specs">
-                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>39,800 mi</span></div>
-                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Gasoline</span></div>
-                    <div class="spec-item"><i class="bi bi-gear"></i><span>Automatic</span></div>
-                  </div>
-                  <div class="car-card-footer">
-                    <div class="car-price-wrap">
-                      <div class="price-main">$24,800</div>
-                      <div class="price-emi">Est. $385/mo</div>
-                    </div>
-                    <a href="car-details.html" class="btn btn-sm btn-primary-custom">View Details</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 4. Honda Civic EX -->
-            <div class="col-md-6 col-lg-4 inventory-item">
-              <div class="car-card">
-                <div class="car-card-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80" alt="2019 Honda Civic EX" loading="lazy">
-                  <div class="car-badge-stack">
-                    <span class="badge-custom badge-deal"><i class="bi bi-cash-coin"></i> Low Mileage</span>
-                  </div>
-                  <button class="car-favorite-btn" data-car-id="4" aria-label="Save car"><i class="bi bi-heart"></i></button>
-                </div>
-                <div class="car-card-body">
-                  <span class="text-muted small">Compact Sedan • 38 MPG</span>
-                  <h3 class="car-card-title mt-1"><a href="car-details.html">2019 Honda Civic EX</a></h3>
-                  <div class="car-card-specs">
-                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>52,400 mi</span></div>
-                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Gasoline</span></div>
-                    <div class="spec-item"><i class="bi bi-gear"></i><span>CVT Auto</span></div>
-                  </div>
-                  <div class="car-card-footer">
-                    <div class="car-price-wrap">
-                      <div class="price-main">$16,950</div>
-                      <div class="price-emi">Est. $260/mo</div>
-                    </div>
-                    <a href="car-details.html" class="btn btn-sm btn-primary-custom">View Details</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 5. Ford F-150 SuperCrew -->
-            <div class="col-md-6 col-lg-4 inventory-item">
-              <div class="car-card">
-                <div class="car-card-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" alt="2019 Ford F-150 XLT SuperCrew 4x4" loading="lazy">
-                  <div class="car-badge-stack">
-                    <span class="badge-custom badge-deal"><i class="bi bi-person-check"></i> 1-Owner</span>
-                  </div>
-                  <button class="car-favorite-btn" data-car-id="5" aria-label="Save car"><i class="bi bi-heart"></i></button>
-                </div>
-                <div class="car-card-body">
-                  <span class="text-muted small">Full-Size Truck • 4WD</span>
-                  <h3 class="car-card-title mt-1"><a href="car-details.html">2019 Ford F-150 XLT SuperCrew 4x4</a></h3>
-                  <div class="car-card-specs">
-                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>45,600 mi</span></div>
-                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>EcoBoost V6</span></div>
-                    <div class="spec-item"><i class="bi bi-gear"></i><span>10-Speed</span></div>
-                  </div>
-                  <div class="car-card-footer">
-                    <div class="car-price-wrap">
-                      <div class="price-main">$32,500</div>
-                      <div class="price-emi">Est. $495/mo</div>
-                    </div>
-                    <a href="car-details.html" class="btn btn-sm btn-primary-custom">View Details</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 6. Volkswagen Polo / Golf -->
-            <div class="col-md-6 col-lg-4 inventory-item">
-              <div class="car-card">
-                <div class="car-card-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80" alt="2019 Volkswagen Polo 1.0 TSI" loading="lazy">
-                  <div class="car-badge-stack">
-                    <span class="badge-custom badge-certified"><i class="bi bi-shield-check"></i> 200-Pt Passed</span>
-                  </div>
-                  <button class="car-favorite-btn" data-car-id="6" aria-label="Save car"><i class="bi bi-heart"></i></button>
-                </div>
-                <div class="car-card-body">
-                  <span class="text-muted small">Family Hatchback • Efficient</span>
-                  <h3 class="car-card-title mt-1"><a href="car-details.html">2019 Volkswagen Polo 1.0 TSI</a></h3>
-                  <div class="car-card-specs">
-                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>41,800 mi</span></div>
-                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Gasoline</span></div>
-                    <div class="spec-item"><i class="bi bi-gear"></i><span>Automatic</span></div>
-                  </div>
-                  <div class="car-card-footer">
-                    <div class="car-price-wrap">
-                      <div class="price-main">$14,800</div>
-                      <div class="price-emi">Est. $230/mo</div>
-                    </div>
-                    <a href="car-details.html" class="btn btn-sm btn-primary-custom">View Details</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 7. Hyundai Tucson Sport -->
-            <div class="col-md-6 col-lg-4 inventory-item">
-              <div class="car-card">
-                <div class="car-card-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=600&q=80" alt="2019 Hyundai Tucson Sport AWD" loading="lazy">
-                  <div class="car-badge-stack">
-                    <span class="badge-custom badge-deal">Great Value</span>
-                  </div>
-                  <button class="car-favorite-btn" data-car-id="7" aria-label="Save car"><i class="bi bi-heart"></i></button>
-                </div>
-                <div class="car-card-body">
-                  <span class="text-muted small">Compact Crossover • AWD</span>
-                  <h3 class="car-card-title mt-1"><a href="car-details.html">2019 Hyundai Tucson Sport AWD</a></h3>
-                  <div class="car-card-specs">
-                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>46,200 mi</span></div>
-                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Gasoline</span></div>
-                    <div class="spec-item"><i class="bi bi-gear"></i><span>6-Speed Auto</span></div>
-                  </div>
-                  <div class="car-card-footer">
-                    <div class="car-price-wrap">
-                      <div class="price-main">$17,850</div>
-                      <div class="price-emi">Est. $275/mo</div>
-                    </div>
-                    <a href="car-details.html" class="btn btn-sm btn-primary-custom">View Details</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 8. Hyundai Elantra SEL -->
-            <div class="col-md-6 col-lg-4 inventory-item">
-              <div class="car-card">
-                <div class="car-card-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=600&q=80" alt="2020 Hyundai Elantra SEL" loading="lazy">
-                  <div class="car-badge-stack">
-                    <span class="badge-custom badge-certified"><i class="bi bi-shield-check"></i> CPO Inspected</span>
-                  </div>
-                  <button class="car-favorite-btn" data-car-id="8" aria-label="Save car"><i class="bi bi-heart"></i></button>
-                </div>
-                <div class="car-card-body">
-                  <span class="text-muted small">Daily Commuter • 35 MPG</span>
-                  <h3 class="car-card-title mt-1"><a href="car-details.html">2020 Hyundai Elantra SEL</a></h3>
-                  <div class="car-card-specs">
-                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>34,100 mi</span></div>
-                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Gasoline</span></div>
-                    <div class="spec-item"><i class="bi bi-gear"></i><span>IVT Automatic</span></div>
                   </div>
                   <div class="car-card-footer">
                     <div class="car-price-wrap">
                       <div class="price-main">$16,200</div>
-                      <div class="price-emi">Est. $250/mo</div>
+                      <div class="price-emi">Est. $245/mo</div>
                     </div>
-                    <a href="car-details.html" class="btn btn-sm btn-primary-custom">View Details</a>
+                    <a href="car-details.html?id=202" class="btn btn-sm btn-primary-custom">View Details</a>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- 9. Subaru Outback -->
-            <div class="col-md-6 col-lg-4 inventory-item">
+            <!-- 7. Honda Civic Sport -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="203" data-body="sedan" data-make="honda" data-price="21500" data-mileage="26800" data-year="2021" data-fuel="gasoline">
               <div class="car-card">
                 <div class="car-card-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" alt="2019 Subaru Outback 2.5i Premium" loading="lazy">
-                  <div class="car-badge-stack">
-                    <span class="badge-custom badge-deal">All-Weather</span>
-                  </div>
-                  <button class="car-favorite-btn" data-car-id="9" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                  <img src="assets/images/categories/sedan-3.jpg" alt="2021 Honda Civic Sport" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="203" aria-label="Save car"><i class="bi bi-heart"></i></button>
                 </div>
                 <div class="car-card-body">
-                  <span class="text-muted small">AWD Wagon / Crossover</span>
-                  <h3 class="car-card-title mt-1"><a href="car-details.html">2019 Subaru Outback 2.5i Premium</a></h3>
+                  <span class="text-muted small">Compact Sedan • 38 MPG</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=203">2021 Honda Civic Sport</a></h3>
                   <div class="car-card-specs">
-                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>51,900 mi</span></div>
-                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Boxer 4-Cyl</span></div>
-                    <div class="spec-item"><i class="bi bi-gear"></i><span>Lineartronic CVT</span></div>
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>26,800 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Gasoline</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>CVT w/ Paddle</span></div>
                   </div>
                   <div class="car-card-footer">
                     <div class="car-price-wrap">
-                      <div class="price-main">$20,500</div>
-                      <div class="price-emi">Est. $315/mo</div>
+                      <div class="price-main">$21,500</div>
+                      <div class="price-emi">Est. $320/mo</div>
                     </div>
-                    <a href="car-details.html" class="btn btn-sm btn-primary-custom">View Details</a>
+                    <a href="car-details.html?id=203" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 8. Hyundai Elantra Limited -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="204" data-body="sedan" data-make="hyundai" data-price="22900" data-mileage="19400" data-year="2022" data-fuel="gasoline">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/sedan-4.jpg" alt="2022 Hyundai Elantra Limited" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="204" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Daily Commuter • 41 MPG</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=204">2022 Hyundai Elantra Limited</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>19,400 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Smartstream</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>IVT Auto</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$22,900</div>
+                      <div class="price-emi">Est. $345/mo</div>
+                    </div>
+                    <a href="car-details.html?id=204" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- === COUPE / SPORTS (4 Cars) === -->
+            <!-- 9. Ford Mustang GT 5.0 -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="301" data-body="coupe" data-make="ford" data-price="34500" data-mileage="22300" data-year="2020" data-fuel="gasoline">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/coupe-1.jpg" alt="2020 Ford Mustang GT 5.0" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="301" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">American Muscle • V8 RWD</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=301">2020 Ford Mustang GT 5.0</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>22,300 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>5.0L V8</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>10-Speed Auto</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$34,500</div>
+                      <div class="price-emi">Est. $515/mo</div>
+                    </div>
+                    <a href="car-details.html?id=301" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 10. Chevrolet Camaro SS -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="302" data-body="coupe" data-make="chevrolet" data-price="36800" data-mileage="18900" data-year="2021" data-fuel="gasoline">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/coupe-2.jpg" alt="2021 Chevrolet Camaro SS" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="302" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Sports Coupe • 455 HP</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=302">2021 Chevrolet Camaro SS</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>18,900 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>6.2L V8</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>6-Speed Manual</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$36,800</div>
+                      <div class="price-emi">Est. $550/mo</div>
+                    </div>
+                    <a href="car-details.html?id=302" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 11. Toyota GR86 Premium -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="303" data-body="coupe" data-make="toyota" data-price="28900" data-mileage="14200" data-year="2022" data-fuel="gasoline">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/coupe-3.jpg" alt="2022 Toyota GR86 Premium" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="303" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Lightweight Sports • RWD</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=303">2022 Toyota GR86 Premium</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>14,200 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Boxer 2.4L</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>6-Speed Manual</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$28,900</div>
+                      <div class="price-emi">Est. $430/mo</div>
+                    </div>
+                    <a href="car-details.html?id=303" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 12. BMW 4-Series 430i M-Sport -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="304" data-body="coupe" data-make="bmw" data-price="42000" data-mileage="27600" data-year="2021" data-fuel="gasoline">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/coupe-4.jpg" alt="2021 BMW 4-Series 430i M-Sport" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="304" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Luxury Coupe • RWD</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=304">2021 BMW 4-Series 430i M-Sport</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>27,600 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>TwinPower Turbo</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>8-Speed Sport</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$42,000</div>
+                      <div class="price-emi">Est. $625/mo</div>
+                    </div>
+                    <a href="car-details.html?id=304" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- === TRUCK / 4X4 (4 Cars) === -->
+            <!-- 13. Ford F-150 SuperCrew 4x4 -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="401" data-body="truck" data-make="ford" data-price="35800" data-mileage="41200" data-year="2020" data-fuel="gasoline">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/truck-1.jpg" alt="2020 Ford F-150 XLT SuperCrew 4x4" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="401" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Full-Size Truck • 4WD</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=401">2020 Ford F-150 XLT SuperCrew 4x4</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>41,200 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>3.5L EcoBoost</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>10-Speed Auto</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$35,800</div>
+                      <div class="price-emi">Est. $535/mo</div>
+                    </div>
+                    <a href="car-details.html?id=401" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 14. Chevrolet Silverado 1500 RST -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="402" data-body="truck" data-make="chevrolet" data-price="38500" data-mileage="33800" data-year="2021" data-fuel="gasoline">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/truck-2.jpg" alt="2021 Chevrolet Silverado 1500 RST 4x4" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="402" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Crew Cab • 4WD</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=402">2021 Chevrolet Silverado 1500 RST 4x4</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>33,800 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>5.3L V8</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>8-Speed Auto</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$38,500</div>
+                      <div class="price-emi">Est. $575/mo</div>
+                    </div>
+                    <a href="car-details.html?id=402" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 15. Toyota Tacoma TRD Off-Road -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="403" data-body="truck" data-make="toyota" data-price="37200" data-mileage="24600" data-year="2022" data-fuel="gasoline">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/truck-3.jpg" alt="2022 Toyota Tacoma TRD Off-Road 4x4" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="403" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Mid-Size Off-Road • 4WD</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=403">2022 Toyota Tacoma TRD Off-Road 4x4</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>24,600 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>3.5L V6</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>6-Speed Auto</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$37,200</div>
+                      <div class="price-emi">Est. $555/mo</div>
+                    </div>
+                    <a href="car-details.html?id=403" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 16. RAM 1500 Big Horn Quad Cab -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="404" data-body="truck" data-make="ram" data-price="33900" data-mileage="39100" data-year="2021" data-fuel="hybrid">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/truck-4.jpg" alt="2021 RAM 1500 Big Horn Quad Cab 4x4" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="404" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">HEMI V8 eTorque • 4WD</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=404">2021 RAM 1500 Big Horn Quad Cab 4x4</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>39,100 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>5.7L HEMI V8</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>8-Speed Auto</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$33,900</div>
+                      <div class="price-emi">Est. $505/mo</div>
+                    </div>
+                    <a href="car-details.html?id=404" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- === ELECTRIC & HYBRID (4 Cars) === -->
+            <!-- 17. Tesla Model 3 Long Range -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="501" data-body="electric" data-make="tesla" data-price="31900" data-mileage="23400" data-year="2022" data-fuel="electric">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/ev-1.jpg" alt="2022 Tesla Model 3 Long Range AWD" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="501" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Dual Motor EV • AWD</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=501">2022 Tesla Model 3 Long Range AWD</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>23,400 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Pure EV</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>Direct Drive</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$31,900</div>
+                      <div class="price-emi">Est. $475/mo</div>
+                    </div>
+                    <a href="car-details.html?id=501" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 18. Toyota Prius Prime Limited -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="502" data-body="electric" data-make="toyota" data-price="24500" data-mileage="36700" data-year="2021" data-fuel="hybrid">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/ev-2.jpg" alt="2021 Toyota Prius Prime Limited" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="502" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Plug-in Hybrid • 25 Mi EV</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=502">2021 Toyota Prius Prime Limited</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>36,700 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>PHEV Hybrid</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>ECVT Auto</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$24,500</div>
+                      <div class="price-emi">Est. $365/mo</div>
+                    </div>
+                    <a href="car-details.html?id=502" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 19. Hyundai Ioniq 5 SEL AWD -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="503" data-body="electric" data-make="hyundai" data-price="37900" data-mileage="15200" data-year="2023" data-fuel="electric">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/ev-3.jpg" alt="2023 Hyundai Ioniq 5 SEL AWD" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="503" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Dual Motor EV • AWD</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=503">2023 Hyundai Ioniq 5 SEL AWD</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>15,200 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>Dual Motor EV</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>Single-Speed</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$37,900</div>
+                      <div class="price-emi">Est. $565/mo</div>
+                    </div>
+                    <a href="car-details.html?id=503" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 20. Nissan Leaf SV Plus -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="504" data-body="electric" data-make="nissan" data-price="19800" data-mileage="22800" data-year="2022" data-fuel="electric">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/ev-4.jpg" alt="2022 Nissan Leaf SV Plus" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="504" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Pure Electric • 212 Mi Range</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=504">2022 Nissan Leaf SV Plus</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>22,800 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>62 kWh EV</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>Direct Drive</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$19,800</div>
+                      <div class="price-emi">Est. $295/mo</div>
+                    </div>
+                    <a href="car-details.html?id=504" class="btn btn-sm btn-primary-custom">View Details</a>
                   </div>
                 </div>
               </div>
@@ -593,10 +868,10 @@
             AutoMarket is the trusted nationwide marketplace for certified pre-owned vehicles. Every car passes our 200-point inspection with upfront, haggle-free pricing.
           </p>
           <div class="d-flex gap-2 mt-3">
-            <a href="#" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -627,7 +902,7 @@
         <div class="col-lg-3 col-md-6">
           <h5>Showroom & Contact</h5>
           <ul class="footer-links">
-            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> 1245 Motor Pkwy, CA 90210</li>
+            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> <a href="https://maps.google.com/?q=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" title="Open Showroom in Google Maps">1245 Motor Pkwy, CA 90210</a></li>
             <li><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 555-AUTO</li>
             <li><i class="bi bi-envelope-fill text-secondary me-2"></i> support@automarket.com</li>
             <li><i class="bi bi-clock-fill text-success me-2"></i> Mon - Sat: 9:00 AM - 7:00 PM</li>

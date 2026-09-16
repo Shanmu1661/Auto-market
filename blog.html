@@ -45,25 +45,9 @@
 
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Home
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="index.html"><i class="bi bi-grid-1x2 me-2 text-primary"></i>Home 1 - Marketplace</a></li>
-                <li><a class="dropdown-item" href="index-2.html"><i class="bi bi-building me-2 text-secondary"></i>Home 2 - Dealership & Concierge</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="inventory.html">Browse Cars</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Services
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="services.html"><i class="bi bi-tools me-2 text-primary"></i>All Auto Services</a></li>
-                <li><a class="dropdown-item" href="service-details.html"><i class="bi bi-shield-check me-2 text-success"></i>200-Point Inspection</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
             <li class="nav-item active"><a class="nav-link active" href="blog.html">Guides & News</a></li>
@@ -93,12 +77,12 @@
   </header>
 
   <main id="main-content">
-    <!-- Hero Banner -->
-    <section class="py-5 text-white text-center" style="background: linear-gradient(rgba(11, 19, 41, 0.82), rgba(15, 23, 42, 0.86)), url('https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1920&q=85') center center / cover no-repeat;">
-      <div class="container py-4">
-        <span class="section-tag">Market Knowledge</span>
+    <!-- Hero Banner with High-Visibility Background Image -->
+    <section class="page-header-banner text-center" style="background-image: url('assets/images/banners/blog-banner.jpg');">
+      <div class="container py-2">
+        <span class="section-tag-light"><i class="bi bi-journal-richtext me-1"></i> Market Knowledge</span>
         <h1 class="display-5 fw-bold text-white mb-3">Used Car Guides & Industry Insights</h1>
-        <p class="lead text-light opacity-90 mx-auto" style="max-width: 600px;">
+        <p class="lead text-light mx-auto" style="max-width: 600px;">
           Expert inspection advice, smart financing strategies, and comprehensive vehicle comparisons curated by our master mechanics.
         </p>
 
@@ -117,133 +101,145 @@
     <!-- Articles Grid Section -->
     <section class="section-padding">
       <div class="container">
-        <!-- Category Filter Pills -->
-        <div class="d-flex flex-wrap gap-2 justify-content-center mb-5">
-          <button class="btn btn-sm btn-primary-custom">All Articles (28)</button>
-          <button class="btn btn-sm btn-outline-custom">Buying Guides</button>
-          <button class="btn btn-sm btn-outline-custom">Inspection Checklists</button>
-          <button class="btn btn-sm btn-outline-custom">EV & Hybrid</button>
-          <button class="btn btn-sm btn-outline-custom">Financing Tips</button>
-          <button class="btn btn-sm btn-outline-custom">Maintenance</button>
+        <!-- Category Filter Pills (Single Category Select) -->
+        <div class="d-flex flex-wrap gap-2 justify-content-center mb-5 blog-category-filter-pills" role="tablist" aria-label="Filter blog articles">
+          <button type="button" class="btn btn-sm btn-primary-custom blog-pill active" data-blog-category="">All Articles (6)</button>
+          <button type="button" class="btn btn-sm btn-outline-custom blog-pill" data-blog-category="guide">Buying Guides</button>
+          <button type="button" class="btn btn-sm btn-outline-custom blog-pill" data-blog-category="inspection">Inspection Checklists</button>
+          <button type="button" class="btn btn-sm btn-outline-custom blog-blog-pill" data-blog-category="ev">EV & Hybrid</button>
+          <button type="button" class="btn btn-sm btn-outline-custom blog-pill" data-blog-category="financing">Financing Tips</button>
+          <button type="button" class="btn btn-sm btn-outline-custom blog-pill" data-blog-category="maintenance">Maintenance</button>
         </div>
 
-        <div class="row g-4">
+        <div class="row g-4" id="blogGrid">
           <!-- Article 1 -->
-          <div class="col-md-6 col-lg-4">
+          <div class="col-md-6 col-lg-4 blog-item" data-category="inspection">
             <div class="blog-card">
-              <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&q=80" alt="Used car mechanical inspection" class="blog-card-img" loading="lazy">
+              <a href="blog-details.html?id=1">
+                <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&q=80" alt="Used car mechanical inspection" class="blog-card-img" loading="lazy">
+              </a>
               <div class="blog-card-body">
                 <div class="blog-meta">
                   <span><i class="bi bi-calendar3 me-1"></i> Aug 24, 2026</span>
                   <span><i class="bi bi-clock me-1"></i> 6 min read</span>
                 </div>
                 <h3 class="h5 fw-bold mb-2">
-                  <a href="blog-details.html" class="text-decoration-none text-main">10 Critical Things Mechanics Check in a Pre-Purchase Inspection</a>
+                  <a href="blog-details.html?id=1" class="text-decoration-none text-main">10 Critical Things Mechanics Check in a Pre-Purchase Inspection</a>
                 </h3>
                 <p class="text-muted small mb-4 flex-grow-1">
                   Learn how paint depth meters reveal hidden bodywork and what OBD-II diagnostic freeze-frame data reveals about past engine overheating.
                 </p>
-                <a href="blog-details.html" class="fw-bold small text-primary">Read Full Guide <i class="bi bi-arrow-right ms-1"></i></a>
+                <a href="blog-details.html?id=1" class="fw-bold small text-primary">Read Full Guide <i class="bi bi-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
 
           <!-- Article 2 -->
-          <div class="col-md-6 col-lg-4">
+          <div class="col-md-6 col-lg-4 blog-item" data-category="ev">
             <div class="blog-card">
-              <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=600&q=80" alt="Tesla electric car charging" class="blog-card-img" loading="lazy">
+              <a href="blog-details.html?id=2">
+                <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=600&q=80" alt="Tesla electric car charging" class="blog-card-img" loading="lazy">
+              </a>
               <div class="blog-card-body">
                 <div class="blog-meta">
                   <span><i class="bi bi-calendar3 me-1"></i> Aug 18, 2026</span>
                   <span><i class="bi bi-clock me-1"></i> 8 min read</span>
                 </div>
                 <h3 class="h5 fw-bold mb-2">
-                  <a href="blog-details.html" class="text-decoration-none text-main">Buying a Used Electric Car in 2026: Battery Health Guide</a>
+                  <a href="blog-details.html?id=2" class="text-decoration-none text-main">Buying a Used Electric Car in 2026: Battery Health Guide</a>
                 </h3>
                 <p class="text-muted small mb-4 flex-grow-1">
                   How to test battery state of health (SoH), verify remaining factory battery warranty, and calculate real-world degradation before making an offer.
                 </p>
-                <a href="blog-details.html" class="fw-bold small text-primary">Read Full Guide <i class="bi bi-arrow-right ms-1"></i></a>
+                <a href="blog-details.html?id=2" class="fw-bold small text-primary">Read Full Guide <i class="bi bi-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
 
           <!-- Article 3 -->
-          <div class="col-md-6 col-lg-4">
+          <div class="col-md-6 col-lg-4 blog-item" data-category="financing">
             <div class="blog-card">
-              <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Auto financing loan paperwork" class="blog-card-img" loading="lazy">
+              <a href="blog-details.html?id=3">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Auto financing loan paperwork" class="blog-card-img" loading="lazy">
+              </a>
               <div class="blog-card-body">
                 <div class="blog-meta">
                   <span><i class="bi bi-calendar3 me-1"></i> Aug 10, 2026</span>
                   <span><i class="bi bi-clock me-1"></i> 5 min read</span>
                 </div>
                 <h3 class="h5 fw-bold mb-2">
-                  <a href="blog-details.html" class="text-decoration-none text-main">How to Secure Low APR Auto Loan Rates When Buying Used</a>
+                  <a href="blog-details.html?id=3" class="text-decoration-none text-main">How to Secure Low APR Auto Loan Rates When Buying Used</a>
                 </h3>
                 <p class="text-muted small mb-4 flex-grow-1">
                   Master the difference between direct credit union pre-approvals, dealership lending markups, and how loan terms impact total interest.
                 </p>
-                <a href="blog-details.html" class="fw-bold small text-primary">Read Full Guide <i class="bi bi-arrow-right ms-1"></i></a>
+                <a href="blog-details.html?id=3" class="fw-bold small text-primary">Read Full Guide <i class="bi bi-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
 
           <!-- Article 4 -->
-          <div class="col-md-6 col-lg-4">
+          <div class="col-md-6 col-lg-4 blog-item" data-category="guide">
             <div class="blog-card">
-              <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" alt="Pre-owned reliable sedan" class="blog-card-img" loading="lazy">
+              <a href="blog-details.html?id=4">
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" alt="Pre-owned reliable sedan" class="blog-card-img" loading="lazy">
+              </a>
               <div class="blog-card-body">
                 <div class="blog-meta">
                   <span><i class="bi bi-calendar3 me-1"></i> Jul 29, 2026</span>
                   <span><i class="bi bi-clock me-1"></i> 7 min read</span>
                 </div>
                 <h3 class="h5 fw-bold mb-2">
-                  <a href="blog-details.html" class="text-decoration-none text-main">Top 5 Most Reliable Used Cars Under $25,000 in Today's Market</a>
+                  <a href="blog-details.html?id=4" class="text-decoration-none text-main">Top 5 Most Reliable Used Cars Under $25,000 in Today's Market</a>
                 </h3>
                 <p class="text-muted small mb-4 flex-grow-1">
                   Our ranking of reliable pre-owned sedans and crossovers with proven longevity, low ownership costs, and high resale retention.
                 </p>
-                <a href="blog-details.html" class="fw-bold small text-primary">Read Full Guide <i class="bi bi-arrow-right ms-1"></i></a>
+                <a href="blog-details.html?id=4" class="fw-bold small text-primary">Read Full Guide <i class="bi bi-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
 
           <!-- Article 5 -->
-          <div class="col-md-6 col-lg-4">
+          <div class="col-md-6 col-lg-4 blog-item" data-category="maintenance">
             <div class="blog-card">
-              <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" alt="Ford F-150 Truck towing" class="blog-card-img" loading="lazy">
+              <a href="blog-details.html?id=5">
+                <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" alt="Ford F-150 Truck towing" class="blog-card-img" loading="lazy">
+              </a>
               <div class="blog-card-body">
                 <div class="blog-meta">
                   <span><i class="bi bi-calendar3 me-1"></i> Jul 20, 2026</span>
                   <span><i class="bi bi-clock me-1"></i> 6 min read</span>
                 </div>
                 <h3 class="h5 fw-bold mb-2">
-                  <a href="blog-details.html" class="text-decoration-none text-main">Used Truck Buying Checklist: Frame Rust, Transmissions & Tow Ratings</a>
+                  <a href="blog-details.html?id=5" class="text-decoration-none text-main">Used Truck Buying Checklist: Frame Rust, Transmissions & Tow Ratings</a>
                 </h3>
                 <p class="text-muted small mb-4 flex-grow-1">
                   Everything you need to inspect when buying a pre-owned 4x4 pickup, from differential fluid condition to cab mount integrity.
                 </p>
-                <a href="blog-details.html" class="fw-bold small text-primary">Read Full Guide <i class="bi bi-arrow-right ms-1"></i></a>
+                <a href="blog-details.html?id=5" class="fw-bold small text-primary">Read Full Guide <i class="bi bi-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
 
           <!-- Article 6 -->
-          <div class="col-md-6 col-lg-4">
+          <div class="col-md-6 col-lg-4 blog-item" data-category="guide">
             <div class="blog-card">
-              <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&q=80" alt="Range Rover luxury SUV" class="blog-card-img" loading="lazy">
+              <a href="blog-details.html?id=6">
+                <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&q=80" alt="Range Rover luxury SUV" class="blog-card-img" loading="lazy">
+              </a>
               <div class="blog-card-body">
                 <div class="blog-meta">
                   <span><i class="bi bi-calendar3 me-1"></i> Jul 12, 2026</span>
                   <span><i class="bi bi-clock me-1"></i> 9 min read</span>
                 </div>
                 <h3 class="h5 fw-bold mb-2">
-                  <a href="blog-details.html" class="text-decoration-none text-main">Are Extended Warranties Worth It for Used European Luxury Cars?</a>
+                  <a href="blog-details.html?id=6" class="text-decoration-none text-main">Are Extended Warranties Worth It for Used European Luxury Cars?</a>
                 </h3>
                 <p class="text-muted small mb-4 flex-grow-1">
                   A cost-benefit breakdown of aftermarket and certified warranty coverage on BMW, Mercedes-Benz, Audi, and Porsche vehicles.
                 </p>
-                <a href="blog-details.html" class="fw-bold small text-primary">Read Full Guide <i class="bi bi-arrow-right ms-1"></i></a>
+                <a href="blog-details.html?id=6" class="fw-bold small text-primary">Read Full Guide <i class="bi bi-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
@@ -286,10 +282,10 @@
             AutoMarket is the trusted nationwide marketplace for certified pre-owned vehicles. Every car passes our 200-point inspection with upfront, haggle-free pricing.
           </p>
           <div class="d-flex gap-2 mt-3">
-            <a href="#" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -320,7 +316,7 @@
         <div class="col-lg-3 col-md-6">
           <h5>Showroom & Contact</h5>
           <ul class="footer-links">
-            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> 1245 Motor Pkwy, CA 90210</li>
+            <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> <a href="https://maps.google.com/?q=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" title="Open Showroom in Google Maps">1245 Motor Pkwy, CA 90210</a></li>
             <li><i class="bi bi-telephone-fill text-primary me-2"></i> +1 (800) 555-AUTO</li>
             <li><i class="bi bi-envelope-fill text-secondary me-2"></i> support@automarket.com</li>
             <li><i class="bi bi-clock-fill text-success me-2"></i> Mon - Sat: 9:00 AM - 7:00 PM</li>

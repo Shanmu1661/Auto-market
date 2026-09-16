@@ -249,39 +249,302 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // -------------------------------------------------------------
-  // 6. Skeleton Loader Simulation (e.g. on Inventory Page)
+  // 6. Comprehensive Inventory & Blog Filtering Engine
   // -------------------------------------------------------------
   const skeletonGrid = document.getElementById('skeletonGrid');
   const inventoryGrid = document.getElementById('inventoryGrid');
+  const bodyRadios = document.querySelectorAll('.body-filter-radio, input[name="bodyCategory"]');
+  const categoryPills = document.querySelectorAll('#categoryFilterPills .category-pill');
+  const filterKeywordInput = document.getElementById('filterKeyword');
+  const filterMakeSelect = document.getElementById('filterMakeSelect');
+  const filterPriceSlider = document.getElementById('filterPriceSlider');
+  const invPriceVal = document.getElementById('invPriceVal');
+  const filterMileageSelect = document.getElementById('filterMileageSelect');
+  const filterFuelSelect = document.getElementById('filterFuelSelect');
+  const filterSortSelect = document.getElementById('filterSortSelect');
+  const btnApplyFilters = document.getElementById('btnApplyFilters');
+  const clearFiltersBtn = document.getElementById('btnClearAllFilters');
+  const showingCountEl = document.getElementById('invShowingCount');
+  const totalCountEl = document.getElementById('invTotalCount');
 
-  if (skeletonGrid && inventoryGrid) {
-    // Simulate high-speed dynamic data fetch
-    setTimeout(() => {
-      skeletonGrid.style.display = 'none';
-      inventoryGrid.classList.remove('d-none');
-    }, 650);
+  let activeCategory = '';
+
+  function normalizeCategory(cat) {
+    if (!cat) return '';
+    const c = cat.toLowerCase().trim();
+    if (c === 'ev' || c === 'hybrid' || c === 'electric') return 'electric';
+    return c;
   }
 
-  // Auto-populate filter keyword from navbar search
-  const navUrlParams = new URLSearchParams(window.location.search);
-  const navSearchQuery = navUrlParams.get('search');
-  if (navSearchQuery) {
-    const filterInput = document.getElementById('filterKeyword');
-    if (filterInput) {
-      filterInput.value = navSearchQuery;
+  function applySingleCategory(category, syncUI = true) {
+    activeCategory = normalizeCategory(category);
+
+    if (syncUI) {
+      // 1. Sync Category Quick Pills (Single Active Pill)
+      categoryPills.forEach(pill => {
+        const pillCat = normalizeCategory(pill.getAttribute('data-category') || '');
+        if (pillCat === activeCategory) {
+          pill.classList.add('active', 'btn-primary-custom');
+          pill.classList.remove('btn-outline-custom');
+        } else {
+          pill.classList.remove('active', 'btn-primary-custom');
+          pill.classList.add('btn-outline-custom');
+        }
+      });
+
+      // 2. Sync Sidebar Radio Buttons (Single Selected Radio)
+      bodyRadios.forEach(radio => {
+        const radioVal = normalizeCategory(radio.value || '');
+        radio.checked = (radioVal === activeCategory);
+      });
+    }
+
+    filterInventory();
+  }
+
+  function filterInventory() {
+    const allItems = Array.from(document.querySelectorAll('.inventory-item'));
+    if (!allItems.length) return;
+
+    const keyword = (filterKeywordInput ? filterKeywordInput.value.toLowerCase().trim() : '');
+    const make = (filterMakeSelect ? filterMakeSelect.value.toLowerCase().trim() : '');
+    const maxPrice = filterPriceSlider ? parseInt(filterPriceSlider.value, 10) : 150000;
+    const maxMileage = filterMileageSelect && filterMileageSelect.value ? parseInt(filterMileageSelect.value, 10) : Infinity;
+    const fuel = (filterFuelSelect ? filterFuelSelect.value.toLowerCase().trim() : '');
+    const sortVal = filterSortSelect ? filterSortSelect.value : 'best';
+
+    // Update price slider display label
+    if (invPriceVal && filterPriceSlider) {
+      invPriceVal.textContent = `$${parseInt(filterPriceSlider.value, 10).toLocaleString()}${filterPriceSlider.value >= 150000 ? '+' : ''}`;
+    }
+
+    let visibleCount = 0;
+    allItems.forEach(item => {
+      const itemBody = normalizeCategory(item.getAttribute('data-body') || '');
+      const itemMake = (item.getAttribute('data-make') || '').toLowerCase().trim();
+      const itemPrice = parseInt(item.getAttribute('data-price') || '0', 10);
+      const itemMileage = parseInt(item.getAttribute('data-mileage') || '0', 10);
+      const itemFuel = (item.getAttribute('data-fuel') || '').toLowerCase().trim();
+      const itemText = item.textContent.toLowerCase();
+
+      // 1. Category match
+      const matchCategory = !activeCategory || (itemBody === activeCategory);
+
+      // 2. Keyword match
+      const matchKeyword = !keyword || itemText.includes(keyword);
+
+      // 3. Make match
+      const matchMake = !make || itemMake === make || itemText.includes(make);
+
+      // 4. Price range match
+      const matchPrice = isNaN(maxPrice) || itemPrice <= maxPrice;
+
+      // 5. Mileage match
+      const matchMileage = isNaN(maxMileage) || itemMileage <= maxMileage;
+
+      // 6. Fuel match
+      let matchFuel = true;
+      if (fuel) {
+        if (fuel === 'electric') {
+          matchFuel = itemFuel.includes('electric') || itemFuel.includes('ev');
+        } else if (fuel === 'hybrid') {
+          matchFuel = itemFuel.includes('hybrid') || itemFuel.includes('phev');
+        } else if (fuel === 'gasoline') {
+          matchFuel = itemFuel.includes('gasoline') || itemFuel.includes('gas');
+        } else {
+          matchFuel = itemFuel.includes(fuel);
+        }
+      }
+
+      const isVisible = matchCategory && matchKeyword && matchMake && matchPrice && matchMileage && matchFuel;
+      item.style.display = isVisible ? '' : 'none';
+      if (isVisible) visibleCount++;
+    });
+
+    // Handle dynamic sorting
+    if (inventoryGrid && sortVal !== 'best') {
+      const sortedItems = [...allItems].sort((a, b) => {
+        const priceA = parseInt(a.getAttribute('data-price') || '0', 10);
+        const priceB = parseInt(b.getAttribute('data-price') || '0', 10);
+        const mileageA = parseInt(a.getAttribute('data-mileage') || '0', 10);
+        const mileageB = parseInt(b.getAttribute('data-mileage') || '0', 10);
+        const yearA = parseInt(a.getAttribute('data-year') || '0', 10);
+        const yearB = parseInt(b.getAttribute('data-year') || '0', 10);
+
+        if (sortVal === 'price-asc') return priceA - priceB;
+        if (sortVal === 'price-desc') return priceB - priceA;
+        if (sortVal === 'mileage-asc') return mileageA - mileageB;
+        if (sortVal === 'year-desc') return yearB - yearA;
+        return 0;
+      });
+
+      sortedItems.forEach(item => inventoryGrid.appendChild(item));
+    }
+
+    if (showingCountEl) showingCountEl.textContent = visibleCount;
+    if (totalCountEl) totalCountEl.textContent = allItems.length;
+
+    // Handle Empty State Message
+    let noResultsEl = document.getElementById('invNoResults');
+    if (visibleCount === 0) {
+      if (!noResultsEl && inventoryGrid) {
+        noResultsEl = document.createElement('div');
+        noResultsEl.id = 'invNoResults';
+        noResultsEl.className = 'col-12 text-center py-5';
+        noResultsEl.innerHTML = `
+          <div class="card border-0 p-5 shadow-sm" style="background-color: var(--bg-surface); border-radius: var(--radius-md);">
+            <i class="bi bi-search fs-1 text-muted mb-3 d-inline-block"></i>
+            <h4 class="fw-bold mb-2">No Vehicles Found</h4>
+            <p class="text-muted small mb-4">No available cars match your selected filters. Try broadening your criteria or reset all filters.</p>
+            <div>
+              <button type="button" class="btn btn-primary-custom btn-sm" onclick="document.getElementById('btnClearAllFilters').click()">
+                <i class="bi bi-arrow-counterclockwise me-1"></i> Reset All Filters
+              </button>
+            </div>
+          </div>
+        `;
+        inventoryGrid.appendChild(noResultsEl);
+      }
+      if (noResultsEl) noResultsEl.style.display = '';
+    } else {
+      if (noResultsEl) noResultsEl.style.display = 'none';
     }
   }
 
+  // Bind Category Quick Pills (Single-Click Category Switch)
+  categoryPills.forEach(pill => {
+    pill.addEventListener('click', (e) => {
+      e.preventDefault();
+      const cat = pill.getAttribute('data-category') || '';
+      applySingleCategory(cat);
+    });
+  });
+
+  // Bind Sidebar Radio Buttons
+  bodyRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (radio.checked) {
+        applySingleCategory(radio.value || '');
+      }
+    });
+  });
+
+  // Bind All Filter Inputs & Controls for Instant Reaction
+  if (filterKeywordInput) {
+    filterKeywordInput.addEventListener('input', filterInventory);
+  }
+  if (filterMakeSelect) {
+    filterMakeSelect.addEventListener('change', filterInventory);
+  }
+  if (filterPriceSlider) {
+    filterPriceSlider.addEventListener('input', filterInventory);
+  }
+  if (filterMileageSelect) {
+    filterMileageSelect.addEventListener('change', filterInventory);
+  }
+  if (filterFuelSelect) {
+    filterFuelSelect.addEventListener('change', filterInventory);
+  }
+  if (filterSortSelect) {
+    filterSortSelect.addEventListener('change', filterInventory);
+  }
+  if (btnApplyFilters) {
+    btnApplyFilters.addEventListener('click', () => {
+      filterInventory();
+      showToast('Filters applied successfully!', 'info');
+    });
+  }
+
+  // Clear All Filters Handler
+  if (clearFiltersBtn) {
+    clearFiltersBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (filterKeywordInput) filterKeywordInput.value = '';
+      if (filterMakeSelect) filterMakeSelect.value = '';
+      if (filterPriceSlider) {
+        filterPriceSlider.value = 150000;
+        if (invPriceVal) invPriceVal.textContent = '$150,000+';
+      }
+      if (filterMileageSelect) filterMileageSelect.value = '';
+      if (filterFuelSelect) filterFuelSelect.value = '';
+      if (filterSortSelect) filterSortSelect.value = 'best';
+
+      applySingleCategory('');
+
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', window.location.pathname);
+      }
+      showToast('All filters have been reset', 'info');
+    });
+  }
+
+  // Parse URL parameters for initial filters (e.g. ?body=suv, ?search=toyota, ?make=toyota)
+  const navUrlParams = new URLSearchParams(window.location.search);
+  const bodyQuery = navUrlParams.get('body');
+  const makeQuery = navUrlParams.get('make');
+  const navSearchQuery = navUrlParams.get('search');
+
+  if (bodyQuery) {
+    applySingleCategory(bodyQuery);
+  }
+
+  if (makeQuery && filterMakeSelect) {
+    filterMakeSelect.value = makeQuery.toLowerCase();
+  }
+
+  if (navSearchQuery && filterKeywordInput) {
+    filterKeywordInput.value = navSearchQuery;
+  }
+
+  if (skeletonGrid && inventoryGrid) {
+    // Reveal real grid smoothly
+    setTimeout(() => {
+      skeletonGrid.style.display = 'none';
+      inventoryGrid.classList.remove('d-none');
+      filterInventory();
+      syncFavoriteButtons();
+    }, 350);
+  }
+
+  // -------------------------------------------------------------
+  // Blog Single-Category Filtering Engine
+  // -------------------------------------------------------------
+  const blogPills = document.querySelectorAll('.blog-category-filter-pills .blog-pill, .blog-category-filter-pills button');
+  const blogItems = document.querySelectorAll('.blog-item');
+
+  if (blogPills.length > 0 && blogItems.length > 0) {
+    blogPills.forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        e.preventDefault();
+        const selectedCat = (pill.getAttribute('data-blog-category') || '').toLowerCase().trim();
+
+        // Single active pill styling
+        blogPills.forEach(p => {
+          p.classList.remove('active', 'btn-primary-custom');
+          p.classList.add('btn-outline-custom');
+        });
+        pill.classList.add('active', 'btn-primary-custom');
+        pill.classList.remove('btn-outline-custom');
+
+        // Filter articles by single category
+        blogItems.forEach(item => {
+          const itemCat = (item.getAttribute('data-category') || '').toLowerCase().trim();
+          const show = !selectedCat || (itemCat === selectedCat);
+          item.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  }
 
   // -------------------------------------------------------------
   // 7. Grid / List View Switcher (Inventory Page)
   // -------------------------------------------------------------
   const viewGridBtn = document.getElementById('btnViewGrid');
   const viewListBtn = document.getElementById('btnViewList');
-  const inventoryCars = document.querySelectorAll('.inventory-item');
 
   if (viewGridBtn && viewListBtn) {
     viewGridBtn.addEventListener('click', () => {
+      const inventoryCars = document.querySelectorAll('.inventory-item');
       viewGridBtn.classList.add('active', 'btn-primary-custom');
       viewGridBtn.classList.remove('btn-outline-custom');
       viewListBtn.classList.remove('active', 'btn-primary-custom');
@@ -299,6 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     viewListBtn.addEventListener('click', () => {
+      const inventoryCars = document.querySelectorAll('.inventory-item');
       viewListBtn.classList.add('active', 'btn-primary-custom');
       viewListBtn.classList.remove('btn-outline-custom');
       viewGridBtn.classList.remove('active', 'btn-primary-custom');
@@ -388,38 +652,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // -------------------------------------------------------------
   // 10. Role-Based Authentication & Session Management
   // -------------------------------------------------------------
-  const DEFAULT_USERS = [
-    {
-      id: 'usr_buyer_01',
-      name: 'Alex Morgan',
-      email: 'buyer@automarket.com',
-      password: 'password123',
-      role: 'buyer',
-      avatar: 'AM',
-      created: '2026-01-15'
-    },
-    {
-      id: 'usr_seller_01',
-      name: 'Marcus Vance',
-      dealership: 'Apex Auto Group',
-      email: 'seller@automarket.com',
-      password: 'password123',
-      role: 'seller',
-      avatar: 'MV',
-      created: '2025-11-20'
-    }
-  ];
-
   function getUsers() {
     try {
       const stored = localStorage.getItem('automarket_users');
-      if (!stored) {
-        localStorage.setItem('automarket_users', JSON.stringify(DEFAULT_USERS));
-        return DEFAULT_USERS;
-      }
-      return JSON.parse(stored);
+      if (!stored) return [];
+      const parsed = JSON.parse(stored);
+      return Array.isArray(parsed) ? parsed : [];
     } catch (e) {
-      return DEFAULT_USERS;
+      return [];
     }
   }
 
@@ -433,46 +673,87 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function setCurrentUser(user) {
-    if (user) {
-      localStorage.setItem('automarket_current_user', JSON.stringify(user));
-    } else {
-      localStorage.removeItem('automarket_current_user');
+    try {
+      if (user) {
+        localStorage.setItem('automarket_current_user', JSON.stringify(user));
+      } else {
+        localStorage.removeItem('automarket_current_user');
+      }
+    } catch (e) {
+      console.error('Error setting current user:', e);
     }
     updateNavAuthState();
   }
 
   function registerUser(userData) {
-    const users = getUsers();
-    const existing = users.find(u => u.email.toLowerCase() === userData.email.toLowerCase());
-    if (existing) {
-      return { success: false, message: 'An account with this email already exists.' };
+    if (!userData || !userData.email || !userData.password) {
+      return { success: false, message: 'Please provide all required registration fields.' };
     }
-    const initials = userData.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'U';
+
+    const users = getUsers();
+    const cleanEmail = userData.email.trim().toLowerCase();
+    const existing = users.find(u => u && u.email && u.email.trim().toLowerCase() === cleanEmail);
+    
+    if (existing) {
+      return { 
+        success: false, 
+        message: 'An account with this email already exists. Please sign in instead.' 
+      };
+    }
+    
+    const rawName = (userData.name || '').trim();
+    // STRICT: Avatar uses ONLY the single first letter of user name
+    const firstLetter = rawName.length > 0 ? rawName.charAt(0).toUpperCase() : 'U';
+
     const newUser = {
-      id: `usr_${Date.now()}`,
-      name: userData.name,
-      email: userData.email,
-      password: userData.password,
-      role: userData.role || 'buyer',
-      dealership: userData.role === 'seller' ? (userData.dealership || `${userData.name}'s Dealership`) : undefined,
-      avatar: initials,
+      id: `usr_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+      name: rawName || 'Valued User',
+      email: cleanEmail,
+      password: String(userData.password),
+      role: (userData.role === 'seller') ? 'seller' : 'buyer',
+      dealership: (userData.role === 'seller') ? (userData.dealership || `${rawName}'s Dealership`) : undefined,
+      avatar: firstLetter,
       created: new Date().toISOString()
     };
-    users.push(newUser);
-    localStorage.setItem('automarket_users', JSON.stringify(users));
-    setCurrentUser(newUser);
-    return { success: true, user: newUser };
+
+    try {
+      users.push(newUser);
+      localStorage.setItem('automarket_users', JSON.stringify(users));
+      setCurrentUser(newUser);
+      return { success: true, user: newUser };
+    } catch (err) {
+      return { success: false, message: 'Could not save account to local storage. Please check browser permissions.' };
+    }
   }
 
   function loginUser(email, password) {
+    if (!email || !password) {
+      return { success: false, message: 'Please enter both your registered email and password.' };
+    }
+
     const users = getUsers();
-    const user = users.find(u => u.email.toLowerCase() === email.trim().toLowerCase());
+    const cleanEmail = email.trim().toLowerCase();
+    const user = users.find(u => u && u.email && u.email.trim().toLowerCase() === cleanEmail);
+    
+    // User must register first
     if (!user) {
-      return { success: false, message: 'Account not found. Please register first.' };
+      return { 
+        success: false, 
+        message: 'Account not found! Please create an account on the Registration page first.' 
+      };
     }
-    if (user.password !== password) {
-      return { success: false, message: 'Invalid password. Please try again.' };
+    
+    if (String(user.password).trim() !== String(password).trim()) {
+      return { 
+        success: false, 
+        message: 'Incorrect password. Please verify your password and try again.' 
+      };
     }
+
+    // Ensure avatar is strictly single first letter
+    const rawName = (user.name || '').trim();
+    user.avatar = rawName.length > 0 ? rawName.charAt(0).toUpperCase() : 'U';
+
     setCurrentUser(user);
     return { success: true, user: user };
   }
@@ -491,31 +772,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     navAuthContainers.forEach(container => {
       if (currentUser) {
-        const dashboardUrl = currentUser.role === 'seller' ? 'seller-dashboard.html' : 'dashboard.html';
-        const roleBadge = currentUser.role === 'seller' ? 'Seller' : 'Buyer';
-        const badgeColor = currentUser.role === 'seller' ? 'bg-warning text-dark' : 'bg-primary text-white';
+        const isSeller = currentUser.role === 'seller';
+        const dashboardUrl = isSeller ? 'seller-dashboard.html' : 'dashboard.html';
+        const dashboardTitle = isSeller ? 'Seller Dashboard' : 'Buyer Dashboard';
+        const roleBadge = isSeller ? 'Seller Account' : 'Buyer Account';
+        const badgeColor = isSeller ? 'bg-warning text-dark' : 'bg-primary text-white';
+        // Ensure single first letter avatar
+        const avatarLetter = (currentUser.avatar && currentUser.avatar.length === 1) 
+          ? currentUser.avatar 
+          : (currentUser.name ? currentUser.name.trim().charAt(0).toUpperCase() : 'U');
 
         container.innerHTML = `
           <div class="dropdown user-nav-dropdown">
-            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="user-avatar-sm">${currentUser.avatar || 'U'}</span>
-              <span class="d-none d-md-inline small">${currentUser.name}</span>
-              <span class="badge ${badgeColor} rounded-pill d-none d-lg-inline" style="font-size: 0.65rem;">${roleBadge}</span>
+            <button class="btn dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="user-avatar-sm">${avatarLetter}</span>
+              <span class="d-none d-md-inline small fw-semibold">${currentUser.name}</span>
+              <span class="badge ${badgeColor} rounded-pill d-none d-lg-inline" style="font-size: 0.65rem;">${isSeller ? 'Seller' : 'Buyer'}</span>
             </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow-lg">
+            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
               <li class="px-3 py-2 border-bottom">
-                <div class="fw-bold">${currentUser.name}</div>
+                <div class="fw-bold d-flex align-items-center justify-content-between">
+                  <span>${currentUser.name}</span>
+                  <span class="badge ${badgeColor} rounded-pill" style="font-size: 0.65rem;">${roleBadge}</span>
+                </div>
                 <div class="small text-muted text-truncate" style="max-width: 180px;">${currentUser.email}</div>
-                <span class="badge ${badgeColor} rounded-pill mt-1" style="font-size: 0.7rem;">${roleBadge} Account</span>
               </li>
               <li>
-                <a class="dropdown-item py-2" href="${dashboardUrl}">
-                  <i class="bi bi-speedometer2 me-2 text-primary"></i> ${currentUser.role === 'seller' ? 'Seller Hub' : 'Buyer Dashboard'}
+                <a class="dropdown-item py-2 fw-semibold" href="${dashboardUrl}">
+                  <i class="bi ${isSeller ? 'bi-car-front-fill text-warning' : 'bi-speedometer2 text-primary'} me-2"></i> ${dashboardTitle}
                 </a>
               </li>
               <li>
-                <a class="dropdown-item py-2" href="${currentUser.role === 'seller' ? 'seller-dashboard.html#inventory' : 'dashboard.html#saved'}">
-                  <i class="bi ${currentUser.role === 'seller' ? 'bi-car-front' : 'bi-heart'} me-2 text-warning"></i> ${currentUser.role === 'seller' ? 'My Listed Cars' : 'Saved Cars'}
+                <a class="dropdown-item py-2" href="${isSeller ? 'seller-dashboard.html#inventory' : 'dashboard.html#saved'}">
+                  <i class="bi ${isSeller ? 'bi-tags' : 'bi-heart'} me-2 text-secondary"></i> ${isSeller ? 'My Listed Cars' : 'Saved Cars'}
                 </a>
               </li>
               <li><hr class="dropdown-divider my-1"></li>
@@ -538,7 +827,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         container.innerHTML = `
           <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
-            <i class="bi bi-box-arrow-in-right me-1"></i> Login
+            <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
           </a>
         `;
       }
@@ -548,6 +837,82 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Auth
   getUsers();
   updateNavAuthState();
+
+  // -------------------------------------------------------------
+  // 11. Animated Number Counters (Running Count Numbers)
+  // -------------------------------------------------------------
+  function initCounters() {
+    const counterElements = document.querySelectorAll('.counter-number, [data-counter]');
+    if (!counterElements.length) return;
+
+    const animateCounter = (el) => {
+      if (el.dataset.animated === 'true') return;
+      el.dataset.animated = 'true';
+
+      const rawTarget = el.getAttribute('data-target') || el.getAttribute('data-counter');
+      const target = rawTarget ? parseFloat(rawTarget) : (parseFloat(el.textContent.replace(/[^0-9.]/g, '')) || 0);
+      const duration = parseInt(el.getAttribute('data-duration') || '1800', 10);
+      const decimals = el.hasAttribute('data-decimals') 
+        ? parseInt(el.getAttribute('data-decimals'), 10) 
+        : (target % 1 !== 0 ? 1 : 0);
+      const prefix = el.getAttribute('data-prefix') || '';
+      const suffix = el.getAttribute('data-suffix') || '';
+      const useComma = el.getAttribute('data-format') === 'comma' || (el.getAttribute('data-format') !== 'none' && target >= 1000);
+
+      let startTime = null;
+
+      const easeOutCubic = (t) => (--t) * t * t + 1;
+
+      const updateCount = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const easedProgress = easeOutCubic(progress);
+        const currentVal = easedProgress * target;
+
+        let formattedVal;
+        if (decimals > 0) {
+          formattedVal = currentVal.toFixed(decimals);
+        } else {
+          const rounded = Math.floor(currentVal);
+          formattedVal = useComma ? rounded.toLocaleString() : rounded.toString();
+        }
+
+        if (progress >= 1) {
+          if (decimals > 0) {
+            formattedVal = target.toFixed(decimals);
+          } else {
+            formattedVal = useComma ? target.toLocaleString() : target.toString();
+          }
+        }
+
+        el.textContent = `${prefix}${formattedVal}${suffix}`;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCount);
+        }
+      };
+
+      requestAnimationFrame(updateCount);
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      counterElements.forEach(el => observer.observe(el));
+    } else {
+      counterElements.forEach(el => animateCounter(el));
+    }
+  }
+
+  // Initialize Animated Counters
+  initCounters();
 
   // Expose global auth
   window.autoMarketAuth = {
@@ -561,4 +926,5 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.autoMarketToast = showToast;
+  window.initCounters = initCounters;
 });

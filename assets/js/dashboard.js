@@ -6,82 +6,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
-  // Sample catalog of vehicles for rendering saved vehicles
-  const vehicleCatalog = [
-    {
-      id: 1,
-      title: "2020 Toyota Camry LE",
-      badge: "Certified Pre-Owned",
-      badgeClass: "badge-certified",
-      price: "$19,400",
-      emi: "$295/mo",
-      mileage: "34,200 mi",
-      fuel: "Gasoline",
-      trans: "8-Speed Auto",
-      image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      id: 2,
-      title: "2018 Toyota Corolla LE",
-      badge: "Great Deal",
-      badgeClass: "badge-deal",
-      price: "$15,400",
-      emi: "$240/mo",
-      mileage: "48,100 mi",
-      fuel: "Gasoline",
-      trans: "CVT Auto",
-      image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      id: 3,
-      title: "2020 Toyota RAV4 XLE AWD",
-      badge: "Certified Crossover",
-      badgeClass: "badge-certified",
-      price: "$24,800",
-      emi: "$385/mo",
-      mileage: "39,800 mi",
-      fuel: "Gasoline",
-      trans: "Automatic",
-      image: "https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      id: 4,
-      title: "2019 Honda Civic EX",
-      badge: "Low Mileage",
-      badgeClass: "badge-featured",
-      price: "$16,950",
-      emi: "$260/mo",
-      mileage: "52,400 mi",
-      fuel: "Gasoline",
-      trans: "CVT Auto",
-      image: "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      id: 5,
-      title: "2019 Ford F-150 XLT SuperCrew 4x4",
-      badge: "Single Owner",
-      badgeClass: "badge-deal",
-      price: "$32,500",
-      emi: "$495/mo",
-      mileage: "45,600 mi",
-      fuel: "EcoBoost V6",
-      trans: "10-Speed",
-      image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      id: 6,
-      title: "2019 Volkswagen Polo 1.0 TSI",
-      badge: "200-Pt Passed",
-      badgeClass: "badge-certified",
-      price: "$14,800",
-      emi: "$230/mo",
-      mileage: "41,800 mi",
-      fuel: "Gasoline",
-      trans: "Automatic",
-      image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80"
-    }
-  ];
-
   // -------------------------------------------------------------
   // 1. Render Saved Vehicles in Dashboard Tab
   // -------------------------------------------------------------
@@ -92,16 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderSavedVehicles() {
     if (!savedCarsContainer) return;
 
+    const catalog = (typeof window.AUTOMARKET_CARS !== 'undefined' && window.AUTOMARKET_CARS.length > 0)
+      ? window.AUTOMARKET_CARS
+      : [
+          { id: 101, title: "2021 Toyota RAV4 XLE AWD", badges: [{text: "Certified", type: "certified"}], price: 26500, emi: 395, mileage: "28,400 mi", fuelType: "Gasoline", transmission: "8-Speed Auto", images: { hero: "assets/images/categories/suv-1.jpg" } },
+          { id: 201, title: "2020 Toyota Camry LE", badges: [{text: "Certified", type: "certified"}], price: 19400, emi: 295, mileage: "34,200 mi", fuelType: "Gasoline", transmission: "8-Speed Auto", images: { hero: "assets/images/categories/sedan-1.jpg" } }
+        ];
+
     let favIds = [];
     try {
-      favIds = JSON.parse(localStorage.getItem('automarket_favorites')) || [1, 3];
+      favIds = JSON.parse(localStorage.getItem('automarket_favorites')) || [101, 201];
     } catch {
-      favIds = [1, 3];
+      favIds = [101, 201];
     }
 
     if (savedCountStat) savedCountStat.textContent = favIds.length;
 
-    const matchedVehicles = vehicleCatalog.filter(v => favIds.includes(v.id));
+    const matchedVehicles = catalog.filter(v => favIds.includes(v.id));
 
     if (matchedVehicles.length === 0) {
       savedCarsContainer.innerHTML = '';
@@ -115,30 +46,27 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="col-md-6 col-lg-4 mb-4" id="saved-card-${car.id}">
         <div class="car-card">
           <div class="car-card-img-wrap">
-            <img src="${car.image}" alt="${car.title}" loading="lazy">
-            <div class="car-badge-stack">
-              <span class="badge-custom ${car.badgeClass}">${car.badge}</span>
-            </div>
+            <img src="${car.images ? car.images.hero : car.image}" alt="${car.title}" loading="lazy">
             <button class="car-favorite-btn active text-danger" title="Remove from wishlist" onclick="removeDashboardSaved(${car.id})">
               <i class="bi bi-trash3-fill"></i>
             </button>
           </div>
           <div class="car-card-body">
             <h3 class="car-card-title">
-              <a href="car-details.html">${car.title}</a>
+              <a href="car-details.html?id=${car.id}">${car.title}</a>
             </h3>
             <div class="car-card-specs">
               <div class="spec-item"><i class="bi bi-speedometer2"></i><span>${car.mileage}</span></div>
-              <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>${car.fuel}</span></div>
-              <div class="spec-item"><i class="bi bi-gear"></i><span>${car.trans}</span></div>
+              <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>${car.fuelType ? car.fuelType.split(' ')[0] : 'Gasoline'}</span></div>
+              <div class="spec-item"><i class="bi bi-gear"></i><span>${car.transmission ? car.transmission.split(' ')[0] : 'Auto'}</span></div>
             </div>
             <div class="car-card-footer">
               <div class="car-price-wrap">
-                <div class="price-main">${car.price}</div>
-                <div class="price-emi">Est. ${car.emi}</div>
+                <div class="price-main">$${typeof car.price === 'number' ? car.price.toLocaleString() : car.price}</div>
+                <div class="price-emi">Est. $${car.emi}/mo</div>
               </div>
-              <a href="car-details.html" class="btn btn-sm btn-primary-custom">
-                View Car
+              <a href="car-details.html?id=${car.id}" class="btn btn-sm btn-primary-custom">
+                View Details
               </a>
             </div>
           </div>
@@ -233,9 +161,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // -------------------------------------------------------------
   // 4. Session & User Role Synchronization
   // -------------------------------------------------------------
-  if (window.autoMarketAuth) {
-    const user = window.autoMarketAuth.getCurrentUser();
+  function syncDashboardUser() {
+    let user = null;
+    if (window.autoMarketAuth && typeof window.autoMarketAuth.getCurrentUser === 'function') {
+      user = window.autoMarketAuth.getCurrentUser();
+    }
+    if (!user) {
+      try {
+        const stored = localStorage.getItem('automarket_current_user');
+        if (stored) user = JSON.parse(stored);
+      } catch (e) {}
+    }
+
     if (user) {
+      const firstLetter = (user.name && user.name.trim().length > 0) ? user.name.trim().charAt(0).toUpperCase() : 'U';
+      document.querySelectorAll('.dash-user-avatar-display').forEach(el => el.textContent = firstLetter);
       document.querySelectorAll('.dash-user-name-display').forEach(el => el.textContent = user.name);
       document.querySelectorAll('.dash-user-email-display').forEach(el => el.textContent = user.email);
 
@@ -244,18 +184,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (nameInput) nameInput.value = user.name;
       if (emailInput) emailInput.value = user.email;
 
-      // STRICT ROLE GUARD: If a seller visits the buyer dashboard, strictly route them to seller-dashboard.html
+      // STRICT ROLE GUARD: If a seller visits the buyer dashboard, route them to seller-dashboard.html
       if (user.role === 'seller') {
         if (window.autoMarketToast) {
-          window.autoMarketToast(`Seller account detected (${user.name}). Redirecting to your Seller Dashboard...`, 'warning');
+          window.autoMarketToast(`Seller account detected (${user.name}). Opening your Seller Dashboard...`, 'warning');
         }
         setTimeout(() => {
           window.location.href = 'seller-dashboard.html';
-        }, 1000);
-        return;
+        }, 800);
       }
     }
   }
+
+  syncDashboardUser();
 
   // Universal logout buttons on dashboard
   document.querySelectorAll('.dash-logout-btn').forEach(btn => {
