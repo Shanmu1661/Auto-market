@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instant Trade-In & Cash Buyout | AutoMarket</title>
+  <meta name="description" content="Get an instant market-backed cash offer for your used car with a 7-day price lock, free doorstep pickup, zero DMV paperwork, and same-day direct payment.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Common Header -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg py-2">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="assets/images/logo.svg" alt="AutoMarket Logo" class="navbar-brand-logo">
+        </a>
+        
+        <button class="navbar-toggler border-0 d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu shadow-sm" aria-labelledby="homeDropdown">
+                <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-door me-2"></i>Home 1 - Marketplace</a></li>
+                <li><a class="dropdown-item" href="index-2.html"><i class="bi bi-buildings me-2"></i>Home 2 - Dealership</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="inventory.html">Browse Cars</a></li>
+            <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="navbar-footer-tools d-flex align-items-center justify-content-between justify-content-lg-end gap-2 mt-3 mt-lg-0 pt-3 pt-lg-0">
+            <div class="nav-toggles-group d-flex align-items-center gap-2">
+              <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL / LTR Language">
+                <i class="bi bi-translate"></i>
+              </button>
+              <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
+                <i class="bi bi-moon-stars-fill"></i>
+              </button>
+            </div>
+            <div class="nav-auth-container">
+              <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero Banner -->
+    <section class="py-5 text-white" style="background: linear-gradient(rgba(9, 30, 58, 0.88), rgba(30, 41, 59, 0.90)), url('assets/images/features/feature-tradein.jpg') center center / cover no-repeat;">
+      <div class="container py-4">
+        <nav aria-label="breadcrumb" class="mb-3">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html" class="text-light">Home</a></li>
+            <li class="breadcrumb-item"><a href="services.html" class="text-light">Services</a></li>
+            <li class="breadcrumb-item active text-white" aria-current="page">Trade-In & Buyout</li>
+          </ol>
+        </nav>
+        <div class="row">
+          <div class="col-lg-8">
+            <span class="badge-custom badge-featured mb-2"><i class="bi bi-arrow-left-right"></i> Guaranteed Best Market Offer</span>
+            <h1 class="display-5 fw-bold text-white mb-3">Instant Trade-In Valuation & 100% Cash Buyout</h1>
+            <p class="lead text-light opacity-90 mb-4">
+              Get an algorithmic, real-time cash offer for your car in 60 seconds. Lock in your valuation for 7 days, get free doorstep vehicle pickup, and receive payment via direct wire or dealer equity credit.
+            </p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="#valuationToolSection" class="btn btn-secondary-custom btn-lg-custom">
+                <i class="bi bi-lightning-fill me-2"></i> Get Instant Cash Offer
+              </a>
+              <a href="#howTradeInWorks" class="btn btn-outline-light btn-lg-custom">
+                <i class="bi bi-question-circle me-2"></i> How It Works
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Instant Valuation Tool -->
+    <section class="section-padding" id="valuationToolSection">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="card border-0 shadow-lg p-4 p-md-5" style="background-color: var(--bg-surface); border-radius: var(--radius-xl); border: 1px solid var(--border-color) !important;">
+              <div class="text-center mb-4">
+                <span class="section-tag">Instant Appraisal</span>
+                <h2 class="fw-bold">Calculate Your Car's Instant Cash Value</h2>
+                <p class="text-muted small mx-auto" style="max-width: 550px;">
+                  Enter your vehicle specs to receive a real-time market appraisal based on live wholesale and retail transaction data.
+                </p>
+              </div>
+
+              <form id="tradeInEstimatorForm" class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label fw-bold small">Model Year</label>
+                  <select class="form-select" id="valYear" required>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021" selected>2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-bold small">Make</label>
+                  <select class="form-select" id="valMake" required>
+                    <option value="Toyota" selected>Toyota</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Ford">Ford</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    <option value="Tesla">Tesla</option>
+                    <option value="Audi">Audi</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-bold small">Model & Trim</label>
+                  <input type="text" class="form-control" id="valModel" placeholder="e.g. Camry XLE / Civic Touring" value="Camry SE" required>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label fw-bold small">Approx. Mileage</label>
+                  <input type="number" class="form-control" id="valMileage" placeholder="e.g. 35000" value="32000" required>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-bold small">Overall Condition</label>
+                  <select class="form-select" id="valCondition" required>
+                    <option value="1.05">Excellent (Flawless paint & interior)</option>
+                    <option value="1.00" selected>Very Good (Minor normal wear)</option>
+                    <option value="0.92">Good (Small dings, clean title)</option>
+                    <option value="0.80">Fair (Mechanical/cosmetic needs)</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-bold small">ZIP Code</label>
+                  <input type="text" class="form-control" id="valZip" placeholder="e.g. 90210" value="90401" required>
+                </div>
+
+                <div class="col-12 text-center mt-4">
+                  <button type="button" id="btnCalculateValuation" class="btn btn-primary-custom btn-lg-custom px-5">
+                    <i class="bi bi-speedometer2 me-2"></i> Compute Instant Cash Value
+                  </button>
+                </div>
+              </form>
+
+              <!-- Result Output Display -->
+              <div id="valuationResultBox" class="mt-4 p-4 rounded-4 border text-center" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.04) 0%, rgba(16, 185, 129, 0.05) 100%); border-color: var(--primary) !important;">
+                <span class="badge bg-success text-white px-3 py-1 rounded-pill mb-2"><i class="bi bi-lock-fill me-1"></i> 7-Day Guaranteed Offer</span>
+                <h6 class="text-muted text-uppercase small fw-bold">Instant Buyout Valuation</h6>
+                <div class="display-4 fw-bold text-primary my-1" id="resOfferAmount">$21,450 - $23,100</div>
+                <p class="text-muted small mb-3">Estimated based on regional live auctions and direct dealer buyout demand in <span id="resZipCode">90401</span>.</p>
+
+                <div class="row g-3 justify-content-center text-start max-w-600 mx-auto mb-3">
+                  <div class="col-sm-6">
+                    <div class="p-3 bg-white dark-card-bg rounded-3 border small">
+                      <div class="text-muted">Direct Cash / Wire Out:</div>
+                      <strong class="fs-5 text-dark" id="resCashWire">$21,450</strong>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="p-3 bg-white dark-card-bg rounded-3 border border-success small">
+                      <div class="text-success fw-bold">Trade-In Bonus Equity:</div>
+                      <strong class="fs-5 text-success" id="resTradeBonus">$22,650</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                  <a href="#completeAppraisalForm" class="btn btn-primary-custom">
+                    <i class="bi bi-check2-circle me-1"></i> Lock In Cash Offer Now
+                  </a>
+                  <a href="inventory.html" class="btn btn-outline-custom">
+                    <i class="bi bi-car-front me-1"></i> Apply Equity to Inventory
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table: Us vs Dealership vs Private -->
+    <section class="section-padding bg-body-tertiary">
+      <div class="container">
+        <div class="text-center section-title-wrap">
+          <span class="section-tag">Direct Comparison</span>
+          <h2>Why AutoMarket Buyout Beats Dealerships & Private Sale</h2>
+          <p class="text-muted mx-auto" style="max-width: 600px;">
+            Sell your car without lowball dealer trade-in traps or strangers test-driving at your home.
+          </p>
+        </div>
+
+        <div class="table-responsive shadow-sm rounded-4 overflow-hidden border" style="background-color: var(--bg-surface); border-color: var(--border-color) !important;">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-dark">
+              <tr>
+                <th class="py-3 px-4" style="width: 35%;">Selling Feature</th>
+                <th class="py-3 px-4 bg-primary text-white text-center" style="width: 25%;">AutoMarket Cash Buyout</th>
+                <th class="py-3 px-4 text-center" style="width: 20%;">Traditional Dealer</th>
+                <th class="py-3 px-4 text-center" style="width: 20%;">Private Sale (Online)</th>
+              </tr>
+            </thead>
+            <tbody class="small">
+              <tr>
+                <td class="px-4 fw-semibold"><i class="bi bi-clock me-2 text-primary"></i> Time to Complete Sale</td>
+                <td class="px-4 text-center fw-bold text-success bg-primary bg-opacity-10">Under 24 Hours</td>
+                <td class="px-4 text-center text-muted">4 - 8 Hours of Haggling</td>
+                <td class="px-4 text-center text-muted">3 - 6 Weeks</td>
+              </tr>
+              <tr>
+                <td class="px-4 fw-semibold"><i class="bi bi-currency-dollar me-2 text-success"></i> Valuation Transparency</td>
+                <td class="px-4 text-center fw-bold text-success bg-primary bg-opacity-10">100% Market Algorithmic</td>
+                <td class="px-4 text-center text-danger">Lowball Wholesale Offers</td>
+                <td class="px-4 text-center text-muted">Uncertain & High Risk</td>
+              </tr>
+              <tr>
+                <td class="px-4 fw-semibold"><i class="bi bi-truck me-2 text-info"></i> Vehicle Pickup & Paperwork</td>
+                <td class="px-4 text-center fw-bold text-success bg-primary bg-opacity-10">Free Doorstep Pickup & DMV Transfer</td>
+                <td class="px-4 text-center text-muted">Must Drive to Dealership</td>
+                <td class="px-4 text-center text-danger">Self DMV Lines & Title Risks</td>
+              </tr>
+              <tr>
+                <td class="px-4 fw-semibold"><i class="bi bi-shield-check me-2 text-warning"></i> Payment Security</td>
+                <td class="px-4 text-center fw-bold text-success bg-primary bg-opacity-10">Instant Bank Wire / Escrow</td>
+                <td class="px-4 text-center text-muted">Delayed Dealer Check</td>
+                <td class="px-4 text-center text-danger">High Check/Scam Risk</td>
+              </tr>
+              <tr>
+                <td class="px-4 fw-semibold"><i class="bi bi-bank me-2 text-danger"></i> Existing Loan / Lien Payoff</td>
+                <td class="px-4 text-center fw-bold text-success bg-primary bg-opacity-10">We Pay Off Bank Direct</td>
+                <td class="px-4 text-center text-muted">Limited / High Fees</td>
+                <td class="px-4 text-center text-danger">Complicated for Buyers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works in 3 Steps -->
+    <section class="section-padding" id="howTradeInWorks">
+      <div class="container">
+        <div class="text-center section-title-wrap">
+          <span class="section-tag">3 Simple Steps</span>
+          <h2>How Selling Or Trading In Works</h2>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="step-card step-card-with-bg" style="background-image: url('assets/images/steps/step-browse.jpg');">
+              <div class="step-badge">01</div>
+              <h5 class="fw-bold">Get Instant Valuation</h5>
+              <p class="small mb-0">Enter your VIN or plate number to generate an algorithmic 7-day guaranteed price offer.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="step-card step-card-with-bg" style="background-image: url('assets/images/steps/step-report.jpg');">
+              <div class="step-badge">02</div>
+              <h5 class="fw-bold">15-Minute Verification</h5>
+              <p class="small mb-0">Our mobile appraiser confirms vehicle condition at your driveway or local partner hub.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="step-card step-card-with-bg" style="background-image: url('assets/images/steps/step-deal.jpg');">
+              <div class="step-badge">03</div>
+              <h5 class="fw-bold">Get Paid on the Spot</h5>
+              <p class="small mb-0">Receive instant bank direct deposit or transfer positive equity directly to your new car purchase.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lock In Final Appraisal Form -->
+    <section class="section-padding bg-body-tertiary" id="completeAppraisalForm">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card border-0 shadow-sm p-4 p-md-5" style="background-color: var(--bg-surface); border-radius: var(--radius-lg); border: 1px solid var(--border-color) !important;">
+              <div class="text-center mb-4">
+                <span class="badge-custom badge-featured mb-2"><i class="bi bi-patch-check-fill"></i> Guaranteed 7-Day Lock</span>
+                <h3 class="fw-bold">Lock In Your Official Buyout Offer</h3>
+                <p class="text-muted small">Provide VIN or license plate for binding vehicle inspection appointment.</p>
+              </div>
+
+              <form id="finalOfferAppForm">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold small">Full Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" required placeholder="e.g. David Garcia">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold small">Phone Number <span class="text-danger">*</span></label>
+                    <input type="tel" class="form-control" required placeholder="(555) 000-0000">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold small">Email Address <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" required placeholder="david@example.com">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold small">Vehicle VIN or License Plate <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control font-monospace" required placeholder="17-Digit VIN or Plate & State">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold small">Do you have an existing auto loan?</label>
+                    <select class="form-select">
+                      <option value="no">No - Title in hand (Paid off)</option>
+                      <option value="yes">Yes - Outstanding bank loan / lease</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold small">Preferred Pickup / Drop-off City</label>
+                    <input type="text" class="form-control" placeholder="e.g. Los Angeles, CA" required>
+                  </div>
+                  <div class="col-12 mt-4">
+                    <button type="submit" class="btn btn-primary-custom btn-lg-custom w-100">
+                      <i class="bi bi-shield-lock-fill me-2"></i> Lock In 7-Day Guaranteed Offer & Schedule Pickup
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              <div id="finalOfferSuccessAlert" class="alert alert-success d-none mt-4 text-center">
+                <i class="bi bi-check-circle-fill fs-3 text-success d-block mb-2"></i>
+                <h5 class="fw-bold mb-1">Official Offer Code Generated!</h5>
+                <p class="small mb-0">Your offer code is <strong>#AM-BUY-8924</strong>. An AutoMarket mobile appraisal coordinator will contact you within 15 minutes to confirm doorstep pickup.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="text-center section-title-wrap">
+          <span class="section-tag">Frequently Asked</span>
+          <h2>Common Questions About Selling & Trade-Ins</h2>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="accordion" id="tradeInFaqAccordion">
+              <div class="accordion-item mb-3 border-0 shadow-sm rounded-3 overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tFaq1">
+                    What if I still owe money on my current car loan?
+                  </button>
+                </h2>
+                <div id="tFaq1" class="accordion-collapse collapse" data-bs-parent="#tradeInFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    No problem! We contact your lender directly to obtain a 10-day payoff quote. We pay off your bank directly, and if your car is worth more than the loan balance, we cut you a check for the remaining positive equity.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item mb-3 border-0 shadow-sm rounded-3 overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tFaq2">
+                    How quickly do I receive payment?
+                  </button>
+                </h2>
+                <div id="tFaq2" class="accordion-collapse collapse" data-bs-parent="#tradeInFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Payment is initiated immediately on the spot via instant direct bank deposit (ACH/wire) or official cashier's check once the quick 15-minute physical condition verification is finalized.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item mb-3 border-0 shadow-sm rounded-3 overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tFaq3">
+                    Can I trade in my car for one in your inventory?
+                  </button>
+                </h2>
+                <div id="tFaq3" class="accordion-collapse collapse" data-bs-parent="#tradeInFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Yes! You can apply your trade-in equity directly as a down payment toward any vehicle in our inventory, which also reduces state sales tax in eligible states.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 text-white text-center" style="background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);">
+      <div class="container py-4">
+        <h2 class="fw-bold mb-3">Upgrade Your Ride Today</h2>
+        <p class="lead opacity-90 mx-auto mb-4" style="max-width: 600px;">
+          Browse our certified showroom and apply your trade-in equity with one click.
+        </p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+          <a href="inventory.html" class="btn btn-light btn-lg-custom text-primary fw-bold">
+            <i class="bi bi-grid me-2"></i> Browse Certified Cars
+          </a>
+          <a href="contact.html" class="btn btn-outline-light btn-lg-custom">
+            <i class="bi bi-headset me-2"></i> Speak with Appraisal Specialist
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Common Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4 mb-5">
+        <div class="col-lg-4 col-md-6">
+          <a href="index.html" class="d-inline-block mb-3 footer-logo-link">
+            <img src="assets/images/logo-dark.svg" alt="AutoMarket Logo" class="site-footer-logo">
+          </a>
+          <p class="site-footer-text">
+            AutoMarket is the most trusted digital dealership platform for verified pre-owned vehicles, 200-point physical inspections, transparent financing, and nationwide delivery.
+          </p>
+          <div class="site-footer-socials d-flex gap-2 mt-3">
+            <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle text-light"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle text-light"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle text-light"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle text-light"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle text-light"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-6">
+          <h5 class="site-footer-title">Quick Links</h5>
+          <ul class="site-footer-links list-unstyled">
+            <li><a href="index.html">Home Marketplace</a></li>
+            <li><a href="index-2.html">Dealership Showroom</a></li>
+            <li><a href="inventory.html">Browse All Cars</a></li>
+            <li><a href="services.html">Services Overview</a></li>
+            <li><a href="pricing.html">Pricing Packages</a></li>
+            <li><a href="about.html">About AutoMarket</a></li>
+            <li><a href="contact.html">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-6">
+          <h5 class="site-footer-title">Specialized Services</h5>
+          <ul class="site-footer-links list-unstyled">
+            <li><a href="service-details.html">200-Point Inspection</a></li>
+            <li><a href="service-financing.html">Low APR Financing</a></li>
+            <li><a href="service-tradein.html">Trade-In & Buyout</a></li>
+            <li><a href="service-warranty.html">Warranty Protection</a></li>
+            <li><a href="service-logistics.html">Nationwide Shipping</a></li>
+            <li><a href="service-escrow.html">Title & DMV Escrow</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="site-footer-title">Showroom & Hours</h5>
+          <p class="site-footer-text mb-1"><i class="bi bi-geo-alt text-primary me-2"></i> 100 Wilshire Blvd, Suite 1800, Santa Monica, CA 90401</p>
+          <p class="site-footer-text mb-1"><i class="bi bi-telephone text-primary me-2"></i> (800) 555-AUTO (2886)</p>
+          <p class="site-footer-text mb-3"><i class="bi bi-envelope text-primary me-2"></i> tradein@automarket.com</p>
+          <div class="p-2 bg-dark rounded-3 border border-secondary border-opacity-25 small">
+            <div class="text-white fw-bold"><i class="bi bi-clock me-1 text-warning"></i> Appraisal Desk:</div>
+            <div class="text-light opacity-75">Mon - Sat: 8:00 AM - 8:00 PM EST</div>
+            <div class="text-light opacity-75">Sunday: 10:00 AM - 5:00 PM EST</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-secondary border-opacity-25 my-4">
+
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 text-muted small">
+        <div>© 2026 AutoMarket Inc. All rights reserved. Licensed Automotive Dealer & Broker.</div>
+        <div class="d-flex gap-3">
+          <a href="#" class="text-muted text-decoration-none">Privacy Policy</a>
+          <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
+          <a href="#" class="text-muted text-decoration-none">Appraisal Disclosures</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnCalc = document.getElementById('btnCalculateValuation');
+      const valYear = document.getElementById('valYear');
+      const valMake = document.getElementById('valMake');
+      const valMileage = document.getElementById('valMileage');
+      const valCondition = document.getElementById('valCondition');
+      const valZip = document.getElementById('valZip');
+
+      const resOfferAmount = document.getElementById('resOfferAmount');
+      const resZipCode = document.getElementById('resZipCode');
+      const resCashWire = document.getElementById('resCashWire');
+      const resTradeBonus = document.getElementById('resTradeBonus');
+
+      function calculateValuation() {
+        const year = parseInt(valYear.value, 10);
+        const mileage = parseFloat(valMileage.value) || 30000;
+        const conditionMultiplier = parseFloat(valCondition.value);
+        const zip = valZip.value || '90401';
+
+        // Base price estimation heuristic
+        const age = Math.max(1, 2026 - year);
+        let baseVal = 32000;
+        if (valMake.value === 'BMW' || valMake.value === 'Mercedes-Benz' || valMake.value === 'Tesla' || valMake.value === 'Audi') {
+          baseVal = 46000;
+        } else if (valMake.value === 'Ford' || valMake.value === 'Chevrolet') {
+          baseVal = 28000;
+        }
+
+        const depreciated = baseVal * Math.pow(0.88, age);
+        const mileagePenalty = Math.max(0, (mileage - (age * 12000)) * 0.12);
+        const estimatedBase = Math.max(4500, (depreciated - mileagePenalty) * conditionMultiplier);
+
+        const lowOffer = Math.round(estimatedBase * 0.95 / 50) * 50;
+        const highOffer = Math.round(estimatedBase * 1.05 / 50) * 50;
+        const tradeBonus = Math.round(highOffer * 1.06 / 50) * 50;
+
+        resOfferAmount.textContent = `$${lowOffer.toLocaleString()} - $${highOffer.toLocaleString()}`;
+        resZipCode.textContent = zip;
+        resCashWire.textContent = `$${lowOffer.toLocaleString()}`;
+        resTradeBonus.textContent = `$${tradeBonus.toLocaleString()}`;
+      }
+
+      if (btnCalc) {
+        btnCalc.addEventListener('click', calculateValuation);
+      }
+
+      const form = document.getElementById('finalOfferAppForm');
+      const alertBox = document.getElementById('finalOfferSuccessAlert');
+      if (form && alertBox) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alertBox.classList.remove('d-none');
+          alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          form.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

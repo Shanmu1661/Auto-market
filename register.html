@@ -7,6 +7,11 @@
   <meta name="description" content="Register an AutoMarket account to access your Buyer or Seller Dashboard, save vehicles, and list cars for sale.">
 
   <!-- Fonts & Icons -->
+    <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -350,23 +355,18 @@
             users.push(socialUser);
             localStorage.setItem('automarket_users', JSON.stringify(users));
           }
-          localStorage.setItem('automarket_current_user', JSON.stringify(socialUser));
         } catch (e) {
           console.error(e);
         }
 
-        if (window.autoMarketAuth && typeof window.autoMarketAuth.setCurrentUser === 'function') {
-          window.autoMarketAuth.setCurrentUser(socialUser);
-        }
-
-        showAlert(`<i class="bi bi-check-circle-fill me-1 text-success"></i> Signed up with ${provider} as ${roleLabel}! Redirecting to dashboard...`, 'success');
+        showAlert(`<i class="bi bi-check-circle-fill me-1 text-success"></i> Signed up with ${provider} as ${roleLabel}! Redirecting to Sign In...`, 'success');
         if (window.autoMarketToast) {
-          window.autoMarketToast(`Signed up with ${provider} as ${roleLabel}! Redirecting to dashboard...`, 'success');
+          window.autoMarketToast(`Signed up with ${provider}! Redirecting to Sign In...`, 'success');
         }
 
         setTimeout(() => {
-          window.location.href = targetDashboard;
-        }, 450);
+          window.location.href = `login.html?registered=true&email=${encodeURIComponent(dummyEmail)}&role=${selectedRole}&name=${encodeURIComponent(dummyName)}`;
+        }, 600);
       }
 
       if (googleRegBtn) {
@@ -435,7 +435,6 @@
               };
               users.push(newUser);
               localStorage.setItem('automarket_users', JSON.stringify(users));
-              localStorage.setItem('automarket_current_user', JSON.stringify(newUser));
               result = { success: true, user: newUser };
             }
           } catch (err) {
@@ -445,18 +444,34 @@
 
         if (result && result.success) {
           const user = result.user;
-          const targetDashboard = role === 'seller' ? 'seller-dashboard.html' : 'dashboard.html';
-          const dashboardTitle = role === 'seller' ? 'Seller Dashboard' : 'Buyer Dashboard';
+          const pendingFav = sessionStorage.getItem('automarket_pending_fav');
+          const redirectUrl = sessionStorage.getItem('automarket_redirect_after_login');
 
-          showAlert(`<i class="bi bi-check-circle-fill me-1 text-success"></i> Account registered successfully as ${role === 'seller' ? 'Seller' : 'Buyer'}! Opening ${dashboardTitle}...`, 'success');
-
-          if (window.autoMarketToast) {
-            window.autoMarketToast(`Account registered successfully as ${role === 'seller' ? 'Seller' : 'Buyer'}! Opening ${dashboardTitle}...`, 'success');
+          if (pendingFav) {
+            const carId = parseInt(pendingFav, 10);
+            if (carId) {
+              const favKey = `automarket_favorites_${user.id}`;
+              let userFavs = JSON.parse(localStorage.getItem(favKey) || localStorage.getItem('automarket_favorites') || '[]');
+              if (!userFavs.includes(carId)) {
+                userFavs.push(carId);
+                localStorage.setItem(favKey, JSON.stringify(userFavs));
+                localStorage.setItem('automarket_favorites', JSON.stringify(userFavs));
+              }
+            }
+            sessionStorage.removeItem('automarket_pending_fav');
           }
 
+          showAlert(`<i class="bi bi-check-circle-fill me-1 text-success"></i> Account registered successfully! Redirecting to Sign In...`, 'success');
+
+          if (window.autoMarketToast) {
+            window.autoMarketToast(`Account registered successfully! Redirecting to Sign In...`, 'success');
+          }
+
+          const loginUrl = `login.html?registered=true&email=${encodeURIComponent(email)}&role=${role}&name=${encodeURIComponent(fullName)}`;
+
           setTimeout(() => {
-            window.location.href = targetDashboard;
-          }, 500);
+            window.location.href = loginUrl;
+          }, 600);
         } else {
           submitBtn.disabled = false;
           syncRoleUI();

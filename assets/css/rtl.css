@@ -8,6 +8,101 @@
   text-align: right;
 }
 
+/* Universal BiDi Text & Punctuation Natural Flow Fix */
+[dir="rtl"] p,
+[dir="rtl"] .lead,
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6,
+[dir="rtl"] .h1, [dir="rtl"] .h2, [dir="rtl"] .h3, [dir="rtl"] .h4, [dir="rtl"] .h5, [dir="rtl"] .h6,
+[dir="rtl"] li,
+[dir="rtl"] ul,
+[dir="rtl"] ol,
+[dir="rtl"] blockquote,
+[dir="rtl"] .checklist-item,
+[dir="rtl"] .checklist-item > div,
+[dir="rtl"] .checklist-item span,
+[dir="rtl"] .card-text,
+[dir="rtl"] .card-title,
+[dir="rtl"] .section-title,
+[dir="rtl"] .section-subtitle,
+[dir="rtl"] .section-tag,
+[dir="rtl"] .section-tag-light,
+[dir="rtl"] .hero-stats-badge,
+[dir="rtl"] .hero-stats-badge span,
+[dir="rtl"] .badge-custom,
+[dir="rtl"] .feature-card,
+[dir="rtl"] .feature-card p,
+[dir="rtl"] .review-text,
+[dir="rtl"] .pricing-plan-desc,
+[dir="rtl"] .pricing-feature-list li,
+[dir="rtl"] .form-label,
+[dir="rtl"] .form-text,
+[dir="rtl"] .form-control,
+[dir="rtl"] .form-select,
+[dir="rtl"] .table,
+[dir="rtl"] .table td,
+[dir="rtl"] .table th,
+[dir="rtl"] .dropdown-item,
+[dir="rtl"] .modal-body,
+[dir="rtl"] .modal-title,
+[dir="rtl"] .accordion-body,
+[dir="rtl"] .accordion-button,
+[dir="rtl"] .footer-desc,
+[dir="rtl"] .footer-links,
+[dir="rtl"] .footer-links a,
+[dir="rtl"] .alert,
+[dir="rtl"] .toast-body,
+[dir="rtl"] .calc-card,
+[dir="rtl"] .calc-card label,
+[dir="rtl"] .spec-item,
+[dir="rtl"] .seller-metric-card,
+[dir="rtl"] .dashboard-card,
+[dir="rtl"] .car-title,
+[dir="rtl"] .car-specs-grid,
+[dir="rtl"] .car-spec-item,
+[dir="rtl"] .dealership-badge,
+[dir="rtl"] .blog-card-title,
+[dir="rtl"] .blog-card-excerpt,
+[dir="rtl"] .comment-text,
+[dir="rtl"] .faq-answer {
+  direction: ltr;
+  text-align: right;
+  unicode-bidi: isolate;
+}
+
+/* Numeric, Price, and Contact Direction Isolation */
+[dir="rtl"] .car-price,
+[dir="rtl"] .price-current,
+[dir="rtl"] .spec-value,
+[dir="rtl"] .phone-number,
+[dir="rtl"] .badge-price,
+[dir="rtl"] .stat-number,
+[dir="rtl"] .vin-code,
+[dir="rtl"] bdi,
+[dir="rtl"] .isolate-bidi {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+}
+
+/* Checklist Items RTL Alignment */
+[dir="rtl"] .checklist-item {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  text-align: right;
+}
+[dir="rtl"] .checklist-item i {
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+[dir="rtl"] .checklist-item > div {
+  text-align: right;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
 /* Directional Icon Inversions */
 [dir="rtl"] .bi-arrow-right,
 [dir="rtl"] .bi-chevron-right,
@@ -170,10 +265,6 @@
 }
 
 [dir="rtl"] .auth-main-card {
-  text-align: right;
-}
-
-[dir="rtl"] #registeredAccountsHint {
   text-align: right;
 }
 

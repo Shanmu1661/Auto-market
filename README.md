@@ -47,9 +47,15 @@ usedcar-market/
 ├── car-details.html            # Car Listing Showcase (Gallery, Specs, 200-Pt Inspection)
 ├── services.html               # Automotive Services Overview
 ├── service-details.html        # 200-Point Pre-Purchase Inspection Deep Dive
+├── service-financing.html      # Low APR Auto Financing & Live Loan Calculator
+├── service-tradein.html        # Instant Trade-In & Cash Buyout Appraisal
+├── service-warranty.html       # Certified Extended Warranty Plans
+├── service-logistics.html      # Enclosed & Open Home Delivery Logistics
+├── service-escrow.html         # Clean Title & Bank-Grade DMV Escrow
+├── service-sourcing.html       # Bespoke Off-Market Sourcing & Concierge
 ├── about.html                  # About Us, Mission, Timeline & Executive Team
 ├── pricing.html                # Seller Listing Packages & Inspection Tiers
-├── blog.html                   # Used Car Buying Guides & News (Search & Filter)
+├── blog.html                   # Used Car Buying Blog (Search & Filter)
 ├── blog-details.html           # In-Depth Article with Sidebar & Comments
 ├── contact.html                # Contact Page with Form & Google Maps Placeholder
 ├── dashboard.html              # Buyer Dashboard (Profile, Saved Cars, Inquiries, Bookings)

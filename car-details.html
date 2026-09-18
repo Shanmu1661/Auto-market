@@ -6,6 +6,11 @@
   <title>2020 Toyota Camry LE - Certified Pre-Owned | AutoMarket</title>
   <meta name="description" content="View 2020 Toyota Camry LE with 34,200 miles. 200-point inspection report, CARFAX 1-owner history, warranty, and low APR financing available.">
 
+    <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -53,44 +58,38 @@
           <img src="assets/images/logo.svg" alt="AutoMarket Logo" class="navbar-brand-logo">
         </a>
         
-        <div class="d-flex align-items-center gap-2 d-lg-none">
-          <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL Layout">
-            <i class="bi bi-translate"></i>
-          </button>
-          <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
-            <i class="bi bi-moon-stars-fill"></i>
-          </button>
-          <a href="dashboard.html#saved" class="btn btn-toggle-action position-relative" title="Saved Wishlist">
-            <i class="bi bi-heart"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorites-count-badge">2</span>
-          </a>
-          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
+        <button class="navbar-toggler border-0 d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu shadow-sm" aria-labelledby="homeDropdown">
+                <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-door me-2"></i>Home 1 - Marketplace</a></li>
+                <li><a class="dropdown-item" href="index-2.html"><i class="bi bi-buildings me-2"></i>Home 2 - Dealership</a></li>
+              </ul>
+            </li>
             <li class="nav-item"><a class="nav-link active" href="inventory.html">Browse Cars</a></li>
             <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-            <li class="nav-item"><a class="nav-link" href="blog.html">Guides & News</a></li>
+            <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
 
-          <div class="d-flex align-items-center gap-2">
-            <button class="btn btn-toggle-action rtl-toggle-btn d-none d-lg-inline-flex" title="Toggle RTL Layout">
-              <i class="bi bi-translate"></i>
-            </button>
-            <button class="btn btn-toggle-action theme-toggle-btn d-none d-lg-inline-flex" title="Toggle Dark/Light Mode">
-              <i class="bi bi-moon-stars-fill"></i>
-            </button>
-            <a href="dashboard.html#saved" class="btn btn-toggle-action d-none d-lg-inline-flex position-relative" title="Saved Wishlist">
-              <i class="bi bi-heart"></i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorites-count-badge">2</span>
-            </a>
+          <div class="navbar-footer-tools d-flex align-items-center justify-content-between justify-content-lg-end gap-2 mt-3 mt-lg-0 pt-3 pt-lg-0">
+            <div class="nav-toggles-group d-flex align-items-center gap-2">
+              <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL / LTR Language">
+                <i class="bi bi-translate"></i>
+              </button>
+              <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
+                <i class="bi bi-moon-stars-fill"></i>
+              </button>
+            </div>
             <div class="nav-auth-container">
               <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
                 <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
@@ -133,8 +132,8 @@
       <div class="row g-4 mb-5">
         <div class="col-lg-8">
           <!-- Main Hero Image -->
-          <div class="position-relative rounded-4 overflow-hidden shadow-sm mb-4" style="max-height: 520px; background: #000;">
-            <img id="mainVehicleImg" src="assets/images/cars/camry.jpg" alt="2020 Toyota Camry LE" class="w-100 h-100 object-fit-cover">
+          <div class="position-relative rounded-4 overflow-hidden shadow-sm mb-4" style="background: #111;">
+            <img id="mainVehicleImg" src="assets/images/cars/camry.jpg" alt="2020 Toyota Camry LE" class="w-100 object-fit-cover">
             <button class="car-favorite-btn" data-car-id="1" aria-label="Save this car" style="top: 16px; right: 16px;">
               <i class="bi bi-heart"></i>
             </button>
@@ -181,29 +180,29 @@
           <div class="card border-0 shadow-sm p-4 mb-4" style="background-color: var(--bg-surface); border-radius: var(--radius-lg); border: 1px solid var(--border-color) !important;">
             <h5 class="fw-bold mb-3">Vehicle Summary</h5>
             
-            <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
-              <span class="text-muted"><i class="bi bi-speedometer2 me-1"></i> Miles Covered</span>
-              <strong id="summaryMiles">34,200 miles</strong>
+            <div class="d-flex justify-content-between align-items-center py-2 border-bottom border-secondary border-opacity-10 small gap-2">
+              <span class="text-muted text-nowrap"><i class="bi bi-speedometer2 me-1"></i> Miles Covered</span>
+              <strong id="summaryMiles" class="text-end">34,200 miles</strong>
             </div>
-            <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
-              <span class="text-muted"><i class="bi bi-fuel-pump me-1"></i> Fuel Type</span>
-              <strong id="summaryFuelType">Gasoline</strong>
+            <div class="d-flex justify-content-between align-items-center py-2 border-bottom border-secondary border-opacity-10 small gap-2">
+              <span class="text-muted text-nowrap"><i class="bi bi-fuel-pump me-1"></i> Fuel Type</span>
+              <strong id="summaryFuelType" class="text-end">Gasoline</strong>
             </div>
-            <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
-              <span class="text-muted"><i class="bi bi-cpu me-1"></i> Engine / Powertrain</span>
-              <strong id="summaryEngine">2.5L 4-Cylinder DOHC</strong>
+            <div class="d-flex justify-content-between align-items-start py-2 border-bottom border-secondary border-opacity-10 small gap-2">
+              <span class="text-muted text-nowrap"><i class="bi bi-cpu me-1"></i> Engine / Powertrain</span>
+              <strong id="summaryEngine" class="text-end">2.5L 4-Cylinder DOHC</strong>
             </div>
-            <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
-              <span class="text-muted"><i class="bi bi-gear me-1"></i> Transmission</span>
-              <strong id="summaryTransSidebar">8-Speed Automatic</strong>
+            <div class="d-flex justify-content-between align-items-start py-2 border-bottom border-secondary border-opacity-10 small gap-2">
+              <span class="text-muted text-nowrap"><i class="bi bi-gear me-1"></i> Transmission</span>
+              <strong id="summaryTransSidebar" class="text-end">8-Speed Automatic</strong>
             </div>
-            <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
-              <span class="text-muted"><i class="bi bi-shield-check me-1 text-success"></i> Warranty</span>
-              <strong id="summaryWarranty" class="text-success">12 Mos / 12,000 Mi Included</strong>
+            <div class="d-flex justify-content-between align-items-start py-2 border-bottom border-secondary border-opacity-10 small gap-2">
+              <span class="text-muted text-nowrap"><i class="bi bi-shield-check me-1 text-success"></i> Warranty</span>
+              <strong id="summaryWarranty" class="text-success text-end">12 Mos / 12,000 Mi Included</strong>
             </div>
-            <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10 small">
-              <span class="text-muted"><i class="bi bi-upc-scan me-1"></i> VIN</span>
-              <span id="summaryVin" class="font-monospace">4T1B11HK5LU198432</span>
+            <div class="d-flex justify-content-between align-items-center py-2 border-bottom border-secondary border-opacity-10 small gap-2">
+              <span class="text-muted text-nowrap"><i class="bi bi-upc-scan me-1"></i> VIN</span>
+              <span id="summaryVin" class="font-monospace text-end">4T1B11HK5LU198432</span>
             </div>
 
             <div class="d-grid gap-2 mt-4">
@@ -451,7 +450,9 @@
 
       <div class="row g-4">
         <div class="col-lg-4 col-md-6">
-          <img src="assets/images/logo-dark.svg" alt="AutoMarket Logo" class="mb-3 navbar-brand-logo">
+          <a href="index.html" class="d-inline-block mb-3" aria-label="AutoMarket Home">
+            <img src="assets/images/logo-dark.svg" alt="AutoMarket Logo" class="navbar-brand-logo">
+          </a>
           <p class="text-light opacity-75 small">
             AutoMarket is the trusted nationwide marketplace for certified pre-owned vehicles. Every car passes our 200-point inspection with upfront, haggle-free pricing.
           </p>

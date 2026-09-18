@@ -8,6 +8,11 @@
   <meta name="keywords" content="luxury used cars, auto concierge, exotic car brokerage, porsche, mercedes amg, ferrari pre owned">
 
   <!-- Fonts & Libraries -->
+    <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -30,44 +35,38 @@
           <img src="assets/images/logo.svg" alt="AutoMarket Logo" class="navbar-brand-logo">
         </a>
         
-        <div class="d-flex align-items-center gap-2 d-lg-none">
-          <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL Layout">
-            <i class="bi bi-translate"></i>
-          </button>
-          <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
-            <i class="bi bi-moon-stars-fill"></i>
-          </button>
-          <a href="dashboard.html#saved" class="btn btn-toggle-action position-relative" title="Saved Wishlist">
-            <i class="bi bi-heart"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorites-count-badge">2</span>
-          </a>
-          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
+        <button class="navbar-toggler border-0 d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu shadow-sm" aria-labelledby="homeDropdown">
+                <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-door me-2"></i>Home 1 - Marketplace</a></li>
+                <li><a class="dropdown-item active" href="index-2.html"><i class="bi bi-buildings me-2"></i>Home 2 - Dealership</a></li>
+              </ul>
+            </li>
             <li class="nav-item"><a class="nav-link" href="inventory.html">Browse Cars</a></li>
             <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-            <li class="nav-item"><a class="nav-link" href="blog.html">Guides & News</a></li>
+            <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
 
-          <div class="d-flex align-items-center gap-2">
-            <button class="btn btn-toggle-action rtl-toggle-btn d-none d-lg-inline-flex" title="Toggle RTL Layout">
-              <i class="bi bi-translate"></i>
-            </button>
-            <button class="btn btn-toggle-action theme-toggle-btn d-none d-lg-inline-flex" title="Toggle Dark/Light Mode">
-              <i class="bi bi-moon-stars-fill"></i>
-            </button>
-            <a href="dashboard.html#saved" class="btn btn-toggle-action d-none d-lg-inline-flex position-relative" title="Saved Wishlist">
-              <i class="bi bi-heart"></i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorites-count-badge">2</span>
-            </a>
+          <div class="navbar-footer-tools d-flex align-items-center justify-content-between justify-content-lg-end gap-2 mt-3 mt-lg-0 pt-3 pt-lg-0">
+            <div class="nav-toggles-group d-flex align-items-center gap-2">
+              <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL / LTR Language">
+                <i class="bi bi-translate"></i>
+              </button>
+              <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
+                <i class="bi bi-moon-stars-fill"></i>
+              </button>
+            </div>
             <div class="nav-auth-container">
               <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
                 <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
@@ -81,7 +80,7 @@
 
   <main id="main-content">
     <!-- Split Concierge Hero Section -->
-    <section class="py-5" style="background: linear-gradient(90deg, rgba(9, 14, 23, 0.90) 0%, rgba(9, 14, 23, 0.78) 50%, rgba(23, 32, 51, 0.5) 100%), url('https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=2000&q=85') center right / cover no-repeat; color: #fff;">
+    <section class="py-5" style="background: linear-gradient(90deg, rgba(9, 14, 23, 0.90) 0%, rgba(9, 14, 23, 0.78) 50%, rgba(23, 32, 51, 0.5) 100%), url('assets/images/banners/about-banner.jpg') center right / cover no-repeat; color: #fff;">
       <div class="container py-4">
         <div class="row align-items-center g-5">
           <div class="col-lg-6">
@@ -91,10 +90,10 @@
               Direct dealership acquisitions, verified mileage history, clean CARFAX titles, and 200-point safety certifications.
             </p>
             <div class="d-flex gap-3 flex-wrap mb-4">
-              <a href="inventory.html" class="btn btn-secondary-custom btn-lg-custom">
+              <a href="inventory.html" class="btn btn-secondary-custom btn-lg-custom auth-required-btn" data-auth-action="inventory.html">
                 <i class="bi bi-collection-play me-2"></i> View Used Inventory
               </a>
-              <button class="btn btn-outline-light btn-lg-custom" data-bs-toggle="modal" data-bs-target="#bookInspectionModal">
+              <button class="btn btn-outline-light btn-lg-custom auth-required-btn" data-bs-toggle="modal" data-bs-target="#bookInspectionModal" data-auth-modal="#bookInspectionModal">
                 <i class="bi bi-person-badge me-2"></i> Request Sourcing
               </button>
             </div>
@@ -107,7 +106,7 @@
 
           <!-- Instant Valuation Card -->
           <div class="col-lg-6">
-            <div class="card border-0 shadow-xl p-4 text-dark" style="background-color: var(--bg-surface); border-radius: var(--radius-lg); border: 1px solid var(--border-color) !important;">
+            <div class="card border-0 shadow-xl p-4" style="background-color: var(--bg-surface); border-radius: var(--radius-lg); border: 1px solid var(--border-color) !important;">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h4 class="mb-0"><i class="bi bi-speedometer text-secondary me-2"></i> Instant Trade-In Valuation</h4>
                 <span class="badge bg-success-subtle text-success fw-bold">Live AI Market Value</span>
@@ -162,6 +161,81 @@
                 </button>
               </form>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Body Styles & Price Segments -->
+    <section class="section-padding bg-body-tertiary">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-4">
+          <div>
+            <span class="section-tag">Marketplace Segments</span>
+            <h2 class="mb-0">Browse by Body Style & Lifestyle</h2>
+          </div>
+          <a href="inventory.html" class="fw-semibold text-primary d-none d-sm-inline-flex align-items-center">
+            View All Categories <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
+
+        <div class="row g-3 mb-4">
+          <div class="col-6 col-md-4 col-lg-2">
+            <a href="inventory.html?body=suv" class="body-type-card p-2 text-center text-decoration-none">
+              <img src="assets/images/categories/suv-1.jpg" alt="SUVs" class="rounded-3 object-fit-cover mb-2 w-100" style="height: 78px;">
+              <div class="body-type-name fw-bold">SUVs & 4WD</div>
+              <div class="body-type-count text-muted small">840+ Listed</div>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <a href="inventory.html?body=sedan" class="body-type-card p-2 text-center text-decoration-none">
+              <img src="assets/images/categories/sedan-1.jpg" alt="Sedans" class="rounded-3 object-fit-cover mb-2 w-100" style="height: 78px;">
+              <div class="body-type-name fw-bold">Sedans</div>
+              <div class="body-type-count text-muted small">620+ Listed</div>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <a href="inventory.html?body=coupe" class="body-type-card p-2 text-center text-decoration-none">
+              <img src="assets/images/categories/coupe-1.jpg" alt="Coupes" class="rounded-3 object-fit-cover mb-2 w-100" style="height: 78px;">
+              <div class="body-type-name fw-bold">Coupe & Sport</div>
+              <div class="body-type-count text-muted small">190+ Listed</div>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <a href="inventory.html?body=truck" class="body-type-card p-2 text-center text-decoration-none">
+              <img src="assets/images/categories/truck-1.jpg" alt="Trucks" class="rounded-3 object-fit-cover mb-2 w-100" style="height: 78px;">
+              <div class="body-type-name fw-bold">Trucks & 4×4</div>
+              <div class="body-type-count text-muted small">245+ Listed</div>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <a href="inventory.html?fuel=electric" class="body-type-card p-2 text-center text-decoration-none">
+              <img src="assets/images/categories/ev-1.jpg" alt="Electric" class="rounded-3 object-fit-cover mb-2 w-100" style="height: 78px;">
+              <div class="body-type-name fw-bold">Electric & Hybrid</div>
+              <div class="body-type-count text-muted small">310+ Listed</div>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <a href="inventory.html?body=hatchback" class="body-type-card p-2 text-center text-decoration-none">
+              <img src="assets/images/cars/polo.jpg" alt="Hatchbacks" class="rounded-3 object-fit-cover mb-2 w-100" style="height: 78px;">
+              <div class="body-type-name fw-bold">Hatchbacks</div>
+              <div class="body-type-count text-muted small">140+ Listed</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Budget Filter Pills -->
+        <div class="p-3 bg-surface rounded-4 border shadow-sm d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-funnel-fill text-primary"></i>
+            <span class="fw-bold small text-body">Popular Budgets:</span>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="inventory.html?maxPrice=15000" class="badge quick-budget-pill border px-3 py-2 text-decoration-none rounded-pill">Under $15,000</a>
+            <a href="inventory.html?minPrice=15000&maxPrice=25000" class="badge quick-budget-pill border px-3 py-2 text-decoration-none rounded-pill">$15k - $25k</a>
+            <a href="inventory.html?minPrice=25000&maxPrice=40000" class="badge quick-budget-pill border px-3 py-2 text-decoration-none rounded-pill">$25k - $40k</a>
+            <a href="inventory.html?maxMileage=40000" class="badge quick-budget-pill border px-3 py-2 text-decoration-none rounded-pill">Under 40k Miles</a>
+            <a href="inventory.html?certified=true" class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 text-decoration-none rounded-pill fw-bold"><i class="bi bi-patch-check-fill me-1"></i> Certified Pre-Owned Only</a>
           </div>
         </div>
       </div>
@@ -287,7 +361,7 @@
               </div>
               <h4>Bespoke Off-Market Sourcing</h4>
               <p class="text-muted small">Looking for a specific paint-to-sample Porsche or limited edition supercar? We tap into private collector networks across North America and Europe.</p>
-              <a href="service-details.html" class="fw-bold small text-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+              <a href="service-sourcing.html" class="fw-bold small text-primary">Learn More <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
@@ -309,15 +383,88 @@
               </div>
               <h4>Enclosed Climate-Controlled Logistics</h4>
               <p class="text-muted small">Door-to-door enclosed white-glove transport directly to your garage, fully insured up to $2,000,000 during transit.</p>
-              <a href="service-details.html" class="fw-bold small text-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+              <a href="service-logistics.html" class="fw-bold small text-primary">Learn More <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Virtual Showroom Experience Teaser -->
+    <!-- The AutoMarket Advantage Matrix -->
     <section class="section-padding">
+      <div class="container">
+        <div class="text-center section-title-wrap">
+          <span class="section-tag">Market Standard</span>
+          <h2>Why Buy With AutoMarket?</h2>
+          <p class="text-muted mx-auto" style="max-width: 620px;">See how our master-certified pre-owned process outperforms traditional classifieds and independent dealers.</p>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-surface">
+          <div class="table-responsive">
+            <table class="table align-middle mb-0 text-center">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col" class="text-start ps-4" style="width: 40%;">Certification & Buyer Protections</th>
+                  <th scope="col" class="text-primary fw-bold" style="width: 25%;"><i class="bi bi-shield-fill-check me-1"></i> AutoMarket Certified</th>
+                  <th scope="col" class="text-muted" style="width: 20%;">Traditional Dealerships</th>
+                  <th scope="col" class="text-muted" style="width: 15%;">Private Sellers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-start ps-4">
+                    <div class="fw-bold">200-Point Comprehensive Mechanical Audit</div>
+                    <small class="text-muted">Frame, electronics, OBD-II diagnostic, compression test</small>
+                  </td>
+                  <td><i class="bi bi-check-circle-fill text-success fs-5"></i> <span class="fw-bold text-success d-block small">Included (Full Dossier)</span></td>
+                  <td><i class="bi bi-dash-circle text-warning fs-5"></i> <span class="text-muted d-block small">Basic Safety Check</span></td>
+                  <td><i class="bi bi-x-circle text-danger fs-5"></i> <span class="text-muted d-block small">As-Is (No Inspection)</span></td>
+                </tr>
+                <tr>
+                  <td class="text-start ps-4">
+                    <div class="fw-bold">7-Day / 400-Mile 100% Money-Back Guarantee</div>
+                    <small class="text-muted">Return the vehicle for a full refund if not completely satisfied</small>
+                  </td>
+                  <td><i class="bi bi-check-circle-fill text-success fs-5"></i> <span class="fw-bold text-success d-block small">Guaranteed Full Refund</span></td>
+                  <td><i class="bi bi-x-circle text-danger fs-5"></i> <span class="text-muted d-block small">Restocking Fee (3-15%)</span></td>
+                  <td><i class="bi bi-x-circle text-danger fs-5"></i> <span class="text-muted d-block small">Final Sale</span></td>
+                </tr>
+                <tr>
+                  <td class="text-start ps-4">
+                    <div class="fw-bold">12-Month / 12,000-Mile Powertrain Warranty</div>
+                    <small class="text-muted">Engine, transmission, drive axles, and 24/7 roadside assist</small>
+                  </td>
+                  <td><i class="bi bi-check-circle-fill text-success fs-5"></i> <span class="fw-bold text-success d-block small">Included Complimentary</span></td>
+                  <td><i class="bi bi-dash-circle text-warning fs-5"></i> <span class="text-muted d-block small">$1,500+ Dealer Add-on</span></td>
+                  <td><i class="bi bi-x-circle text-danger fs-5"></i> <span class="text-muted d-block small">None</span></td>
+                </tr>
+                <tr>
+                  <td class="text-start ps-4">
+                    <div class="fw-bold">Escrow Payment & Guaranteed Title Delivery</div>
+                    <small class="text-muted">Funds released only after vehicle acceptance and verification</small>
+                  </td>
+                  <td><i class="bi bi-check-circle-fill text-success fs-5"></i> <span class="fw-bold text-success d-block small">100% Escrow Protected</span></td>
+                  <td><i class="bi bi-check-circle-fill text-success fs-5"></i> <span class="text-muted d-block small">Dealer Finance Office</span></td>
+                  <td><i class="bi bi-x-circle text-danger fs-5"></i> <span class="text-muted d-block small">High Wire/Cash Risk</span></td>
+                </tr>
+                <tr>
+                  <td class="text-start ps-4">
+                    <div class="fw-bold">Doorstep Enclosed & Insured Nationwide Delivery</div>
+                    <small class="text-muted">Delivered straight to your driveway with live GPS tracking</small>
+                  </td>
+                  <td><i class="bi bi-check-circle-fill text-success fs-5"></i> <span class="fw-bold text-success d-block small">Available 50 States</span></td>
+                  <td><i class="bi bi-dash-circle text-warning fs-5"></i> <span class="text-muted d-block small">Lot Pickup Only</span></td>
+                  <td><i class="bi bi-x-circle text-danger fs-5"></i> <span class="text-muted d-block small">Buyer Must Arrange</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Virtual Showroom Experience Teaser -->
+    <section class="section-padding bg-body-tertiary">
       <div class="container">
         <div class="row align-items-center g-5">
           <div class="col-lg-6">
@@ -346,14 +493,257 @@
           </div>
           <div class="col-lg-6">
             <div class="position-relative rounded-4 overflow-hidden shadow-xl">
-              <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=700&q=80" alt="Interior Showroom 360 Experience" class="img-fluid w-100">
-              <div class="position-absolute top-50 start-50 translate-middle text-center">
-                <a href="inventory.html" class="btn btn-light btn-lg rounded-circle shadow-lg p-3" aria-label="Play 360 preview">
-                  <i class="bi bi-play-fill fs-2 text-primary"></i>
-                </a>
+              <img src="assets/images/banners/services-banner.jpg" alt="Interior Showroom 360 Experience" class="img-fluid w-100 object-fit-cover" style="height: 340px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Loan / EMI Financing Calculator Section -->
+    <section class="section-padding" id="emiCalculatorSection">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-5 mb-4 mb-lg-0">
+            <span class="section-tag">Financing Made Simple</span>
+            <h2>Estimate Your Monthly Auto Loan Payments</h2>
+            <p class="text-muted mb-4">
+              Get personalized financing rates with zero impact on your credit score. Adjust the price, down payment, and term to calculate your monthly installment.
+            </p>
+            <div class="checklist-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <div><strong>Competitive Rates:</strong> Prime APR financing starting as low as 4.9% for qualified buyers.</div>
+            </div>
+            <div class="checklist-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <div><strong>Pre-Approval in 2 Minutes:</strong> Fast digital approval across 30+ trusted national lending partners.</div>
+            </div>
+            <div class="checklist-item">
+              <i class="bi bi-check-circle-fill"></i>
+              <div><strong>Trade-in Equity:</strong> Apply your current vehicle's trade value directly toward your down payment.</div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="calc-card">
+              <h4 class="mb-4"><i class="bi bi-calculator me-2 text-primary"></i> Auto Loan Calculator</h4>
+              <form id="emiCalculatorForm">
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <div class="d-flex justify-content-between">
+                      <label for="calcPrice" class="form-label">Vehicle Price</label>
+                      <span class="fw-bold text-primary" id="calcPriceDisplay">$32,000</span>
+                    </div>
+                    <input type="range" class="range-slider-custom" id="calcPrice" min="5000" max="100000" step="1000" value="32000">
+                  </div>
+                  <div class="col-md-6">
+                    <div class="d-flex justify-content-between">
+                      <label for="calcDown" class="form-label">Down Payment</label>
+                      <span class="fw-bold text-primary" id="calcDownDisplay">$5,000</span>
+                    </div>
+                    <input type="range" class="range-slider-custom" id="calcDown" min="0" max="40000" step="500" value="5000">
+                  </div>
+                  <div class="col-md-6">
+                    <div class="d-flex justify-content-between">
+                      <label for="calcRate" class="form-label">Interest Rate (APR)</label>
+                      <span class="fw-bold text-primary" id="calcRateDisplay">6.5%</span>
+                    </div>
+                    <input type="range" class="range-slider-custom" id="calcRate" min="2" max="18" step="0.5" value="6.5">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="calcTerm" class="form-label">Loan Term</label>
+                    <select class="form-select" id="calcTerm">
+                      <option value="36">36 Months (3 Years)</option>
+                      <option value="48">48 Months (4 Years)</option>
+                      <option value="60" selected>60 Months (5 Years)</option>
+                      <option value="72">72 Months (6 Years)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="calc-result-box mt-4">
+                  <div class="row align-items-center">
+                    <div class="col-md-6 border-end-md">
+                      <small class="text-uppercase tracking-wider text-light opacity-75">Estimated Monthly Payment</small>
+                      <div class="calc-amount" id="calcEmiResult">$528</div>
+                      <small class="text-light opacity-75">Taxes & licensing may vary by state</small>
+                    </div>
+                    <div class="col-md-6 mt-3 mt-md-0 text-start ps-md-4">
+                      <div class="d-flex justify-content-between py-1 border-bottom border-light border-opacity-10 small">
+                        <span>Total Loan Amount:</span>
+                        <strong class="text-white" id="calcPrincipalResult">$27,000</strong>
+                      </div>
+                      <div class="d-flex justify-content-between py-1 border-bottom border-light border-opacity-10 small">
+                        <span>Total Interest:</span>
+                        <strong class="text-white" id="calcInterestResult">$4,705</strong>
+                      </div>
+                      <div class="d-flex justify-content-between py-1 small">
+                        <span>Total Repayment:</span>
+                        <strong class="text-white" id="calcTotalResult">$31,705</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Verified Customer Reviews & Testimonials -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="text-center section-title-wrap">
+          <span class="section-tag">Verified Drivers</span>
+          <h2>Real Customer Delivery Experiences</h2>
+          <p class="text-muted mx-auto" style="max-width: 540px;">Read honest feedback from drivers who purchased or sold pre-owned vehicles through AutoMarket.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="testimonial-card h-100">
+              <div class="text-warning mb-3">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p class="fst-italic text-body mb-4">"The 200-point inspection gave me complete confidence. The car arrived in pristine shape, exactly as shown in the 360 virtual walkaround with clean CARFAX."</p>
+              <div class="d-flex align-items-center gap-3 mt-auto">
+                <div class="rounded-circle bg-primary text-white fw-bold d-flex align-items-center justify-content-center shadow-sm" style="width: 44px; height: 44px; font-size: 1.1rem;">
+                  SJ
+                </div>
+                <div>
+                  <h6 class="mb-0 fw-bold">Sarah Jenkins</h6>
+                  <small class="text-muted">Bought 2022 Audi Q5 • Dallas, TX</small>
+                </div>
               </div>
             </div>
           </div>
+          <div class="col-md-4">
+            <div class="testimonial-card h-100">
+              <div class="text-warning mb-3">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p class="fst-italic text-body mb-4">"I traded in my Camry and upgraded to a RAV4 AWD in under 48 hours. The instant valuation matched the payout without any hidden dealer fees."</p>
+              <div class="d-flex align-items-center gap-3 mt-auto">
+                <div class="rounded-circle bg-secondary text-white fw-bold d-flex align-items-center justify-content-center shadow-sm" style="width: 44px; height: 44px; font-size: 1.1rem; background-color: #f97316 !important;">
+                  DM
+                </div>
+                <div>
+                  <h6 class="mb-0 fw-bold">David Marcus</h6>
+                  <small class="text-muted">Traded & Bought RAV4 • Seattle, WA</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="testimonial-card h-100">
+              <div class="text-warning mb-3">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p class="fst-italic text-body mb-4">"The loan calculator was 100% accurate to the penny. Zero dealership markup, direct digital pre-approval, and doorstep delivery right on time."</p>
+              <div class="d-flex align-items-center gap-3 mt-auto">
+                <div class="rounded-circle bg-success text-white fw-bold d-flex align-items-center justify-content-center shadow-sm" style="width: 44px; height: 44px; font-size: 1.1rem;">
+                  CR
+                </div>
+                <div>
+                  <h6 class="mb-0 fw-bold">Carlos Ramirez</h6>
+                  <small class="text-muted">Bought 2021 Civic EX • Phoenix, AZ</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Automotive Guides & News Section -->
+    <section class="section-padding bg-body-tertiary">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-4">
+          <div>
+            <span class="section-tag">Market Intelligence</span>
+            <h2 class="mb-0">Latest Automotive Insights & Guides</h2>
+          </div>
+          <a href="blog.html" class="fw-semibold text-primary d-none d-sm-inline-flex align-items-center">
+            View All Articles <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
+
+        <div class="row g-4">
+          <!-- Blog Card 1 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-surface">
+              <img src="assets/images/features/feature-inspection.jpg" alt="Used Car Inspection Guide" class="w-100 object-fit-cover" style="height: 200px;">
+              <div class="card-body p-4 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge bg-primary-subtle text-primary">Buyer Advice</span>
+                  <small class="text-muted"><i class="bi bi-clock me-1"></i> 6 min read</small>
+                </div>
+                <h5 class="fw-bold mb-2">
+                  <a href="blog-details.html?id=1" class="text-body text-decoration-none">10 Critical Things Mechanics Check in a Pre-Purchase Inspection</a>
+                </h5>
+                <p class="text-muted small mb-3 flex-grow-1">Learn the critical mechanical checkpoints from paint thickness to gearbox diagnostics that protect you from hidden defects.</p>
+                <a href="blog-details.html?id=1" class="fw-bold small text-primary text-decoration-none">Read Full Guide <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blog Card 2 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-surface">
+              <img src="assets/images/categories/suv-2.jpg" alt="Best Used SUVs" class="w-100 object-fit-cover" style="height: 200px;">
+              <div class="card-body p-4 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge bg-success-subtle text-success">Market Trends</span>
+                  <small class="text-muted"><i class="bi bi-clock me-1"></i> 5 min read</small>
+                </div>
+                <h5 class="fw-bold mb-2">
+                  <a href="blog-details.html?id=4" class="text-body text-decoration-none">Top 5 Most Reliable Used Cars Under $25,000 in Today's Market</a>
+                </h5>
+                <p class="text-muted small mb-3 flex-grow-1">A comprehensive comparison of long-term reliability scores, maintenance costs, and fuel economy across popular crossovers.</p>
+                <a href="blog-details.html?id=4" class="fw-bold small text-primary text-decoration-none">Read Full Guide <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blog Card 3 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-surface">
+              <img src="assets/images/categories/ev-2.jpg" alt="EV vs Hybrid Pre-Owned" class="w-100 object-fit-cover" style="height: 200px;">
+              <div class="card-body p-4 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge bg-warning-subtle text-warning">EV Technology</span>
+                  <small class="text-muted"><i class="bi bi-clock me-1"></i> 8 min read</small>
+                </div>
+                <h5 class="fw-bold mb-2">
+                  <a href="blog-details.html?id=2" class="text-body text-decoration-none">Buying a Used Electric Car in 2026: Battery Health Guide</a>
+                </h5>
+                <p class="text-muted small mb-3 flex-grow-1">How state-of-health (SoH) battery testing helps you get maximum value and longevity when shopping for pre-owned electric cars.</p>
+                <a href="blog-details.html?id=2" class="fw-bold small text-primary text-decoration-none">Read Full Guide <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fast Sourcing & Sell Car CTA Banner -->
+    <section class="py-5 text-white" style="background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);">
+      <div class="container text-center py-4">
+        <span class="badge bg-warning text-dark fw-bold mb-3 px-3 py-2 rounded-pill">Nationwide Dealer Network</span>
+        <h2 class="display-6 fw-bold text-white mb-3">Looking for a Specific Car or Ready to Sell?</h2>
+        <p class="lead text-light mb-4 mx-auto opacity-90" style="max-width: 640px;">
+          Whether you want us to locate a rare trim package or want an instant cash buyout for your current car, AutoMarket makes it seamless.
+        </p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a href="inventory.html" class="btn btn-secondary-custom btn-lg-custom auth-required-btn" data-auth-action="inventory.html">
+            <i class="bi bi-search me-1"></i> Browse 2,450+ Cars
+          </a>
+          <button class="btn btn-outline-light btn-lg-custom auth-required-btn" data-bs-toggle="modal" data-bs-target="#bookInspectionModal" data-auth-modal="#bookInspectionModal">
+            <i class="bi bi-clipboard-check me-1"></i> Book 200-Pt Inspection
+          </button>
         </div>
       </div>
     </section>
@@ -377,7 +767,9 @@
 
       <div class="row g-4">
         <div class="col-lg-4 col-md-6">
-          <img src="assets/images/logo-dark.svg" alt="AutoMarket Logo" class="mb-3 navbar-brand-logo">
+          <a href="index.html" class="d-inline-block mb-3" aria-label="AutoMarket Home">
+            <img src="assets/images/logo-dark.svg" alt="AutoMarket Logo" class="navbar-brand-logo">
+          </a>
           <p class="text-light opacity-75 small">
             AutoMarket Concierge is the premier brokerage for collector, luxury, and certified pre-owned vehicles. Every automobile passes strict provenance checks and mechanical testing.
           </p>

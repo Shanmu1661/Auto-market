@@ -120,20 +120,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // -------------------------------------------------------------
-  // 4. Favorites / Wishlist LocalStorage Engine
+  // 4. Favorites / Wishlist LocalStorage Engine (Auth-Gated)
   // -------------------------------------------------------------
-  const favoriteButtons = document.querySelectorAll('.car-favorite-btn');
   const favCountBadges = document.querySelectorAll('.favorites-count-badge');
 
   function getFavorites() {
     try {
-      return JSON.parse(localStorage.getItem('automarket_favorites')) || [1, 3];
+      const currentUser = getCurrentUser();
+      if (!currentUser) return [];
+      return JSON.parse(localStorage.getItem(`automarket_favorites_${currentUser.id}`) || localStorage.getItem('automarket_favorites') || '[]');
     } catch {
-      return [1, 3];
+      return [];
     }
   }
 
   function saveFavorites(favs) {
+    const currentUser = getCurrentUser();
+    if (currentUser) {
+      localStorage.setItem(`automarket_favorites_${currentUser.id}`, JSON.stringify(favs));
+    }
     localStorage.setItem('automarket_favorites', JSON.stringify(favs));
     updateFavBadges(favs.length);
   }
@@ -149,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const favs = getFavorites();
     updateFavBadges(favs.length);
 
-    favoriteButtons.forEach(btn => {
+    document.querySelectorAll('.car-favorite-btn').forEach(btn => {
       const carId = parseInt(btn.getAttribute('data-car-id') || '0', 10);
       const icon = btn.querySelector('i');
       if (favs.includes(carId)) {
@@ -164,29 +169,119 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  favoriteButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const carId = parseInt(btn.getAttribute('data-car-id') || '0', 10);
-      let favs = getFavorites();
+  // Document-level click handler for all favorite buttons (supports dynamic cards)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.car-favorite-btn');
+    if (!btn) return;
 
-      if (favs.includes(carId)) {
-        favs = favs.filter(id => id !== carId);
-        saveFavorites(favs);
-        syncFavoriteButtons();
-        showToast('Removed vehicle from saved wishlist', 'warning');
-      } else {
-        favs.push(carId);
-        saveFavorites(favs);
-        syncFavoriteButtons();
-        showToast('Added vehicle to saved wishlist! View in Dashboard.', 'success');
+    e.preventDefault();
+    e.stopPropagation();
+
+    const currentUser = getCurrentUser();
+    const carId = parseInt(btn.getAttribute('data-car-id') || '0', 10);
+
+    // If not authenticated, prompt and redirect to login
+    if (!currentUser) {
+      showToast('Please sign in to add vehicles to your wishlist', 'warning');
+      if (carId) {
+        sessionStorage.setItem('automarket_pending_fav', carId.toString());
+      }
+      sessionStorage.setItem('automarket_redirect_after_login', window.location.href);
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 800);
+      return;
+    }
+
+    if (!carId) return;
+
+    let favs = getFavorites();
+    if (favs.includes(carId)) {
+      favs = favs.filter(id => id !== carId);
+      saveFavorites(favs);
+      syncFavoriteButtons();
+      showToast('Removed vehicle from saved wishlist', 'warning');
+    } else {
+      favs.push(carId);
+      saveFavorites(favs);
+      syncFavoriteButtons();
+      showToast('Added vehicle to saved wishlist! View in Dashboard.', 'success');
+    }
+  });
+
+  // Header Wishlist Icon Click Guard (redirect to login if unauthenticated)
+  document.querySelectorAll('a[title="Saved Wishlist"], a[href="dashboard.html#saved"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const currentUser = getCurrentUser();
+      if (!currentUser) {
+        e.preventDefault();
+        showToast('Please sign in to access your saved wishlist', 'info');
+        sessionStorage.setItem('automarket_redirect_after_login', 'dashboard.html#saved');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 700);
       }
     });
   });
 
   syncFavoriteButtons();
 
+  // -------------------------------------------------------------
+  // 4b. Auth-Gated Action Buttons (Find Your Car, Book Inspection, etc.)
+  // -------------------------------------------------------------
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.auth-required-btn, [data-auth-required="true"], [data-bs-target="#bookInspectionModal"]');
+    if (!btn) return;
+
+    const currentUser = getCurrentUser();
+    if (!currentUser) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const modalTarget = btn.getAttribute('data-bs-target') || btn.getAttribute('data-auth-modal');
+      let redirectTarget = btn.getAttribute('href') || btn.getAttribute('data-auth-action') || 'inventory.html';
+      
+      if (modalTarget === '#bookInspectionModal') {
+        const pageName = window.location.pathname.split('/').pop() || 'index.html';
+        redirectTarget = pageName + (window.location.search || '');
+        sessionStorage.setItem('automarket_pending_modal', '#bookInspectionModal');
+      }
+
+      sessionStorage.setItem('automarket_redirect_after_login', redirectTarget);
+      showToast('Please sign in first to continue.', 'info');
+      
+      setTimeout(() => {
+        window.location.href = `login.html?redirect=${encodeURIComponent(redirectTarget)}`;
+      }, 700);
+      return false;
+    } else {
+      // Auto-fill user contact info inside modal if opening
+      const modalTarget = btn.getAttribute('data-bs-target') || btn.getAttribute('data-auth-modal');
+      if (modalTarget === '#bookInspectionModal') {
+        const nameInput = document.getElementById('bookName');
+        const emailInput = document.getElementById('bookEmail');
+        if (nameInput && !nameInput.value && currentUser.name) {
+          nameInput.value = currentUser.name;
+        }
+        if (emailInput && !emailInput.value && currentUser.email) {
+          emailInput.value = currentUser.email;
+        }
+      }
+    }
+  }, true);
+
+  // Check for pending modal after login return
+  const pendingModal = sessionStorage.getItem('automarket_pending_modal');
+  if (pendingModal && getCurrentUser()) {
+    sessionStorage.removeItem('automarket_pending_modal');
+    setTimeout(() => {
+      const modalEl = document.querySelector(pendingModal);
+      if (modalEl && window.bootstrap && typeof window.bootstrap.Modal === 'function') {
+        const modalInstance = new bootstrap.Modal(modalEl);
+        modalInstance.show();
+      }
+    }, 450);
+  }
 
   // -------------------------------------------------------------
   // 5. Interactive Loan / EMI Financing Calculator
@@ -724,7 +819,6 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       users.push(newUser);
       localStorage.setItem('automarket_users', JSON.stringify(users));
-      setCurrentUser(newUser);
       return { success: true, user: newUser };
     } catch (err) {
       return { success: false, message: 'Could not save account to local storage. Please check browser permissions.' };
@@ -789,10 +883,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.innerHTML = `
           <div class="dropdown user-nav-dropdown">
-            <button class="btn dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="${currentUser.name} (${isSeller ? 'Seller' : 'Buyer'})">
               <span class="user-avatar-sm">${avatarLetter}</span>
-              <span class="d-none d-md-inline small fw-semibold">${currentUser.name}</span>
-              <span class="badge ${badgeColor} rounded-pill d-none d-lg-inline" style="font-size: 0.65rem;">${isSeller ? 'Seller' : 'Buyer'}</span>
+              <span class="badge ${badgeColor} rounded-pill" style="font-size: 0.65rem;">${isSeller ? 'Seller' : 'Buyer'}</span>
             </button>
             <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
               <li class="px-3 py-2 border-bottom">

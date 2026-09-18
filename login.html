@@ -7,6 +7,11 @@
   <meta name="description" content="Sign in to your AutoMarket account to access your Buyer or Seller Dashboard, saved vehicles, and dealership inventory.">
 
   <!-- Fonts & Icons -->
+    <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -107,9 +112,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Registered Accounts Quick Selector Hint -->
-        <div id="registeredAccountsHint" class="mb-3 p-2 bg-light rounded-3 border d-none"></div>
 
         <!-- Standard Email / Password Form -->
         <form class="needs-validation" id="loginForm" novalidate>
@@ -251,69 +253,24 @@
 
       if (urlParams.get('registered') === 'true') {
         const prefillEmail = urlParams.get('email');
+        const prefillRole = urlParams.get('role');
+        const prefillName = urlParams.get('name');
         if (prefillEmail) emailInput.value = prefillEmail;
-        showAlert('Registration successful! Please sign in with your credentials.', 'success');
+        if (prefillRole === 'seller') setPortal('seller');
+        else if (prefillRole === 'buyer') setPortal('buyer');
+
+        const greeting = prefillName ? `Welcome, ${prefillName}! ` : '';
+        showAlert(`<i class="bi bi-check-circle-fill text-success me-1"></i> ${greeting}Your account has been created successfully. Please sign in below to enter your dashboard.`, 'success');
+        if (window.autoMarketToast) {
+          window.autoMarketToast('Registration complete! Sign in to enter your dashboard.', 'success');
+        }
+        if (passwordInput) {
+          setTimeout(() => passwordInput.focus(), 300);
+        }
       }
 
       chooseBuyerBtn.addEventListener('click', () => setPortal('buyer'));
       chooseSellerBtn.addEventListener('click', () => setPortal('seller'));
-
-      // Render Registered Accounts Hint if any exist
-      function renderRegisteredAccounts() {
-        try {
-          const users = JSON.parse(localStorage.getItem('automarket_users') || '[]');
-          const hintContainer = document.getElementById('registeredAccountsHint');
-          if (!hintContainer) return;
-
-          if (users.length > 0) {
-            const validUsers = users.filter(u => u && u.email);
-            if (validUsers.length === 0) {
-              hintContainer.classList.add('d-none');
-              return;
-            }
-            hintContainer.classList.remove('d-none');
-            hintContainer.innerHTML = `
-              <div class="d-flex align-items-center justify-content-between mb-1">
-                <span class="fw-semibold text-dark" style="font-size: 0.78rem;">
-                  <i class="bi bi-person-check-fill text-success me-1"></i> Registered on this browser:
-                </span>
-                <span class="badge bg-secondary-subtle text-secondary" style="font-size: 0.65rem;">${validUsers.length} account${validUsers.length > 1 ? 's' : ''}</span>
-              </div>
-              <div class="d-flex flex-wrap gap-1">
-                ${validUsers.slice(-3).map(u => `
-                  <button type="button" class="btn btn-sm btn-light border text-truncate fill-user-btn py-1 px-2" style="font-size: 0.75rem; max-width: 100%;" data-email="${u.email}" data-role="${u.role || 'buyer'}" data-name="${u.name || ''}">
-                    <span class="user-avatar-sm me-1" style="width: 18px; height: 18px; font-size: 0.65rem; display: inline-flex; align-items: center; justify-content: center; background: #e0e7ff; color: #4338ca; border-radius: 50%;">${(u.name || u.email).trim().charAt(0).toUpperCase()}</span>
-                    <strong>${u.email}</strong> <span class="text-muted">(${u.role === 'seller' ? 'Seller' : 'Buyer'})</span>
-                  </button>
-                `).join('')}
-              </div>
-            `;
-
-            hintContainer.querySelectorAll('.fill-user-btn').forEach(btn => {
-              btn.addEventListener('click', () => {
-                const targetEmail = btn.getAttribute('data-email');
-                const targetRole = btn.getAttribute('data-role');
-                if (targetEmail) emailInput.value = targetEmail;
-                if (targetRole) setPortal(targetRole);
-
-                // Auto-fill matching password if available for seamless login
-                const matchedUser = validUsers.find(u => u && u.email && u.email.toLowerCase() === targetEmail.toLowerCase());
-                if (matchedUser && matchedUser.password) {
-                  passwordInput.value = matchedUser.password;
-                }
-
-                form.classList.remove('was-validated');
-                hideAlert();
-                passwordInput.focus();
-              });
-            });
-          } else {
-            hintContainer.classList.add('d-none');
-          }
-        } catch (e) {
-          console.error(e);
-        }
-      }
 
       // Real-time input clearing
       [emailInput, passwordInput].forEach(el => {
@@ -324,8 +281,6 @@
           }
         });
       });
-
-      renderRegisteredAccounts();
 
       // Social Login Handler (Google & Apple/Mac)
       function handleSocialLogin(provider) {
@@ -366,13 +321,17 @@
           window.autoMarketAuth.setCurrentUser(socialUser);
         }
 
-        showAlert(`Signed in with ${providerName} as ${isSeller ? 'Seller' : 'Buyer'}! Opening ${dashboardName}...`, 'success');
+        const redirectUrl = sessionStorage.getItem('automarket_redirect_after_login') || urlParams.get('redirect');
+        const finalRedirect = redirectUrl || targetDashboard;
+        sessionStorage.removeItem('automarket_redirect_after_login');
+
+        showAlert(`Signed in with ${providerName} as ${isSeller ? 'Seller' : 'Buyer'}! Redirecting...`, 'success');
         if (window.autoMarketToast) {
-          window.autoMarketToast(`Signed in with ${providerName}! Opening your ${dashboardName}...`, 'success');
+          window.autoMarketToast(`Signed in with ${providerName}! Redirecting...`, 'success');
         }
 
         setTimeout(() => {
-          window.location.href = targetDashboard;
+          window.location.href = finalRedirect;
         }, 450);
       }
 
@@ -441,19 +400,38 @@
             window.autoMarketAuth.setCurrentUser(user);
           }
 
-          const isSeller = user.role === 'seller';
-          const targetDashboard = isSeller ? 'seller-dashboard.html' : 'dashboard.html';
-          const dashboardName = isSeller ? 'Seller Dashboard' : 'Buyer Dashboard';
+          // Process pending wishlist save and redirect URL
+          const pendingFav = sessionStorage.getItem('automarket_pending_fav');
+          const redirectUrl = sessionStorage.getItem('automarket_redirect_after_login');
 
-          showAlert(`Welcome back, ${user.name}! Opening your ${dashboardName}...`, 'success');
+          if (pendingFav) {
+            const carId = parseInt(pendingFav, 10);
+            if (carId) {
+              const favKey = `automarket_favorites_${user.id}`;
+              let userFavs = JSON.parse(localStorage.getItem(favKey) || localStorage.getItem('automarket_favorites') || '[]');
+              if (!userFavs.includes(carId)) {
+                userFavs.push(carId);
+                localStorage.setItem(favKey, JSON.stringify(userFavs));
+                localStorage.setItem('automarket_favorites', JSON.stringify(userFavs));
+              }
+            }
+            sessionStorage.removeItem('automarket_pending_fav');
+          }
+
+          const isSeller = user.role === 'seller';
+          const defaultTarget = isSeller ? 'seller-dashboard.html' : 'dashboard.html';
+          const targetUrl = redirectUrl || urlParams.get('redirect') || defaultTarget;
+          sessionStorage.removeItem('automarket_redirect_after_login');
+
+          showAlert(`Welcome back, ${user.name}! Redirecting...`, 'success');
 
           if (window.autoMarketToast) {
-            window.autoMarketToast(`Welcome back, ${user.name}! Opening your ${dashboardName}...`, 'success');
+            window.autoMarketToast(`Welcome back, ${user.name}!`, 'success');
           }
           
           setTimeout(() => {
-            window.location.href = targetDashboard;
-          }, 400);
+            window.location.href = targetUrl;
+          }, 450);
         } else {
           submitBtn.disabled = false;
           if (selectedPortal === 'seller') {
@@ -536,6 +514,9 @@
 
         if (!form.checkValidity()) {
           form.classList.add('was-validated');
+          const firstInvalid = form.querySelector(':invalid');
+          if (firstInvalid) firstInvalid.focus();
+          showAlert('Please enter your email and password.', 'danger');
           return;
         }
 

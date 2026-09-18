@@ -6,6 +6,11 @@
   <title>About AutoMarket - Mission, Leadership & Certified Standards</title>
   <meta name="description" content="Learn about AutoMarket mission, executive leadership team, history, and our obsessive commitment to 200-point used car inspection standards.">
 
+    <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -27,44 +32,38 @@
           <img src="assets/images/logo.svg" alt="AutoMarket Logo" class="navbar-brand-logo">
         </a>
         
-        <div class="d-flex align-items-center gap-2 d-lg-none">
-          <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL Layout">
-            <i class="bi bi-translate"></i>
-          </button>
-          <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
-            <i class="bi bi-moon-stars-fill"></i>
-          </button>
-          <a href="dashboard.html#saved" class="btn btn-toggle-action position-relative" title="Saved Wishlist">
-            <i class="bi bi-heart"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorites-count-badge">2</span>
-          </a>
-          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
+        <button class="navbar-toggler border-0 d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu shadow-sm" aria-labelledby="homeDropdown">
+                <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-door me-2"></i>Home 1 - Marketplace</a></li>
+                <li><a class="dropdown-item" href="index-2.html"><i class="bi bi-buildings me-2"></i>Home 2 - Dealership</a></li>
+              </ul>
+            </li>
             <li class="nav-item"><a class="nav-link" href="inventory.html">Browse Cars</a></li>
             <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
             <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
-            <li class="nav-item"><a class="nav-link" href="blog.html">Guides & News</a></li>
+            <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
 
-          <div class="d-flex align-items-center gap-2">
-            <button class="btn btn-toggle-action rtl-toggle-btn d-none d-lg-inline-flex" title="Toggle RTL Layout">
-              <i class="bi bi-translate"></i>
-            </button>
-            <button class="btn btn-toggle-action theme-toggle-btn d-none d-lg-inline-flex" title="Toggle Dark/Light Mode">
-              <i class="bi bi-moon-stars-fill"></i>
-            </button>
-            <a href="dashboard.html#saved" class="btn btn-toggle-action d-none d-lg-inline-flex position-relative" title="Saved Wishlist">
-              <i class="bi bi-heart"></i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorites-count-badge">2</span>
-            </a>
+          <div class="navbar-footer-tools d-flex align-items-center justify-content-between justify-content-lg-end gap-2 mt-3 mt-lg-0 pt-3 pt-lg-0">
+            <div class="nav-toggles-group d-flex align-items-center gap-2">
+              <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL / LTR Language">
+                <i class="bi bi-translate"></i>
+              </button>
+              <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
+                <i class="bi bi-moon-stars-fill"></i>
+              </button>
+            </div>
             <div class="nav-auth-container">
               <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
                 <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
@@ -103,13 +102,13 @@
             </p>
             <div class="row g-3">
               <div class="col-sm-6">
-                <div class="p-3 border rounded-3 bg-light">
+                <div class="p-3 border rounded-3" style="background-color: var(--bg-surface); border-color: var(--border-color) !important;">
                   <h5 class="fw-bold text-primary mb-1">100% Upfront</h5>
                   <p class="small text-muted mb-0">No dealer doc fees, markup surprises, or unexpected closing costs.</p>
                 </div>
               </div>
               <div class="col-sm-6">
-                <div class="p-3 border rounded-3 bg-light">
+                <div class="p-3 border rounded-3" style="background-color: var(--bg-surface); border-color: var(--border-color) !important;">
                   <h5 class="fw-bold text-success mb-1">ASE Certified</h5>
                   <p class="small text-muted mb-0">Every vehicle inspected by master technicians with 10+ years experience.</p>
                 </div>
@@ -119,11 +118,11 @@
           <div class="col-lg-6">
             <div class="position-relative">
               <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=700&q=80" alt="Inspection and Verification Center" class="rounded-4 shadow-lg img-fluid">
-              <div class="card p-3 shadow-lg border-0 position-absolute bottom-0 start-0 m-3 d-none d-sm-block rounded-3" style="max-width: 240px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px);">
+              <div class="card p-3 shadow-lg position-absolute bottom-0 start-0 m-3 d-none d-sm-block rounded-3" style="max-width: 240px; background-color: var(--bg-surface); border: 1px solid var(--border-color) !important; backdrop-filter: blur(8px);">
                 <div class="d-flex align-items-center gap-2">
                   <i class="bi bi-shield-check fs-2 text-primary"></i>
                   <div>
-                    <h6 class="mb-0 fw-bold text-dark">Zero Compromise</h6>
+                    <h6 class="mb-0 fw-bold">Zero Compromise</h6>
                     <small class="text-muted">Over 15,000 cars vetted</small>
                   </div>
                 </div>
@@ -195,7 +194,6 @@
               <p class="small text-muted mb-3">Former auto industry director with 18 years in digital logistics and marketplace scaling.</p>
               <div class="d-flex justify-content-center gap-2 mt-auto">
                 <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-custom rounded-circle p-0" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-custom rounded-circle p-0" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
               </div>
             </div>
           </div>
@@ -261,7 +259,9 @@
 
       <div class="row g-4">
         <div class="col-lg-4 col-md-6">
-          <img src="assets/images/logo-dark.svg" alt="AutoMarket Logo" class="mb-3 navbar-brand-logo">
+          <a href="index.html" class="d-inline-block mb-3" aria-label="AutoMarket Home">
+            <img src="assets/images/logo-dark.svg" alt="AutoMarket Logo" class="navbar-brand-logo">
+          </a>
           <p class="text-light opacity-75 small">
             AutoMarket is the trusted nationwide marketplace for certified pre-owned vehicles. Every car passes our 200-point inspection with upfront, haggle-free pricing.
           </p>

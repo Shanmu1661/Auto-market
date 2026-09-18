@@ -45,9 +45,25 @@
 /* Specific Dark Mode Overrides */
 [data-bs-theme="dark"] .site-header,
 [data-theme="dark"] .site-header {
-  background-color: rgba(17, 24, 39, 0.95);
+  background-color: rgba(17, 24, 39, 0.95) !important;
   backdrop-filter: blur(12px);
-  border-bottom-color: #273549;
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: none !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+[data-bs-theme="dark"] .btn-toggle-action,
+[data-theme="dark"] .btn-toggle-action {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+[data-bs-theme="dark"] .btn-toggle-action:hover,
+[data-theme="dark"] .btn-toggle-action:hover {
+  background-color: rgba(59, 130, 246, 0.2);
+  border-color: #3b82f6;
+  color: #60a5fa;
 }
 
 [data-bs-theme="dark"] .navbar-brand-logo,
@@ -180,13 +196,50 @@
 [data-bs-theme="dark"] .bg-light,
 [data-theme="dark"] .bg-light {
   background-color: #1a2234 !important;
-  color: #f1f5f9;
+  color: #f1f5f9 !important;
 }
 
 [data-bs-theme="dark"] .bg-white,
 [data-theme="dark"] .bg-white {
   background-color: #111827 !important;
-  color: #f8fafc;
+  color: #f8fafc !important;
+}
+
+/* Badges & Filter Pills in Dark Mode */
+[data-bs-theme="dark"] .badge.bg-light,
+[data-theme="dark"] .badge.bg-light,
+[data-bs-theme="dark"] .badge.bg-body-secondary,
+[data-theme="dark"] .badge.bg-body-secondary,
+[data-bs-theme="dark"] .badge.bg-body-tertiary,
+[data-theme="dark"] .badge.bg-body-tertiary,
+[data-bs-theme="dark"] .quick-budget-pill,
+[data-theme="dark"] .quick-budget-pill {
+  background-color: #1a2234 !important;
+  color: #f1f5f9 !important;
+  border-color: #2e3d55 !important;
+}
+
+[data-bs-theme="dark"] .quick-budget-pill:hover,
+[data-theme="dark"] .quick-budget-pill:hover {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  border-color: #2563eb !important;
+}
+
+/* Ensure text-dark is readable in dark mode except when on bright warning/yellow elements */
+[data-bs-theme="dark"] .text-dark:not(.bg-warning):not(.badge-featured):not(.btn-warning):not(.bg-warning *):not(.badge-featured *):not(.btn-warning *),
+[data-theme="dark"] .text-dark:not(.bg-warning):not(.badge-featured):not(.btn-warning):not(.bg-warning *):not(.badge-featured *):not(.btn-warning *) {
+  color: #f8fafc !important;
+}
+
+/* Table Light & Headers in Dark Mode */
+[data-bs-theme="dark"] .table-light,
+[data-theme="dark"] .table-light,
+[data-bs-theme="dark"] .table thead.table-light th,
+[data-theme="dark"] .table thead.table-light th {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #273549 !important;
 }
 
 [data-bs-theme="dark"] .skeleton,
@@ -377,19 +430,5 @@
 [data-theme="dark"] .divider-text::before,
 [data-theme="dark"] .divider-text::after {
   border-bottom-color: #2d3c54;
-}
-
-[data-bs-theme="dark"] #registeredAccountsHint,
-[data-theme="dark"] #registeredAccountsHint {
-  background-color: #111827 !important;
-  border-color: #243044 !important;
-  color: #cbd5e1;
-}
-
-[data-bs-theme="dark"] .fill-user-btn,
-[data-theme="dark"] .fill-user-btn {
-  background-color: #1e293b !important;
-  border-color: #334155 !important;
-  color: #e2e8f0 !important;
 }
 

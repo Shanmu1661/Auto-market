@@ -7,7 +7,10 @@
   <meta name="description" content="Seller and Dealership inventory management, vehicle listing tool, buyer inquiries, and sales analytics on AutoMarket.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,45 +38,38 @@
           <img src="assets/images/logo.svg" alt="AutoMarket Logo" class="navbar-brand-logo">
         </a>
         
-        <div class="d-flex align-items-center gap-2 d-lg-none">
-          <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL Layout">
-            <i class="bi bi-translate"></i>
-          </button>
-          <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
-            <i class="bi bi-moon-stars-fill"></i>
-          </button>
-          <div class="nav-auth-container">
-            <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
-              <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
-            </a>
-          </div>
-          <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
+        <button class="navbar-toggler border-0 d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu shadow-sm" aria-labelledby="homeDropdown">
+                <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-door me-2"></i>Home 1 - Marketplace</a></li>
+                <li><a class="dropdown-item" href="index-2.html"><i class="bi bi-buildings me-2"></i>Home 2 - Dealership</a></li>
+              </ul>
+            </li>
             <li class="nav-item"><a class="nav-link" href="inventory.html">Browse Cars</a></li>
             <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-            <li class="nav-item"><a class="nav-link" href="blog.html">Guides & News</a></li>
+            <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
 
-          <div class="d-flex align-items-center gap-2">
-            <button class="btn btn-toggle-action rtl-toggle-btn d-none d-lg-inline-flex" title="Toggle RTL Layout">
-              <i class="bi bi-translate"></i>
-            </button>
-            <button class="btn btn-toggle-action theme-toggle-btn d-none d-lg-inline-flex" title="Toggle Dark/Light Mode">
-              <i class="bi bi-moon-stars-fill"></i>
-            </button>
-            <a href="dashboard.html#saved" class="btn btn-toggle-action d-none d-lg-inline-flex position-relative" title="Saved Wishlist">
-              <i class="bi bi-heart"></i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger favorites-count-badge">2</span>
-            </a>
+          <div class="navbar-footer-tools d-flex align-items-center justify-content-between justify-content-lg-end gap-2 mt-3 mt-lg-0 pt-3 pt-lg-0">
+            <div class="nav-toggles-group d-flex align-items-center gap-2">
+              <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL / LTR Language">
+                <i class="bi bi-translate"></i>
+              </button>
+              <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
+                <i class="bi bi-moon-stars-fill"></i>
+              </button>
+            </div>
             <div class="nav-auth-container">
               <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
                 <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
@@ -113,7 +109,7 @@
               </li>
               <li class="nav-item" role="presentation">
                 <button class="nav-link w-100" id="tab-seller-inventory-btn" data-bs-toggle="pill" data-bs-target="#tab-seller-inventory" type="button" role="tab">
-                  <i class="bi bi-car-front"></i> My Listed Cars (<span id="sellerListingsCountBadge">4</span>)
+                  <i class="bi bi-car-front"></i> My Listed Cars (<span id="sellerListingsCountBadge">0</span>)
                 </button>
               </li>
               <li class="nav-item" role="presentation">
@@ -123,7 +119,7 @@
               </li>
               <li class="nav-item" role="presentation">
                 <button class="nav-link w-100" id="tab-seller-leads-btn" data-bs-toggle="pill" data-bs-target="#tab-seller-leads" type="button" role="tab">
-                  <i class="bi bi-inboxes"></i> Buyer Inquiries (<span class="badge bg-danger rounded-pill" id="leadsCountBadge">3</span>)
+                  <i class="bi bi-inboxes"></i> Buyer Inquiries (<span class="badge bg-danger rounded-pill" id="leadsCountBadge">0</span>)
                 </button>
               </li>
               <li class="nav-item" role="presentation">
@@ -169,8 +165,8 @@
                       <span class="text-muted small fw-semibold">Active Inventory</span>
                       <span class="badge bg-primary-subtle text-primary"><i class="bi bi-car-front-fill"></i></span>
                     </div>
-                    <h3 class="fw-bold mb-1" id="kpiActiveCount">4</h3>
-                    <div class="small text-muted">Valuation: <strong class="text-success">$99,000</strong></div>
+                    <h3 class="fw-bold mb-1" id="kpiActiveCount">0</h3>
+                    <div class="small text-muted">Valuation: <strong class="text-success" id="kpiValuation">$0</strong></div>
                   </div>
                 </div>
 
@@ -180,8 +176,8 @@
                       <span class="text-muted small fw-semibold">Buyer Inquiries</span>
                       <span class="badge bg-danger-subtle text-danger"><i class="bi bi-chat-dots-fill"></i></span>
                     </div>
-                    <h3 class="fw-bold mb-1">24</h3>
-                    <div class="small text-success"><i class="bi bi-arrow-up-right me-1"></i>+5 new this week</div>
+                    <h3 class="fw-bold mb-1" id="kpiInquiriesCount">0</h3>
+                    <div class="small text-success" id="kpiInquiriesTrend"><i class="bi bi-arrow-up-right me-1"></i>0 new this week</div>
                   </div>
                 </div>
 
@@ -191,8 +187,8 @@
                       <span class="text-muted small fw-semibold">Test Drives Booked</span>
                       <span class="badge bg-warning-subtle text-warning"><i class="bi bi-calendar-event-fill"></i></span>
                     </div>
-                    <h3 class="fw-bold mb-1">7</h3>
-                    <div class="small text-muted">Upcoming visits</div>
+                    <h3 class="fw-bold mb-1" id="kpiTestDrivesCount">0</h3>
+                    <div class="small text-muted" id="kpiTestDrivesSub">No upcoming visits</div>
                   </div>
                 </div>
 
@@ -202,8 +198,8 @@
                       <span class="text-muted small fw-semibold">Sold This Month</span>
                       <span class="badge bg-success-subtle text-success"><i class="bi bi-currency-dollar"></i></span>
                     </div>
-                    <h3 class="fw-bold mb-1">3</h3>
-                    <div class="small text-muted">Turnover: <strong>18 days avg</strong></div>
+                    <h3 class="fw-bold mb-1" id="kpiSoldCount">0</h3>
+                    <div class="small text-muted" id="kpiSoldSub">0 sales</div>
                   </div>
                 </div>
               </div>
@@ -230,37 +226,13 @@
                   <h5 class="fw-bold mb-0"><i class="bi bi-lightning-charge-fill text-warning me-2"></i> Recent Inquiries & Offers</h5>
                   <button class="btn btn-sm btn-outline-custom" onclick="document.getElementById('tab-seller-leads-btn').click();">View All</button>
                 </div>
-                <div class="list-group list-group-flush">
-                  <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-3 bg-transparent">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="user-avatar-sm bg-primary">AM</div>
-                      <div>
-                        <div class="fw-bold">Alex Morgan submitted test drive request</div>
-                        <small class="text-muted">2020 BMW 3 Series 330i xDrive • Requested for Friday 3:30 PM</small>
-                      </div>
-                    </div>
-                    <span class="badge bg-warning text-dark">Pending Confirmation</span>
-                  </div>
-                  <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-3 bg-transparent">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="user-avatar-sm bg-success">SJ</div>
-                      <div>
-                        <div class="fw-bold">Sarah Jenkins submitted cash offer of $20,500</div>
-                        <small class="text-muted">2019 Toyota Camry SE • Listed at $21,400</small>
-                      </div>
-                    </div>
-                    <span class="badge bg-success">Offer Received</span>
-                  </div>
-                  <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-3 bg-transparent">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="user-avatar-sm bg-info">DM</div>
-                      <div>
-                        <div class="fw-bold">David Miller requested 200-Point Inspection Dossier</div>
-                        <small class="text-muted">2020 Toyota RAV4 XLE AWD • Verified Buyer Pre-Approval</small>
-                      </div>
-                    </div>
-                    <span class="badge bg-info text-dark">Report Sent</span>
-                  </div>
+                <div class="list-group list-group-flush" id="overviewRecentLeads">
+                  <!-- Populated dynamically via JS -->
+                </div>
+                <div id="overviewEmptyLeads" class="text-center py-4 text-muted d-none">
+                  <i class="bi bi-chat-square-dots fs-1 mb-2 d-inline-block text-secondary opacity-50"></i>
+                  <h6 class="fw-bold mb-1">No Buyer Inquiries Yet</h6>
+                  <p class="small text-muted mb-0">When buyers request test drives or submit offers for your vehicles, they will appear here.</p>
                 </div>
               </div>
             </div>
@@ -279,7 +251,7 @@
 
               <!-- Inventory Table Card -->
               <div class="card border rounded-4 shadow-sm overflow-hidden bg-surface">
-                <div class="table-responsive">
+                <div class="table-responsive" id="sellerInventoryTableWrapper">
                   <table class="table align-middle mb-0" id="sellerInventoryTable">
                     <thead class="table-light">
                       <tr>
@@ -291,91 +263,17 @@
                       </tr>
                     </thead>
                     <tbody id="sellerInventoryBody">
-                      <tr id="listingRow1">
-                        <td>
-                          <div class="d-flex align-items-center gap-3">
-                            <img src="assets/images/cars/camry.jpg" alt="Toyota Camry" class="inventory-thumb">
-                            <div>
-                              <div class="fw-bold">2020 Toyota Camry LE</div>
-                              <small class="text-muted">VIN: 4T1B11HK5 • 34,200 mi • Auto</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td><span class="fw-bold text-primary">$19,400</span></td>
-                        <td><span class="badge bg-success">Active</span></td>
-                        <td><small class="fw-semibold">1,420 views • 14 leads</small></td>
-                        <td class="text-end">
-                          <div class="btn-group btn-group-sm">
-                            <button class="btn btn-outline-custom" title="Edit Listing" onclick="window.autoMarketToast('Editing listing details...', 'info');"><i class="bi bi-pencil"></i></button>
-                            <button class="btn btn-outline-success" title="Mark as Sold" onclick="markAsSold('listingRow1', '2020 Toyota Camry');"><i class="bi bi-check2-circle"></i></button>
-                            <button class="btn btn-outline-danger" title="Remove Listing" onclick="deleteListing('listingRow1');"><i class="bi bi-trash"></i></button>
-                          </div>
-                        </td>
-                      </tr>
-
-                      <tr id="listingRow2">
-                        <td>
-                          <div class="d-flex align-items-center gap-3">
-                            <img src="assets/images/cars/corolla.jpg" alt="Toyota Corolla" class="inventory-thumb">
-                            <div>
-                              <div class="fw-bold">2018 Toyota Corolla LE</div>
-                              <small class="text-muted">VIN: 4T1B11HK2 • 48,100 mi • CVT</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td><span class="fw-bold text-primary">$15,400</span></td>
-                        <td><span class="badge bg-success">Active</span></td>
-                        <td><small class="fw-semibold">2,180 views • 24 leads</small></td>
-                        <td class="text-end">
-                          <div class="btn-group btn-group-sm">
-                            <button class="btn btn-outline-custom" title="Edit Listing" onclick="window.autoMarketToast('Editing listing details...', 'info');"><i class="bi bi-pencil"></i></button>
-                            <button class="btn btn-outline-success" title="Mark as Sold" onclick="markAsSold('listingRow2', '2018 Toyota Corolla');"><i class="bi bi-check2-circle"></i></button>
-                            <button class="btn btn-outline-danger" title="Remove Listing" onclick="deleteListing('listingRow2');"><i class="bi bi-trash"></i></button>
-                          </div>
-                        </td>
-                      </tr>
-
-                      <tr id="listingRow3">
-                        <td>
-                          <div class="d-flex align-items-center gap-3">
-                            <img src="assets/images/cars/rav4.jpg" alt="Toyota RAV4" class="inventory-thumb">
-                            <div>
-                              <div class="fw-bold">2020 Toyota RAV4 XLE AWD</div>
-                              <small class="text-muted">VIN: 2T3F1RFV8 • 39,800 mi • AWD</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td><span class="fw-bold text-primary">$24,800</span></td>
-                        <td><span class="badge bg-info text-dark">Under Inspection</span></td>
-                        <td><small class="fw-semibold">1,080 views • 9 leads</small></td>
-                        <td class="text-end">
-                          <div class="btn-group btn-group-sm">
-                            <button class="btn btn-outline-custom" title="Edit Listing" onclick="window.autoMarketToast('Editing listing details...', 'info');"><i class="bi bi-pencil"></i></button>
-                            <button class="btn btn-outline-success" title="Mark as Sold" onclick="markAsSold('listingRow3', '2020 Toyota RAV4');"><i class="bi bi-check2-circle"></i></button>
-                            <button class="btn btn-outline-danger" title="Remove Listing" onclick="deleteListing('listingRow3');"><i class="bi bi-trash"></i></button>
-                          </div>
-                        </td>
-                      </tr>
-
-                      <tr id="listingRow4">
-                        <td>
-                          <div class="d-flex align-items-center gap-3">
-                            <img src="assets/images/cars/polo.jpg" alt="Volkswagen Polo" class="inventory-thumb opacity-75">
-                            <div>
-                              <div class="fw-bold text-muted">2019 Volkswagen Polo 1.0 TSI</div>
-                              <small class="text-muted">VIN: WVWZZZ6RZ • 41,800 mi • Sold</small>
-                            </div>
-                          </div>
-                        </td>
-                        <td><span class="fw-bold text-muted">$14,800</span></td>
-                        <td><span class="badge bg-secondary">Sold ($14,500)</span></td>
-                        <td><small class="text-muted">2,450 views</small></td>
-                        <td class="text-end">
-                          <button class="btn btn-sm btn-outline-custom" onclick="window.autoMarketToast('Listing re-activated as draft', 'info');"><i class="bi bi-arrow-clockwise me-1"></i> Re-list</button>
-                        </td>
-                      </tr>
+                      <!-- Populated dynamically via JS -->
                     </tbody>
                   </table>
+                </div>
+                <div id="sellerInventoryEmptyState" class="text-center py-5 d-none">
+                  <i class="bi bi-car-front fs-1 text-muted mb-3 d-inline-block opacity-50"></i>
+                  <h5>No Vehicles Listed Yet</h5>
+                  <p class="text-muted small mb-3">Publish your first car listing to start receiving buyer inquiries and test drive bookings.</p>
+                  <button class="btn btn-primary-custom" onclick="document.getElementById('tab-seller-add-btn').click();">
+                    <i class="bi bi-plus-circle me-1"></i> List Your First Car
+                  </button>
                 </div>
               </div>
             </div>
@@ -456,50 +354,15 @@
                     </div>
                   </div>
 
-                  <!-- Image URL Dropzone Placeholder -->
                   <div class="mb-3">
-                    <label class="form-label" for="carImageUrl">Vehicle Image URL</label>
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-image"></i></span>
-                      <input type="url" class="form-control" id="carImageUrl" placeholder="https://images.unsplash.com/photo-..." value="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80">
-                    </div>
-                    <div class="form-text small">Use a direct image link or leave default high-res automotive photography placeholder.</div>
-                  </div>
-
-                  <!-- Key Features -->
-                  <div class="mb-3">
-                    <label class="form-label fw-semibold">Key Highlights & Features</label>
-                    <div class="row g-2">
-                      <div class="col-md-3 col-6">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="feat1" checked>
-                          <label class="form-check-label small" for="feat1">200-Pt Inspected</label>
-                        </div>
-                      </div>
-                      <div class="col-md-3 col-6">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="feat2" checked>
-                          <label class="form-check-label small" for="feat2">Clean Carfax (1 Owner)</label>
-                        </div>
-                      </div>
-                      <div class="col-md-3 col-6">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="feat3" checked>
-                          <label class="form-check-label small" for="feat3">Leather Interior</label>
-                        </div>
-                      </div>
-                      <div class="col-md-3 col-6">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="feat4" checked>
-                          <label class="form-check-label small" for="feat4">Warranty Included</label>
-                        </div>
-                      </div>
-                    </div>
+                    <label class="form-label" for="carImageUrl">Photo URL (Optional)</label>
+                    <input type="url" class="form-control" id="carImageUrl" placeholder="https://images.unsplash.com/photo-...">
+                    <div class="form-text">Paste an image link or leave blank for a high-res auto photo.</div>
                   </div>
 
                   <div class="mb-4">
-                    <label class="form-label" for="carDescription">Seller Notes & Vehicle Condition</label>
-                    <textarea class="form-control" id="carDescription" rows="3" placeholder="Pristine condition, serviced exclusively at authorized dealership. Fresh tires and ceramic coating applied."></textarea>
+                    <label class="form-label" for="carDescription">Vehicle Highlights & Condition</label>
+                    <textarea class="form-control" id="carDescription" rows="3" placeholder="Single owner, full service history, clean title, garage kept..."></textarea>
                   </div>
 
                   <button type="submit" class="btn btn-primary-custom btn-lg-custom w-100">
@@ -516,94 +379,17 @@
                   <h3 class="fw-bold mb-1">Buyer Leads & Test Drive Inquiries</h3>
                   <p class="text-muted small mb-0">Direct inquiries from verified buyers interested in your inventory.</p>
                 </div>
-                <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill">3 Active Inquiries</span>
+                <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill" id="leadsTabBadge">0 Active Inquiries</span>
               </div>
 
-              <!-- Inquiry Cards -->
-              <div class="d-flex flex-column gap-3">
-                <!-- Lead 1 -->
-                <div class="card border rounded-4 p-4 shadow-sm bg-surface">
-                  <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2 mb-3">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="user-avatar-sm bg-primary" style="width: 44px; height: 44px; font-size: 1rem;">AM</div>
-                      <div>
-                        <h5 class="fw-bold mb-0">Alex Morgan <span class="badge bg-success-subtle text-success small fw-semibold">Pre-Approved Buyer</span></h5>
-                        <small class="text-muted"><i class="bi bi-envelope me-1"></i>buyer@automarket.com • <i class="bi bi-telephone me-1"></i>(310) 555-0192</small>
-                      </div>
-                    </div>
-                    <span class="badge bg-warning text-dark px-3 py-2">Test Drive Scheduled: Friday 3:30 PM</span>
-                  </div>
-                  <div class="p-3 rounded-3 bg-surface-alt mb-3">
-                    <div class="fw-semibold text-primary mb-1"><i class="bi bi-car-front-fill me-1"></i> Vehicle: 2023 BMW M4 Competition ($78,900)</div>
-                    <p class="small text-muted mb-0">"Hi Marcus, I'm pre-approved for $80k through AutoMarket financing and would like to schedule a 30-minute test drive this Friday afternoon."</p>
-                  </div>
-                  <div class="d-flex gap-2">
-                    <button class="btn btn-sm btn-success" onclick="window.autoMarketToast('Test drive appointment confirmed with Alex Morgan!', 'success');">
-                      <i class="bi bi-calendar-check me-1"></i> Confirm Appointment
-                    </button>
-                    <button class="btn btn-sm btn-outline-custom" onclick="window.autoMarketToast('Rescheduling options sent to buyer email', 'info');">
-                      <i class="bi bi-clock-history me-1"></i> Reschedule
-                    </button>
-                    <a href="mailto:buyer@automarket.com" class="btn btn-sm btn-outline-custom">
-                      <i class="bi bi-reply me-1"></i> Email Buyer
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Lead 2 -->
-                <div class="card border rounded-4 p-4 shadow-sm bg-surface">
-                  <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2 mb-3">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="user-avatar-sm bg-success" style="width: 44px; height: 44px; font-size: 1rem;">SJ</div>
-                      <div>
-                        <h5 class="fw-bold mb-0">Sarah Jenkins <span class="badge bg-primary-subtle text-primary small fw-semibold">Verified Escrow Buyer</span></h5>
-                        <small class="text-muted"><i class="bi bi-envelope me-1"></i>sarah.j@example.com • <i class="bi bi-telephone me-1"></i>(415) 555-4921</small>
-                      </div>
-                    </div>
-                    <span class="badge bg-success px-3 py-2">Cash Offer: $114,000</span>
-                  </div>
-                  <div class="p-3 rounded-3 bg-surface-alt mb-3">
-                    <div class="fw-semibold text-primary mb-1"><i class="bi bi-car-front-fill me-1"></i> Vehicle: 2022 Porsche 911 Carrera S (Listed at $118,500)</div>
-                    <p class="small text-muted mb-0">"I have full cash ready in AutoMarket Escrow. I can complete settlement within 24 hours if you accept $114,000."</p>
-                  </div>
-                  <div class="d-flex gap-2">
-                    <button class="btn btn-sm btn-success" onclick="window.autoMarketToast('Offer of $114,000 accepted! Escrow contract generated.', 'success');">
-                      <i class="bi bi-check-lg me-1"></i> Accept Offer
-                    </button>
-                    <button class="btn btn-sm btn-warning text-dark fw-semibold" onclick="window.autoMarketToast('Counter-offer sent to buyer ($116,000)', 'info');">
-                      <i class="bi bi-arrow-left-right me-1"></i> Counter Offer
-                    </button>
-                    <button class="btn btn-sm btn-outline-danger" onclick="window.autoMarketToast('Offer politely declined.', 'warning');">
-                      <i class="bi bi-x me-1"></i> Decline
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Lead 3 -->
-                <div class="card border rounded-4 p-4 shadow-sm bg-surface">
-                  <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2 mb-3">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="user-avatar-sm bg-info" style="width: 44px; height: 44px; font-size: 1rem;">DM</div>
-                      <div>
-                        <h5 class="fw-bold mb-0">David Miller</h5>
-                        <small class="text-muted"><i class="bi bi-envelope me-1"></i>david.m@example.com • <i class="bi bi-telephone me-1"></i>(213) 555-8833</small>
-                      </div>
-                    </div>
-                    <span class="badge bg-info text-dark px-3 py-2">Dossier Request</span>
-                  </div>
-                  <div class="p-3 rounded-3 bg-surface-alt mb-3">
-                    <div class="fw-semibold text-primary mb-1"><i class="bi bi-car-front-fill me-1"></i> Vehicle: 2021 Audi RS7 Sportback ($89,000)</div>
-                    <p class="small text-muted mb-0">"Can you share the full mechanical scan and paint thickness readings from the 200-Point Inspection report?"</p>
-                  </div>
-                  <div class="d-flex gap-2">
-                    <button class="btn btn-sm btn-primary-custom" onclick="window.autoMarketToast('200-Point Inspection Dossier shared with David Miller!', 'success');">
-                      <i class="bi bi-file-earmark-pdf me-1"></i> Share Inspection Dossier
-                    </button>
-                    <a href="service-details.html" target="_blank" class="btn btn-sm btn-outline-custom">
-                      <i class="bi bi-box-arrow-up-right me-1"></i> View Checklist
-                    </a>
-                  </div>
-                </div>
+              <!-- Inquiry Cards Container -->
+              <div class="d-flex flex-column gap-3" id="sellerLeadsContainer">
+                <!-- Populated dynamically via JS -->
+              </div>
+              <div id="sellerLeadsEmptyState" class="text-center py-5 d-none">
+                <i class="bi bi-inboxes fs-1 text-muted mb-3 d-inline-block opacity-50"></i>
+                <h5>No Active Inquiries</h5>
+                <p class="text-muted small mb-0">Customer test drive requests and buyer offers will appear here once your vehicles are published.</p>
               </div>
             </div>
 
@@ -733,158 +519,360 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
-    // Seller Dashboard Interactive Operations
-    let activeListingCount = 4;
+    // Seller Dashboard Dynamic Data & Operations Engine
+    (function() {
+      'use strict';
 
-    function markAsSold(rowId, carTitle) {
-      const row = document.getElementById(rowId);
-      if (!row) return;
-      const statusBadge = row.querySelector('.badge');
-      if (statusBadge) {
-        statusBadge.className = 'badge bg-secondary';
-        statusBadge.textContent = 'Sold';
+      function getSellerUser() {
+        let user = null;
+        if (window.autoMarketAuth && typeof window.autoMarketAuth.getCurrentUser === 'function') {
+          user = window.autoMarketAuth.getCurrentUser();
+        }
+        if (!user) {
+          try {
+            const stored = localStorage.getItem('automarket_current_user');
+            if (stored) user = JSON.parse(stored);
+          } catch (e) {}
+        }
+        return user;
       }
-      row.classList.add('opacity-75');
-      window.autoMarketToast(`${carTitle} marked as SOLD!`, 'success');
-    }
 
-    function deleteListing(rowId) {
-      const row = document.getElementById(rowId);
-      if (!row) return;
-      row.remove();
-      activeListingCount = Math.max(0, activeListingCount - 1);
-      document.getElementById('sellerListingsCountBadge').textContent = activeListingCount;
-      document.getElementById('kpiActiveCount').textContent = activeListingCount;
-      window.autoMarketToast('Vehicle listing removed from inventory.', 'warning');
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // Sync Seller User Data from auth session
-      let user = null;
-      if (window.autoMarketAuth && typeof window.autoMarketAuth.getCurrentUser === 'function') {
-        user = window.autoMarketAuth.getCurrentUser();
+      function getInventoryStorageKey() {
+        const user = getSellerUser();
+        return `automarket_seller_inventory_${user && user.id ? user.id : 'default'}`;
       }
-      if (!user) {
+
+      function getLeadsStorageKey() {
+        const user = getSellerUser();
+        return `automarket_seller_leads_${user && user.id ? user.id : 'default'}`;
+      }
+
+      function getSellerInventory() {
         try {
-          const stored = localStorage.getItem('automarket_current_user');
-          if (stored) user = JSON.parse(stored);
+          const stored = localStorage.getItem(getInventoryStorageKey());
+          if (stored) return JSON.parse(stored);
         } catch (e) {}
+        return [];
       }
 
-      if (user) {
-        // STRICT ROLE GUARD: If a buyer visits the seller dashboard, strictly route them to dashboard.html
-        if (user.role === 'buyer') {
-          if (window.autoMarketToast) {
-            window.autoMarketToast(`Buyer account detected (${user.name}). Redirecting to your Buyer Dashboard...`, 'warning');
+      function saveSellerInventory(items) {
+        try {
+          localStorage.setItem(getInventoryStorageKey(), JSON.stringify(items));
+        } catch (e) {
+          console.warn('Failed to save inventory:', e);
+        }
+      }
+
+      function getSellerLeads() {
+        try {
+          const stored = localStorage.getItem(getLeadsStorageKey());
+          if (stored) return JSON.parse(stored);
+        } catch (e) {}
+        return [];
+      }
+
+      function saveSellerLeads(items) {
+        try {
+          localStorage.setItem(getLeadsStorageKey(), JSON.stringify(items));
+        } catch (e) {
+          console.warn('Failed to save leads:', e);
+        }
+      }
+
+      function renderSellerDashboard() {
+        const inventory = getSellerInventory();
+        const leads = getSellerLeads();
+
+        const activeItems = inventory.filter(car => car.status === 'Active');
+        const soldItems = inventory.filter(car => car.status === 'Sold');
+        const activeCount = activeItems.length;
+        const soldCount = soldItems.length;
+        const totalValuation = activeItems.reduce((acc, car) => acc + (Number(car.price) || 0), 0);
+        const inquiriesCount = leads.length;
+        const testDrivesCount = leads.filter(l => l.type === 'Test Drive' || (l.message && l.message.toLowerCase().includes('test drive'))).length;
+
+        // Update KPIs
+        const kpiActive = document.getElementById('kpiActiveCount');
+        const kpiVal = document.getElementById('kpiValuation');
+        const kpiInq = document.getElementById('kpiInquiriesCount');
+        const kpiInqTrend = document.getElementById('kpiInquiriesTrend');
+        const kpiTest = document.getElementById('kpiTestDrivesCount');
+        const kpiTestSub = document.getElementById('kpiTestDrivesSub');
+        const kpiSold = document.getElementById('kpiSoldCount');
+        const kpiSoldSub = document.getElementById('kpiSoldSub');
+        const sidebarListingsBadge = document.getElementById('sellerListingsCountBadge');
+        const sidebarLeadsBadge = document.getElementById('leadsCountBadge');
+        const leadsTabBadge = document.getElementById('leadsTabBadge');
+
+        if (kpiActive) kpiActive.textContent = activeCount;
+        if (kpiVal) kpiVal.textContent = `$${totalValuation.toLocaleString()}`;
+        if (kpiInq) kpiInq.textContent = inquiriesCount;
+        if (kpiInqTrend) {
+          kpiInqTrend.innerHTML = inquiriesCount > 0
+            ? `<i class="bi bi-arrow-up-right me-1"></i>${inquiriesCount} new this week`
+            : `<i class="bi bi-dash me-1"></i>0 new this week`;
+        }
+        if (kpiTest) kpiTest.textContent = testDrivesCount;
+        if (kpiTestSub) {
+          kpiTestSub.textContent = testDrivesCount > 0 ? `${testDrivesCount} upcoming visit(s)` : 'No upcoming visits';
+        }
+        if (kpiSold) kpiSold.textContent = soldCount;
+        if (kpiSoldSub) {
+          kpiSoldSub.textContent = soldCount > 0 ? `${soldCount} completed sale(s)` : '0 sales';
+        }
+        if (sidebarListingsBadge) sidebarListingsBadge.textContent = activeCount;
+        if (sidebarLeadsBadge) sidebarLeadsBadge.textContent = inquiriesCount;
+        if (leadsTabBadge) leadsTabBadge.textContent = `${inquiriesCount} Active Inquiries`;
+
+        // Render Inventory Table
+        const tbody = document.getElementById('sellerInventoryBody');
+        const table = document.getElementById('sellerInventoryTable');
+        const emptyInventory = document.getElementById('sellerInventoryEmptyState');
+
+        if (tbody) {
+          if (inventory.length === 0) {
+            tbody.innerHTML = '';
+            if (table) table.classList.add('d-none');
+            if (emptyInventory) emptyInventory.classList.remove('d-none');
+          } else {
+            if (table) table.classList.remove('d-none');
+            if (emptyInventory) emptyInventory.classList.add('d-none');
+
+            tbody.innerHTML = inventory.map(car => `
+              <tr id="listingRow_${car.id}" class="${car.status === 'Sold' ? 'opacity-75' : ''}">
+                <td>
+                  <div class="d-flex align-items-center gap-3">
+                    <img src="${car.image || 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=160&q=80'}" alt="${car.title}" class="inventory-thumb">
+                    <div>
+                      <div class="fw-bold">${car.title}</div>
+                      <small class="text-muted">VIN: ${car.vin ? (car.vin.length > 9 ? car.vin.slice(0, 9) + '...' : car.vin) : 'N/A'} • ${typeof car.mileage === 'number' ? car.mileage.toLocaleString() : car.mileage} mi • ${car.transmission || 'Auto'}</small>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="fw-bold text-primary">$${Number(car.price).toLocaleString()}</span></td>
+                <td>
+                  <span class="badge ${car.status === 'Sold' ? 'bg-secondary' : 'bg-success'}">${car.status || 'Active'}</span>
+                </td>
+                <td><small class="fw-semibold">${car.views || 1} view${(car.views || 1) > 1 ? 's' : ''} • ${car.leads || 0} lead${(car.leads || 0) === 1 ? '' : 's'}</small></td>
+                <td class="text-end">
+                  <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-custom" title="Edit Listing" onclick="window.sellerEditCar('${car.id}');"><i class="bi bi-pencil"></i></button>
+                    ${car.status !== 'Sold' ? `<button type="button" class="btn btn-outline-success" title="Mark as Sold" onclick="window.sellerMarkSold('${car.id}', '${car.title.replace(/'/g, "\\'")}');"><i class="bi bi-check2-circle"></i></button>` : ''}
+                    <button type="button" class="btn btn-outline-danger" title="Remove Listing" onclick="window.sellerDeleteCar('${car.id}');"><i class="bi bi-trash"></i></button>
+                  </div>
+                </td>
+              </tr>
+            `).join('');
           }
-          setTimeout(() => {
-            window.location.href = 'dashboard.html';
-          }, 1000);
-          return;
         }
 
-        if (user.name) {
-          const letter = user.name.trim().charAt(0).toUpperCase() || 'S';
-          document.querySelectorAll('.seller-avatar-letter').forEach(el => el.textContent = letter);
-          document.querySelectorAll('.seller-name-display').forEach(el => el.textContent = user.name);
-        }
-        if (user.dealership) {
-          document.querySelectorAll('.seller-dealership-display').forEach(el => el.textContent = user.dealership);
-          const settDealerInput = document.getElementById('settDealerName');
-          if (settDealerInput) settDealerInput.value = user.dealership;
-        }
-        if (user.email) {
-          document.querySelectorAll('.seller-email-display').forEach(el => el.textContent = user.email);
-          const settEmailInput = document.getElementById('settEmail');
-          if (settEmailInput) settEmailInput.value = user.email;
+        // Render Overview & Tab Leads
+        const overviewLeads = document.getElementById('overviewRecentLeads');
+        const overviewEmptyLeads = document.getElementById('overviewEmptyLeads');
+        const tabLeadsContainer = document.getElementById('sellerLeadsContainer');
+        const tabLeadsEmptyState = document.getElementById('sellerLeadsEmptyState');
+
+        if (leads.length === 0) {
+          if (overviewLeads) { overviewLeads.innerHTML = ''; overviewLeads.classList.add('d-none'); }
+          if (overviewEmptyLeads) overviewEmptyLeads.classList.remove('d-none');
+          if (tabLeadsContainer) { tabLeadsContainer.innerHTML = ''; tabLeadsContainer.classList.add('d-none'); }
+          if (tabLeadsEmptyState) tabLeadsEmptyState.classList.remove('d-none');
+        } else {
+          if (overviewLeads) overviewLeads.classList.remove('d-none');
+          if (overviewEmptyLeads) overviewEmptyLeads.classList.add('d-none');
+          if (tabLeadsContainer) tabLeadsContainer.classList.remove('d-none');
+          if (tabLeadsEmptyState) tabLeadsEmptyState.classList.add('d-none');
+
+          // Overview leads snippet
+          if (overviewLeads) {
+            overviewLeads.innerHTML = leads.slice(0, 3).map(lead => `
+              <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-3 bg-transparent">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="rounded-circle bg-primary-subtle text-primary fw-bold d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                    ${lead.buyerName ? lead.buyerName.charAt(0).toUpperCase() : 'B'}
+                  </div>
+                  <div>
+                    <h6 class="mb-0 fw-bold">${lead.buyerName || 'Verified Buyer'}</h6>
+                    <small class="text-muted">Inquired about <strong>${lead.carTitle || 'Vehicle'}</strong> • ${lead.timeText || 'Recent'}</small>
+                  </div>
+                </div>
+                <div class="text-end">
+                  <span class="badge ${lead.type === 'Offer' ? 'bg-success' : 'bg-primary'} mb-1">${lead.type || 'Inquiry'}</span>
+                  <div><small class="text-muted">${lead.offerAmount ? '$' + Number(lead.offerAmount).toLocaleString() : 'Requested Info'}</small></div>
+                </div>
+              </div>
+            `).join('');
+          }
+
+          // Full leads tab cards
+          if (tabLeadsContainer) {
+            tabLeadsContainer.innerHTML = leads.map(lead => `
+              <div class="card border rounded-4 p-3 shadow-sm bg-surface">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="rounded-circle bg-primary-subtle text-primary fw-bold d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                      ${lead.buyerName ? lead.buyerName.charAt(0).toUpperCase() : 'B'}
+                    </div>
+                    <div>
+                      <h6 class="mb-0 fw-bold">${lead.buyerName || 'Verified Buyer'} <span class="badge bg-success-subtle text-success ms-1">Pre-Qualified</span></h6>
+                      <small class="text-muted">Regarding: <strong>${lead.carTitle || 'Vehicle'}</strong></small>
+                    </div>
+                  </div>
+                  <span class="badge bg-primary">${lead.timeText || 'Just now'}</span>
+                </div>
+                <p class="small text-muted mb-3">${lead.message || 'I am interested in this vehicle and would like more details.'}</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-primary-custom" onclick="window.autoMarketToast('Connecting to buyer chat...', 'info');"><i class="bi bi-chat-dots me-1"></i> Reply</button>
+                  <button class="btn btn-sm btn-outline-custom" onclick="window.autoMarketToast('Call initiated with buyer.', 'info');"><i class="bi bi-telephone me-1"></i> Call Buyer</button>
+                </div>
+              </div>
+            `).join('');
+          }
         }
       }
 
-      // Add New Car Listing Handler
-      const addForm = document.getElementById('newCarListingForm');
-      if (addForm) {
-        addForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          if (!addForm.checkValidity()) {
-            addForm.classList.add('was-validated');
+      window.sellerMarkSold = function(carId, carTitle) {
+        const inventory = getSellerInventory();
+        const idx = inventory.findIndex(c => String(c.id) === String(carId));
+        if (idx !== -1) {
+          inventory[idx].status = 'Sold';
+          saveSellerInventory(inventory);
+          renderSellerDashboard();
+          if (window.autoMarketToast) {
+            window.autoMarketToast(`"${carTitle || 'Vehicle'}" marked as SOLD!`, 'success');
+          }
+        }
+      };
+
+      window.sellerDeleteCar = function(carId) {
+        let inventory = getSellerInventory();
+        inventory = inventory.filter(c => String(c.id) !== String(carId));
+        saveSellerInventory(inventory);
+        renderSellerDashboard();
+        if (window.autoMarketToast) {
+          window.autoMarketToast('Vehicle listing removed from your inventory.', 'warning');
+        }
+      };
+
+      window.sellerEditCar = function(carId) {
+        if (window.autoMarketToast) {
+          window.autoMarketToast('Editing listing specifications...', 'info');
+        }
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const user = getSellerUser();
+
+        if (user) {
+          // STRICT ROLE GUARD: If a buyer visits seller dashboard, route them to dashboard.html
+          if (user.role === 'buyer') {
+            if (window.autoMarketToast) {
+              window.autoMarketToast(`Buyer account detected (${user.name}). Redirecting to your Buyer Dashboard...`, 'warning');
+            }
+            setTimeout(() => {
+              window.location.href = 'dashboard.html';
+            }, 1000);
             return;
           }
 
-          const title = document.getElementById('carTitle').value.trim();
-          const price = Number(document.getElementById('carAskingPrice').value).toLocaleString();
-          const year = document.getElementById('carYear').value;
-          const mileage = Number(document.getElementById('carMileage').value).toLocaleString();
-          const vin = document.getElementById('carVin').value.toUpperCase().trim();
-          const trans = document.getElementById('carTransmission').value;
-          const image = document.getElementById('carImageUrl').value.trim() || 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=160&q=80';
-
-          activeListingCount++;
-          const newRowId = `listingRow_${Date.now()}`;
-          const newRowHtml = `
-            <tr id="${newRowId}">
-              <td>
-                <div class="d-flex align-items-center gap-3">
-                  <img src="${image}" alt="${title}" class="inventory-thumb">
-                  <div>
-                    <div class="fw-bold">${title}</div>
-                    <small class="text-muted">VIN: ${vin.slice(0, 9)}... • ${mileage} mi • ${trans}</small>
-                  </div>
-                </div>
-              </td>
-              <td><span class="fw-bold text-primary">$${price}</span></td>
-              <td><span class="badge bg-success">Active</span></td>
-              <td><small class="fw-semibold">1 view • 0 leads</small></td>
-              <td class="text-end">
-                <div class="btn-group btn-group-sm">
-                  <button class="btn btn-outline-custom" title="Edit Listing" onclick="window.autoMarketToast('Editing listing details...', 'info');"><i class="bi bi-pencil"></i></button>
-                  <button class="btn btn-outline-success" title="Mark as Sold" onclick="markAsSold('${newRowId}', '${title}');"><i class="bi bi-check2-circle"></i></button>
-                  <button class="btn btn-outline-danger" title="Remove Listing" onclick="deleteListing('${newRowId}');"><i class="bi bi-trash"></i></button>
-                </div>
-              </td>
-            </tr>
-          `;
-
-          const tbody = document.getElementById('sellerInventoryBody');
-          if (tbody) {
-            tbody.insertAdjacentHTML('afterbegin', newRowHtml);
+          if (user.name) {
+            const letter = user.name.trim().charAt(0).toUpperCase() || 'S';
+            document.querySelectorAll('.seller-avatar-letter').forEach(el => el.textContent = letter);
+            document.querySelectorAll('.seller-name-display').forEach(el => el.textContent = user.name);
           }
-
-          document.getElementById('sellerListingsCountBadge').textContent = activeListingCount;
-          document.getElementById('kpiActiveCount').textContent = activeListingCount;
-
-          addForm.reset();
-          addForm.classList.remove('was-validated');
-
-          window.autoMarketToast(`Success! "${title}" published to marketplace!`, 'success');
-
-          // Switch back to inventory tab
-          setTimeout(() => {
-            document.getElementById('tab-seller-inventory-btn').click();
-          }, 600);
-        });
-      }
-
-      // Settings form submit
-      const settingsForm = document.getElementById('sellerSettingsForm');
-      if (settingsForm) {
-        settingsForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const dName = document.getElementById('settDealerName').value.trim();
-          document.querySelectorAll('.seller-dealership-display').forEach(el => el.textContent = dName);
-          window.autoMarketToast('Dealership credentials updated!', 'success');
-        });
-      }
-
-      // Sign Out listener
-      document.querySelectorAll('.dash-logout-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          if (window.autoMarketAuth) {
-            window.autoMarketAuth.logoutUser();
+          if (user.dealership) {
+            document.querySelectorAll('.seller-dealership-display').forEach(el => el.textContent = user.dealership);
+            const settDealerInput = document.getElementById('settDealerName');
+            if (settDealerInput) settDealerInput.value = user.dealership;
           }
+          if (user.email) {
+            document.querySelectorAll('.seller-email-display').forEach(el => el.textContent = user.email);
+            const settEmailInput = document.getElementById('settEmail');
+            if (settEmailInput) settEmailInput.value = user.email;
+          }
+        }
+
+        // Initial dynamic render
+        renderSellerDashboard();
+
+        // Add New Car Listing Handler
+        const addForm = document.getElementById('newCarListingForm');
+        if (addForm) {
+          addForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (!addForm.checkValidity()) {
+              addForm.classList.add('was-validated');
+              return;
+            }
+
+            const title = document.getElementById('carTitle').value.trim();
+            const price = parseFloat(document.getElementById('carAskingPrice').value) || 0;
+            const year = document.getElementById('carYear').value;
+            const mileage = parseFloat(document.getElementById('carMileage').value) || 0;
+            const vin = document.getElementById('carVin').value.toUpperCase().trim();
+            const trans = document.getElementById('carTransmission').value;
+            const image = document.getElementById('carImageUrl').value.trim() || 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=160&q=80';
+
+            const newCar = {
+              id: 'car_' + Date.now(),
+              title: title,
+              price: price,
+              year: year,
+              mileage: mileage,
+              vin: vin,
+              transmission: trans,
+              image: image,
+              status: 'Active',
+              views: 1,
+              leads: 0,
+              createdAt: new Date().toISOString()
+            };
+
+            const inventory = getSellerInventory();
+            inventory.unshift(newCar);
+            saveSellerInventory(inventory);
+
+            renderSellerDashboard();
+
+            addForm.reset();
+            addForm.classList.remove('was-validated');
+
+            if (window.autoMarketToast) {
+              window.autoMarketToast(`Success! "${title}" published to marketplace!`, 'success');
+            }
+
+            // Switch back to inventory tab
+            setTimeout(() => {
+              const invTabBtn = document.getElementById('tab-seller-inventory-btn');
+              if (invTabBtn) invTabBtn.click();
+            }, 600);
+          });
+        }
+
+        // Settings form submit
+        const settingsForm = document.getElementById('sellerSettingsForm');
+        if (settingsForm) {
+          settingsForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const dName = document.getElementById('settDealerName').value.trim();
+            document.querySelectorAll('.seller-dealership-display').forEach(el => el.textContent = dName);
+            if (window.autoMarketToast) {
+              window.autoMarketToast('Dealership credentials updated!', 'success');
+            }
+          });
+        }
+
+        // Sign Out listener
+        document.querySelectorAll('.dash-logout-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (window.autoMarketAuth) {
+              window.autoMarketAuth.logoutUser();
+            }
+          });
         });
       });
-    });
+    })();
   </script>
 </body>
 </html>
