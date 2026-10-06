@@ -85,8 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const text = btn.querySelector('.dir-text');
       if (text) {
         text.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
+      } else {
+        btn.innerHTML = `<span class="dir-text">${dir === 'rtl' ? 'LTR' : 'RTL'}</span>`;
       }
       btn.setAttribute('aria-label', `Switch layout to ${dir === 'rtl' ? 'LTR' : 'RTL'}`);
+      btn.setAttribute('title', `Toggle ${dir === 'rtl' ? 'LTR' : 'RTL'} Language`);
     });
   }
 
@@ -871,11 +874,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     navAuthContainers.forEach(container => {
       if (currentUser) {
-        const isSeller = currentUser.role === 'seller';
-        const dashboardUrl = isSeller ? 'seller-dashboard.html' : 'dashboard.html';
-        const dashboardTitle = isSeller ? 'Seller Dashboard' : 'Buyer Dashboard';
-        const roleBadge = isSeller ? 'Seller Account' : 'Buyer Account';
-        const badgeColor = isSeller ? 'bg-warning text-dark' : 'bg-primary text-white';
         // Ensure single first letter avatar
         const avatarLetter = (currentUser.avatar && currentUser.avatar.length === 1) 
           ? currentUser.avatar 
@@ -883,26 +881,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.innerHTML = `
           <div class="dropdown user-nav-dropdown">
-            <button class="btn dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="${currentUser.name} (${isSeller ? 'Seller' : 'Buyer'})">
+            <button class="btn dropdown-toggle d-flex align-items-center justify-content-center" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="${currentUser.name}">
               <span class="user-avatar-sm">${avatarLetter}</span>
-              <span class="badge ${badgeColor} rounded-pill" style="font-size: 0.65rem;">${isSeller ? 'Seller' : 'Buyer'}</span>
             </button>
             <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
               <li class="px-3 py-2 border-bottom">
-                <div class="fw-bold d-flex align-items-center justify-content-between">
-                  <span>${currentUser.name}</span>
-                  <span class="badge ${badgeColor} rounded-pill" style="font-size: 0.65rem;">${roleBadge}</span>
-                </div>
-                <div class="small text-muted text-truncate" style="max-width: 180px;">${currentUser.email}</div>
+                <div class="fw-bold text-truncate" style="max-width: 200px;">${currentUser.name}</div>
+                <div class="small text-muted text-truncate" style="max-width: 200px;">${currentUser.email}</div>
               </li>
               <li>
-                <a class="dropdown-item py-2 fw-semibold" href="${dashboardUrl}">
-                  <i class="bi ${isSeller ? 'bi-car-front-fill text-warning' : 'bi-speedometer2 text-primary'} me-2"></i> ${dashboardTitle}
+                <a class="dropdown-item py-2" href="inventory.html">
+                  <i class="bi bi-car-front me-2 text-primary"></i> Browse Cars
                 </a>
               </li>
               <li>
-                <a class="dropdown-item py-2" href="${isSeller ? 'seller-dashboard.html#inventory' : 'dashboard.html#saved'}">
-                  <i class="bi ${isSeller ? 'bi-tags' : 'bi-heart'} me-2 text-secondary"></i> ${isSeller ? 'My Listed Cars' : 'Saved Cars'}
+                <a class="dropdown-item py-2" href="inventory.html">
+                  <i class="bi bi-heart me-2 text-danger"></i> Saved Cars
                 </a>
               </li>
               <li><hr class="dropdown-divider my-1"></li>

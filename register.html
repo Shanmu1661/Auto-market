@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create Free Account | AutoMarket</title>
-  <meta name="description" content="Register an AutoMarket account to access your Buyer or Seller Dashboard, save vehicles, and list cars for sale.">
+  <meta name="description" content="Register an AutoMarket account to browse certified vehicles, save favorites, and connect with trusted sellers.">
 
   <!-- Fonts & Icons -->
-    <!-- Favicon -->
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
@@ -37,9 +37,9 @@
         <span class="badge-custom badge-certified mb-3">
           <i class="bi bi-person-check-fill"></i> Join 45,000+ Verified Users
         </span>
-        <h2 class="display-6 fw-bold text-white mb-3">Buy, Sell & Inspect Vehicles With Zero Stress</h2>
+        <h2 class="display-6 fw-bold text-white mb-3">Buy & Sell Vehicles With Zero Stress</h2>
         <p class="text-light opacity-80 lead fs-6 mb-4">
-          Create an account in seconds to save favorite vehicles, receive instant notifications on price drops, or list vehicle inventory to thousands of active car buyers.
+          Create an account in seconds to save favorite vehicles, receive instant notifications on price drops, and connect with verified dealers.
         </p>
         <div class="row g-3 mt-3 text-light">
           <div class="col-6">
@@ -69,7 +69,7 @@
           <div class="d-flex gap-2">
             <!-- RTL Toggle -->
             <button type="button" class="btn btn-sm btn-outline-custom rtl-toggle-btn px-2" title="Toggle RTL Layout" aria-label="Toggle RTL Layout">
-              <i class="bi bi-translate me-1"></i><span class="dir-text">RTL</span>
+              <span class="dir-text">RTL</span>
             </button>
             <!-- Dark Mode Toggle -->
             <button type="button" class="btn btn-sm btn-outline-custom theme-toggle-btn px-2" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
@@ -79,14 +79,9 @@
         </div>
 
         <!-- Page Header -->
-        <div class="d-flex justify-content-between align-items-start mb-3">
-          <div>
-            <h3 class="fw-bold mb-1">Create Your Account</h3>
-            <p class="text-muted small mb-0">Free registration for car buyers, private sellers, and dealers.</p>
-          </div>
-          <button type="button" class="btn btn-sm btn-outline-custom text-nowrap px-2 py-1" id="demoFillBtn" title="Auto-fill sample data for testing">
-            <i class="bi bi-magic text-primary me-1"></i> Demo Fill
-          </button>
+        <div class="mb-3">
+          <h3 class="fw-bold mb-1">Create Your Account</h3>
+          <p class="text-muted small mb-0">Join AutoMarket to save favorite cars and connect with sellers.</p>
         </div>
 
         <!-- Inline Alert Box for Real-time Feedback -->
@@ -115,54 +110,16 @@
             <div class="invalid-feedback">Please enter a valid email address.</div>
           </div>
 
-          <!-- Account Role Selection (Buyer vs Seller) -->
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Choose Your Account Type: <span class="text-danger">*</span></label>
-            <div class="role-select-group">
-              <label class="role-select-card" for="roleBuyer">
-                <input type="radio" name="accountRole" id="roleBuyer" value="buyer" checked>
-                <div class="role-card-inner">
-                  <i class="bi bi-person-heart text-primary role-icon fs-4 mb-1"></i>
-                  <div class="fw-bold">Car Buyer</div>
-                  <div class="small text-muted mb-2">Browse, test drive & buy certified cars</div>
-                  <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill small" style="font-size: 0.68rem;">
-                    <i class="bi bi-speedometer2 me-1"></i> Buyer Dashboard
-                  </span>
-                </div>
-              </label>
-              <label class="role-select-card" for="roleSeller">
-                <input type="radio" name="accountRole" id="roleSeller" value="seller">
-                <div class="role-card-inner">
-                  <i class="bi bi-car-front-fill text-warning role-icon fs-4 mb-1"></i>
-                  <div class="fw-bold">Car Seller</div>
-                  <div class="small text-muted mb-2">List inventory & manage sales leads</div>
-                  <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill small" style="font-size: 0.68rem;">
-                    <i class="bi bi-building-check me-1"></i> Seller Dashboard
-                  </span>
-                </div>
-              </label>
-            </div>
-          </div>
-
-          <!-- Optional Dealership Name for Sellers -->
-          <div class="mb-3 d-none" id="dealershipFieldGroup">
-            <label class="form-label fw-semibold" for="regDealership">Dealership / Business Name</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="bi bi-building"></i></span>
-              <input type="text" class="form-control" id="regDealership" placeholder="e.g. Apex Luxury Motors">
-            </div>
-          </div>
-
           <div class="mb-3">
             <label class="form-label fw-semibold" for="regPassword">Create Password <span class="text-danger">*</span></label>
             <div class="input-group">
               <span class="input-group-text"><i class="bi bi-lock"></i></span>
-              <input type="password" class="form-control" id="regPassword" placeholder="At least 8 characters" minlength="8" required autocomplete="new-password">
+              <input type="password" class="form-control" id="regPassword" placeholder="At least 6 characters" minlength="6" required autocomplete="new-password">
               <button class="btn btn-outline-secondary" type="button" id="toggleRegPasswordBtn" title="Toggle password visibility">
                 <i class="bi bi-eye" id="toggleRegPasswordIcon"></i>
               </button>
             </div>
-            <div class="invalid-feedback">Password must be at least 8 characters.</div>
+            <div class="invalid-feedback">Password must be at least 6 characters.</div>
           </div>
 
           <div class="form-check mb-4">
@@ -175,7 +132,7 @@
 
           <!-- Register Action Button -->
           <button type="submit" class="btn btn-primary-custom btn-lg-custom w-100 mb-3" id="submitRegBtn">
-            Create Account & Enter Buyer Dashboard <i class="bi bi-arrow-right ms-1"></i>
+            Create Account <i class="bi bi-arrow-right ms-1"></i>
           </button>
 
           <!-- Divider -->
@@ -210,20 +167,15 @@
   <script src="assets/js/main.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const roleBuyer = document.getElementById('roleBuyer');
-      const roleSeller = document.getElementById('roleSeller');
-      const dealershipGroup = document.getElementById('dealershipFieldGroup');
       const submitBtn = document.getElementById('submitRegBtn');
       const googleRegBtn = document.getElementById('googleRegBtn');
       const appleRegBtn = document.getElementById('appleRegBtn');
-      const demoFillBtn = document.getElementById('demoFillBtn');
       const form = document.getElementById('registerForm');
       const alertBox = document.getElementById('authAlertBox');
       const firstNameInput = document.getElementById('regFirstName');
       const lastNameInput = document.getElementById('regLastName');
       const emailInput = document.getElementById('regEmail');
       const passwordInput = document.getElementById('regPassword');
-      const dealershipInput = document.getElementById('regDealership');
       const termsCheck = document.getElementById('termsCheck');
       const togglePasswordBtn = document.getElementById('toggleRegPasswordBtn');
       const togglePasswordIcon = document.getElementById('toggleRegPasswordIcon');
@@ -249,28 +201,8 @@
         });
       }
 
-      function syncRoleUI() {
-        if (roleSeller.checked) {
-          dealershipGroup.classList.remove('d-none');
-          submitBtn.className = 'btn btn-warning text-dark fw-bold btn-lg-custom w-100 mb-3';
-          submitBtn.innerHTML = 'Create Account & Enter Seller Dashboard <i class="bi bi-arrow-right ms-1"></i>';
-        } else {
-          dealershipGroup.classList.add('d-none');
-          submitBtn.className = 'btn btn-primary-custom btn-lg-custom w-100 mb-3';
-          submitBtn.innerHTML = 'Create Account & Enter Buyer Dashboard <i class="bi bi-arrow-right ms-1"></i>';
-        }
-      }
-
-      // Check URL query params (?role=seller / ?role=buyer / ?email=...)
+      // URL parameters prefill
       const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('role') === 'seller' || urlParams.get('portal') === 'seller') {
-        roleSeller.checked = true;
-        roleBuyer.checked = false;
-      } else {
-        roleBuyer.checked = true;
-        roleSeller.checked = false;
-      }
-
       if (urlParams.get('email')) {
         emailInput.value = urlParams.get('email');
       }
@@ -281,11 +213,6 @@
       }
       if (urlParams.get('firstname')) firstNameInput.value = urlParams.get('firstname');
       if (urlParams.get('lastname')) lastNameInput.value = urlParams.get('lastname');
-
-      syncRoleUI();
-
-      roleBuyer.addEventListener('change', syncRoleUI);
-      roleSeller.addEventListener('change', syncRoleUI);
 
       // Real-time input clearing
       [firstNameInput, lastNameInput, emailInput, passwordInput, termsCheck].forEach(el => {
@@ -302,31 +229,9 @@
         });
       });
 
-      // Quick Demo Auto-Fill button
-      if (demoFillBtn) {
-        demoFillBtn.addEventListener('click', () => {
-          hideAlert();
-          const randId = Math.floor(100 + Math.random() * 900);
-          firstNameInput.value = 'Alex';
-          lastNameInput.value = 'Morgan';
-          emailInput.value = `alex.morgan${randId}@example.com`;
-          passwordInput.value = 'Password123!';
-          termsCheck.checked = true;
-          if (roleSeller.checked && dealershipInput) {
-            dealershipInput.value = 'Apex Premier Motors';
-          }
-          form.classList.remove('was-validated');
-          showAlert('<i class="bi bi-magic me-1"></i> Demo account details filled! Click "Create Account" below to proceed.', 'info');
-          submitBtn.focus();
-        });
-      }
-
       // Social Auth Registration
       function handleSocialRegister(provider) {
         hideAlert();
-        const selectedRole = roleSeller.checked ? 'seller' : 'buyer';
-        const roleLabel = selectedRole === 'seller' ? 'Seller' : 'Buyer';
-        const targetDashboard = selectedRole === 'seller' ? 'seller-dashboard.html' : 'dashboard.html';
         const initial = provider === 'Google' ? 'G' : 'A';
         const dummyEmail = provider === 'Google' ? 'user.google@automarket.com' : 'user.apple@automarket.com';
         const dummyName = provider === 'Google' ? 'Google Member' : 'Apple Member';
@@ -335,11 +240,8 @@
           id: `usr_soc_${Date.now()}`,
           name: dummyName,
           email: dummyEmail,
-          role: selectedRole,
-          portal: selectedRole,
+          role: 'buyer',
           avatar: initial,
-          dealership: selectedRole === 'seller' ? 'Premier Auto Hub' : undefined,
-          provider: provider.toLowerCase(),
           created: new Date().toISOString()
         };
 
@@ -347,26 +249,30 @@
           const users = JSON.parse(localStorage.getItem('automarket_users') || '[]');
           const idx = users.findIndex(u => u && u.email && u.email.toLowerCase() === dummyEmail.toLowerCase());
           if (idx >= 0) {
-            users[idx].role = selectedRole;
-            users[idx].portal = selectedRole;
+            users[idx].name = dummyName;
             users[idx].avatar = initial;
             localStorage.setItem('automarket_users', JSON.stringify(users));
           } else {
             users.push(socialUser);
             localStorage.setItem('automarket_users', JSON.stringify(users));
           }
+          localStorage.setItem('automarket_current_user', JSON.stringify(socialUser));
         } catch (e) {
           console.error(e);
         }
 
-        showAlert(`<i class="bi bi-check-circle-fill me-1 text-success"></i> Signed up with ${provider} as ${roleLabel}! Redirecting to Sign In...`, 'success');
+        if (window.autoMarketAuth && typeof window.autoMarketAuth.setCurrentUser === 'function') {
+          window.autoMarketAuth.setCurrentUser(socialUser);
+        }
+
+        showAlert(`<i class="bi bi-check-circle-fill me-1 text-success"></i> Signed up with ${provider}! Redirecting to homepage...`, 'success');
         if (window.autoMarketToast) {
-          window.autoMarketToast(`Signed up with ${provider}! Redirecting to Sign In...`, 'success');
+          window.autoMarketToast(`Signed up with ${provider}! Redirecting...`, 'success');
         }
 
         setTimeout(() => {
-          window.location.href = `login.html?registered=true&email=${encodeURIComponent(dummyEmail)}&role=${selectedRole}&name=${encodeURIComponent(dummyName)}`;
-        }, 600);
+          window.location.href = 'index.html';
+        }, 450);
       }
 
       if (googleRegBtn) {
@@ -376,7 +282,7 @@
         appleRegBtn.addEventListener('click', () => handleSocialRegister('Apple'));
       }
 
-      // Form Registration Submit
+      // Form Registration Submit / Dummy Register
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -389,7 +295,7 @@
           if (firstInvalid) {
             firstInvalid.focus();
           }
-          showAlert('<i class="bi bi-exclamation-triangle-fill me-1 text-danger"></i> Please fill in all required fields and accept the Terms of Service to create your account.', 'danger');
+          showAlert('<i class="bi bi-exclamation-triangle-fill me-1 text-danger"></i> Please fill in all required fields and accept the Terms of Service.', 'danger');
           return;
         }
 
@@ -397,103 +303,62 @@
         const lastName = lastNameInput.value.trim();
         const email = emailInput.value.trim().toLowerCase();
         const password = passwordInput.value;
-        const role = roleSeller.checked ? 'seller' : 'buyer';
-        const dealership = dealershipInput ? dealershipInput.value.trim() : '';
 
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Creating account...';
 
-        const fullName = `${firstName} ${lastName}`.trim();
-        let result;
+        const fullName = `${firstName} ${lastName}`.trim() || 'Valued User';
+        const firstLetter = fullName.charAt(0).toUpperCase() || 'U';
 
-        if (window.autoMarketAuth && typeof window.autoMarketAuth.registerUser === 'function') {
-          result = window.autoMarketAuth.registerUser({
+        let users = [];
+        try {
+          users = JSON.parse(localStorage.getItem('automarket_users') || '[]');
+        } catch (err) {
+          users = [];
+        }
+
+        let user = users.find(u => u && u.email && u.email.trim().toLowerCase() === email);
+        if (!user) {
+          user = {
+            id: `usr_${Date.now()}`,
             name: fullName,
             email: email,
-            password: password,
-            role: role,
-            dealership: role === 'seller' ? (dealership || `${fullName}'s Dealership`) : undefined
-          });
-        } else {
-          // Direct fallback
+            password: String(password),
+            role: 'buyer',
+            avatar: firstLetter,
+            created: new Date().toISOString()
+          };
+          users.push(user);
           try {
-            const users = JSON.parse(localStorage.getItem('automarket_users') || '[]');
-            const existing = users.find(u => u && u.email && u.email.trim().toLowerCase() === email);
-            if (existing) {
-              result = { success: false, message: 'An account with this email already exists. Please sign in instead.' };
-            } else {
-              const firstLetter = fullName.length > 0 ? fullName.charAt(0).toUpperCase() : 'U';
-              const newUser = {
-                id: `usr_${Date.now()}`,
-                name: fullName,
-                email: email,
-                password: String(password),
-                role: role,
-                dealership: role === 'seller' ? (dealership || `${fullName}'s Dealership`) : undefined,
-                avatar: firstLetter,
-                created: new Date().toISOString()
-              };
-              users.push(newUser);
-              localStorage.setItem('automarket_users', JSON.stringify(users));
-              result = { success: true, user: newUser };
-            }
-          } catch (err) {
-            result = { success: false, message: 'Error accessing local storage. Please try again.' };
-          }
-        }
-
-        if (result && result.success) {
-          const user = result.user;
-          const pendingFav = sessionStorage.getItem('automarket_pending_fav');
-          const redirectUrl = sessionStorage.getItem('automarket_redirect_after_login');
-
-          if (pendingFav) {
-            const carId = parseInt(pendingFav, 10);
-            if (carId) {
-              const favKey = `automarket_favorites_${user.id}`;
-              let userFavs = JSON.parse(localStorage.getItem(favKey) || localStorage.getItem('automarket_favorites') || '[]');
-              if (!userFavs.includes(carId)) {
-                userFavs.push(carId);
-                localStorage.setItem(favKey, JSON.stringify(userFavs));
-                localStorage.setItem('automarket_favorites', JSON.stringify(userFavs));
-              }
-            }
-            sessionStorage.removeItem('automarket_pending_fav');
-          }
-
-          showAlert(`<i class="bi bi-check-circle-fill me-1 text-success"></i> Account registered successfully! Redirecting to Sign In...`, 'success');
-
-          if (window.autoMarketToast) {
-            window.autoMarketToast(`Account registered successfully! Redirecting to Sign In...`, 'success');
-          }
-
-          const loginUrl = `login.html?registered=true&email=${encodeURIComponent(email)}&role=${role}&name=${encodeURIComponent(fullName)}`;
-
-          setTimeout(() => {
-            window.location.href = loginUrl;
-          }, 600);
+            localStorage.setItem('automarket_users', JSON.stringify(users));
+          } catch (err) {}
         } else {
-          submitBtn.disabled = false;
-          syncRoleUI();
-
-          const isAlreadyRegistered = result && result.message && result.message.includes('already exists');
-          if (isAlreadyRegistered) {
-            showAlert(`
-              <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-                <div><i class="bi bi-exclamation-triangle-fill text-warning me-1"></i> An account with <strong>${email}</strong> already exists.</div>
-                <a href="login.html?email=${encodeURIComponent(email)}&role=${role}" class="btn btn-sm btn-primary">
-                  <i class="bi bi-box-arrow-in-right me-1"></i> Sign In Now
-                </a>
-              </div>
-            `, 'warning');
-          } else {
-            showAlert(`<i class="bi bi-exclamation-triangle-fill text-danger me-1"></i> ${result ? result.message : 'Registration failed. Please check your inputs.'}`, 'danger');
-          }
-
-          if (window.autoMarketToast) {
-            window.autoMarketToast(result ? result.message : 'Registration failed. Please check your inputs.', 'danger');
-          }
+          user.name = fullName;
+          user.password = String(password);
+          user.avatar = firstLetter;
+          try {
+            localStorage.setItem('automarket_users', JSON.stringify(users));
+          } catch (err) {}
         }
+
+        // Auto-login registered user
+        try {
+          localStorage.setItem('automarket_current_user', JSON.stringify(user));
+        } catch (err) {}
+
+        if (window.autoMarketAuth && typeof window.autoMarketAuth.setCurrentUser === 'function') {
+          window.autoMarketAuth.setCurrentUser(user);
+        }
+
+        showAlert(`<i class="bi bi-check-circle-fill me-1 text-success"></i> Account created successfully! Redirecting to homepage...`, 'success');
+
+        if (window.autoMarketToast) {
+          window.autoMarketToast(`Welcome, ${fullName}!`, 'success');
+        }
+
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 450);
       });
     });
   </script>

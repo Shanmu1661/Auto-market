@@ -53,12 +53,21 @@
             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
             <li class="nav-item active"><a class="nav-link active" href="blog.html">Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dashboard
+              </a>
+              <ul class="dropdown-menu shadow-sm" aria-labelledby="dashboardDropdown">
+                <li><a class="dropdown-item" href="dashboard.html"><i class="bi bi-person-heart me-2 text-primary"></i>Buyer Dashboard</a></li>
+                <li><a class="dropdown-item" href="seller-dashboard.html"><i class="bi bi-car-front-fill me-2 text-warning"></i>Seller Dashboard</a></li>
+              </ul>
+            </li>
           </ul>
 
           <div class="navbar-footer-tools d-flex align-items-center justify-content-between justify-content-lg-end gap-2 mt-3 mt-lg-0 pt-3 pt-lg-0">
             <div class="nav-toggles-group d-flex align-items-center gap-2">
-              <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL / LTR Language">
-                <i class="bi bi-translate"></i>
+              <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL / LTR Language" aria-label="Toggle RTL / LTR Language">
+                <span class="dir-text">RTL</span>
               </button>
               <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
                 <i class="bi bi-moon-stars-fill"></i>

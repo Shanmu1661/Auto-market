@@ -336,6 +336,15 @@ img {
   transform: translateY(0);
 }
 
+/* RTL / LTR Toggle Button Letters */
+.rtl-toggle-btn .dir-text {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 /* Active RTL Toggle State Highlight */
 [dir="rtl"] .rtl-toggle-btn {
   background-color: var(--primary-subtle) !important;
@@ -417,6 +426,12 @@ img {
   white-space: nowrap !important;
   display: inline-flex;
   align-items: center;
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .nav-link {
+    padding: 0.5rem 0.6rem !important;
+    font-size: 0.88rem;
+  }
 }
 .nav-link:hover {
   color: var(--primary) !important;
@@ -726,21 +741,34 @@ img {
   margin: 0.85rem 0;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
+  align-items: center;
 }
 .spec-item {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   font-size: 0.78rem;
   color: var(--text-muted);
 }
 .spec-item i {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--primary);
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 .spec-item span {
   font-weight: 600;
   color: var(--text-main);
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .car-card-footer {
@@ -1555,32 +1583,37 @@ img {
   background-color: var(--bg-surface-alt);
   border: 1px solid var(--border-color);
   color: var(--text-main);
-  padding: 0 0.9rem;
-  font-weight: 600;
-  min-height: 38px;
-  height: 38px;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  border-radius: 9999px;
+  justify-content: center;
+  border-radius: 50%;
   transition: all var(--transition-fast);
+}
+.user-nav-dropdown .dropdown-toggle::after {
+  display: none !important;
 }
 .user-nav-dropdown .dropdown-toggle:hover {
   border-color: var(--primary);
   background-color: var(--primary-subtle);
   color: var(--primary);
+  transform: translateY(-1px);
 }
 .user-avatar-sm {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background-color: var(--primary);
   color: #ffffff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 700;
+  line-height: 1;
 }
 
 /* 24. Seller Dashboard Utilities */
