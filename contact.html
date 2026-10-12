@@ -68,6 +68,7 @@
             <div class="nav-toggles-group d-flex align-items-center gap-2">
               <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL / LTR Language" aria-label="Toggle RTL / LTR Language">
                 <span class="dir-text">RTL</span>
+                <i class="bi bi-arrow-left-right"></i>
               </button>
               <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
                 <i class="bi bi-moon-stars-fill"></i>
@@ -135,15 +136,15 @@
           </div>
         </div>
 
-        <div class="row g-5">
+        <div class="row g-5 align-items-stretch">
           <!-- Formspree / Netlify Compatible Contact Form -->
-          <div class="col-lg-7">
-            <div class="card p-4 p-md-5 border-0 shadow-sm rounded-4" style="background-color: var(--bg-surface); border: 1px solid var(--border-color) !important;">
+          <div class="col-lg-7 d-flex">
+            <div class="card p-4 p-md-5 border-0 shadow-sm rounded-4 w-100 d-flex flex-column" style="background-color: var(--bg-surface); border: 1px solid var(--border-color) !important;">
               <h3 class="fw-bold mb-2">Send Us a Message</h3>
               <p class="text-muted small mb-4">Fill in your information and our specialists will reach out promptly.</p>
 
               <!-- Ready for Formspree: action="https://formspree.io/f/{your-id}" or Netlify: netlify -->
-              <form class="needs-validation" novalidate id="contactForm">
+              <form class="needs-validation d-flex flex-column flex-grow-1" novalidate id="contactForm">
                 <div class="row g-3 mb-3">
                   <div class="col-md-6">
                     <label class="form-label fw-bold small">First Name</label>
@@ -184,13 +185,13 @@
                   <div class="invalid-feedback">Please choose an inquiry topic.</div>
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-4 flex-grow-1 d-flex flex-column">
                   <label class="form-label fw-bold small">Your Message</label>
-                  <textarea class="form-control" rows="5" placeholder="Include car stock ID, preferred inspection date, or questions..." required></textarea>
+                  <textarea class="form-control flex-grow-1" rows="4" style="min-height: 120px;" placeholder="Include car stock ID, preferred inspection date, or questions..." required></textarea>
                   <div class="invalid-feedback">Message cannot be empty.</div>
                 </div>
 
-                <button type="submit" class="btn btn-primary-custom btn-lg-custom w-100">
+                <button type="submit" class="btn btn-primary-custom btn-lg-custom w-100 mt-auto">
                   <i class="bi bi-send me-2"></i> Submit Inquiry
                 </button>
               </form>
@@ -198,65 +199,63 @@
           </div>
 
           <!-- Interactive Map & Showroom Hours -->
-          <div class="col-lg-5">
-            <div class="card p-4 border-0 shadow-sm rounded-4 h-100 d-flex flex-column justify-content-between" style="background-color: var(--bg-surface); border: 1px solid var(--border-color) !important;">
-              <div>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h5 class="fw-bold mb-0"><i class="bi bi-geo-alt-fill text-danger me-2"></i> Visit Our Hub</h5>
-                  <a href="https://maps.google.com/?q=1245+Motor+Pkwy+Beverly+Hills+CA+90210" target="_blank" rel="noopener noreferrer" class="badge bg-primary-subtle text-primary text-decoration-none px-3 py-2 rounded-pill">
-                    <i class="bi bi-box-arrow-up-right me-1"></i> Open Map
-                  </a>
-                </div>
-
-                <p class="text-muted small mb-3">
-                  Our main showroom features an indoor climate-controlled presentation hall, customer delivery lounge, and a 6-bay mechanical inspection facility.
-                </p>
-
-                <!-- Google Maps Embed Container -->
-                <div class="rounded-4 overflow-hidden shadow-sm mb-3 border position-relative" style="height: 250px; background-color: #e5e7eb;">
-                  <iframe 
-                    title="AutoMarket Showroom Location Map" 
-                    src="https://maps.google.com/maps?q=1245+Motor+Parkway+Los+Angeles+CA+90210&t=&z=13&ie=UTF8&iwloc=&output=embed" 
-                    width="100%" 
-                    height="100%" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                  </iframe>
-                </div>
-
-                <!-- Action Direction Buttons -->
-                <div class="d-flex flex-wrap gap-2 mb-4">
-                  <a href="https://www.google.com/maps/dir/?api=1&destination=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" class="btn btn-primary-custom btn-sm flex-fill text-center">
-                    <i class="bi bi-google me-1"></i> Google Directions
-                  </a>
-                  <a href="https://maps.apple.com/?daddr=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" class="btn btn-outline-custom btn-sm flex-fill text-center">
-                    <i class="bi bi-apple me-1"></i> Apple Maps
-                  </a>
-                  <a href="https://waze.com/ul?q=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" class="btn btn-outline-custom btn-sm flex-fill text-center">
-                    <i class="bi bi-compass me-1"></i> Waze
-                  </a>
-                </div>
-
-                <h6 class="fw-bold mb-2">Showroom & Inspection Hours</h6>
-                <ul class="list-unstyled small text-muted mb-0">
-                  <li class="d-flex justify-content-between py-1 border-bottom border-secondary border-opacity-10">
-                    <span>Monday – Friday:</span>
-                    <strong class="text-main">9:00 AM – 7:00 PM</strong>
-                  </li>
-                  <li class="d-flex justify-content-between py-1 border-bottom border-secondary border-opacity-10">
-                    <span>Saturday:</span>
-                    <strong class="text-main">9:00 AM – 6:00 PM</strong>
-                  </li>
-                  <li class="d-flex justify-content-between py-1">
-                    <span>Sunday:</span>
-                    <strong class="text-secondary">Closed (Online Orders 24/7)</strong>
-                  </li>
-                </ul>
+          <div class="col-lg-5 d-flex">
+            <div class="card p-4 p-md-5 border-0 shadow-sm rounded-4 w-100 d-flex flex-column" style="background-color: var(--bg-surface); border: 1px solid var(--border-color) !important;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="fw-bold mb-0 fs-4"><i class="bi bi-geo-alt-fill text-danger me-2"></i> Visit Our Hub</h3>
+                <a href="https://maps.google.com/?q=1245+Motor+Pkwy+Beverly+Hills+CA+90210" target="_blank" rel="noopener noreferrer" class="badge bg-primary-subtle text-primary text-decoration-none px-3 py-2 rounded-pill">
+                  <i class="bi bi-box-arrow-up-right me-1"></i> Open Map
+                </a>
               </div>
 
-              <div class="p-3 bg-light rounded-3 mt-4 text-center">
+              <p class="text-muted small mb-3">
+                Our main showroom features an indoor climate-controlled presentation hall, customer delivery lounge, and a 6-bay mechanical inspection facility.
+              </p>
+
+              <!-- Google Maps Embed Container -->
+              <div class="rounded-4 overflow-hidden shadow-sm mb-3 border position-relative flex-grow-1" style="min-height: 220px; background-color: #e5e7eb;">
+                <iframe 
+                  title="AutoMarket Showroom Location Map" 
+                  src="https://maps.google.com/maps?q=1245+Motor+Parkway+Los+Angeles+CA+90210&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                  width="100%" 
+                  height="100%" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+              </div>
+
+              <!-- Action Direction Buttons -->
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" class="btn btn-primary-custom btn-sm flex-fill text-center">
+                  <i class="bi bi-google me-1"></i> Google Directions
+                </a>
+                <a href="https://maps.apple.com/?daddr=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" class="btn btn-outline-custom btn-sm flex-fill text-center">
+                  <i class="bi bi-apple me-1"></i> Apple Maps
+                </a>
+                <a href="https://waze.com/ul?q=1245+Motor+Parkway+Los+Angeles+CA+90210" target="_blank" rel="noopener noreferrer" class="btn btn-outline-custom btn-sm flex-fill text-center">
+                  <i class="bi bi-compass me-1"></i> Waze
+                </a>
+              </div>
+
+              <h6 class="fw-bold mb-2">Showroom & Inspection Hours</h6>
+              <ul class="list-unstyled small text-muted mb-3">
+                <li class="d-flex justify-content-between py-1 border-bottom border-secondary border-opacity-10">
+                  <span>Monday – Friday:</span>
+                  <strong class="text-main">9:00 AM – 7:00 PM</strong>
+                </li>
+                <li class="d-flex justify-content-between py-1 border-bottom border-secondary border-opacity-10">
+                  <span>Saturday:</span>
+                  <strong class="text-main">9:00 AM – 6:00 PM</strong>
+                </li>
+                <li class="d-flex justify-content-between py-1">
+                  <span>Sunday:</span>
+                  <strong class="text-secondary">Closed (Online Orders 24/7)</strong>
+                </li>
+              </ul>
+
+              <div class="p-3 bg-body-tertiary rounded-3 mt-auto text-center border" style="border-color: var(--border-color) !important;">
                 <small class="text-muted"><i class="bi bi-info-circle text-primary me-1"></i> Walk-ins welcome for test drives. Pre-booking recommended on weekends.</small>
               </div>
             </div>

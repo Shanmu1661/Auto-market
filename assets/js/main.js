@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
           btn.setAttribute('aria-label', 'Switch to light mode');
           btn.title = 'Switch to light mode';
         } else {
-          icon.className = 'bi bi-moon-stars-fill text-dark';
+          icon.className = 'bi bi-moon-stars-fill';
           btn.setAttribute('aria-label', 'Switch to dark mode');
           btn.title = 'Switch to dark mode';
         }
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (text) {
         text.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
       } else {
-        btn.innerHTML = `<span class="dir-text">${dir === 'rtl' ? 'LTR' : 'RTL'}</span>`;
+        btn.innerHTML = `<span class="dir-text">${dir === 'rtl' ? 'LTR' : 'RTL'}</span> <i class="bi bi-arrow-left-right"></i>`;
       }
       btn.setAttribute('aria-label', `Switch layout to ${dir === 'rtl' ? 'LTR' : 'RTL'}`);
       btn.setAttribute('title', `Toggle ${dir === 'rtl' ? 'LTR' : 'RTL'} Language`);

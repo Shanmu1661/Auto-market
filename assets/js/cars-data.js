@@ -1102,6 +1102,60 @@ window.AUTOMARKET_CARS = [
       tech: ["NissanConnect 8-inch Touchscreen with Navigation", "Apple CarPlay & Android Auto", "Nissan Door to Door Navigation with Premium Traffic", "6-Speaker Audio System"],
       comfort: ["e-Pedal Drive Mode (One-Pedal Accelerate and Stop)", "Heated Front Seats and Heated Steering Wheel", "Hybrid Heating System (Heat Pump)", "17-inch Machined Aluminum-Alloy Wheels"]
     }
+  },
+  {
+    id: 505,
+    title: "2022 Tesla Model 3 Long Range AWD",
+    make: "Tesla",
+    model: "Model 3",
+    year: 2022,
+    trim: "Long Range Dual Motor AWD",
+    category: "electric",
+    categoryLabel: "Electric & Hybrid",
+    price: 31900,
+    emi: 469,
+    msrp: 51990,
+    mileage: "24,800 mi",
+    odometerNum: 24800,
+    engine: "Dual AC Permanent Magnet Electric Motors (82 kWh Battery)",
+    transmission: "Single-Speed Fixed Gear",
+    drivetrain: "Dual Motor All-Wheel Drive (AWD)",
+    fuelType: "Pure Electric (EV)",
+    fuelEconomy: "134 MPGe City / 126 MPGe Hwy (358 Miles Range)",
+    horsepower: "346 HP Combined Dual Motors",
+    torque: "389 lb-ft Instant Torque (0-60 in 4.2s)",
+    exteriorColor: "Midnight Silver Metallic",
+    interiorColor: "All Black Premium Interior",
+    seating: "5 Passengers",
+    cargoVolume: "23.0 cu ft (Trunk + Frunk)",
+    vin: "5YJ3E1EB7NF208941",
+    stock: "UM-5058",
+    warranty: "12 Mos / 12,000 Mi Included + 8-Yr / 120,000 Mi Battery & Drive Unit",
+    location: "San Jose Showroom",
+    badges: [
+      { text: "358 Mi Range", icon: "bi-battery-charging", type: "deal" },
+      { text: "Autopilot", icon: "bi-shield-check", type: "certified" }
+    ],
+    images: {
+      hero: "assets/images/categories/ev-5.jpg",
+      interior: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=600&q=80",
+      rear: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&q=80",
+      wheel: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80"
+    },
+    inspection: {
+      date: "October 08, 2026",
+      techId: "#4109",
+      score: "Passed 200/200",
+      engineScore: "82 kWh High-Voltage Battery Pack: 98.7% Capacity Retention",
+      brakes: "Regenerative Braking System with Hold Mode 96%",
+      tires: "Michelin Pilot Sport 4 TO EV 8.0/32\" Tread",
+      obd: "Passed Tesla Toolbox Diagnostics"
+    },
+    features: {
+      safety: ["Tesla Autopilot with Full Self-Driving Computer HW3", "Automatic Emergency Braking & Forward Collision Warning", "Blind Spot Monitoring with Side-Camera View", "Sentry Mode 360-Degree Security Recording"],
+      tech: ["15-inch Touchscreen Infotainment with Navigation", "Tesla Supercharger Network Compatibility (250kW V3)", "Premium Audio System with 14 Speakers & Subwoofer", "Tesla Mobile App Keyless Entry & Remote Climate"],
+      comfort: ["All-Glass Tinted Panoramic Roof with UV Protection", "Heated Front and Rear Seats + Heated Steering Wheel", "18-inch Aero Wheels with Removable Covers", "Power Folding Auto-Dimming Heated Side Mirrors"]
+    }
   }
 ];
 

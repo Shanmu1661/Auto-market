@@ -68,6 +68,7 @@
             <div class="nav-toggles-group d-flex align-items-center gap-2">
               <button class="btn btn-toggle-action rtl-toggle-btn" title="Toggle RTL / LTR Language" aria-label="Toggle RTL / LTR Language">
                 <span class="dir-text">RTL</span>
+                <i class="bi bi-arrow-left-right"></i>
               </button>
               <button class="btn btn-toggle-action theme-toggle-btn" title="Toggle Dark/Light Mode">
                 <i class="bi bi-moon-stars-fill"></i>
@@ -84,8 +85,19 @@
     </nav>
   </header>
 
-  <main id="main-content" class="py-5">
-    <div class="container">
+  <main id="main-content">
+    <!-- Hero Banner (Browse Cars) -->
+    <section class="page-header-banner text-center" style="background-image: url('assets/images/banners/about-banner.jpg');">
+      <div class="container py-2">
+        <span class="section-tag-light"><i class="bi bi-patch-check-fill me-1"></i> Verified & Certified Inventory</span>
+        <h1 class="display-5 fw-bold text-white mb-3">Browse Certified Used Cars</h1>
+        <p class="lead text-light mx-auto" style="max-width: 680px;">
+          Explore over 15,400+ inspected pre-owned vehicles with upfront transparent pricing, comprehensive 200-point inspection dossiers, and nationwide escrow protection.
+        </p>
+      </div>
+    </section>
+
+    <div class="container py-5">
       <!-- Breadcrumb -->
       <nav aria-label="breadcrumb" class="mb-4">
         <ol class="breadcrumb">
@@ -97,13 +109,14 @@
       <div class="row g-4">
         <!-- Filter Sidebar Column -->
         <aside class="col-lg-3">
-          <!-- Mobile Filter Toggle Button -->
-          <div class="d-lg-none mb-3">
-            <button class="btn btn-outline-custom w-100 d-flex justify-content-between align-items-center py-2 px-3 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#mobileFilterCollapse" aria-expanded="false" aria-controls="mobileFilterCollapse">
-              <span><i class="bi bi-funnel-fill me-2 text-primary"></i> Filter Vehicles (Body Style, Budget, Make)</span>
-              <i class="bi bi-chevron-down"></i>
-            </button>
-          </div>
+          <div class="inventory-sidebar-sticky">
+            <!-- Mobile Filter Toggle Button -->
+            <div class="d-lg-none mb-3">
+              <button class="btn btn-outline-custom w-100 d-flex justify-content-between align-items-center py-2 px-3 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#mobileFilterCollapse" aria-expanded="false" aria-controls="mobileFilterCollapse">
+                <span><i class="bi bi-funnel-fill me-2 text-primary"></i> Filter Vehicles (Body Style, Budget, Make)</span>
+                <i class="bi bi-chevron-down"></i>
+              </button>
+            </div>
 
           <div class="collapse d-lg-block" id="mobileFilterCollapse">
             <div class="card border-0 shadow-sm p-3 mb-4" style="background-color: var(--bg-surface); border-radius: var(--radius-md); border: 1px solid var(--border-color) !important;">
@@ -130,14 +143,14 @@
               <div class="mb-3">
                 <label class="form-label small fw-bold" for="filterMakeSelect">Make / Manufacturer</label>
                 <select class="form-select form-select-sm mb-2" id="filterMakeSelect">
-                  <option value="">All Brands (20)</option>
+                  <option value="">All Brands (21)</option>
                   <option value="toyota">Toyota (5)</option>
                   <option value="hyundai">Hyundai (3)</option>
+                  <option value="tesla">Tesla (2)</option>
                   <option value="honda">Honda (2)</option>
                   <option value="ford">Ford (2)</option>
                   <option value="chevrolet">Chevrolet (2)</option>
                   <option value="bmw">BMW (1)</option>
-                  <option value="tesla">Tesla (1)</option>
                   <option value="mazda">Mazda (1)</option>
                   <option value="nissan">Nissan (1)</option>
                   <option value="ram">RAM (1)</option>
@@ -152,7 +165,7 @@
                 <div class="form-check small mb-1">
                   <input class="form-check-input body-filter-radio" type="radio" name="bodyCategory" id="bodyAll" value="" checked>
                   <label class="form-check-label d-flex justify-content-between" for="bodyAll">
-                    <span>All Categories</span> <span class="badge bg-secondary-subtle text-secondary">20</span>
+                    <span>All Categories</span> <span class="badge bg-secondary-subtle text-secondary">21</span>
                   </label>
                 </div>
                 <div class="form-check small mb-1">
@@ -182,7 +195,7 @@
                 <div class="form-check small mb-1">
                   <input class="form-check-input body-filter-radio" type="radio" name="bodyCategory" id="bodyEv" value="electric">
                   <label class="form-check-label d-flex justify-content-between" for="bodyEv">
-                    <span>Electric & Hybrid</span> <span class="badge bg-primary-subtle text-primary">4</span>
+                    <span>Electric & Hybrid</span> <span class="badge bg-primary-subtle text-primary">5</span>
                   </label>
                 </div>
               </div>
@@ -226,7 +239,8 @@
             <p class="small text-light opacity-75 mb-3">Our car specialists are available 7 days a week to assist your vehicle selection.</p>
             <a href="contact.html" class="btn btn-sm btn-secondary-custom w-100">Talk To An Advisor</a>
           </div>
-        </aside>
+        </div>
+      </aside>
 
         <!-- Main Listings Column -->
         <div class="col-lg-9">
@@ -234,7 +248,7 @@
           <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center pb-3 mb-4 border-bottom border-secondary border-opacity-25 gap-3">
             <div>
               <h2 class="h4 mb-1">Used Cars For Sale</h2>
-              <span class="text-muted small" id="inventoryCountText">Showing <strong id="invShowingCount">20</strong> of <strong id="invTotalCount">20</strong> verified vehicles</span>
+              <span class="text-muted small" id="inventoryCountText">Showing <strong id="invShowingCount">21</strong> of <strong id="invTotalCount">21</strong> verified vehicles</span>
             </div>
 
             <div class="d-flex align-items-center gap-2">
@@ -259,12 +273,12 @@
 
           <!-- Quick Category Selection Pills (Single Select) -->
           <div class="d-flex flex-wrap gap-2 mb-4 category-filter-pills" id="categoryFilterPills" role="tablist" aria-label="Filter by category">
-            <button type="button" class="btn btn-sm btn-primary-custom category-pill active" data-category="">All Categories (20)</button>
+            <button type="button" class="btn btn-sm btn-primary-custom category-pill active" data-category="">All Categories (21)</button>
             <button type="button" class="btn btn-sm btn-outline-custom category-pill" data-category="suv">SUV & Crossover (4)</button>
             <button type="button" class="btn btn-sm btn-outline-custom category-pill" data-category="sedan">Sedan (4)</button>
             <button type="button" class="btn btn-sm btn-outline-custom category-pill" data-category="coupe">Coupe / Sports (4)</button>
             <button type="button" class="btn btn-sm btn-outline-custom category-pill" data-category="truck">Trucks / 4x4 (4)</button>
-            <button type="button" class="btn btn-sm btn-outline-custom category-pill" data-category="electric">Electric & Hybrid (4)</button>
+            <button type="button" class="btn btn-sm btn-outline-custom category-pill" data-category="electric">Electric & Hybrid (5)</button>
           </div>
 
           <!-- Skeleton Loader Placeholder (Smooth Transition Simulated) -->
@@ -817,6 +831,32 @@
                       <div class="price-emi">Est. $295/mo</div>
                     </div>
                     <a href="car-details.html?id=504" class="btn btn-sm btn-primary-custom">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 21. Tesla Model 3 Long Range AWD -->
+            <div class="col-md-6 col-lg-4 inventory-item" data-id="505" data-body="electric" data-make="tesla" data-price="31900" data-mileage="24800" data-year="2022" data-fuel="electric">
+              <div class="car-card">
+                <div class="car-card-img-wrap">
+                  <img src="assets/images/categories/ev-5.jpg" alt="2022 Tesla Model 3 Long Range AWD" loading="lazy">
+                  <button class="car-favorite-btn" data-car-id="505" aria-label="Save car"><i class="bi bi-heart"></i></button>
+                </div>
+                <div class="car-card-body">
+                  <span class="text-muted small">Dual Motor AWD • 358 Mi Range</span>
+                  <h3 class="car-card-title mt-1"><a href="car-details.html?id=505">2022 Tesla Model 3 Long Range AWD</a></h3>
+                  <div class="car-card-specs">
+                    <div class="spec-item"><i class="bi bi-speedometer2"></i><span>24,800 mi</span></div>
+                    <div class="spec-item"><i class="bi bi-fuel-pump"></i><span>82 kWh EV</span></div>
+                    <div class="spec-item"><i class="bi bi-gear"></i><span>Dual Motor</span></div>
+                  </div>
+                  <div class="car-card-footer">
+                    <div class="car-price-wrap">
+                      <div class="price-main">$31,900</div>
+                      <div class="price-emi">Est. $469/mo</div>
+                    </div>
+                    <a href="car-details.html?id=505" class="btn btn-sm btn-primary-custom">View Details</a>
                   </div>
                 </div>
               </div>
