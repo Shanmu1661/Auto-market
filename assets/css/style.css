@@ -229,6 +229,26 @@ img {
   border-color: var(--primary);
 }
 
+.btn-outline-light,
+.btn-transparent-light {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+  transition: var(--transition-base);
+}
+.btn-outline-light:hover,
+.btn-outline-light:focus,
+.btn-outline-light:active,
+.btn-transparent-light:hover,
+.btn-transparent-light:focus,
+.btn-transparent-light:active {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
 .btn-soft-primary {
   background-color: var(--primary-subtle);
   color: var(--primary);
@@ -1298,6 +1318,11 @@ img {
   padding: 1.75rem;
   box-shadow: var(--shadow-sm);
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.testimonial-card p {
+  flex-grow: 1;
 }
 .user-avatar {
   width: 50px;
@@ -1308,8 +1333,45 @@ img {
 
 /* 15. User Dashboard Layout */
 .dashboard-wrap {
-  min-height: calc(100vh - 200px);
-  padding: 2.5rem 0;
+  min-height: 100vh;
+  padding: 1.5rem 0 3rem;
+}
+
+/* Dashboard In-Page Topbar (Theme & RTL Toggles in Right Corner) */
+.dashboard-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.dashboard-topbar .navbar-brand-logo {
+  height: 32px;
+  width: auto;
+}
+
+@media (max-width: 575.98px) {
+  .dashboard-topbar {
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .dashboard-topbar .navbar-brand-logo {
+    height: 28px;
+  }
+  .dashboard-topbar .btn-toggle-action {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+  .dashboard-topbar .rtl-toggle-btn {
+    height: 36px !important;
+    padding: 0 0.6rem !important;
+    min-width: 36px;
+  }
+  .dashboard-topbar .rtl-toggle-btn .dir-text {
+    font-size: 0.72rem;
+  }
 }
 .dashboard-sidebar {
   background-color: var(--bg-surface);

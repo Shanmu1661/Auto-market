@@ -72,6 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const favoriteBtn = document.querySelector('.position-relative .car-favorite-btn');
   if (favoriteBtn) {
     favoriteBtn.setAttribute('data-car-id', car.id);
+    if (window.autoMarketFavorites && typeof window.autoMarketFavorites.syncFavoriteButtons === 'function') {
+      window.autoMarketFavorites.syncFavoriteButtons();
+    }
   }
 
 
@@ -249,6 +252,9 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
     `).join('');
+    if (window.autoMarketFavorites && typeof window.autoMarketFavorites.syncFavoriteButtons === 'function') {
+      window.autoMarketFavorites.syncFavoriteButtons();
+    }
   }
 
   // 11. Pre-fill Calculator Price

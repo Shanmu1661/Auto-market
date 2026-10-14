@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Synchronize header logos for dark/light mode
-    const headerLogos = document.querySelectorAll('.site-header .navbar-brand-logo, header .navbar-brand-logo');
+    const headerLogos = document.querySelectorAll('.site-header .navbar-brand-logo, header .navbar-brand-logo, .dashboard-brand-logo');
     headerLogos.forEach(img => {
       if (img.closest('footer')) return;
       const isSubdir = window.location.pathname.includes('/documentation/');
@@ -123,27 +123,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // -------------------------------------------------------------
-  // 4. Favorites / Wishlist LocalStorage Engine (Auth-Gated)
+  // 4. Favorites / Wishlist LocalStorage Engine
   // -------------------------------------------------------------
   const favCountBadges = document.querySelectorAll('.favorites-count-badge');
+  const legacyMap = { 1: 201, 2: 202, 3: 101, 4: 203, 5: 401, 6: 204 };
 
   function getFavorites() {
     try {
       const currentUser = getCurrentUser();
-      if (!currentUser) return [];
-      return JSON.parse(localStorage.getItem(`automarket_favorites_${currentUser.id}`) || localStorage.getItem('automarket_favorites') || '[]');
+      let rawList = [];
+
+      // 1. Read global favorites
+      const globalRaw = localStorage.getItem('automarket_favorites');
+      if (globalRaw) {
+        try {
+          const parsed = JSON.parse(globalRaw);
+          if (Array.isArray(parsed)) rawList.push(...parsed);
+        } catch (e) {}
+      }
+
+      // 2. Read user-specific favorites if logged in
+      if (currentUser && currentUser.id) {
+        const userRaw = localStorage.getItem(`automarket_favorites_${currentUser.id}`);
+        if (userRaw) {
+          try {
+            const parsed = JSON.parse(userRaw);
+            if (Array.isArray(parsed)) rawList.push(...parsed);
+          } catch (e) {}
+        }
+      }
+
+      // 3. Normalize all IDs: map legacy IDs, coerce to number, remove duplicates & invalid
+      const cleaned = rawList
+        .map(id => {
+          const num = parseInt(id, 10);
+          return legacyMap[num] || num;
+        })
+        .filter(id => !isNaN(id) && id > 0);
+
+      return [...new Set(cleaned)];
     } catch {
       return [];
     }
   }
 
   function saveFavorites(favs) {
-    const currentUser = getCurrentUser();
-    if (currentUser) {
-      localStorage.setItem(`automarket_favorites_${currentUser.id}`, JSON.stringify(favs));
+    try {
+      const cleaned = [...new Set(
+        (favs || [])
+          .map(id => {
+            const num = parseInt(id, 10);
+            return legacyMap[num] || num;
+          })
+          .filter(id => !isNaN(id) && id > 0)
+      )];
+
+      const jsonStr = JSON.stringify(cleaned);
+      localStorage.setItem('automarket_favorites', jsonStr);
+
+      const currentUser = getCurrentUser();
+      if (currentUser && currentUser.id) {
+        localStorage.setItem(`automarket_favorites_${currentUser.id}`, jsonStr);
+      }
+
+      updateFavBadges(cleaned.length);
+      return cleaned;
+    } catch (e) {
+      console.error('Error saving favorites:', e);
+      return [];
     }
-    localStorage.setItem('automarket_favorites', JSON.stringify(favs));
-    updateFavBadges(favs.length);
   }
 
   function updateFavBadges(count) {
@@ -159,6 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.car-favorite-btn').forEach(btn => {
       const carId = parseInt(btn.getAttribute('data-car-id') || '0', 10);
+      if (!carId) return;
+
       const icon = btn.querySelector('i');
       if (favs.includes(carId)) {
         btn.classList.add('active');
@@ -177,25 +227,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = e.target.closest('.car-favorite-btn');
     if (!btn) return;
 
+    // Allow dedicated custom remove handlers (e.g. dashboard remove) to handle directly if no data-car-id
+    if (btn.hasAttribute('onclick') && !btn.hasAttribute('data-car-id')) return;
+
     e.preventDefault();
     e.stopPropagation();
 
-    const currentUser = getCurrentUser();
     const carId = parseInt(btn.getAttribute('data-car-id') || '0', 10);
-
-    // If not authenticated, prompt and redirect to login
-    if (!currentUser) {
-      showToast('Please sign in to add vehicles to your wishlist', 'warning');
-      if (carId) {
-        sessionStorage.setItem('automarket_pending_fav', carId.toString());
-      }
-      sessionStorage.setItem('automarket_redirect_after_login', window.location.href);
-      setTimeout(() => {
-        window.location.href = 'login.html';
-      }, 800);
-      return;
-    }
-
     if (!carId) return;
 
     let favs = getFavorites();
@@ -208,33 +246,25 @@ document.addEventListener('DOMContentLoaded', () => {
       favs.push(carId);
       saveFavorites(favs);
       syncFavoriteButtons();
-      showToast('Added vehicle to saved wishlist! View in Dashboard.', 'success');
+      showToast('Added vehicle to saved wishlist! <a href="dashboard.html#tab-saved" class="text-white text-decoration-underline ms-1 fw-bold">View Saved Cars</a>', 'success');
     }
   });
 
-  // Header Wishlist Icon Click Guard (redirect to login if unauthenticated)
-  document.querySelectorAll('a[title="Saved Wishlist"], a[href="dashboard.html#saved"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const currentUser = getCurrentUser();
-      if (!currentUser) {
-        e.preventDefault();
-        showToast('Please sign in to access your saved wishlist', 'info');
-        sessionStorage.setItem('automarket_redirect_after_login', 'dashboard.html#saved');
-        setTimeout(() => {
-          window.location.href = 'login.html';
-        }, 700);
-      }
-    });
-  });
-
   syncFavoriteButtons();
+  window.addEventListener('pageshow', syncFavoriteButtons);
 
   // -------------------------------------------------------------
-  // 4b. Auth-Gated Action Buttons (Find Your Car, Book Inspection, etc.)
+  // 4b. Auth-Gated Action Buttons (Book Inspection, etc.)
   // -------------------------------------------------------------
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('.auth-required-btn, [data-auth-required="true"], [data-bs-target="#bookInspectionModal"]');
     if (!btn) return;
+
+    // Direct links to public pages (inventory, contact) should never be blocked by auth
+    const linkHref = btn.getAttribute('href');
+    if (linkHref && (linkHref.startsWith('inventory.html') || linkHref.includes('inventory.html') || linkHref.startsWith('contact.html') || linkHref.includes('contact.html'))) {
+      return;
+    }
 
     const currentUser = getCurrentUser();
     if (!currentUser) {
@@ -895,7 +925,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </a>
               </li>
               <li>
-                <a class="dropdown-item py-2" href="inventory.html">
+                <a class="dropdown-item py-2" href="dashboard.html#tab-saved">
                   <i class="bi bi-heart me-2 text-danger"></i> Saved Cars
                 </a>
               </li>
@@ -1015,6 +1045,13 @@ document.addEventListener('DOMContentLoaded', () => {
     loginUser,
     logoutUser,
     updateNavAuthState
+  };
+
+  // Expose global favorites API
+  window.autoMarketFavorites = {
+    getFavorites,
+    saveFavorites,
+    syncFavoriteButtons
   };
 
   window.autoMarketToast = showToast;

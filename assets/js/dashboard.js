@@ -21,24 +21,67 @@ document.addEventListener('DOMContentLoaded', () => {
     return user;
   }
 
-  function getFavoritesKey() {
-    const user = getBuyerUser();
-    return user && user.id ? `automarket_favorites_${user.id}` : 'automarket_favorites';
-  }
-
   function getFavorites() {
+    if (window.autoMarketFavorites && typeof window.autoMarketFavorites.getFavorites === 'function') {
+      return window.autoMarketFavorites.getFavorites();
+    }
     try {
-      const key = getFavoritesKey();
-      const stored = localStorage.getItem(key);
-      if (stored) return JSON.parse(stored);
+      const user = getBuyerUser();
+      let rawList = [];
+
+      const globalRaw = localStorage.getItem('automarket_favorites');
+      if (globalRaw) {
+        try {
+          const parsed = JSON.parse(globalRaw);
+          if (Array.isArray(parsed)) rawList.push(...parsed);
+        } catch (e) {}
+      }
+
+      if (user && user.id) {
+        const userRaw = localStorage.getItem(`automarket_favorites_${user.id}`);
+        if (userRaw) {
+          try {
+            const parsed = JSON.parse(userRaw);
+            if (Array.isArray(parsed)) rawList.push(...parsed);
+          } catch (e) {}
+        }
+      }
+
+      const legacyMap = { 1: 201, 2: 202, 3: 101, 4: 203, 5: 401, 6: 204 };
+      const cleaned = rawList
+        .map(id => {
+          const num = parseInt(id, 10);
+          return legacyMap[num] || num;
+        })
+        .filter(id => !isNaN(id) && id > 0);
+
+      return [...new Set(cleaned)];
     } catch (e) {}
     return [];
   }
 
   function saveFavorites(favIds) {
+    if (window.autoMarketFavorites && typeof window.autoMarketFavorites.saveFavorites === 'function') {
+      return window.autoMarketFavorites.saveFavorites(favIds);
+    }
     try {
-      const key = getFavoritesKey();
-      localStorage.setItem(key, JSON.stringify(favIds));
+      const user = getBuyerUser();
+      const legacyMap = { 1: 201, 2: 202, 3: 101, 4: 203, 5: 401, 6: 204 };
+      const cleaned = [...new Set(
+        (favIds || [])
+          .map(id => {
+            const num = parseInt(id, 10);
+            return legacyMap[num] || num;
+          })
+          .filter(id => !isNaN(id) && id > 0)
+      )];
+
+      const json = JSON.stringify(cleaned);
+      localStorage.setItem('automarket_favorites', json);
+      if (user && user.id) {
+        localStorage.setItem(`automarket_favorites_${user.id}`, json);
+      }
+      return cleaned;
     } catch (e) {}
   }
 
@@ -89,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ? window.AUTOMARKET_CARS
       : [];
 
-    const matchedVehicles = catalog.filter(v => favIds.includes(v.id));
+    const matchedVehicles = catalog.filter(v => favIds.includes(parseInt(v.id, 10)));
 
     if (matchedVehicles.length === 0) {
       savedCarsContainer.innerHTML = '';
@@ -104,8 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="car-card">
           <div class="car-card-img-wrap">
             <img src="${car.images ? car.images.hero : car.image}" alt="${car.title}" loading="lazy">
-            <button class="car-favorite-btn active text-danger" title="Remove from wishlist" onclick="removeDashboardSaved(${car.id})">
-              <i class="bi bi-trash3-fill"></i>
+            <button class="car-favorite-btn active text-danger" data-car-id="${car.id}" title="Remove from wishlist" aria-label="Remove from saved cars" onclick="removeDashboardSaved(event, ${car.id})">
+              <i class="bi bi-heart-fill text-danger"></i>
             </button>
           </div>
           <div class="car-card-body">
@@ -132,11 +175,19 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
   }
 
-  window.removeDashboardSaved = function(carId) {
+  window.removeDashboardSaved = function(e, carId) {
+    if (e) {
+      if (typeof e.stopPropagation === 'function') e.stopPropagation();
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+    }
+    const idNum = parseInt(carId, 10);
     let favIds = getFavorites();
-    favIds = favIds.filter(id => id !== carId);
+    favIds = favIds.filter(id => id !== idNum);
     saveFavorites(favIds);
     renderSavedVehicles();
+    if (window.autoMarketFavorites && typeof window.autoMarketFavorites.syncFavoriteButtons === 'function') {
+      window.autoMarketFavorites.syncFavoriteButtons();
+    }
     if (window.autoMarketToast) {
       window.autoMarketToast('Vehicle removed from your saved list.', 'warning');
     }
@@ -475,5 +526,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Support direct linking to tabs (e.g. dashboard.html#tab-saved)
+  function activateTabFromHash() {
+    const hash = window.location.hash;
+    if (hash) {
+      const tabTrigger = document.querySelector(`.dashboard-nav-pills a[href="${hash}"], .dashboard-nav-pills button[data-bs-target="${hash}"]`);
+      if (tabTrigger && window.bootstrap && window.bootstrap.Tab) {
+        const tab = new window.bootstrap.Tab(tabTrigger);
+        tab.show();
+      }
+    }
+  }
+  activateTabFromHash();
+  window.addEventListener('hashchange', activateTabFromHash);
 });
 
