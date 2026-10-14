@@ -601,6 +601,7 @@ img {
   color: #ffffff;
   padding: 4.5rem 0;
   overflow: hidden;
+  text-align: center !important;
 }
 .page-header-banner::before {
   content: '';
@@ -612,18 +613,29 @@ img {
 .page-header-banner > .container {
   position: relative;
   z-index: 2;
+  text-align: center !important;
 }
 .page-header-banner h1,
 .page-header-banner .display-5 {
   color: #ffffff !important;
   font-weight: 800;
   text-shadow: 0 3px 16px rgba(0, 0, 0, 0.85), 0 1px 4px rgba(0, 0, 0, 0.6);
+  text-align: center !important;
 }
 .page-header-banner p.lead,
 .page-header-banner p {
   color: #f8fafc !important;
   font-weight: 400;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.page-header-banner .section-tag-light {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 /* 7. Hero Section (Home 1) */

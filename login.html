@@ -243,12 +243,8 @@
             users.push(socialUser);
           }
           localStorage.setItem('automarket_users', JSON.stringify(users));
-          localStorage.setItem('automarket_current_user', JSON.stringify(socialUser));
+          localStorage.removeItem('automarket_current_user');
         } catch (e) {}
-
-        if (window.autoMarketAuth && typeof window.autoMarketAuth.setCurrentUser === 'function') {
-          window.autoMarketAuth.setCurrentUser(socialUser);
-        }
 
         showAlert(`<i class="bi bi-check-circle-fill text-success me-1"></i> Signed in with ${providerName}! Redirecting to homepage...`, 'success');
         if (window.autoMarketToast) {
@@ -308,17 +304,10 @@
           } catch (e) {}
         }
 
-        // Set as current logged-in user
-        const rawName = (user.name || '').trim();
-        user.avatar = rawName.length > 0 ? rawName.charAt(0).toUpperCase() : 'U';
-
+        // Clear user session so we do not go into user account mode
         try {
-          localStorage.setItem('automarket_current_user', JSON.stringify(user));
+          localStorage.removeItem('automarket_current_user');
         } catch (e) {}
-
-        if (window.autoMarketAuth && typeof window.autoMarketAuth.setCurrentUser === 'function') {
-          window.autoMarketAuth.setCurrentUser(user);
-        }
 
         // Process pending wishlist if any
         const pendingFav = sessionStorage.getItem('automarket_pending_fav');

@@ -103,7 +103,7 @@
               <a href="inventory.html" class="btn btn-secondary-custom btn-lg-custom">
                 <i class="bi bi-collection-play me-2"></i> View Used Inventory
               </a>
-              <button class="btn btn-outline-light btn-lg-custom auth-required-btn" data-bs-toggle="modal" data-bs-target="#bookInspectionModal" data-auth-modal="#bookInspectionModal">
+              <button class="btn btn-outline-light btn-lg-custom" data-bs-toggle="modal" data-bs-target="#bookInspectionModal">
                 <i class="bi bi-person-badge me-2"></i> Request Sourcing
               </button>
             </div>
@@ -873,13 +873,13 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label">Your Name</label>
-                <input type="text" class="form-control" placeholder="Full name" required>
+                <input type="text" class="form-control" id="bookName" placeholder="Full name" required>
                 <div class="invalid-feedback">Required</div>
               </div>
             </div>
             <div class="mb-3">
               <label class="form-label">Email or Direct Phone</label>
-              <input type="text" class="form-control" placeholder="contact@example.com" required>
+              <input type="text" class="form-control" id="bookEmail" placeholder="contact@example.com" required>
               <div class="invalid-feedback">Required</div>
             </div>
           </div>

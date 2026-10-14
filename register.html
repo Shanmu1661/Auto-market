@@ -257,13 +257,9 @@
             users.push(socialUser);
             localStorage.setItem('automarket_users', JSON.stringify(users));
           }
-          localStorage.setItem('automarket_current_user', JSON.stringify(socialUser));
+          localStorage.removeItem('automarket_current_user');
         } catch (e) {
           console.error(e);
-        }
-
-        if (window.autoMarketAuth && typeof window.autoMarketAuth.setCurrentUser === 'function') {
-          window.autoMarketAuth.setCurrentUser(socialUser);
         }
 
         showAlert(`<i class="bi bi-check-circle-fill me-1 text-success"></i> Signed up with ${provider}! Redirecting to homepage...`, 'success');
@@ -342,14 +338,10 @@
           } catch (err) {}
         }
 
-        // Auto-login registered user
+        // Do not go into user account mode
         try {
-          localStorage.setItem('automarket_current_user', JSON.stringify(user));
+          localStorage.removeItem('automarket_current_user');
         } catch (err) {}
-
-        if (window.autoMarketAuth && typeof window.autoMarketAuth.setCurrentUser === 'function') {
-          window.autoMarketAuth.setCurrentUser(user);
-        }
 
         showAlert(`<i class="bi bi-check-circle-fill me-1 text-success"></i> Account created successfully! Redirecting to homepage...`, 'success');
 

@@ -68,6 +68,27 @@
   unicode-bidi: isolate;
 }
 
+/* Preserved Center Alignment in RTL for Header Banners & Centered Sections */
+[dir="rtl"] .text-center,
+[dir="rtl"] .text-center *,
+[dir="rtl"] .page-header-banner,
+[dir="rtl"] .page-header-banner *,
+[dir="rtl"] .section-title-wrap.text-center,
+[dir="rtl"] .section-title-wrap.text-center *,
+[dir="rtl"] .section-title-center,
+[dir="rtl"] .section-title-center * {
+  text-align: center !important;
+}
+
+[dir="rtl"] .page-header-banner p.lead,
+[dir="rtl"] .page-header-banner p,
+[dir="rtl"] .text-center p.lead,
+[dir="rtl"] .text-center p.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
 /* Numeric, Price, and Contact Direction Isolation */
 [dir="rtl"] .car-price,
 [dir="rtl"] .price-current,

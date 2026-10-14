@@ -254,10 +254,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('pageshow', syncFavoriteButtons);
 
   // -------------------------------------------------------------
-  // 4b. Auth-Gated Action Buttons (Book Inspection, etc.)
+  // 4b. Auth-Gated Action Buttons (Only elements explicitly requiring auth)
   // -------------------------------------------------------------
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.auth-required-btn, [data-auth-required="true"], [data-bs-target="#bookInspectionModal"]');
+    const btn = e.target.closest('.auth-required-btn, [data-auth-required="true"]');
     if (!btn) return;
 
     // Direct links to public pages (inventory, contact) should never be blocked by auth
@@ -287,12 +287,17 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = `login.html?redirect=${encodeURIComponent(redirectTarget)}`;
       }, 700);
       return false;
-    } else {
-      // Auto-fill user contact info inside modal if opening
-      const modalTarget = btn.getAttribute('data-bs-target') || btn.getAttribute('data-auth-modal');
-      if (modalTarget === '#bookInspectionModal') {
-        const nameInput = document.getElementById('bookName');
-        const emailInput = document.getElementById('bookEmail');
+    }
+  }, true);
+
+  // Auto-fill user contact info & auto-select service when Book Inspection / Consultation modal opens
+  const inspectionModalEl = document.getElementById('bookInspectionModal');
+  if (inspectionModalEl) {
+    inspectionModalEl.addEventListener('show.bs.modal', (e) => {
+      const currentUser = getCurrentUser();
+      if (currentUser) {
+        const nameInput = inspectionModalEl.querySelector('#bookName, input[placeholder="Full name"], input[placeholder="Jane Doe"]');
+        const emailInput = inspectionModalEl.querySelector('#bookEmail, input[type="email"], input[placeholder*="@"]');
         if (nameInput && !nameInput.value && currentUser.name) {
           nameInput.value = currentUser.name;
         }
@@ -300,8 +305,17 @@ document.addEventListener('DOMContentLoaded', () => {
           emailInput.value = currentUser.email;
         }
       }
-    }
-  }, true);
+
+      // If opened via Request Sourcing button, pre-select sourcing option if present
+      const triggerBtn = e.relatedTarget;
+      if (triggerBtn && triggerBtn.textContent && triggerBtn.textContent.includes('Request Sourcing')) {
+        const serviceSelect = inspectionModalEl.querySelector('select');
+        if (serviceSelect && serviceSelect.querySelector('option[value="sourcing"]')) {
+          serviceSelect.value = 'sourcing';
+        }
+      }
+    });
+  }
 
   // Check for pending modal after login return
   const pendingModal = sessionStorage.getItem('automarket_pending_modal');
@@ -899,62 +913,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateNavAuthState() {
-    const currentUser = getCurrentUser();
+    // Keep public navbar in standard Sign In state (do not switch into user account avatar)
     const navAuthContainers = document.querySelectorAll('.nav-auth-container');
-
     navAuthContainers.forEach(container => {
-      if (currentUser) {
-        // Ensure single first letter avatar
-        const avatarLetter = (currentUser.avatar && currentUser.avatar.length === 1) 
-          ? currentUser.avatar 
-          : (currentUser.name ? currentUser.name.trim().charAt(0).toUpperCase() : 'U');
-
-        container.innerHTML = `
-          <div class="dropdown user-nav-dropdown">
-            <button class="btn dropdown-toggle d-flex align-items-center justify-content-center" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="${currentUser.name}">
-              <span class="user-avatar-sm">${avatarLetter}</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
-              <li class="px-3 py-2 border-bottom">
-                <div class="fw-bold text-truncate" style="max-width: 200px;">${currentUser.name}</div>
-                <div class="small text-muted text-truncate" style="max-width: 200px;">${currentUser.email}</div>
-              </li>
-              <li>
-                <a class="dropdown-item py-2" href="inventory.html">
-                  <i class="bi bi-car-front me-2 text-primary"></i> Browse Cars
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item py-2" href="dashboard.html#tab-saved">
-                  <i class="bi bi-heart me-2 text-danger"></i> Saved Cars
-                </a>
-              </li>
-              <li><hr class="dropdown-divider my-1"></li>
-              <li>
-                <button class="dropdown-item py-2 text-danger nav-logout-trigger">
-                  <i class="bi bi-box-arrow-right me-2"></i> Sign Out
-                </button>
-              </li>
-            </ul>
-          </div>
-        `;
-
-        const logoutBtn = container.querySelector('.nav-logout-trigger');
-        if (logoutBtn) {
-          logoutBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            logoutUser();
-          });
-        }
-      } else {
-        container.innerHTML = `
-          <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
-            <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
-          </a>
-        `;
-      }
+      container.innerHTML = `
+        <a href="login.html" class="btn btn-primary-custom nav-auth-btn">
+          <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
+        </a>
+      `;
     });
   }
+
+  // Clear any persistent user account session so navbar remains as standard Sign In
+  try {
+    localStorage.removeItem('automarket_current_user');
+  } catch (e) {}
 
   // Initialize Auth
   getUsers();
